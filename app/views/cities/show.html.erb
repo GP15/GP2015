@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>City:</strong>
   <%= @city.name %>
 </p>
 
 <%= link_to 'Edit', edit_city_path(@city) %> |
-<%= link_to 'Back', cities_path %>
+<%= link_to 'Delete', city_path(@city), method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -20,7 +20,7 @@ class PartnersController < ApplicationController
     @partner = Partner.new(partner_params)
 
     if @partner.save
-      redirect_to partners_path, notice: 'Partner added.'
+      redirect_to admin_path, notice: 'Partner added.'
     else
       render :new
     end
@@ -28,7 +28,7 @@ class PartnersController < ApplicationController
 
   def update
     if @partner.update(partner_params)
-      redirect_to partners_path, notice: 'Partner updated.'
+      redirect_to admin_path, notice: 'Partner updated.'
     else
       render :edit
     end
@@ -36,10 +36,11 @@ class PartnersController < ApplicationController
 
   def destroy
     @partner.destroy
-    redirect_to partners_path, notice: 'Partner deleted.'
+    redirect_to admin_path, notice: 'Partner deleted.'
   end
 
   private
+
     def set_partner
       @partner = Partner.find(params[:id])
     end

@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @partner %> |
-<%= link_to 'Back', partners_path %>
+<br>
+<%= link_to "Delete", @partner, method: :delete,
+    data: { confirm: "Delete #{@partner.company}?" } %>

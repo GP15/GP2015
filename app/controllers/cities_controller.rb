@@ -20,7 +20,7 @@ class CitiesController < ApplicationController
     @city = City.new(city_params)
 
     if @city.save
-      redirect_to cities_path, notice: 'City was successfully created.'
+      redirect_to admin_path, notice: 'City created.'
     else
       render :new
     end
@@ -28,7 +28,7 @@ class CitiesController < ApplicationController
 
   def update
     if @city.update(city_params)
-      redirect_to cities_path, notice: 'City was successfully updated.'
+      redirect_to admin_path, notice: 'City updated.'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class CitiesController < ApplicationController
 
   def destroy
     @city.destroy
-    redirect_to cities_path, notice: 'City was successfully deleted.'
+    redirect_to admin_path, notice: 'City deleted.'
   end
 
   private
