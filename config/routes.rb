@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   resources :cities, path: 'city'
 
+  resources :partners
+
 end
