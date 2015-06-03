@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<h3>City <span><%= link_to "[+]", new_city_path %></span></h3>
+<h3>City <span><%= link_to "+add", new_city_path %></span></h3>
 <ul>
   <% @cities.each do |city| %>
     <li><%= link_to city.name, edit_city_path(city) %></li>
@@ -16,7 +16,7 @@
   <% end %>
 </ul>
 
-<h3>Partners <span><%= link_to "[+]", new_partner_path %></span></h3>
+<h3>Partners <span><%= link_to "+add", new_partner_path %></span></h3>
 <ul>
   <% @partners.each do |partner| %>
     <li>
