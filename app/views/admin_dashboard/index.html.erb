@@ -9,6 +9,13 @@
   <% end %>
 </ul>
 
+<h3>Activity Category <span><%= link_to "[+]", new_category_path %></span></h3>
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= link_to category.name, edit_category_path(category) %></li>
+  <% end %>
+</ul>
+
 <h3>Partners <span><%= link_to "[+]", new_partner_path %></span></h3>
 <ul>
   <% @partners.each do |partner| %>
