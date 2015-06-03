@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AdminDashboardControllerTest < ActionController::TestCase
+class ActivityTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
