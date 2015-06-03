@@ -41,5 +41,4 @@ ActiveRecord::Schema.define(version: 20150603031842) do
 
   add_index "partners", ["city_id"], name: "index_partners_on_city_id", using: :btree
 
-  add_foreign_key "partners", "cities"
 end

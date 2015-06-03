@@ -6,7 +6,7 @@ class CreatePartners < ActiveRecord::Migration
       t.string :address
       t.string :state
       t.string :img_url
-      t.references :city, index: true, foreign_key: true
+      t.references :city, index: true
 
       t.timestamps null: false
     end

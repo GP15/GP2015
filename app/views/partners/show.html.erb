@@ -19,7 +19,7 @@
 
 <p>
   <strong>City:</strong>
-  <%= @city.name %>
+  <%= @city.name unless @city.nil? %>
 </p>
 
 <p>
