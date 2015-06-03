@@ -1,5 +1,9 @@
 <% provide(:title, 'Edit activity') %>
 
-<h1>Edit activity</h1>
+<h1>Edit Activity</h1>
 
 <%= render 'form' %>
+
+<br>
+<%= link_to 'Delete', @activity, method: :delete,
+    data: { confirm: "Delete activity <#{@activity.name}>?" } %>

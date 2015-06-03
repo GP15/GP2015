@@ -22,10 +22,11 @@
     <%= f.select :state, Partner::STATES %>
   </div>
   <div class="field">
-    <%= f.label :Picture %><br>
+    <%= f.label :Picture, "Picture Link" %><br>
     <%= f.text_field :img_url %>
   </div>
   <div class="actions">
     <%= f.submit %>
+    <%= link_to "Cancel", admin_path %>
   </div>
 <% end %>
