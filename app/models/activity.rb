@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class Activity < ActiveRecord::Base
 
   validates :name, presence: true
 

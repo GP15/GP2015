@@ -2,7 +2,7 @@ class AdminDashboardController < ApplicationController
 
   def index
     @cities     = City.all
-    @categories = Category.all
+    @activities = Activity.all
     @partners   = Partner.all
   end
 

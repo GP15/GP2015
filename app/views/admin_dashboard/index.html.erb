@@ -9,10 +9,10 @@
   <% end %>
 </ul>
 
-<h3>Activity Category <span><%= link_to "[+]", new_category_path %></span></h3>
+<h3>Activity <span><%= link_to "+add", new_activity_path %></span></h3>
 <ul>
-  <% @categories.each do |category| %>
-    <li><%= link_to category.name, edit_category_path(category) %></li>
+  <% @activities.each do |activity| %>
+    <li><%= link_to activity.name, edit_activity_path(activity) %></li>
   <% end %>
 </ul>
 

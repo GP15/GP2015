@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :partners
 
-  resources :categories
+  resources :activities
 
   get 'admin', to: 'admin_dashboard#index'
 
