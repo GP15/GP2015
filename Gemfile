@@ -13,12 +13,13 @@ gem 'turbolinks'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'byebug'                  # access debugger console by calling it in code
+  gem 'web-console', '~> 2.0'   # access IRB console on exception pages
+  gem 'spring'                  # speeds development by running app in background
+end
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+group :production do
+  # deploying to Heroku requires these 2 gems:
+  gem 'rails_12factor'          # output logs to stdout for 3rd party log apps
+  gem 'puma'                    # webserver recommended by Heroku
 end
