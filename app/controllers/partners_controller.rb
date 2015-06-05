@@ -28,7 +28,7 @@ class PartnersController < ApplicationController
 
   def update
     if @partner.update(partner_params)
-      redirect_to admin_path, notice: 'Partner updated.'
+      redirect_to admin_partner_path(@partner), notice: 'Partner details updated.'
     else
       render :edit
     end

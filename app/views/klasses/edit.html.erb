@@ -1,0 +1,19 @@
+<% provide(:title, 'Edit class') %>
+
+<h1>Edit Class</h1>
+
+<%= form_for [@partner, @klass] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= render 'form', f: f %>
+
+  <br>
+  <div class="actions">
+    <%= link_to "Cancel", admin_partner_path(@partner) %>
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<br>
+<%= link_to 'Delete class', [@partner, @klass], method: :delete,
+    data: { confirm: "Delete class <#{@klass.name}>?" } %>

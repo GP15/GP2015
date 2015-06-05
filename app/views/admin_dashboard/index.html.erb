@@ -20,8 +20,8 @@
 <ul>
   <% @partners.each do |partner| %>
     <li>
-      <%= link_to partner.company, partner_path(partner) %>
-      [<%= link_to "edit", edit_partner_path(partner) %>]
+      <%= link_to partner.company, admin_partner_path(partner) %>
+      [<%= link_to "link", partner_url(partner), target: "_blank" %>]
     </li>
   <% end %>
 </ul>

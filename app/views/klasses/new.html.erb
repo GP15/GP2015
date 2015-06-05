@@ -1,0 +1,15 @@
+<% provide(:title, 'Add class') %>
+
+<h1>Add Class</h1>
+
+<%= form_for [@partner, @klass] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= render 'form', f: f %>
+
+  <br>
+  <div class="actions">
+    <%= link_to "Cancel", admin_partner_path(@partner) %>
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

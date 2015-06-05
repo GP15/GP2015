@@ -1,0 +1,22 @@
+<% provide(:title, @partner.company) %>
+
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= link_to @partner.company, partner_path(@partner), target: "_blank" %>
+  <%= link_to "[edit]", edit_partner_path(@partner) %>
+</h2>
+
+<div>
+  Address: <%= @partner.address %>, <%= @partner.city.name %>, <%= @partner.state %><br>
+  Phone: <%= @partner.phone %>
+</div>
+
+<h3>Class <span><%= link_to "+add", new_partner_klass_path(@partner) %></span></h3>
+<div>
+  <ul>
+    <% @klasses.each do |klass| %>
+      <li><%= link_to klass.name, edit_partner_klass_path(@partner, klass) %></li>
+    <% end %>
+  </ul>
+</div>
