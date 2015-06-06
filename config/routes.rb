@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'admin_dashboard#index'
+  root 'admin#index'
 
   resources :cities, path: 'city'
 
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :activities
 
-  get 'admin',              to: 'admin_dashboard#index'
-  get 'admin/partners/:id', to: 'admin_dashboard#partner', as: 'admin_partner'
+  get 'admin',              to: 'admin#index'
+  get 'admin/partners/:id', to: 'admin#partner', as: 'admin_partner'
 
 end
