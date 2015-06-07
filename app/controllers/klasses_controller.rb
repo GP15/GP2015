@@ -43,6 +43,7 @@ class KlassesController < ApplicationController
   private
 
     def klass_params
-      params.require(:klass).permit(:name, :description, :activity_id)
+      params.require(:klass).permit(:name, :activity_id, :level,
+                                    :age_start, :age_end, :description)
     end
 end

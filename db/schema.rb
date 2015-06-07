@@ -30,14 +30,19 @@ ActiveRecord::Schema.define(version: 20150604094851) do
 
   create_table "klasses", force: :cascade do |t|
     t.string   "name"
+    t.string   "level"
+    t.integer  "age_start"
+    t.integer  "age_end"
     t.text     "description"
-    t.integer  "partner_id"
     t.integer  "activity_id"
+    t.integer  "partner_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "klasses", ["activity_id"], name: "index_klasses_on_activity_id", using: :btree
+  add_index "klasses", ["age_start", "age_end"], name: "index_klasses_on_age_start_and_age_end", using: :btree
+  add_index "klasses", ["level"], name: "index_klasses_on_level", using: :btree
   add_index "klasses", ["partner_id"], name: "index_klasses_on_partner_id", using: :btree
 
   create_table "partners", force: :cascade do |t|

@@ -4,7 +4,7 @@
 
 <%= form_for [@partner, @klass] do |f| %>
 
-  <%= render 'form', f: f %><br>
+  <%= render 'form', f: f %>
 
   <div class="actions">
     <%= link_to "Cancel", admin_partner_path(@partner) %>
@@ -12,6 +12,6 @@
   </div>
 <% end %>
 
-<br>
+<br><br>
 <%= link_to 'Delete class', [@partner, @klass], method: :delete,
     data: { confirm: "Delete class <#{@klass.name}>?" } %>
