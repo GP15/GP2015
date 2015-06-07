@@ -20,7 +20,7 @@ class PartnersController < ApplicationController
     @partner = Partner.new(partner_params)
 
     if @partner.save
-      redirect_to admin_path, notice: 'Partner added.'
+      redirect_to admin_partner_path(@partner), notice: 'Partner added.'
     else
       render :new
     end

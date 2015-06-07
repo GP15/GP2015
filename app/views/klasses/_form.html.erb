@@ -9,6 +9,6 @@
   <%= f.text_area :description %>
 </div>
 <div class="field">
-  <%= f.label :activity_id %><br>
+  <%= f.label :activity_id, "Category" %><br>
   <%= collection_select(:klass, :activity_id, Activity.all, :id, :name) %>
 </div>

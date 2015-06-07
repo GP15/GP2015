@@ -4,9 +4,8 @@
 
 <%= form_for [@partner, @klass] do |f| %>
 
-  <%= render 'form', f: f %>
+  <%= render 'form', f: f %><br>
 
-  <br>
   <div class="actions">
     <%= link_to "Cancel", admin_partner_path(@partner) %>
     <%= f.submit "Update" %>
