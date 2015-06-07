@@ -2,7 +2,15 @@
 
 <h1>Edit Activity</h1>
 
-<%= render 'form' %>
+<%= form_for(@activity) do |f| %>
+
+  <%= render 'form', f: f %>
+
+  <div class="actions">
+    <%= link_to "Cancel", admin_path %>
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
 
 <br>
 <%= link_to 'Delete', @activity, method: :delete,

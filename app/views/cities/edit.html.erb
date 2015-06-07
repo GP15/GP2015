@@ -2,7 +2,15 @@
 
 <h1>Edit City</h1>
 
-<%= render 'form' %>
+<%= form_for(@city) do |f| %>
+
+  <%= render 'form', f: f %>
+
+  <div class="actions">
+    <%= link_to "Cancel", admin_path %>
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
 
 <br>
 <%= link_to 'Delete', @city, method: :delete,
