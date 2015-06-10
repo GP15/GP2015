@@ -5,5 +5,6 @@ class Klass < ActiveRecord::Base
 
   validates :name, presence: true
 
+  # A class difficulty levels.
   LEVEL = ["Beginner", "Intermediate", "Advanced", "Multilevel"]
 end

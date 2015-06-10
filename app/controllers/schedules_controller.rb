@@ -1,17 +1,20 @@
 class SchedulesController < ApplicationController
 
+  # GET /partners/:id/schedules/new
   def new
     @partner  = Partner.find(params[:partner_id])
     @schedule = @partner.schedules.build
     @klasses  = @partner.klasses
   end
 
+  # GET /partners/:id/schedules/:id/edit
   def edit
     @partner  = Partner.find(params[:partner_id])
     @schedule = @partner.schedules.find(params[:id])
     @klasses  = @partner.klasses
   end
 
+  # POST /partners/:id/schedules
   def create
     @partner  = Partner.find(params[:partner_id])
     @schedule = @partner.schedules.build(schedule_params)
@@ -24,6 +27,7 @@ class SchedulesController < ApplicationController
     end
   end
 
+  # PATCH /partners/:id/schedules/:id
   def update
     @partner  = Partner.find(params[:partner_id])
     @schedule = @partner.schedules.find(params[:id])
@@ -36,6 +40,7 @@ class SchedulesController < ApplicationController
     end
   end
 
+  # DELETE /partners/:id/schedules/:id
   def destroy
     @partner  = Partner.find(params[:partner_id])
     @schedule = @partner.schedules.find(params[:id])
