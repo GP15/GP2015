@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604094851) do
+ActiveRecord::Schema.define(version: 20150608134856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,5 +57,20 @@ ActiveRecord::Schema.define(version: 20150604094851) do
   end
 
   add_index "partners", ["city_id"], name: "index_partners_on_city_id", using: :btree
+
+  create_table "schedules", force: :cascade do |t|
+    t.date     "date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.integer  "quantity"
+    t.integer  "klass_id"
+    t.integer  "partner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "schedules", ["date", "start_time", "end_time"], name: "index_schedules_on_date_and_start_time_and_end_time", using: :btree
+  add_index "schedules", ["klass_id"], name: "index_schedules_on_klass_id", using: :btree
+  add_index "schedules", ["partner_id"], name: "index_schedules_on_partner_id", using: :btree
 
 end

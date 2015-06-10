@@ -1,0 +1,22 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<div class="field">
+  <%= f.label :klass_id, "Class" %><br>
+  <%= collection_select(:schedule, :klass_id, @klasses, :id, :name) %>
+</div>
+<div class="field">
+  <%= f.label :date %><br>
+  <%= f.date_select :date, order: [:day, :month, :year] %>
+</div>
+<div class="field">
+  <%= f.label :start_time %><br>
+  <%= f.time_select :start_time, minute_step: 5 %>
+</div>
+<div class="field">
+  <%= f.label :end_time %><br>
+  <%= f.time_select :end_time, minute_step: 5 %>
+</div>
+<div class="field">
+  <%= f.label :quantity, "No. of students" %><br>
+  <%= f.number_field :quantity %>
+</div>

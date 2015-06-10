@@ -20,3 +20,39 @@
     <% end %>
   </ul>
 </div>
+
+<% if @klasses.present? %>
+  <h3>Schedules <span><%= link_to "+add", new_partner_schedule_path(@partner) %></span></h3>
+<% end %>
+
+<% if @schedules.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Class</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Level</th>
+        <th>No. of students</th>
+        <th colspan="3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td><%= schedule.date.strftime("%d %b %Y") %></td>
+          <td><%= schedule.klass.name if schedule.klass %></td>
+          <td><%= schedule.start_time.strftime("%l:%M%P") %></td>
+          <td><%= schedule.end_time.strftime("%l:%M%P") %></td>
+          <td><%= schedule.klass.level if schedule.klass %></td>
+          <td><%= schedule.quantity %></td>
+          <td><%# link_to 'Show', '#' %></td>
+          <td><%= link_to 'Edit', edit_partner_schedule_path(@partner, schedule) %></td>
+          <td><%= link_to 'Delete', partner_schedule_path(@partner, schedule),
+                  method: :delete, data: { confirm: "Delete schedule?" } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

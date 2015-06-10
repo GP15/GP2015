@@ -2,6 +2,7 @@ class Partner < ActiveRecord::Base
 
   belongs_to :city
   has_many   :klasses
+  has_many   :schedules
 
   validates :company, :address, presence: true
 

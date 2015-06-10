@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :cities, path: 'city'
 
   resources :partners do
-    resources :klasses
+    resources :klasses, :schedules
   end
 
   resources :activities
