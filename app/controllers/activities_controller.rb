@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  layout 'admin'
 
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 

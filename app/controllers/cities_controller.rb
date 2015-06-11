@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+  layout 'admin'
 
   before_action :set_city, only: [:show, :edit, :update, :destroy]
 

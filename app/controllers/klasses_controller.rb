@@ -1,4 +1,5 @@
 class KlassesController < ApplicationController
+  layout 'admin'
 
   def new
     @partner = Partner.find(params[:partner_id])

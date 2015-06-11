@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'admin#index'
+  root 'static_pages#index'
 
   resources :cities, path: 'city'
 

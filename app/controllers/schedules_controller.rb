@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  layout 'admin'
 
   # GET /partners/:id/schedules/new
   def new
