@@ -1,33 +1,56 @@
 <% provide(:title, @partner.company) %>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Company:</strong>
+<br>
+<div>
+  <%= link_to "Home", root_path %> >
+  <%= link_to "Partners", partners_path %> >
   <%= @partner.company %>
-</p>
+</div>
+<br>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @partner.phone %>
-</p>
+<div>
+  <%= image_tag @partner.img_url, size: "500x200", alt: "photo of #{@partner.company}" %>
+  <h1><%= @partner.company %></h1>
+  <div>
+    <strong>Address:</strong>
+    <%= @partner.address %>, <%= @partner.city.name %>, <%= @partner.state %>
+  </div>
+  <div>
+    <strong>Phone:</strong> <%= @partner.phone %>
+  </div>
+  <div>
+    <strong>Activities:</strong>
+    <%= @partner.klasses.map { |klass| klass.name }.join(", ") %>
+  </div>
+</div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @partner.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @city.name unless @city.nil? %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @partner.state %>
-</p>
-
-<p>
-  <strong>Photo:</strong><br>
-  <%= image_tag @partner.img_url, size: "150" %>
-</p>
+<% if @schedules.present? %>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Activity</th>
+        <th>Time</th>
+        <th>Level</th>
+        <th>Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td><%= schedule.date.strftime("%d %b %Y") %></td>
+          <td><%= schedule.klass.name if schedule.klass %></td>
+          <td>
+            <%= schedule.start_time.strftime("%l:%M%P") %> -
+            <%= schedule.end_time.strftime("%l:%M%P") %>
+          </td>
+          <td><%= schedule.klass.level if schedule.klass %></td>
+          <td><%= link_to 'Reserve', '#' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No current activities in the meantime.</p>
+<% end %>

@@ -4,11 +4,12 @@ class PartnersController < ApplicationController
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
 
   def index
-    @partners = Partner.all
+    @partners = Partner.includes(:city, :klasses)
   end
 
   def show
-    @city = @partner.city
+    @schedules = Schedule.includes(:klass).where(partner_id: @partner)
+                         .order(:date, :start_time, :end_time)
   end
 
   def new
