@@ -1,5 +1,10 @@
 class SchedulesController < ApplicationController
-  layout 'admin'
+  layout 'admin', except: [:index, :show]
+
+  # GET /schedules
+  def index
+    @schedules = Schedule.includes(:klass, :partner).order(:date, :start_time, :end_time)
+  end
 
   # GET /partners/:id/schedules/new
   def new

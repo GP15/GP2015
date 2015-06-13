@@ -2,10 +2,13 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
 
+  resources :schedules, only: [:index, :show]
+
   resources :cities, path: 'city'
 
   resources :partners do
-    resources :klasses, :schedules
+    resources :klasses
+    resources :schedules, except: [:index, :show]
   end
 
   resources :activities

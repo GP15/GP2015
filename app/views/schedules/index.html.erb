@@ -1,0 +1,31 @@
+<% provide(:title, "Schedules") %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Activity</th>
+      <th>Studio</th>
+      <th>City</th>
+      <th>Time</th>
+      <th>Level</th>
+      <th>Reserve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.date.strftime("%d %b %Y") %></td>
+        <td><%= schedule.klass.name if schedule.klass %></td>
+        <td><%= link_to schedule.partner.company, partner_path(schedule.partner) if schedule.partner %></td>
+        <td><%= schedule.partner.city.name if schedule.partner %></td>
+        <td>
+          <%= schedule.start_time.strftime("%l:%M%P") %> -
+          <%= schedule.end_time.strftime("%l:%M%P") %>
+        </td>
+        <td><%= schedule.klass.level if schedule.klass %></td>
+        <td><%= link_to 'Reserve', '#' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
