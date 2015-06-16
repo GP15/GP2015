@@ -14,7 +14,7 @@
 </div>
 <div class="field">
   <%= f.label :city_id %><br>
-  <%= collection_select(:partner, :city_id, City.all, :id, :name) %>
+  <%= collection_select(:partner, :city_id, City.order(:name), :id, :name) %>
 </div>
 <div class="field">
   <%= f.label :state %><br>

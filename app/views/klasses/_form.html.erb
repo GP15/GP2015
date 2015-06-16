@@ -6,7 +6,7 @@
 </div>
 <div class="field">
   <%= f.label :activity_id, "Category" %><br>
-  <%= collection_select(:klass, :activity_id, Activity.all, :id, :name) %>
+  <%= collection_select(:klass, :activity_id, Activity.order(:name), :id, :name) %>
 </div>
 <div class="field">
   <%= f.label :level %><br>

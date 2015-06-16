@@ -4,10 +4,11 @@ class PartnersController < ApplicationController
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
 
   def index
-    @partners = Partner.includes(:city, :klasses)
+    @partners = Partner.includes(:city, :klasses).order('created_at DESC')
   end
 
   def show
+    @klasses   = @partner.klasses.order(:name)
     @schedules = Schedule.includes(:klass).where(partner_id: @partner)
                          .order(:date, :start_time, :end_time)
   end

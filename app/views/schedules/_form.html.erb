@@ -2,7 +2,7 @@
 
 <div class="field">
   <%= f.label :klass_id, "Class" %><br>
-  <%= collection_select(:schedule, :klass_id, @klasses, :id, :name) %>
+  <%= collection_select(:schedule, :klass_id, @klasses.order(:name), :id, :name) %>
 </div>
 <div class="field">
   <%= f.label :date %><br>
