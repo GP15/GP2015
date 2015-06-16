@@ -3,7 +3,7 @@ class SchedulesController < ApplicationController
 
   # GET /schedules
   def index
-    @schedules = Schedule.includes(:klass, :partner).order(:date, :start_time, :end_time)
+    @schedules = Schedule.includes(:klass, partner: :city).order(:date, :start_time, :end_time)
   end
 
   # GET /partners/:id/schedules/new
