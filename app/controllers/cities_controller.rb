@@ -1,22 +1,18 @@
 class CitiesController < ApplicationController
   layout 'admin'
 
-  before_action :set_city, only: [:show, :edit, :update, :destroy]
+  before_action :set_city, only: [:edit, :update, :destroy]
 
-  def index
-    @cities = City.all
-  end
-
-  def show
-  end
-
+  # GET /city/new
   def new
     @city = City.new
   end
 
+  # GET /city/:id/edit
   def edit
   end
 
+  # POST /city
   def create
     @city = City.new(city_params)
 
@@ -27,6 +23,7 @@ class CitiesController < ApplicationController
     end
   end
 
+  # PATCH /city/:id
   def update
     if @city.update(city_params)
       redirect_to admin_path, notice: 'City updated.'
@@ -35,6 +32,7 @@ class CitiesController < ApplicationController
     end
   end
 
+  # DELETE /city/:id
   def destroy
     @city.destroy
     redirect_to admin_path, notice: 'City deleted.'

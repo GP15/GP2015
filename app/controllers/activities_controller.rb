@@ -1,22 +1,18 @@
 class ActivitiesController < ApplicationController
   layout 'admin'
 
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_activity, only: [:edit, :update, :destroy]
 
-  def index
-    @activities = Activity.all
-  end
-
-  def show
-  end
-
+  # GET /activities/new
   def new
     @activity = Activity.new
   end
 
+  # GET /activities/:id/edit
   def edit
   end
 
+  # POST /activities
   def create
     @activity = Activity.new(activity_params)
 
@@ -27,6 +23,7 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  # PATCH /activities/:id
   def update
     if @activity.update(activity_params)
       redirect_to admin_path, notice: 'Activity updated.'
@@ -35,6 +32,7 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  # DELETE /activities/:id
   def destroy
     @activity.destroy
     redirect_to admin_path, notice: 'Activity deleted.'

@@ -6,6 +6,7 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.includes(:klass, partner: :city).order(:date, :start_time, :end_time)
   end
 
+  # GET /schedules/:id
   def show
     @schedule = Schedule.find(params[:id])
   end
