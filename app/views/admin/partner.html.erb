@@ -13,13 +13,26 @@
 </div>
 
 <h3>Class <span><%= link_to "+add", new_partner_klass_path(@partner) %></span></h3>
-<div>
-  <ul>
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Age</th>
+      <th>Level</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @klasses.each do |klass| %>
-      <li><%= link_to klass.name, edit_partner_klass_path(@partner, klass) %></li>
+      <tr>
+        <td><%= link_to klass.name, edit_partner_klass_path(@partner, klass) %></td>
+        <td><%= klass.age_start %>-<%= klass.age_end %></td>
+        <td><%= klass.level %></td>
+        <td><%= klass.description.truncate(30, separator: ' ') %></td>
+      </tr>
     <% end %>
-  </ul>
-</div>
+  </tbody>
+</table>
 
 <% if @klasses.present? %>
   <h3>Schedules <span><%= link_to "+add", new_partner_schedule_path(@partner) %></span></h3>
