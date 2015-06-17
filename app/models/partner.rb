@@ -7,8 +7,8 @@ class Partner < ActiveRecord::Base
   validates :company, :address, presence: true
 
   # A list of states & federal territories in Malaysia.
-  STATES = ["Johor", "Kedah", "Kelantan", "Kuala Lumpur", "Labuan", "Melaka",
-            "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Penang", "Putrajaya",
-            "Sabah", "Sarawak", "Selangor", "Terengganu"]
+  STATES = ["Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang",
+            "Perak", "Perlis", "Penang", "Sabah", "Sarawak", "Selangor",
+            "Terengganu", "W.P. Kuala Lumpur", "W.P. Labuan", "W.P. Putrajaya"]
 
 end
