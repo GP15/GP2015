@@ -1,0 +1,24 @@
+<% provide(:title, "#{@schedule.klass.name} (#{@schedule.date.strftime("%d %b %Y")})
+                    by #{@schedule.partner.company}") %>
+
+<div><%= link_to "⇽ back", schedules_path %></div><br>
+
+<%= image_tag @schedule.partner.img_url, size: "400x150",
+    alt: "photo of #{@schedule.partner.company}" %>
+<h1><%= @schedule.klass.name %></h1>
+<p><%= @schedule.partner.company %> — <%= @schedule.partner.city.name %></p>
+<p><%= @schedule.klass.description %></p>
+<dl>
+  <dt><strong>Date</strong></dt>
+  <dd><%= @schedule.date.strftime("%A, %d %b %Y") %></dd>
+  <dt><strong>Time</strong></dt>
+  <dd>
+    <%= @schedule.start_time.strftime("%l:%M%P") %> -
+    <%= @schedule.end_time.strftime("%l:%M%P") %>
+  </dd>
+  <dt><strong>Level</strong></dt>
+  <dd><%= @schedule.klass.level %></dd>
+</dl>
+<br>
+<p>Interested to reserve this class for your child?</p>
+<%= link_to "Get GeniusPass Membership", '#' %>
