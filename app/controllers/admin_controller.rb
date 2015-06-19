@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
 
+  before_action :authenticate_admin!
+
   # GET /admin
   def index
     @cities     = City.order(:name)

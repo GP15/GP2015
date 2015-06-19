@@ -1,6 +1,8 @@
 class SchedulesController < ApplicationController
   layout 'admin', except: [:index, :show]
 
+  before_action :authenticate_admin!, except: [:index, :show]
+
   # GET /schedules
   def index
     @schedules = Schedule.includes(:klass, partner: :city).order(:date, :start_time, :end_time)

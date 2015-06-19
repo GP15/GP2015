@@ -1,6 +1,8 @@
 class KlassesController < ApplicationController
   layout 'admin'
 
+  before_action :authenticate_admin!
+
   def new
     @partner = Partner.find(params[:partner_id])
     @klass = @partner.klasses.build

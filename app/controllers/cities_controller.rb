@@ -1,6 +1,7 @@
 class CitiesController < ApplicationController
   layout 'admin'
 
+  before_action :authenticate_admin!
   before_action :set_city, only: [:edit, :update, :destroy]
 
   # GET /city/new

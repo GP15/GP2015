@@ -14,4 +14,13 @@ Rails.application.routes.draw do
 
   resources :cities, path: 'city', except: [:index, :show]
   resources :activities, except: [:index, :show]
+
+  # Devise settings
+    devise_for :admins, path_names: { sign_in: 'login', sign_out: 'logout'}
+
+    as :admin do
+      get   'admin/edit', to: 'devise/registrations#edit',   as: 'edit_admin_registration'
+      patch 'admin/:id',  to: 'devise/registrations#update', as: 'admin_registration'
+    end
+  # end Devise settings
 end

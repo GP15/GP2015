@@ -8,6 +8,7 @@ gem 'uglifier',     '>= 1.3.0' # JavaScript assets compressor
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'devise',       '~> 3.5.1' # user authentication
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc

@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= admin_full_title(yield(:title)) %></title>
+  <title><%= yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
 <body>
-
-<header>
-  <strong><%= link_to "GeniusPass: Admin", admin_path %></strong> |
-  <%= link_to current_admin.email, edit_admin_registration_path %> |
-  <%= link_to "logout", destroy_admin_session_path, method: :delete %>
-</header>
-<br>
 
 <div>
   <%= yield %>

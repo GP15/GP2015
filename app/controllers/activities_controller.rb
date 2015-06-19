@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   layout 'admin'
 
+  before_action :authenticate_admin!
   before_action :set_activity, only: [:edit, :update, :destroy]
 
   # GET /activities/new
