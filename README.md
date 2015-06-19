@@ -1,7 +1,7 @@
 ### Important urls
 * Admin area: `/admin`
-* Admin login: `/admins/login`
-* Admin reset password: `/admins/password/new`
+* Admin login: `/admin/login`
+* Admin reset password: `/admin/password/new`
 
 ### How to create Admin
 Run Heroku console and type:

@@ -11,7 +11,7 @@
 
 <header>
   <strong><%= link_to "GeniusPass: Admin", admin_path %></strong> |
-  <%= link_to current_admin.email, edit_admin_registration_path %> |
+  <%= link_to current_admin.email, admin_root_path %> |
   <%= link_to "logout", destroy_admin_session_path, method: :delete %>
 </header>
 <br>

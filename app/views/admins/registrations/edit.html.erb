@@ -2,6 +2,8 @@
 
 <%= link_to "⇽ back", admin_path %>
 
+<p id="notice"><%= notice %></p>
+
 <h2><%= resource_name.to_s.humanize %> Profile</h2>
 
 <%= form_for(resource, as: resource_name, url: admin_registration_path(resource), html: { method: :patch }) do |f| %>

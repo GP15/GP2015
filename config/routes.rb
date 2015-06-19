@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   resources :schedules, only: [:index, :show]
 
   resources :partners do
-    resources :klasses
-    resources :schedules, except: [:index, :show]
+    resources :klasses, :schedules, except: [:index, :show]
   end
 
   get 'admin',              to: 'admin#index'
@@ -16,11 +15,11 @@ Rails.application.routes.draw do
   resources :activities, except: [:index, :show]
 
   # Devise settings
-    devise_for :admins, path_names: { sign_in: 'login', sign_out: 'logout'}
+  devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout'}
 
-    as :admin do
-      get   'admin/edit', to: 'devise/registrations#edit',   as: 'edit_admin_registration'
-      patch 'admin/:id',  to: 'devise/registrations#update', as: 'admin_registration'
-    end
-  # end Devise settings
+  as :admin do
+    get   'admin/profile', to: 'devise/registrations#edit',   as: :admin_root
+    patch 'admin/:id',     to: 'devise/registrations#update', as: 'admin_registration'
+  end
+
 end
