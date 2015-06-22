@@ -1,5 +1,7 @@
 <%= render 'shared/error_messages', object: f.object %>
 
+<%= f.hidden_field :city_id, value: @partner.city_id %>
+
 <div class="field">
   <%= f.label :klass_id, "Class" %><br>
   <%= collection_select(:schedule, :klass_id, @klasses.order(:name), :id, :name) %>

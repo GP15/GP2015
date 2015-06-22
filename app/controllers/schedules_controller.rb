@@ -31,6 +31,8 @@ class SchedulesController < ApplicationController
   def create
     @partner  = Partner.find(params[:partner_id])
     @schedule = @partner.schedules.build(schedule_params)
+    @klass    = Klass.find(schedule_params[:klass_id])
+    @schedule.activity_id = @klass.activity_id
 
     if @schedule.save
       redirect_to admin_partner_path(@partner.id), notice: 'New schedule created.'
@@ -44,6 +46,8 @@ class SchedulesController < ApplicationController
   def update
     @partner  = Partner.find(params[:partner_id])
     @schedule = @partner.schedules.find(params[:id])
+    @klass    = Klass.find(schedule_params[:klass_id])
+    @schedule.activity_id = @klass.activity_id
 
     if @schedule.update(schedule_params)
       redirect_to admin_partner_path(@partner.id), notice: 'Schedule updated.'
@@ -65,6 +69,7 @@ class SchedulesController < ApplicationController
   private
 
     def schedule_params
-      params.require(:schedule).permit(:klass_id, :date, :start_time, :end_time, :quantity)
+      params.require(:schedule).permit(:date, :start_time, :end_time, :quantity,
+                                       :klass_id, :city_id)
     end
 end
