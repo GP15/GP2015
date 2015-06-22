@@ -29,6 +29,7 @@ class KlassesController < ApplicationController
     @klass   = @partner.klasses.find(params[:id])
 
     if @klass.update(klass_params)
+      Schedule.where(klass_id: @klass.id).update_all(activity_id: klass_params[:activity_id])
       redirect_to admin_partner_path(@partner.id), notice: 'Class updated.'
     else
       render :edit

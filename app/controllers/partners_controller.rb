@@ -33,6 +33,7 @@ class PartnersController < ApplicationController
 
   def update
     if @partner.update(partner_params)
+      Schedule.where(partner_id: @partner.id).update_all(city_id: @partner.city_id)
       redirect_to admin_partner_path(@partner), notice: 'Partner details updated.'
     else
       render :edit
