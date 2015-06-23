@@ -10,8 +10,7 @@ class PartnersController < ApplicationController
 
   def show
     @klasses   = @partner.klasses.order(:name)
-    @schedules = Schedule.includes(:klass).where(partner_id: @partner)
-                         .order(:date, :start_time, :end_time)
+    @schedules = @partner.schedules.includes(:klass).order(:date, :start_time, :end_time)
   end
 
   def new
@@ -33,7 +32,7 @@ class PartnersController < ApplicationController
 
   def update
     if @partner.update(partner_params)
-      Schedule.where(partner_id: @partner.id).update_all(city_id: @partner.city_id)
+      @partner.schedules.update_all(city_id: @partner.city_id)
       redirect_to admin_partner_path(@partner), notice: 'Partner details updated.'
     else
       render :edit
