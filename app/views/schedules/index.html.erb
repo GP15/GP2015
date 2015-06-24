@@ -1,31 +1,66 @@
 <% provide(:title, "Schedules") %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Activity</th>
-      <th>Studio</th>
-      <th>City</th>
-      <th>Time</th>
-      <th>Level</th>
-      <th>Reserve</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @schedules.each do |schedule| %>
+<%= search_form_for @q do |f| %>
+  <%= f.label :activity_id_eq, "Activity:" %>
+  <%= f.collection_select :activity_id_eq, @activities, :id, :name, include_blank: 'All' %>
+
+  <%= f.label :city_id_eq, "City:" %>
+  <%= f.collection_select :city_id_eq, @cities, :id, :name, include_blank: 'All' %>
+
+  <br>
+  <label>Date:</label>
+  <%= f.radio_button :date_eq, Time.zone.today %>
+  <%= f.label :date_eq, "Today", value: Time.zone.today %>
+  <%= f.radio_button :date_eq, Time.zone.tomorrow %>
+  <%= f.label :date_eq, "Tomorrow", value: Time.zone.tomorrow %>
+  <%= f.radio_button :date_eq, Time.zone.today + 2 %>
+  <%= f.label :date_eq, (Time.zone.today + 2).strftime("%d %b"), value: Time.zone.today + 2 %>
+  <%= f.radio_button :date_eq, Time.zone.today + 3 %>
+  <%= f.label :date_eq, (Time.zone.today + 3).strftime("%d %b"), value: Time.zone.today + 3 %>
+  <%= f.radio_button :date_eq, Time.zone.today + 4 %>
+  <%= f.label :date_eq, (Time.zone.today + 4).strftime("%d %b"), value: Time.zone.today + 4 %>
+  <%= f.radio_button :date_eq, Time.zone.today + 5 %>
+  <%= f.label :date_eq, (Time.zone.today + 5).strftime("%d %b"), value: Time.zone.today + 5 %>
+  <%= f.radio_button :date_eq, Time.zone.today + 6 %>
+  <%= f.label :date_eq, (Time.zone.today + 6).strftime("%d %b"), value: Time.zone.today + 6 %>
+
+  <br><br>
+  <%= f.submit "Filter" %>
+<% end %>
+<br>
+
+<% if @schedules.present? %>
+  <table>
+    <thead>
       <tr>
-        <td><%= schedule.date.strftime("%d %b %Y") %></td>
-        <td><%= link_to schedule.klass.name, schedule_path(schedule) if schedule.klass %></td>
-        <td><%= link_to schedule.partner.company, partner_path(schedule.partner) if schedule.partner %></td>
-        <td><%= schedule.partner.city.name if schedule.partner %></td>
-        <td>
-          <%= schedule.start_time.strftime("%l:%M%P") %> -
-          <%= schedule.end_time.strftime("%l:%M%P") %>
-        </td>
-        <td><%= schedule.klass.level if schedule.klass %></td>
-        <td><%= link_to 'Reserve', '#' %></td>
+        <th>Date</th>
+        <th>Activity</th>
+        <th>Studio</th>
+        <th>City</th>
+        <th>Time</th>
+        <th>Age</th>
+        <th>Level</th>
+        <th>Reserve</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td><%= schedule.date.strftime("%d %b %Y") %></td>
+          <td><%= link_to schedule.klass.name, schedule_path(schedule) if schedule.klass %></td>
+          <td><%= link_to schedule.partner.company, partner_path(schedule.partner) if schedule.partner %></td>
+          <td><%= schedule.city.name if schedule.city %></td>
+          <td>
+            <%= schedule.start_time.strftime("%l:%M%P") %> -
+            <%= schedule.end_time.strftime("%l:%M%P") %>
+          </td>
+          <td><%= schedule.klass.age_start %>-<%= schedule.klass.age_end %></td>
+          <td><%= schedule.klass.level if schedule.klass %></td>
+          <td><%= link_to 'Reserve', '#' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No activity found.</p>
+<% end %>

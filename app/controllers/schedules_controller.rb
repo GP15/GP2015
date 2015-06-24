@@ -5,7 +5,11 @@ class SchedulesController < ApplicationController
 
   # GET /schedules
   def index
-    @schedules = Schedule.includes(:klass, partner: :city).order(:date, :start_time, :end_time)
+    @activities = Activity.order(:name)
+    @cities     = City.order(:name)
+    @q          = Schedule.ransack(params[:q])
+    @q.sorts    = ['date asc', 'start_time asc', 'end_time asc'] if @q.sorts.empty?
+    @schedules  = @q.result.includes(:klass, :partner, :city).where('date >= ?', Time.zone.today)
   end
 
   # GET /schedules/:id
