@@ -16,6 +16,7 @@
 <table>
   <thead>
     <tr>
+      <th>Activity</th>
       <th>Class</th>
       <th>Age</th>
       <th>Level</th>
@@ -25,6 +26,7 @@
   <tbody>
     <% @klasses.each do |klass| %>
       <tr>
+        <td><%= klass.activity.name %></td>
         <td><%= link_to klass.name, edit_partner_klass_path(@partner, klass) %></td>
         <td><%= klass.age_start %>-<%= klass.age_end %></td>
         <td><%= klass.level %></td>
