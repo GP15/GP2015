@@ -9,20 +9,20 @@
 
   <br>
   <label>Date:</label>
-  <%= f.radio_button :date_eq, Time.zone.today %>
-  <%= f.label :date_eq, "Today", value: Time.zone.today %>
-  <%= f.radio_button :date_eq, Time.zone.tomorrow %>
-  <%= f.label :date_eq, "Tomorrow", value: Time.zone.tomorrow %>
-  <%= f.radio_button :date_eq, Time.zone.today + 2 %>
-  <%= f.label :date_eq, (Time.zone.today + 2).strftime("%d %b"), value: Time.zone.today + 2 %>
-  <%= f.radio_button :date_eq, Time.zone.today + 3 %>
-  <%= f.label :date_eq, (Time.zone.today + 3).strftime("%d %b"), value: Time.zone.today + 3 %>
-  <%= f.radio_button :date_eq, Time.zone.today + 4 %>
-  <%= f.label :date_eq, (Time.zone.today + 4).strftime("%d %b"), value: Time.zone.today + 4 %>
-  <%= f.radio_button :date_eq, Time.zone.today + 5 %>
-  <%= f.label :date_eq, (Time.zone.today + 5).strftime("%d %b"), value: Time.zone.today + 5 %>
-  <%= f.radio_button :date_eq, Time.zone.today + 6 %>
-  <%= f.label :date_eq, (Time.zone.today + 6).strftime("%d %b"), value: Time.zone.today + 6 %>
+  <%= f.radio_button :date_eq, Date.today %>
+  <%= f.label :date_eq, "Today", value: Date.today %>
+  <%= f.radio_button :date_eq, Date.tomorrow %>
+  <%= f.label :date_eq, "Tomorrow", value: Date.tomorrow %>
+  <%= f.radio_button :date_eq, Date.today + 2 %>
+  <%= f.label :date_eq, (Date.today + 2).strftime("%d %b"), value: Date.today + 2 %>
+  <%= f.radio_button :date_eq, Date.today + 3 %>
+  <%= f.label :date_eq, (Date.today + 3).strftime("%d %b"), value: Date.today + 3 %>
+  <%= f.radio_button :date_eq, Date.today + 4 %>
+  <%= f.label :date_eq, (Date.today + 4).strftime("%d %b"), value: Date.today + 4 %>
+  <%= f.radio_button :date_eq, Date.today + 5 %>
+  <%= f.label :date_eq, (Date.today + 5).strftime("%d %b"), value: Date.today + 5 %>
+  <%= f.radio_button :date_eq, Date.today + 6 %>
+  <%= f.label :date_eq, (Date.today + 6).strftime("%d %b"), value: Date.today + 6 %>
 
   <br>
   <%= f.label :start_time_gteq, "Time start:" %>
