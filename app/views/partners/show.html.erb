@@ -1,51 +1,39 @@
 <% provide(:title, @partner.company) %>
 
-<div><%= link_to "⇽ back", partners_path %></div>
-<br>
+<%= render 'page_title_show' %>
 
-<div>
-  <%= image_tag @partner.img_url, size: "500x200", alt: "photo of #{@partner.company}" %>
-  <h1><%= @partner.company %></h1>
-  <div>
-    <strong>Address:</strong>
-    <%= @partner.address %>, <%= @partner.city.name %>, <%= @partner.state %>
-  </div>
-  <div>
-    <strong>Phone:</strong> <%= @partner.phone %>
-  </div>
-  <div>
-    <strong>Activities:</strong>
-    <%= @klasses.map { |klass| klass.name }.join(", ") %>
-  </div>
-</div>
-
-<% if @schedules.present? %>
-  <br>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Activity</th>
-        <th>Time</th>
-        <th>Level</th>
-        <th>Availability</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @schedules.each do |schedule| %>
-        <tr>
-          <td><%= schedule.date.strftime("%d %b %Y") %></td>
-          <td><%= schedule.klass.name if schedule.klass %></td>
-          <td>
-            <%= schedule.start_time.strftime("%l:%M%P") %> -
-            <%= schedule.end_time.strftime("%l:%M%P") %>
-          </td>
-          <td><%= schedule.klass.level if schedule.klass %></td>
-          <td><%= link_to 'Reserve', '#' %></td>
-        </tr>
+<section class="padding-two">
+  <div class="container">
+    <div class="row">
+      <% if @schedules.present? %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Activity</th>
+              <th>Time</th>
+              <th>Level</th>
+              <th>Availability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @schedules.each do |schedule| %>
+              <tr>
+                <td><%= schedule.date.strftime("%d %b %Y") %></td>
+                <td><%= schedule.klass.name if schedule.klass %></td>
+                <td>
+                  <%= schedule.start_time.strftime("%l:%M%P") %> -
+                  <%= schedule.end_time.strftime("%l:%M%P") %>
+                </td>
+                <td><%= schedule.klass.level if schedule.klass %></td>
+                <td><%= link_to 'Reserve', '#', class: "highlight-button-dark btn btn-small btn-round button" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>No current activities in the meantime.</p>
       <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No current activities in the meantime.</p>
-<% end %>
+    </div>
+  </div>
+</section>

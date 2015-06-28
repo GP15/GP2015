@@ -1,0 +1,29 @@
+<section class="content-top-margin page-title parallax-fix" style="background: url(<%= @partner.img_url %>) 50% 23px;">
+  <div class="opacity-full bg-black"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-7 col-sm-12">
+        <!-- page title -->
+        <h1 class="white-text"><%= @partner.company %></h1>
+        <!-- end page title -->
+        <!-- page title tagline -->
+        <span class="text-uppercase white-text">
+          <%= @partner.address %>, <%= @partner.city.name %>, <%= @partner.state %>
+        </span><br>
+        <span class="text-uppercase white-text">
+          <%= @partner.phone %> # <%= @klasses.map { |klass| klass.name }.join(", ") %>
+        </span>
+        <!-- end title tagline -->
+      </div>
+      <div class="col-lg-4 col-md-5 col-sm-12 breadcrumb text-uppercase md-display-none xs-display-none">
+        <!-- breadcrumb -->
+        <ul class="margin-ten pull-right">
+          <li class="white-text"><%= link_to "Home", root_url, class: "white-text" %></li>
+          <li class="white-text"><%= link_to "Partners", partners_path, class: "white-text" %></li>
+          <li class="white-text"><%= link_to @partner.company, partner_path(@partner), class: "white-text" %></li>
+        </ul>
+        <!-- end breadcrumb -->
+      </div>
+    </div>
+  </div>
+</section>

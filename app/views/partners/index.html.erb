@@ -1,15 +1,24 @@
 <% provide(:title, "Partners") %>
 
-<% @partners.each do |partner| %>
-  <div>
-    <div>
-      <%= image_tag partner.img_url, size: "200x100", alt: "photo of #{partner.company}" %>
+<%= render 'page_title' %>
+
+<section class="padding-two">
+  <div class="container">
+    <div class="row">
+      <% @partners.each do |partner| %>
+        <div class="col-md-4 col-sm-4 margin-four-bottom">
+          <div class="blog-post">
+            <div class="blog-post-images">
+              <%= link_to image_tag(partner.img_url, alt: "photo of #{partner.company}"), partner %>
+            </div>
+            <div class="post-details">
+              <%= link_to partner.company, partner, class: "post-title margin-one no-margin-bottom" %>
+              <p class="no-padding-top"><%= partner.klasses.map { |klass| klass.name }.join(", ") %></p>
+              <span class="post-author"><%= partner.city.name %></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div><strong><%= link_to partner.company, partner %></strong></div>
-    <div>Activities:
-      <%= partner.klasses.map { |klass| klass.name }.join(", ") %>
-    </div>
-    <div>Location: <%= partner.city.name %></div>
   </div>
-  <br><br>
-<% end %>
+</section>
