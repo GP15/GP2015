@@ -2,51 +2,7 @@
 
 <%= render 'page_title' %>
 
-<section class="padding-one">
-  <div class="container">
-    <div class="row">
-      <%= search_form_for @q do |f| %>
-        <div class="col-md-2">
-          <%= f.label :activity_id_eq, "Activity:", class: "no-margin-bottom" %>
-          <%= f.collection_select :activity_id_eq, @activities, :id, :name, include_blank: 'All' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.label :city_id_eq, "City:", class: "no-margin-bottom" %>
-          <%= f.collection_select :city_id_eq, @cities, :id, :name, include_blank: 'All' %>
-        </div>
-        <div class="col-md-2">
-          <%= f.label :start_time_gteq, "Time start:", class: "no-margin-bottom" %>
-          <%= f.time_select :start_time_gteq, ampm: true, minute_step: 15, default: { hour: '00' } %>
-        </div>
-        <div class="col-md-2">
-          <%= f.label :end_time_lteq, "Time end:", class: "no-margin-bottom" %>
-          <%= f.time_select :end_time_lteq, ampm: true, minute_step: 15, default: { hour: '23', minute: '45' } %>
-        </div>
-        <div class="col-md-12">
-          <label>Date:</label>
-          <%= f.radio_button :date_eq, Date.today %>
-          <%= f.label :date_eq, "Today", value: Date.today %>
-          <%= f.radio_button :date_eq, Date.tomorrow %>
-          <%= f.label :date_eq, "Tomorrow", value: Date.tomorrow %>
-          <%= f.radio_button :date_eq, Date.today + 2 %>
-          <%= f.label :date_eq, (Date.today + 2).strftime("%d %b"), value: Date.today + 2 %>
-          <%= f.radio_button :date_eq, Date.today + 3 %>
-          <%= f.label :date_eq, (Date.today + 3).strftime("%d %b"), value: Date.today + 3 %>
-          <%= f.radio_button :date_eq, Date.today + 4 %>
-          <%= f.label :date_eq, (Date.today + 4).strftime("%d %b"), value: Date.today + 4 %>
-          <%= f.radio_button :date_eq, Date.today + 5 %>
-          <%= f.label :date_eq, (Date.today + 5).strftime("%d %b"), value: Date.today + 5 %>
-          <%= f.radio_button :date_eq, Date.today + 6 %>
-          <%= f.label :date_eq, (Date.today + 6).strftime("%d %b"), value: Date.today + 6 %>
-        </div>
-        <div class="col-md-12">
-          <%= link_to "Reset", request.path, class: "btn-small-black-border-light btn btn-very-small btn-round button" %>
-          <%= f.submit "Filter", class: "highlight-button-dark btn btn-very-small btn-round button" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</section>
+<%= render 'filters' %>
 
 <section class="padding-one">
   <div class="container">
