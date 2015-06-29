@@ -8,3 +8,31 @@
     max-height: 150px;
     min-height: 150px;
 }
+
+select { font-size: 12px !important; text-transform: none !important; }
+
+.hour, .minute { margin-bottom: 0; }
+.hour { width: 70px; }
+.minute { width: 50px; }
+
+.label-in-between { margin: 0 15px; }
+
+.radio-select {
+  font-size: 11px;
+  margin: 0 0 0 1px;
+  border: 1px solid #DFDFDF;
+  border-radius: 5px;
+  padding: 0 10px 1px 11px;
+  background-color: #F8F8F8;
+  input[type="radio"] { margin-right: 6px; }
+}
+
+.btn { margin-right: 5px !important; }
+.btn.btn-small { padding: 1px 10px 2px 12px !important; }
+.highlight-button-dark {
+  border: 1px solid #000 !important;
+  &:hover { background-color: #444 !important; color: #FFF !important; }
+}
+.btn-small-black-border-light:hover { background-color: #FFF !important; color: #000 !important; }
+
+.link-underline, .link-underline:hover { text-decoration: underline; }
