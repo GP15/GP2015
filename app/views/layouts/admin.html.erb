@@ -7,18 +7,11 @@
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
-<body>
+<body class="text-med deep-gray-text">
 
-<header>
-  <strong><%= link_to "GeniusPass: Admin", admin_path %></strong> |
-  <%= link_to current_admin.email, admin_root_path %> |
-  <%= link_to "logout", destroy_admin_session_path, method: :delete %>
-</header>
-<br>
+<%= render 'layouts/nav_admin' %>
 
-<div>
-  <%= yield %>
-</div>
+<%= yield %>
 
 </body>
 </html>

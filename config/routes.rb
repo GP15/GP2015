@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'admin',              to: 'admin#index'
   get 'admin/partners/:id', to: 'admin#partner', as: 'admin_partner'
+  get 'admin/settings',     to: 'admin#settings'
 
   resources :cities, path: 'city', except: [:index, :show]
   resources :activities, except: [:index, :show]

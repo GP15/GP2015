@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default navbar-fixed-top overlay-nav sticky-nav position-relative" role="navigation">
+  <div class="container">
+    <div class="row">
+      <!-- logo -->
+      <div class="col-md-3 pull-left">
+        <%= link_to "GeniusPass: Admin", admin_path, class: "logo-light text-large" %>
+      </div>
+      <!-- end logo -->
+      <!-- main menu -->
+      <div class="col-md-9 text-right">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Home", admin_path %></li>
+          <li><%= link_to "Settings", admin_settings_path %></li>
+          <li><%= link_to current_admin.email, admin_root_path %></li>
+          <li><%= link_to "logout", destroy_admin_session_path, method: :delete %></li>
+        </ul>
+      </div>
+      <!-- end main menu -->
+    </div>
+  </div>
+</nav>

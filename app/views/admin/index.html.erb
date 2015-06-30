@@ -1,25 +1,30 @@
-<p id="notice"><%= notice %></p>
+<section class="padding-one">
+  <div class="container">
+    <div class="row">
+      <p id="notice"><%= notice %></p>
 
-<h3>City <span><%= link_to "+add", new_city_path %></span></h3>
-<ul>
-  <% @cities.each do |city| %>
-    <li><%= link_to city.name, edit_city_path(city) %></li>
-  <% end %>
-</ul>
+      <div class="col-md-6 col-md-offset-3">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Partner</th>
+              <th colspan="2"><%= link_to "+ add", new_partner_path, class: "pull-right" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @partners.each do |partner| %>
+              <tr>
+                <td><%= link_to partner.company, admin_partner_path(partner), class: "link-underline" %></td>
+                <td><%= partner.city.name %></td>
+                <td class="pull-right">
+                  <%= link_to "link", partner_url(partner), target: "_blank", class: "link-underline" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-<h3>Activity <span><%= link_to "+add", new_activity_path %></span></h3>
-<ul>
-  <% @activities.each do |activity| %>
-    <li><%= link_to activity.name, edit_activity_path(activity) %></li>
-  <% end %>
-</ul>
-
-<h3>Partners <span><%= link_to "+add", new_partner_path %></span></h3>
-<ul>
-  <% @partners.each do |partner| %>
-    <li>
-      <%= link_to partner.company, admin_partner_path(partner) %>
-      [<%= link_to "link", partner_url(partner), target: "_blank" %>]
-    </li>
-  <% end %>
-</ul>
+    </div>
+  </div>
+</section>
