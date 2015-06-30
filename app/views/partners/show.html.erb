@@ -13,6 +13,7 @@
               <th>Activity</th>
               <th>Time</th>
               <th>Level</th>
+              <th>Age</th>
               <th>Availability</th>
             </tr>
           </thead>
@@ -26,6 +27,7 @@
                   <%= schedule.end_time.strftime("%l:%M%P") %>
                 </td>
                 <td><%= schedule.klass.level if schedule.klass %></td>
+                <td><%= schedule.klass.age_start %>-<%= schedule.klass.age_end %></td>
                 <td><%= link_to 'Reserve', '#', class: "highlight-button-dark btn btn-small btn-round button" %></td>
               </tr>
             <% end %>
