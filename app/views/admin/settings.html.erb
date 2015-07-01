@@ -1,14 +1,15 @@
 <section class="padding-one">
   <div class="container">
     <div class="row">
+      <h1 class="title-large text-center margin-four-bottom">Settings</h1>
       <p id="notice"><%= notice %></p>
 
-      <div class="col-md-3">
+      <div class="col-md-3 col-md-offset-2">
         <table class="table table-condensed">
           <thead>
             <tr>
               <th>City</th>
-              <th><%= link_to "add", new_city_path, class: "pull-right" %></th>
+              <th><%= link_to "+ add", new_city_path, class: "pull-right" %></th>
             </tr>
           </thead>
           <tbody>
@@ -22,12 +23,12 @@
         </table>
       </div>
 
-      <div class="col-md-3 col-md-offset-1">
+      <div class="col-md-3 col-md-offset-2">
         <table class="table table-condensed">
           <thead>
             <tr>
               <th>Activity</th>
-              <th><%= link_to "add", new_activity_path, class: "pull-right" %></th>
+              <th><%= link_to "+ add", new_activity_path, class: "pull-right" %></th>
             </tr>
           </thead>
           <tbody>
