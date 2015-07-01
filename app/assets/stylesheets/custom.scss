@@ -1,5 +1,11 @@
+/*  Custom
+====================================== */
+.uppercase { text-transform:uppercase !important;}
 .height-300 { max-height: 250px; }
+.link-underline, .link-underline:hover { text-decoration: underline; }
 
+/*  Kits
+====================================== */
 .page-title span {
   font-size: 12px !important;
   font-weight: 600 !important;
@@ -9,6 +15,32 @@
   background-color: #FFF !important;
   max-height: 150px;
   min-height: 150px;
+}
+
+/*  Buttons
+====================================== */
+.btn { margin-right: 5px !important; }
+.btn.btn-small { padding: 1px 10px 2px 12px !important; }
+.highlight-button-dark {
+  border: 1px solid #000 !important;
+  &:hover { background-color: #444 !important; color: #FFF !important; }
+}
+.btn-small-black-border-light:hover { background-color: #FFF !important; color: #000 !important; }
+
+/*  Forms
+====================================== */
+.field {
+  label { margin-bottom: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
+  input, textarea {
+    font-size: 12px;
+    margin-bottom: 10px;
+    padding: 5px 8px;
+    text-transform: none;
+    line-height: 20px;
+  }
+}
+.field_with_errors {
+  input, textarea { border-color: #FF849B; }
 }
 
 select { font-size: 12px !important; text-transform: none !important; }
@@ -29,12 +61,17 @@ select { font-size: 12px !important; text-transform: none !important; }
   input[type="radio"] { margin-right: 6px; }
 }
 
-.btn { margin-right: 5px !important; }
-.btn.btn-small { padding: 1px 10px 2px 12px !important; }
-.highlight-button-dark {
-  border: 1px solid #000 !important;
-  &:hover { background-color: #444 !important; color: #FFF !important; }
+/*  Alerts
+====================================== */
+.alert-style7 {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 10px;
+  span { display: block; }
 }
-.btn-small-black-border-light:hover { background-color: #FFF !important; color: #000 !important; }
-
-.link-underline, .link-underline:hover { text-decoration: underline; }
+.alert-danger {
+  color: #E51313;
+  background-color: #FFF;
+  border-color: rgba(0,0,0,0);
+}
