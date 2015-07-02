@@ -18,7 +18,7 @@ class CitiesController < ApplicationController
     @city = City.new(city_params)
 
     if @city.save
-      redirect_to admin_path, notice: 'City created.'
+      redirect_to admin_settings_path, notice: 'City created.'
     else
       render :new
     end

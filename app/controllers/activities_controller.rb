@@ -18,7 +18,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
 
     if @activity.save
-      redirect_to admin_path, notice: 'New activity created.'
+      redirect_to admin_settings_path, notice: 'New activity created.'
     else
       render :new
     end
