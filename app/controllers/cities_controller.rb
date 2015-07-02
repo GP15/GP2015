@@ -27,7 +27,7 @@ class CitiesController < ApplicationController
   # PATCH /city/:id
   def update
     if @city.update(city_params)
-      redirect_to admin_path, notice: 'City updated.'
+      redirect_to admin_settings_path, notice: 'City updated.'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class CitiesController < ApplicationController
   # DELETE /city/:id
   def destroy
     @city.destroy
-    redirect_to admin_path, notice: 'City deleted.'
+    redirect_to admin_settings_path, notice: 'City deleted.'
   end
 
   private

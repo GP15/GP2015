@@ -1,17 +1,25 @@
 <% provide(:title, 'Edit activity') %>
 
-<h1>Edit Activity</h1>
+<section class="padding-one">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <h1 class="title-large text-center margin-four">Edit Activity</h1>
 
-<%= form_for(@activity) do |f| %>
+        <%= form_for(@activity) do |f| %>
+          <%= render 'form', f: f %>
 
-  <%= render 'form', f: f %>
-
-  <div class="actions">
-    <%= link_to "Cancel", admin_path %>
-    <%= f.submit "Update" %>
+          <div class="margin-five clearfix">
+            <%= link_to 'Delete', @activity, method: :delete,
+                data: { confirm: "Delete activity <#{@activity.name}>?" },
+                class: "pull-left link-underline padding-two"  %>
+            <%= f.submit "Update", class: "highlight-button-dark btn btn-small button pull-right" %>
+            <%= link_to "Cancel", admin_settings_path,
+                class: "btn-small-black-border-light btn btn-small button pull-right" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</section>
 
-<br>
-<%= link_to 'Delete activity', @activity, method: :delete,
-    data: { confirm: "Delete activity <#{@activity.name}>?" } %>

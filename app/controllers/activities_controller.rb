@@ -27,7 +27,7 @@ class ActivitiesController < ApplicationController
   # PATCH /activities/:id
   def update
     if @activity.update(activity_params)
-      redirect_to admin_path, notice: 'Activity updated.'
+      redirect_to admin_settings_path, notice: 'Activity updated.'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/:id
   def destroy
     @activity.destroy
-    redirect_to admin_path, notice: 'Activity deleted.'
+    redirect_to admin_settings_path, notice: 'Activity deleted.'
   end
 
   private
