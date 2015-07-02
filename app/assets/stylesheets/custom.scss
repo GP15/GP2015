@@ -70,8 +70,6 @@ select { font-size: 12px !important; text-transform: none !important; }
   margin-bottom: 10px;
   span { display: block; }
 }
-.alert-danger {
-  color: #E51313;
-  background-color: #FFF;
-  border-color: rgba(0,0,0,0);
-}
+.alert-success { color: #000000; background-color: #00FFB2; }
+.alert-danger  { color: #E51313; background-color: #FFF; }
+.alert-success, .alert-danger { border-color: rgba(0,0,0,0); }
