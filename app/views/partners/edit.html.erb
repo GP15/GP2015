@@ -1,17 +1,25 @@
 <% provide(:title, 'Edit partner') %>
 
-<h1>Edit Partner</h1>
+<section class="padding-one">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h1 class="title-large text-center margin-four-bottom">Edit Partner</h1>
 
-<%= form_for(@partner) do |f| %>
+        <%= form_for(@partner) do |f| %>
+          <%= render 'form', f: f %>
 
-  <%= render 'form', f: f %>
+          <div class="margin-five clearfix">
+            <%= link_to 'Delete', @partner, method: :delete,
+                data: { confirm: "Delete partner <#{@partner.company}>?" },
+                class: "pull-left link-underline padding-two"  %>
+            <%= f.submit "Update", class: "highlight-button-dark btn btn-small button pull-right" %>
+            <%= link_to "Cancel", admin_partner_path(@partner),
+                class: "btn-small-black-border-light btn btn-small button pull-right" %>
+          </div>
+        <% end %>
 
-  <div class="actions">
-    <%= link_to "Cancel", admin_partner_path(@partner) %>
-    <%= f.submit "Update" %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<br>
-<%= link_to "Delete partner", @partner, method: :delete,
-    data: { confirm: "Delete partner <#{@partner.company}>?" } %>
+</section>

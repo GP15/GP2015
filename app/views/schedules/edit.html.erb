@@ -1,17 +1,23 @@
 <% provide(:title, 'Edit schedule') %>
 
-<h1>Edit Schedule</h1>
+<section class="padding-one">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
 
-<%= form_for [@partner, @schedule] do |f| %>
+        <h1 class="title-large text-center margin-four-bottom">Edit Schedule</h1>
 
-  <%= render 'form', f: f %>
+        <%= form_for [@partner, @schedule] do |f| %>
+          <%= render 'form', f: f %>
 
-  <div class="actions">
-    <%= link_to "Cancel", admin_partner_path(@partner) %>
-    <%= f.submit "Update" %>
+          <div class="margin-five pull-right">
+            <%= link_to "Cancel", admin_partner_path(@partner),
+                class: "btn-small-black-border-light btn btn-small button" %>
+            <%= f.submit "Update", class: "highlight-button-dark btn btn-small button" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
   </div>
-<% end %>
-
-<br><br>
-<%= link_to 'Delete schedule', [@partner, @schedule], method: :delete,
-    data: { confirm: "Delete schedule?" } %>
+</section>

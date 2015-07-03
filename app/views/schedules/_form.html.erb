@@ -3,22 +3,20 @@
 <%= f.hidden_field :city_id, value: @partner.city_id %>
 
 <div class="field">
-  <%= f.label :klass_id, "Class" %><br>
+  <%= f.label :klass_id, "Class" %>
   <%= collection_select(:schedule, :klass_id, @klasses.order(:name), :id, :name) %>
 </div>
 <div class="field">
-  <%= f.label :date %><br>
-  <%= f.date_select :date, order: [:day, :month, :year] %>
+  <%= f.label :date, class: "display-block" %>
+  <%= f.date_select :date, order: [:day, :month, :year], with_css_classes: true %>
+</div>
+<div class="field margin-five-bottom">
+  <%= f.label :start_time, class: "display-block" %>
+  <%= f.time_select :start_time, ampm: true, minute_step: 5, ignore_date: true, with_css_classes: true %>
+  <%= f.label :end_time, "to", class: "label-in-between" %>
+  <%= f.time_select :end_time, ampm: true, minute_step: 5, ignore_date: true, with_css_classes: true %>
 </div>
 <div class="field">
-  <%= f.label :start_time %><br>
-  <%= f.time_select :start_time, minute_step: 5, ignore_date: true %>
-</div>
-<div class="field">
-  <%= f.label :end_time %><br>
-  <%= f.time_select :end_time, minute_step: 5, ignore_date: true %>
-</div>
-<div class="field">
-  <%= f.label :quantity, "No. of students" %><br>
+  <%= f.label :quantity, "No. of students" %>
   <%= f.number_field :quantity %>
 </div>

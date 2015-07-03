@@ -1,13 +1,23 @@
 <% provide(:title, 'Add schedule') %>
 
-<h1>Add Schedule</h1>
+<section class="padding-one">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
 
-<%= form_for [@partner, @schedule] do |f| %>
+        <h1 class="title-large text-center margin-four-bottom">Add Schedule</h1>
 
-  <%= render 'form', f: f %>
+        <%= form_for [@partner, @schedule] do |f| %>
+          <%= render 'form', f: f %>
 
-  <div class="actions">
-    <%= link_to "Cancel", admin_partner_path(@partner) %>
-    <%= f.submit "Create" %>
+          <div class="margin-five pull-right">
+            <%= link_to "Cancel", admin_partner_path(@partner),
+                class: "btn-small-black-border-light btn btn-small button" %>
+            <%= f.submit "Create", class: "highlight-button-dark btn btn-small button" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
   </div>
-<% end %>
+</section>

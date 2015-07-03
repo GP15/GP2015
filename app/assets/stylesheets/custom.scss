@@ -1,10 +1,11 @@
 /*  Custom
 ====================================== */
+.margin-two-six { margin-top: 2% !important; margin-bottom: 6% !important; }
 //.margin-right-one { margin-right: 1% !important; }
 .uppercase { text-transform: uppercase !important;}
 .height-300 { max-height: 250px; }
 .link-underline, .link-underline:hover, .underline-hover:hover { text-decoration: underline; }
-//.green-text { color: #00BE60 !important; }
+.green-text { color: #00BE60 !important; }
 
 /*  Kits
 ====================================== */
@@ -47,11 +48,15 @@
 
 select { font-size: 12px !important; text-transform: none !important; }
 
+.select-short  { width: 50px; }
 .hour, .minute { margin-bottom: 0; }
-.hour { width: 70px; }
+.hour   { width: 70px; }
 .minute { width: 50px; }
+.day    { width: 55px; }
+.month  { width: 110px; }
+.year   { width: 70px; }
 
-.label-in-between { margin: 0 15px; }
+.label-in-between { margin: 0 15px; text-transform: none !important; }
 
 .radio-select {
   font-size: 11px;
