@@ -2,6 +2,7 @@
 
 <section class="no-padding-section">
   <div class="container">
+
     <div class="row">
       <div class="col-md-12">
         <h1><%= link_to @partner.company, partner_path(@partner),
@@ -26,7 +27,7 @@
               <th>Age</th>
               <th>Level</th>
               <th>Description</th>
-              <th><%= link_to "+ add", new_partner_klass_path(@partner), class: "pull-right" %></th>
+              <th><%= link_to "+ add", new_partner_klass_path(@partner), class: "pull-right green-text" %></th>
             </tr>
           </thead>
           <tbody>
@@ -34,7 +35,7 @@
               <tr>
                 <td><%= klass.name %></td>
                 <td><%= klass.activity.name %></td>
-                <td><%= klass.age_start %>-<%= klass.age_end %></td>
+                <td><%= klass.age_start %> - <%= klass.age_end %></td>
                 <td><%= klass.level %></td>
                 <td><%= klass.description.truncate(80, separator: ' ') %></td>
                 <td><%= link_to "edit", edit_partner_klass_path(@partner, klass),
