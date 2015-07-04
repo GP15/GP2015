@@ -1,11 +1,13 @@
-<h2>Change your password</h2>
+<% provide(:title, "Reset Admin Password") %>
+
+<h1 class="title-large text-center margin-two-six">Change your password</h1>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">
-    <%= f.label :password, "New password" %><br />
+    <%= f.label :password, "New password" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -13,13 +15,15 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
+    <%= f.label :password_confirmation, "Confirm new password" %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="margin-three">
+    <%= f.submit "Change my password", class: "highlight-button-dark btn btn-small button" %>
   </div>
 <% end %>
 
-<%= render "admins/shared/links" %>
+<div class="margin-ten-top">
+  <%= render "admins/shared/links" %>
+</div>

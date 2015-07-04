@@ -1,36 +1,36 @@
 <% provide(:title, "Admin Profile") %>
 
-<%= link_to "⇽ back", admin_path %>
+<%= link_to "⇽ back to admin area", admin_path %>
 
-<p id="notice"><%= notice %></p>
-
-<h2><%= resource_name.to_s.humanize %> Profile</h2>
+<h1 class="title-large text-center margin-two-six">
+  <%= resource_name.to_s.humanize %> Profile
+</h1>
 
 <%= form_for(resource, as: resource_name, url: admin_registration_path(resource), html: { method: :patch }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <br>
-  <div class="field">
-    <%= f.label :current_password %> <i>(input your current password to confirm your changes)</i><br />
+  <div class="field margin-five-top">
+    <%= f.label :current_password %> <i>(input your current password to confirm your changes)</i>
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="margin-five">
+    <%= f.submit "Update", class: "highlight-button-dark btn btn-small button" %>
   </div>
 <% end %>

@@ -1,5 +1,7 @@
 /*  Custom
 ====================================== */
+.margin-five-top { margin-top: 5% !important; }
+.margin-ten-top { margin-top: 10% !important; }
 .margin-two-six { margin-top: 2% !important; margin-bottom: 6% !important; }
 //.margin-right-one { margin-right: 1% !important; }
 .uppercase { text-transform: uppercase !important;}
@@ -50,8 +52,8 @@ select { font-size: 12px !important; text-transform: none !important; }
 
 .select-short  { width: 50px; }
 .hour, .minute { margin-bottom: 0; }
-.hour   { width: 70px; }
 .minute { width: 50px; }
+.hour   { width: 70px; }
 .day    { width: 55px; }
 .month  { width: 110px; }
 .year   { width: 70px; }
