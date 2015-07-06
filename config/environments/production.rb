@@ -76,7 +76,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  # Allow font to be served from CDN when using Heroku.
-  config.font_assets.origin = 'https://gptest0001.herokuapp.com/'
 end

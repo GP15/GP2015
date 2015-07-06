@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'et-line';
-	src:url('https://d2k9dshd8azpkf.cloudfront.net/icons/et-line.eot');
-	src:url('https://d2k9dshd8azpkf.cloudfront.net/icons/et-line.eot?#iefix') format('embedded-opentype'),
-		url('https://d2k9dshd8azpkf.cloudfront.net/icons/et-line.woff') format('woff'),
-		url('https://d2k9dshd8azpkf.cloudfront.net/icons/et-line.ttf') format('truetype'),
-		url('https://d2k9dshd8azpkf.cloudfront.net/icons/et-line.svg#et-line') format('svg');
+	src:font-url('et-line.eot');
+	src:font-url('et-line.eot?#iefix') format('embedded-opentype'),
+			font-url('et-line.woff') format('woff'),
+			font-url('et-line.ttf') format('truetype'),
+			font-url('et-line.svg#et-line') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
