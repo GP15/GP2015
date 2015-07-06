@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise',       '~> 3.5.1' # user authentication
 gem 'ransack',      '~> 1.6.6' # search/filter ActiveRecords
+gem 'font_assets', '~> 0.1.11' # use CORS to allow font served from CDN
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
