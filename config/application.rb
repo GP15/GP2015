@@ -26,6 +26,6 @@ module Geniuspass
 
     # Tell Rails to use the fonts folder in /assets
     # config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.font_assets.origin = '*'
+    # config.font_assets.origin = '*'
   end
 end
