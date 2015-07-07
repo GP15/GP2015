@@ -1,10 +1,11 @@
 /*  Custom
 ====================================== */
+.text-s-medium { font-size:12px !important; line-height:20px !important;}
 .margin-five-top { margin-top: 5% !important; }
+.margin-eight-top { margin-top: 8% !important; }
 .margin-ten-top { margin-top: 10% !important; }
 .margin-two-four { margin-top: 2% !important; margin-bottom: 4% !important; }
 .margin-two-six { margin-top: 2% !important; margin-bottom: 6% !important; }
-//.margin-right-one { margin-right: 1% !important; }
 .uppercase { text-transform: uppercase !important;}
 .height-300 { max-height: 250px; }
 .link-underline, .link-underline:hover, .underline-hover:hover { text-decoration: underline; }
@@ -12,6 +13,12 @@
 
 /*  Kits
 ====================================== */
+.non-sticky-nav {
+  position: absolute;
+  display: inline-table;
+  .logo-light { height: 55px; vertical-align: middle; display: table-cell; }
+}
+
 .page-title span {
   font-size: 12px !important;
   font-weight: 600 !important;

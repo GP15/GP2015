@@ -1,5 +1,6 @@
 <% provide(:title, "Partners") %>
 
+<%= render 'layouts/nav_dark_text' %>
 <%= render 'page_title' %>
 
 <section class="padding-two">
@@ -13,7 +14,7 @@
             </div>
             <div class="post-details">
               <%= link_to partner.company, partner, class: "post-title margin-one no-margin-bottom" %>
-              <p class="no-padding-top"><%= partner.klasses.map { |klass| klass.name }.join(", ") %></p>
+              <p class="no-padding-top text-s-medium"><%= partner.klasses.map { |klass| klass.name }.join(", ") %></p>
               <span class="post-author"><%= partner.city.name %></span>
             </div>
           </div>
