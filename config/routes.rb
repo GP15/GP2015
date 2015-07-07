@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'static_pages#index'
+  get  'invite', to: 'static_pages#invite'
 
   resources :schedules, only: [:index, :show]
 
