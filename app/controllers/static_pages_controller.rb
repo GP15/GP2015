@@ -4,4 +4,7 @@ class StaticPagesController < ApplicationController
 
   def invite
   end
+
+  def pricing
+  end
 end

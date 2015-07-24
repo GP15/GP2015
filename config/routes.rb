@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
   get  'invite', to: 'static_pages#invite'
+  get  'pricing', to: 'static_pages#pricing'
 
   resources :schedules, only: [:index, :show]
 
