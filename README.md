@@ -16,7 +16,6 @@ If an admin fails his/her login 10 times, his/her account will be locked for 1 h
 * Postgesql 9.4
 
 ### Docs TODO:
-* Ruby version
 * System dependencies
 * Configuration
 * Database creation
