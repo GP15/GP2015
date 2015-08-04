@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  # Change the logo link if user is signed in
+  def logo_url
+    user_signed_in? ? current_user : root_url
+  end
+
   # TODO: Refactor these 2 methods.
 
   # Returns the full title on a per-page basis

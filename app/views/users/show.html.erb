@@ -1,0 +1,11 @@
+<% provide(:title, "User Dashboard") %>
+
+<%= render 'layouts/nav_dark_text' %>
+
+<section class="margin-five padding-three">
+  <div class="container">
+    <div class="row">
+      <%= current_user.email %>
+    </div>
+  </div>
+</section>

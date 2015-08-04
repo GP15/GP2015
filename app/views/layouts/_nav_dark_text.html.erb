@@ -3,19 +3,30 @@
     <div class="row">
       <!-- logo -->
       <div class="col-md-3 pull-left">
-        <%= link_to image_tag("https://d2k9dshd8azpkf.cloudfront.net/images/logo.png", class: "logo-style-2"), root_url, class: "logo-light" %>
+        <%= link_to image_tag("https://d2k9dshd8azpkf.cloudfront.net/images/logo.png", class: "logo-style-2"), logo_url, class: "logo-light" %>
       </div>
       <!-- end logo -->
       <!-- main menu -->
       <div class="col-md-9 text-right">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Home",      root_url %></li>
-          <li><%= link_to "Pricing",   pricing_path %></li>
-          <li><%= link_to "Schedules", schedules_path %></li>
-          <li><%= link_to "Partners",  partners_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Home",         current_user %></li>
+            <li><%= link_to "Find classes", schedules_path %></li>
+            <li><%= link_to "Settings",     edit_user_registration_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
+          <% else %>
+            <li><%= link_to "Home",      root_url %></li>
+            <li><%= link_to "Pricing",   pricing_path %></li>
+            <li><%= link_to "Schedules", schedules_path %></li>
+            <li><%= link_to "Partners",  partners_path %></li>
+            <li><%= link_to "Login",     new_user_session_path %></li>
+          <% end %>
         </ul>
       </div>
       <!-- end main menu -->
     </div>
   </div>
 </nav>
+<% if user_signed_in? %>
+  <div class="alert-style7 alert-success clear-both"><%= notice %></div>
+<% end %>

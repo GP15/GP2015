@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :schedules, only: [:index, :show]
 
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout'}
+  resources :users, only: [:show]
+
   resources :partners do
     resources :klasses, :schedules, except: [:index, :show]
   end
@@ -17,7 +20,7 @@ Rails.application.routes.draw do
   resources :cities, path: 'city', except: [:index, :show]
   resources :activities, except: [:index, :show]
 
-  # Devise settings
+  # Admin's Devise settings
   devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout'}
 
   as :admin do
