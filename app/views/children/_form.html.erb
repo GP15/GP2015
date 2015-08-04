@@ -1,0 +1,10 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<div class="field">
+  <%= f.label :name, "Full Name" %>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :birth_year, class: "display-block" %>
+  <%= f.select :birth_year, (Date.current.year - 17)..(Date.current.year - 4) %>
+</div>

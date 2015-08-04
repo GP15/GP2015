@@ -1,0 +1,28 @@
+<% provide(:title, 'Edit child') %>
+
+<%= render 'layouts/nav_dark_text' %>
+
+<section class="margin-one">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+
+        <h1 class="title-large text-center margin-four-bottom">Edit Child</h1>
+
+        <%= form_for [@user, @child] do |f| %>
+          <%= render 'form', f: f %>
+
+          <div class="margin-five clearfix">
+            <%= link_to 'Delete', [@user, @child], method: :delete,
+                data: { confirm: "Remove #{@child.name}?" },
+                class: "pull-left link-underline padding-two"  %>
+            <%= f.submit "Update", class: "highlight-button-dark btn btn-small button pull-right" %>
+            <%= link_to "Cancel", current_user,
+                class: "btn-small-black-border-light btn btn-small button pull-right" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</section>

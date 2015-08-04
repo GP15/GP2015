@@ -1,0 +1,25 @@
+<% provide(:title, 'Add child') %>
+
+<%= render 'layouts/nav_dark_text' %>
+
+<section class="margin-one">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+
+        <h1 class="title-large text-center margin-four-bottom">Add Child</h1>
+
+        <%= form_for [@user, @child] do |f| %>
+          <%= render 'form', f: f %>
+
+          <div class="pull-right">
+            <%= link_to "Cancel", current_user,
+                class: "btn-small-black-border-light btn btn-small button" %>
+            <%= f.submit "Create", class: "highlight-button-dark btn btn-small button" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</section>

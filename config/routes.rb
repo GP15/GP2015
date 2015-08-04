@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :schedules, only: [:index, :show]
 
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout'}
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :children, except: [:index, :show]
+  end
 
   resources :partners do
     resources :klasses, :schedules, except: [:index, :show]
