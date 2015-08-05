@@ -14,7 +14,7 @@
 
           <div class="margin-five clearfix">
             <%= link_to 'Delete', [@user, @child], method: :delete,
-                data: { confirm: "Remove #{@child.name}?" },
+                data: { confirm: "Remove #{@child.first_name}?" },
                 class: "pull-left link-underline padding-two"  %>
             <%= f.submit "Update", class: "highlight-button-dark btn btn-small button pull-right" %>
             <%= link_to "Cancel", current_user,

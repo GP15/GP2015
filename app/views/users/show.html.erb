@@ -13,10 +13,10 @@
               <th><%= link_to "+ add", new_user_child_path(current_user), class: "pull-right green-text" %></th>
             </tr>
           </thead>
-          <tbody class="text-s-medium">
+          <tbody>
             <% @children.each do |child| %>
               <tr>
-                <td colspan="2"><%= link_to child.name, edit_user_child_path(current_user, child), class: "link-underline" %> (<%= age(child) %>)</td>
+                <td colspan="2"><%= link_to child.first_name, edit_user_child_path(current_user, child), class: "link-underline" %> (<%= age(child) %>)</td>
               </tr>
             <% end %>
           </tbody>

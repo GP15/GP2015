@@ -13,7 +13,7 @@ class ChildrenController < ApplicationController
     @child = @user.children.build(child_params)
 
     if @child.save
-      redirect_to current_user, notice: "#{@child.name} added to children list."
+      redirect_to current_user, notice: "#{@child.first_name} added to children list."
     else
       render :new
     end
@@ -29,7 +29,7 @@ class ChildrenController < ApplicationController
     @child = @user.children.find(params[:id])
 
     if @child.update(child_params)
-      redirect_to current_user, notice: "#{@child.name} details updated."
+      redirect_to current_user, notice: "#{@child.first_name} details updated."
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class ChildrenController < ApplicationController
     @child = @user.children.find(params[:id])
     @child.destroy
 
-    redirect_to current_user, notice: "#{@child.name} deleted."
+    redirect_to current_user, notice: "#{@child.first_name} deleted."
   end
 
   private
@@ -50,6 +50,6 @@ class ChildrenController < ApplicationController
     end
 
     def child_params
-      params.require(:child).permit(:name, :birth_year)
+      params.require(:child).permit(:first_name, :last_name, :birth_year)
     end
 end

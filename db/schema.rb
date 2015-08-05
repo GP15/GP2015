@@ -43,7 +43,8 @@ ActiveRecord::Schema.define(version: 20150804073327) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "children", force: :cascade do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.integer  "birth_year"
     t.integer  "user_id"
     t.datetime "created_at", null: false
