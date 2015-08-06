@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :trackable
 
   has_many :children, dependent: :destroy
+  has_many :reservations
 
 end

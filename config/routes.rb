@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get  'invite', to: 'static_pages#invite'
   get  'pricing', to: 'static_pages#pricing'
 
-  resources :schedules, only: [:index, :show]
+  resources :schedules, only: [:index, :show] do
+    resources :reservations, only: [:new, :create, :destroy]
+  end
 
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout'}
   resources :users, only: [:show] do

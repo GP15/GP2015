@@ -3,5 +3,6 @@ class UsersController < ApplicationController
 
   def show
     @children = Child.order(birth_year: :desc)
+    @reservations = current_user.reservations.includes(:child, schedule: [:partner, :klass, :city])
   end
 end

@@ -1,0 +1,29 @@
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Activity</th>
+      <th>Studio</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody class="text-13px">
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.child.first_name %></td>
+        <td><%= reservation.schedule.date.strftime("%d %b %Y") %></td>
+        <td>
+          <%= reservation.schedule.start_time.strftime("%l:%M%P") %> -
+          <%= reservation.schedule.end_time.strftime("%l:%M%P") %>
+        </td>
+        <td><%= link_to reservation.schedule.klass.name, schedule_path(reservation.schedule),
+                class: "link-underline" %></td>
+        <td><%= link_to reservation.schedule.partner.company, partner_path(reservation.schedule.partner),
+                class: "link-underline"%></td>
+        <td><%= reservation.schedule.city.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

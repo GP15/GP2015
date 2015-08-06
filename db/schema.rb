@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804073327) do
+ActiveRecord::Schema.define(version: 20150805110225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,17 @@ ActiveRecord::Schema.define(version: 20150804073327) do
   end
 
   add_index "partners", ["city_id"], name: "index_partners_on_city_id", using: :btree
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "child_id"
+    t.integer  "schedule_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "reservations", ["child_id", "schedule_id"], name: "index_reservations_on_child_id_and_schedule_id", using: :btree
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "schedules", force: :cascade do |t|
     t.date     "date"
