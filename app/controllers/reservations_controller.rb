@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
     @reservation.user_id = current_user.id
 
     if @reservation.save
-      redirect_to current_user, notice: "Reserved a class on #{@schedule.date}."
+      redirect_to current_user, notice: "Reserved a class on #{@schedule.date} for #{@reservation.child.first_name}."
     else
       render :new
     end
