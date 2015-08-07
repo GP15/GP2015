@@ -11,7 +11,7 @@ class AdminController < ApplicationController
   def partner
     @partner = Partner.find(params[:id])
     @klasses = @partner.klasses.includes(:activity).order(:name, :age_start, :age_end)
-    @schedules = @partner.schedules.includes(:klass).order(:date, :start_time, :end_time)
+    @schedules = @partner.schedules.includes(:klass).sort_by_datetime_asc
   end
 
   def settings

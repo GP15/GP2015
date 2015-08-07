@@ -9,4 +9,7 @@ class Schedule < ActiveRecord::Base
 
   validates :quantity, presence: true,
                        numericality: { only_integer: true, greater_than: 0 }
+
+  scope :sort_by_datetime_asc, -> { order(:date, :start_time, :end_time) }
+
 end
