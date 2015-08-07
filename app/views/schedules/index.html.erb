@@ -25,7 +25,7 @@
             <tbody>
               <% @schedules.each do |schedule| %>
                 <tr>
-                  <td><%= schedule.date.strftime("%d %b %Y") %></td>
+                  <td><%= schedule.date.strftime("%-d %b %Y") %></td>
                   <td><%= link_to schedule.klass.name, schedule_path(schedule), class: "link-underline" if schedule.klass %></td>
                   <td><%= link_to schedule.partner.company, partner_path(schedule.partner), class: "link-underline" if schedule.partner %></td>
                   <td><%= schedule.city.name if schedule.city %></td>

@@ -21,7 +21,7 @@
           <tbody>
             <% @schedules.each do |schedule| %>
               <tr>
-                <td><%= schedule.date.strftime("%d %b %Y") %></td>
+                <td><%= schedule.date.strftime("%-d %b %Y") %></td>
                 <td><%= schedule.klass.name if schedule.klass %></td>
                 <td>
                   <%= schedule.start_time.strftime("%l:%M%P") %> -
