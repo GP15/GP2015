@@ -24,8 +24,8 @@
           <tbody>
             <tr>
               <td class="padding-two"><%= @schedule.date.strftime("%A, %d %b %Y") %></td>
-              <td class="padding-two"><%= @schedule.start_time.strftime("%l:%M%P") %> - <%= @schedule.end_time.strftime("%l:%M%P") %></td>
-              <td class="padding-two"><%= @schedule.klass.age_start %>-<%= @schedule.klass.age_end %></td>
+              <td class="padding-two"><%= @schedule.start_time.strftime("%l:%M%P") %> — <%= @schedule.end_time.strftime("%l:%M%P") %></td>
+              <td class="padding-two"><%= @schedule.klass.age_start %> - <%= @schedule.klass.age_end %></td>
             </tr>
           </tbody>
         </table>

@@ -30,10 +30,10 @@
                   <td><%= link_to schedule.partner.company, partner_path(schedule.partner), class: "link-underline" if schedule.partner %></td>
                   <td><%= schedule.city.name if schedule.city %></td>
                   <td>
-                    <%= schedule.start_time.strftime("%l:%M%P") %> -
+                    <%= schedule.start_time.strftime("%l:%M%P") %> —
                     <%= schedule.end_time.strftime("%l:%M%P") %>
                   </td>
-                  <td><%= schedule.klass.age_start %>-<%= schedule.klass.age_end %></td>
+                  <td><%= schedule.klass.age_start %> - <%= schedule.klass.age_end %></td>
                   <td><%= schedule.klass.level if schedule.klass %></td>
                   <td><%= reserve_button(schedule) %></td>
                 </tr>
