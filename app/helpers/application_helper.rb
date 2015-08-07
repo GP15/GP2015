@@ -21,4 +21,13 @@ module ApplicationHelper
     user_signed_in? ? current_user : root_url
   end
 
+  # Used as CSS classes
+  def primary_button_small
+    "highlight-button-dark btn btn-small btn-round button"
+  end
+
+  def primary_button_medium
+    "highlight-button-dark btn btn-medium btn-round button"
+  end
+
 end

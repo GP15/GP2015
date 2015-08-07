@@ -29,7 +29,7 @@
                 </td>
                 <td><%= schedule.klass.level if schedule.klass %></td>
                 <td><%= schedule.klass.age_start %>-<%= schedule.klass.age_end %></td>
-                <td><%= link_to 'Reserve', invite_path, class: "highlight-button-dark btn btn-small btn-round button" %></td>
+                <td><%= reserve_button(schedule) %></td>
               </tr>
             <% end %>
           </tbody>

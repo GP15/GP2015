@@ -29,11 +29,12 @@
             </tr>
           </tbody>
         </table>
-        <p>Interested to reserve this class for your child?</p>
-        <%= link_to "Get GeniusPass Membership", invite_path, class: "highlight-button-dark btn btn-medium btn-round button" %>
-        <br><br>
-        <p>Already have GeniusPass?</p>
-        <%= link_to "Reserve This Class", new_schedule_reservation_path(@schedule), class: "highlight-button-dark btn btn-medium btn-round button" %>
+        <% if user_signed_in? %>
+          <%= link_to "Reserve This Class", new_schedule_reservation_path(@schedule), class: primary_button_medium %>
+        <% else %>
+          <p>Interested to reserve this class for your child?</p>
+          <%= link_to "Get GeniusPass Membership", invite_path, class: primary_button_medium %>
+        <% end %>
       </div>
     </div>
   </div>
