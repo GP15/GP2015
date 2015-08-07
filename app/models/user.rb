@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :children, dependent: :destroy
   has_many :reservations
+  has_many :schedules, through: :reservations
 
 end

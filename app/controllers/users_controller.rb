@@ -4,7 +4,9 @@ class UsersController < ApplicationController
 
   def show
     @children = current_user.children
-    @reservations = current_user.reservations.includes(:child, schedule: [:partner, :klass, :city])
+    @reservations = current_user.reservations
+                      .includes(:child, schedule: [:partner, :klass, :city])
+                      .order('schedules.date ASC, schedules.start_time ASC, schedules.end_time ASC')
   end
 
 end
