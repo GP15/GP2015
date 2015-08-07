@@ -13,7 +13,7 @@
           <%= render 'form', f: f %>
 
           <div class="pull-right">
-            <%= link_to "Cancel", schedules_path,
+            <%= link_to "Cancel", :back,
                 class: "btn-small-black-border-light btn btn-small button" %>
             <%= f.submit "Reserve", class: "highlight-button-dark btn btn-small button" %>
           </div>
