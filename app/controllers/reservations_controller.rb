@@ -21,12 +21,12 @@ class ReservationsController < ApplicationController
     end
   end
 
-  # DELETE
+  # DELETE /schedules/:schedule_id/reservations/:id
   def destroy
-    @child = @user.children.find(params[:id])
-    @child.destroy
+    @reservation = @schedule.reservations.find(params[:id])
+    @reservation.destroy
 
-    redirect_to current_user, notice: "#{@child.first_name} deleted."
+    redirect_to current_user, notice: "Reservation for class #{@schedule.klass.name} on #{@schedule.date} for #{@reservation.child.first_name} canceled."
   end
 
   private

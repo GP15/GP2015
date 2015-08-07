@@ -7,6 +7,7 @@
       <th>Activity</th>
       <th>Studio</th>
       <th>City</th>
+      <th></th>
     </tr>
   </thead>
   <tbody class="text-13px">
@@ -23,6 +24,8 @@
         <td><%= link_to reservation.schedule.partner.company, partner_path(reservation.schedule.partner),
                 class: "link-underline"%></td>
         <td><%= reservation.schedule.city.name %></td>
+        <td><%= link_to 'X', schedule_reservation_path(reservation.schedule, reservation),
+                method: :delete, data: { confirm: "Cancel reservation for class #{reservation.schedule.klass.name} on #{reservation.schedule.date.strftime("%d %b %Y")} (#{reservation.schedule.start_time.strftime("%l:%M%P")}) for #{reservation.child.first_name} ?" } %></td>
       </tr>
     <% end %>
   </tbody>
