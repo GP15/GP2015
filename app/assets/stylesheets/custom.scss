@@ -43,6 +43,12 @@
   min-height: 150px;
 }
 
+/*  Table
+====================================== */
+.table-cell-center {
+  th, td { text-align: center !important; }
+}
+
 /*  Buttons
 ====================================== */
 .btn { margin-right: 5px !important; }
