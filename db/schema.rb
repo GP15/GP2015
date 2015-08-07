@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20150805110225) do
   end
 
   add_index "reservations", ["child_id", "schedule_id"], name: "index_reservations_on_child_id_and_schedule_id", using: :btree
+  add_index "reservations", ["schedule_id"], name: "index_reservations_on_schedule_id", using: :btree
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "schedules", force: :cascade do |t|
