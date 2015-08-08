@@ -1,5 +1,14 @@
-<%= render 'shared/error_messages', object: f.object %>
+<h4 class="text-center margin-four-bottom">Reserve this class for...</h4>
 
-<div class="field">
-  <%= f.collection_select :child_id, @children, :id, :first_name %>
-</div>
+<%= form_for [@schedule, @reservation] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="field">
+    <%= f.collection_select :child_id, @children, :id, :first_name %>
+  </div>
+
+  <div class="pull-right">
+    <%= link_to "Cancel", :back, class: secondary_button_small %>
+    <%= f.submit "Reserve", class: primary_button_small %>
+  </div>
+<% end %>

@@ -8,9 +8,24 @@
 .margin-two-four { margin-top: 2% !important; margin-bottom: 4% !important; }
 .margin-two-six { margin-top: 2% !important; margin-bottom: 6% !important; }
 .uppercase { text-transform: uppercase !important;}
+.height-170 { max-height: 170px; }
 .height-300 { max-height: 250px; }
 .link-underline, .link-underline:hover, .underline-hover:hover { text-decoration: underline; }
 .green-text { color: #00BE60 !important; }
+
+/*  Typography
+====================================== */
+dl {
+  margin-top: unset;
+  margin-bottom: unset;
+}
+
+.dl-custom {
+  margin-top: 20px;
+  dt { width: 100px; }
+  dd { margin-left: 120px; }
+  hr { margin: 8px; }
+}
 
 /*  Kits
 ====================================== */

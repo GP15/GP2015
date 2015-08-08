@@ -30,4 +30,8 @@ module ApplicationHelper
     "highlight-button-dark btn btn-medium btn-round button"
   end
 
+  def secondary_button_small
+    "btn-small-black-border-light btn btn-small btn-round button"
+  end
+
 end

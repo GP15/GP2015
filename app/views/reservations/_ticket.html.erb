@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-5">
+    <%= image_tag @schedule.partner.img_url, class: "height-170", alt: "photo of #{@schedule.partner.company}" %>
+  </div>
+  <div class="col-sm-7 text-13px">
+    <dl class="dl-horizontal dl-custom">
+      <dt>Studio</dt>
+      <dd><%= @schedule.partner.company %></dd>
+      <dt>Address</dt>
+      <dd><%= @schedule.partner.address %>, <%= @schedule.city.name %>, <%= @schedule.partner.state %></dd>
+      <hr>
+      <dt>Class</dt>
+      <dd><%= @schedule.klass.name %></dd>
+      <dt>Age</dt>
+      <dd><%= @schedule.klass.age_start %> - <%= @schedule.klass.age_end %></dd>
+      <dt>Date</dt>
+      <dd><%= @schedule.date.strftime("%-d %b %Y (%A)") %></dd>
+      <dt>Time</dt>
+      <dd><%= @schedule.start_time.strftime("%l:%M%P") %> - <%= @schedule.end_time.strftime("%l:%M%P") %></dd>
+    </dl>
+  </div>
+</div>
