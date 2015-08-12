@@ -14,9 +14,9 @@
       <dt>Age</dt>
       <dd><%= @schedule.klass.age_start %> - <%= @schedule.klass.age_end %></dd>
       <dt>Date</dt>
-      <dd><%= @schedule.date.strftime("%-d %b %Y (%A)") %></dd>
+      <dd><%= compare_date(@schedule.starts_at, @schedule.ends_at) %></dd>
       <dt>Time</dt>
-      <dd><%= @schedule.start_time.strftime("%l:%M%P") %> - <%= @schedule.end_time.strftime("%l:%M%P") %></dd>
+      <dd><%= @schedule.starts_at.strftime("%l:%M%P") %> - <%= @schedule.ends_at.strftime("%l:%M%P") %></dd>
     </dl>
   </div>
 </div>

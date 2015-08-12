@@ -14,10 +14,10 @@
     <% @reservations.each do |reservation| %>
       <tr>
         <td><%= reservation.child.first_name %></td>
-        <td><%= reservation.schedule.date.strftime("%d %b %Y") %></td>
+        <td><%= compare_date(reservation.schedule.starts_at, reservation.schedule.ends_at) %></td>
         <td>
-          <%= reservation.schedule.start_time.strftime("%l:%M%P") %> -
-          <%= reservation.schedule.end_time.strftime("%l:%M%P") %>
+          <%= reservation.schedule.starts_at.strftime("%l:%M%P") %> -
+          <%= reservation.schedule.ends_at.strftime("%l:%M%P") %>
         </td>
         <td><%= link_to reservation.schedule.klass.name, schedule_path(reservation.schedule),
                 class: "link-underline" %></td>

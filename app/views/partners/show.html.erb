@@ -21,11 +21,11 @@
           <tbody>
             <% @schedules.each do |schedule| %>
               <tr>
-                <td><%= schedule.date.strftime("%-d %b %Y") %></td>
+                <td><%= compare_date(schedule.starts_at, schedule.ends_at) %></td>
                 <td><%= schedule.klass.name if schedule.klass %></td>
                 <td>
-                  <%= schedule.start_time.strftime("%l:%M%P") %> -
-                  <%= schedule.end_time.strftime("%l:%M%P") %>
+                  <%= schedule.starts_at.strftime("%l:%M%P") %> -
+                  <%= schedule.ends_at.strftime("%l:%M%P") %>
                 </td>
                 <td><%= schedule.klass.level if schedule.klass %></td>
                 <td><%= schedule.klass.age_start %>-<%= schedule.klass.age_end %></td>

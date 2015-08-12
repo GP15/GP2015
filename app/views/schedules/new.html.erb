@@ -3,7 +3,7 @@
 <section class="padding-one">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-4 center-col">
 
         <h1 class="title-large text-center margin-four-bottom">Add Schedule</h1>
 
@@ -11,9 +11,8 @@
           <%= render 'form', f: f %>
 
           <div class="margin-five pull-right">
-            <%= link_to "Cancel", admin_partner_path(@partner),
-                class: "btn-small-black-border-light btn btn-small button" %>
-            <%= f.submit "Create", class: "highlight-button-dark btn btn-small button" %>
+            <%= link_to "Cancel", admin_partner_path(@partner), class: secondary_button_small %>
+            <%= f.submit "Create", class: primary_button_small %>
           </div>
         <% end %>
 

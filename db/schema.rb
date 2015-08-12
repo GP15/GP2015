@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805110225) do
+ActiveRecord::Schema.define(version: 20150811115841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,9 +103,6 @@ ActiveRecord::Schema.define(version: 20150805110225) do
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "schedules", force: :cascade do |t|
-    t.date     "date"
-    t.time     "start_time"
-    t.time     "end_time"
     t.integer  "quantity"
     t.integer  "klass_id"
     t.integer  "partner_id"
@@ -113,13 +110,15 @@ ActiveRecord::Schema.define(version: 20150805110225) do
     t.datetime "updated_at",  null: false
     t.integer  "city_id"
     t.integer  "activity_id"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
   end
 
   add_index "schedules", ["activity_id"], name: "index_schedules_on_activity_id", using: :btree
   add_index "schedules", ["city_id"], name: "index_schedules_on_city_id", using: :btree
-  add_index "schedules", ["date", "start_time", "end_time"], name: "index_schedules_on_date_and_start_time_and_end_time", using: :btree
   add_index "schedules", ["klass_id"], name: "index_schedules_on_klass_id", using: :btree
   add_index "schedules", ["partner_id"], name: "index_schedules_on_partner_id", using: :btree
+  add_index "schedules", ["starts_at", "ends_at"], name: "index_schedules_on_starts_at_and_ends_at", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

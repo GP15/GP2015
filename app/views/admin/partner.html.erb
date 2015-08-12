@@ -66,9 +66,9 @@
                 <tr>
                   <td><%= link_to 'X', partner_schedule_path(@partner, schedule),
                           method: :delete, data: { confirm: "Delete schedule?" } %></td>
-                  <td><%= schedule.date.strftime("%d %b %Y") %></td>
+                  <td><%= compare_date(schedule.starts_at, schedule.ends_at) %></td>
                   <td><%= schedule.klass.name if schedule.klass %></td>
-                  <td class="text-center"><%= schedule.start_time.strftime("%l:%M%P") %> - <%= schedule.end_time.strftime("%l:%M%P") %></td>
+                  <td class="text-center"><%= schedule.starts_at.strftime("%l:%M%P") if schedule.starts_at %> — <%= schedule.ends_at.strftime("%l:%M%P") if schedule.ends_at %></td>
                   <td class="text-center"><%= schedule.quantity %></td>
                   <td><%= link_to 'edit', edit_partner_schedule_path(@partner, schedule),
                           class: "pull-right link-underline" %></td>
