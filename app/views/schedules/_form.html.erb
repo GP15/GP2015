@@ -1,18 +1,19 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-<%= f.hidden_field :city_id, value: @partner.city_id %>
-
 <div class="field">
   <%= f.label :klass_id, "Class", class: "display-block" %>
   <%= collection_select(:schedule, :klass_id, @klasses.order(:name), :id, :name) %>
 </div>
 <div class="field">
+  <label class="display-block">Date</label>
+  <%= f.date_select :starts_at, order: [:day, :month, :year], with_css_classes: true %>
+</div>
+<div class="field">
   <%= f.label :starts_at, class: "display-block" %>
-  <%= f.datetime_select :starts_at, order: [:day, :month, :year], use_short_month: true,
-        ampm: true, minute_step: 15 %>
+  <%= f.time_select :starts_at, ignore_date: true, ampm: true, minute_step: 15 %>
+
   <%= f.label :ends_at, class: "display-block" %>
-  <%= f.datetime_select :ends_at, order: [:day, :month, :year], use_short_month: true,
-        ampm: true, minute_step: 15 %>
+  <%= f.time_select :ends_at, ignore_date: true, ampm: true, minute_step: 15 %>
 </div>
 <div class="field">
   <%= f.label :quantity, "No. of students" %>
