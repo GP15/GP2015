@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
     @reservation.user_id = current_user.id
 
     if @reservation.save
-      redirect_to current_user, notice: "Reserved a class on #{@schedule.date} for #{@reservation.child.first_name}."
+      redirect_to current_user, notice: "Reserved a class on #{@schedule.starts_at.strftime("%-d %b %Y")} for #{@reservation.child.first_name}."
     else
       render :new
     end
@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
     @reservation = @schedule.reservations.find(params[:id])
     @reservation.destroy
 
-    redirect_to current_user, notice: "Reservation for class #{@schedule.klass.name} on #{@schedule.date} for #{@reservation.child.first_name} canceled."
+    redirect_to current_user, notice: "Reservation for class #{@schedule.klass.name} on #{@schedule.starts_at.strftime("%-d %b %Y")} for #{@reservation.child.first_name} canceled."
   end
 
   private

@@ -12,28 +12,30 @@
         </div>
         <div class="col-md-4">
           <label class="display-block no-margin-bottom">Time</label>
-          <%= f.time_select :start_time_gteq, ampm: true, minute_step: 15, default: { hour: '00' }, with_css_classes: true %>
+          <%= f.time_select :starts_at_gteq, ampm: true, minute_step: 15, default: { hour: '07' },
+                with_css_classes: true %>
           <label class="label-in-between">to</label>
-          <%= f.time_select :end_time_lteq, ampm: true, minute_step: 15, default: { hour: '23', minute: '45' }, with_css_classes: true %>
+          <%= f.time_select :ends_at_lteq, ampm: true, minute_step: 15,
+                default: { hour: '23' }, with_css_classes: true %>
         </div>
         <div class="col-md-12">
-          <label class="">Date: </label>
-          <label class="radio-select"><%= f.radio_button :date_eq, Date.today %>Today</label>
-          <label class="radio-select"><%= f.radio_button :date_eq, Date.tomorrow %>Tomorrow</label>
+          <label>Date: </label>
+          <label class="radio-select"><%= f.radio_button :starts_at_eq, Date.today %>Today</label>
+          <label class="radio-select"><%= f.radio_button :starts_at_eq, Date.tomorrow %>Tomorrow</label>
           <label class="radio-select">
-            <%= f.radio_button :date_eq, Date.today + 2 %><%= (Date.today + 2).strftime("%e %b") %>
+            <%= f.radio_button :starts_at_eq, Date.today + 2 %><%= (Date.today + 2).strftime("%e %b") %>
           </label>
           <label class="radio-select">
-            <%= f.radio_button :date_eq, Date.today + 3 %><%= (Date.today + 3).strftime("%e %b") %>
+            <%= f.radio_button :starts_at_eq, Date.today + 3 %><%= (Date.today + 3).strftime("%e %b") %>
           </label>
           <label class="radio-select">
-            <%= f.radio_button :date_eq, Date.today + 4 %><%= (Date.today + 4).strftime("%e %b") %>
+            <%= f.radio_button :starts_at_eq, Date.today + 4 %><%= (Date.today + 4).strftime("%e %b") %>
           </label>
           <label class="radio-select">
-            <%= f.radio_button :date_eq, Date.today + 5 %><%= (Date.today + 5).strftime("%e %b") %>
+            <%= f.radio_button :starts_at_eq, Date.today + 5 %><%= (Date.today + 5).strftime("%e %b") %>
           </label>
           <label class="radio-select">
-            <%= f.radio_button :date_eq, Date.today + 6 %><%= (Date.today + 6).strftime("%e %b") %>
+            <%= f.radio_button :starts_at_eq, Date.today + 6 %><%= (Date.today + 6).strftime("%e %b") %>
           </label>
         </div>
         <div class="col-md-12 margin-two">

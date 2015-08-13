@@ -64,9 +64,12 @@
             <tbody>
               <% @schedules.each do |schedule| %>
                 <tr>
-                  <td><%= link_to 'X', partner_schedule_path(@partner, schedule),
-                          method: :delete, data: { confirm: "Delete schedule?" } %></td>
-                  <td><%= compare_date(schedule.starts_at, schedule.ends_at) %></td>
+                  <td>
+                    <%= link_to 'X', partner_schedule_path(@partner, schedule),
+                        method: :delete,
+                        data: { confirm: "Delete schedule for #{schedule.klass.name} on #{schedule.starts_at.strftime("%d %b %Y")} ?" } %>
+                  </td>
+                  <td><%= schedule.starts_at.strftime("%d %b %Y") %></td>
                   <td><%= schedule.klass.name if schedule.klass %></td>
                   <td class="text-center"><%= schedule.starts_at.strftime("%l:%M%P") if schedule.starts_at %> — <%= schedule.ends_at.strftime("%l:%M%P") if schedule.ends_at %></td>
                   <td class="text-center"><%= schedule.quantity %></td>

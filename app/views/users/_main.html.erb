@@ -14,7 +14,7 @@
     <% @reservations.each do |reservation| %>
       <tr>
         <td><%= reservation.child.first_name %></td>
-        <td><%= compare_date(reservation.schedule.starts_at, reservation.schedule.ends_at) %></td>
+        <td><%= reservation.schedule.starts_at.strftime("%-d %b %Y") %></td>
         <td>
           <%= reservation.schedule.starts_at.strftime("%l:%M%P") %> -
           <%= reservation.schedule.ends_at.strftime("%l:%M%P") %>
@@ -25,7 +25,7 @@
                 class: "link-underline"%></td>
         <td><%= reservation.schedule.city.name %></td>
         <td><%= link_to 'X', schedule_reservation_path(reservation.schedule, reservation),
-                method: :delete, data: { confirm: "Cancel reservation for class #{reservation.schedule.klass.name} on #{reservation.schedule.date.strftime("%d %b %Y")} (#{reservation.schedule.start_time.strftime("%l:%M%P")}) for #{reservation.child.first_name} ?" } %></td>
+                method: :delete, data: { confirm: "Cancel reservation for class #{reservation.schedule.klass.name} on #{reservation.schedule.starts_at.strftime("%-d %b %Y")} (#{reservation.schedule.starts_at.strftime("%l:%M%P")}) for #{reservation.child.first_name} ?" } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,4 +1,4 @@
-<% provide(:title, "#{@schedule.date.strftime("%d/%-m/%Y")} : #{@schedule.klass.name} class
+<% provide(:title, "#{@schedule.klass.name} (#{@schedule.starts_at.strftime("%-d %b %Y")})
                     by #{@schedule.partner.company} at #{@schedule.city.name}") %>
 
 <%= render 'layouts/nav_dark_text' %>
@@ -8,11 +8,13 @@
     <div class="row">
       <div class="col-md-6 center-col text-center">
         <%= link_to "⇽ back", :back, class: "clearfix" %>
+
         <%= image_tag @schedule.partner.img_url, alt: "photo of #{@schedule.partner.company}", class: "margin-four height-300" %>
         <span class="clearfix"><%= @schedule.klass.level %></span>
         <h1><%= @schedule.klass.name %></h1>
         <p><%= link_to @schedule.partner.company, partner_path(@schedule.partner), class: "link-underline" %> — <%= @schedule.city.name %></p>
         <p><%= @schedule.klass.description %></p>
+
         <table class="table">
           <thead>
             <tr>
@@ -24,10 +26,10 @@
           <tbody>
             <tr>
               <td class="padding-two">
-                <%= @schedule.date.strftime("%A, %d %b %Y") %>
+                <%= @schedule.starts_at.strftime("%A, %-d %b %Y") %>
               </td>
               <td class="padding-two">
-                <%= @schedule.start_time.strftime("%l:%M%P") %> — <%= @schedule.end_time.strftime("%l:%M%P") %>
+                <%= @schedule.starts_at.strftime("%l:%M%P") %> — <%= @schedule.ends_at.strftime("%l:%M%P") %>
               </td>
               <td class="padding-two">
                 <%= @schedule.klass.age_start %> - <%= @schedule.klass.age_end %>

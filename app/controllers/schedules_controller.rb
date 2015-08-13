@@ -13,7 +13,7 @@ class SchedulesController < ApplicationController
     @cities     = City.order(:name)
     @q          = Schedule.ransack(params[:q])
     @q.sorts    = ['date asc', 'start_time asc', 'end_time asc'] if @q.sorts.empty?
-    @schedules  = @q.result.includes(:klass, :partner, :city).where('date >= ?', Time.zone.today)
+    @schedules  = @q.result.includes(:klass, :partner, :city).where('starts_at >= ?', Time.zone.today)
   end
 
   # GET /schedules/:id

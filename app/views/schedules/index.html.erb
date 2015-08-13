@@ -25,13 +25,13 @@
             <tbody>
               <% @schedules.each do |schedule| %>
                 <tr>
-                  <td><%= schedule.date.strftime("%-d %b %Y") %></td>
+                  <td><%= schedule.starts_at.strftime("%-d %b %Y") %></td>
                   <td><%= link_to schedule.klass.name, schedule_path(schedule), class: "link-underline" if schedule.klass %></td>
                   <td><%= link_to schedule.partner.company, partner_path(schedule.partner), class: "link-underline" if schedule.partner %></td>
                   <td><%= schedule.city.name if schedule.city %></td>
                   <td>
-                    <%= schedule.start_time.strftime("%l:%M%P") %> —
-                    <%= schedule.end_time.strftime("%l:%M%P") %>
+                    <%= schedule.starts_at.strftime("%l:%M%P") %> —
+                    <%= schedule.ends_at.strftime("%l:%M%P") %>
                   </td>
                   <td><%= schedule.klass.age_start %> - <%= schedule.klass.age_end %></td>
                   <td><%= schedule.klass.level if schedule.klass %></td>
