@@ -8,4 +8,9 @@ class Child < ActiveRecord::Base
 
   scope :sort_by_age_name, -> { order('birth_year DESC', 'first_name ASC') }
 
+  # A scope for ruling out children with reservations.
+  def self.except_with(reservations)
+    where.not(id: (reservations.map(&:child_id)))
+  end
+
 end
