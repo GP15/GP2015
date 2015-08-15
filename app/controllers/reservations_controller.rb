@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
 
   # GET /schedules/:schedule_id/reservations/new
   def new
+    @reservations = @schedule.reservations.includes(:child)
     @children = current_user.children
                   .age_between(@schedule.klass)
                   .except_with(@schedule.reservations)
@@ -18,7 +19,9 @@ class ReservationsController < ApplicationController
     @reservation.user_id = current_user.id
 
     if @reservation.save
-      redirect_to current_user, notice: "Reserved a class on #{@schedule.starts_at.strftime("%-d %b %Y")} for #{@reservation.child.first_name}."
+      flash[:notice] = "Reserved a class for #{@reservation.child.first_name} on
+                        #{@schedule.starts_at.strftime("%-d %b")}."
+      redirect_to new_schedule_reservation_path(@schedule)
     else
       render :new
     end
@@ -29,7 +32,8 @@ class ReservationsController < ApplicationController
     @reservation = @schedule.reservations.find(params[:id])
     @reservation.destroy
 
-    redirect_to current_user, notice: "Reservation for class #{@schedule.klass.name} on #{@schedule.starts_at.strftime("%-d %b %Y")} for #{@reservation.child.first_name} canceled."
+    flash[:notice] = "Canceled reservation for #{@reservation.child.first_name}."
+    redirect_to new_schedule_reservation_path(@schedule)
   end
 
   private
