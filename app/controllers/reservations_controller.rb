@@ -5,7 +5,10 @@ class ReservationsController < ApplicationController
 
   # GET /schedules/:schedule_id/reservations/new
   def new
-    @children = current_user.children.except_with(@schedule.reservations).sort_by_age_name
+    @children = current_user.children
+                  .age_between(@schedule.klass)
+                  .except_with(@schedule.reservations)
+                  .sort_by_age_name
     @reservation = @schedule.reservations.build
   end
 
