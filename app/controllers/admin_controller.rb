@@ -10,7 +10,7 @@ class AdminController < ApplicationController
   # GET /admin/partners/:id
   def partner
     @partner = Partner.find(params[:id])
-    @klasses = @partner.klasses.includes(:activity).order(:name, :age_start, :age_end)
+    @klasses = @partner.klasses.includes(:activity).order(:age_start, :age_end, :name)
     @schedules = @partner.schedules.includes(:klass).sort_by_datetime_asc
   end
 
