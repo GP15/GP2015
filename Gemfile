@@ -19,6 +19,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'   # access IRB console on exception pages
   gem 'spring'                  # speeds development by running app in background
   gem 'hirb'   # Pretty rails console output. Enable in console using "Hirb.enable".
+  gem 'quiet_assets', '~> 1.1.0' # turns off asset pipeline log
 end
 
 group :production do
