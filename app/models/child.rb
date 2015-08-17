@@ -14,7 +14,7 @@ class Child < ActiveRecord::Base
   end
 
   # A scope for ruling out children with reservations.
-  def self.except_with(reservations)
+  def self.without(reservations)
     where.not(id: (reservations.map(&:child_id)))
   end
 

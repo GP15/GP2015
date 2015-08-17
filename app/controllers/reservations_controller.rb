@@ -8,9 +8,9 @@ class ReservationsController < ApplicationController
     @reservations = current_user.reservations.where(schedule_id: @schedule).includes(:child)
     @children = current_user.children
                   .age_between(@schedule.klass)
-                  .except_with(@schedule.reservations)
+                  .without(@reservations)
                   .sort_by_age_name
-    @reservation = @schedule.reservations.build
+    @reservation = @reservations.build
   end
 
   # POST /schedules/:schedule_id/reservations
