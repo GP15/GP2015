@@ -19,7 +19,7 @@
             <% @reservations.each do |reservation| %>
               <li>
                 <%= reservation.child.first_name if reservation.child %>
-                <%= link_to 'cancel', schedule_reservation_path(reservation.schedule, reservation),
+                <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation),
                       method: :delete,
                       data: { confirm: "Cancel reservation for #{reservation.child.first_name}?" },
                       class: "pull-right" %>
