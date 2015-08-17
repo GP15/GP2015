@@ -38,9 +38,10 @@
             <%= f.radio_button :starts_at_eq, Date.today + 6 %><%= (Date.today + 6).strftime("%e %b") %>
           </label>
         </div>
+
         <div class="col-md-12 margin-two">
-          <%= f.submit "Filter", class: "highlight-button-dark btn btn-small btn-round button" %>
-          <%= link_to "Reset", request.path, class: "btn-small-black-border-light btn btn-small btn-round button" %>
+          <%= f.submit "Filter", class: primary_button_small %>
+          <%= link_to "Reset", request.path, class: secondary_button_small %>
         </div>
       <% end %>
     </div>

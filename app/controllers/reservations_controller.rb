@@ -19,8 +19,7 @@ class ReservationsController < ApplicationController
     @reservation.user_id = current_user.id
 
     if @reservation.save
-      flash[:notice] = "Reserved a class for #{@reservation.child.first_name} on
-                        #{@schedule.starts_at.strftime("%-d %b")}."
+      flash[:notice] = "Class reserved for #{@reservation.child.first_name}."
       redirect_to new_schedule_reservation_path(@schedule)
     else
       render :new

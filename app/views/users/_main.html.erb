@@ -19,10 +19,11 @@
           <%= reservation.schedule.starts_at.strftime("%l:%M%P") %> -
           <%= reservation.schedule.ends_at.strftime("%l:%M%P") %>
         </td>
-        <td><%= link_to reservation.schedule.klass.name, schedule_path(reservation.schedule),
-                class: "link-underline" %></td>
-        <td><%= link_to reservation.schedule.partner.company, partner_path(reservation.schedule.partner),
-                class: "link-underline"%></td>
+        <td><%= reservation.schedule.klass.name %></td>
+        <td>
+          <%= link_to reservation.schedule.partner.company, partner_path(reservation.schedule.partner),
+                class: "link-underline"%>
+        </td>
         <td><%= reservation.schedule.city.name %></td>
         <td>
           <%= link_to "view", new_schedule_reservation_path(reservation.schedule),
