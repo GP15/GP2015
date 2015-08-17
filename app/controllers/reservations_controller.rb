@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
 
   # GET /schedules/:schedule_id/reservations/new
   def new
-    @reservations = @schedule.reservations.includes(:child)
+    @reservations = current_user.reservations.where(schedule_id: @schedule).includes(:child)
     @children = current_user.children
                   .age_between(@schedule.klass)
                   .except_with(@schedule.reservations)
