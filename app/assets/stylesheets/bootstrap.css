@@ -3294,7 +3294,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 
     }
     .navbar-nav.navbar-right:last-child {
-        margin-right: -15px;
+        margin-right: -30px;
     }
 }
 @media (min-width: 992px) {
