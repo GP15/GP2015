@@ -11,6 +11,7 @@ class Schedule < ActiveRecord::Base
                        numericality: { only_integer: true, greater_than: 0 }
 
   scope :sort_by_datetime_asc, -> { order(:starts_at, :ends_at) }
+  scope :starting_today, -> { where('starts_at >= ?', Time.zone.today) }
 
   # Custom Ransack methods
   ransacker :start_date, type: :date do
