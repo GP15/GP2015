@@ -17,6 +17,7 @@
 @media (max-width: 1383px) {
     /*  navigation  */
     .sub-menu ul { right: -25px; z-index: 99; }
+    .search-form {width:80%}
 
     /*  blog home slider  */
     .blog-slider-con figcaption h3 { letter-spacing: 1px; }
@@ -32,6 +33,9 @@
     
     /* spa */
     .spa-sider .slider-content .get-bg { margin-bottom: 10%;}
+    
+    /* client */
+    .client-text {padding: 0 35px;}
 }
 @media only screen and (min-width: 991px) and (max-width: 1200px) {
     .md-display-block { display: block !important}
@@ -261,7 +265,7 @@
     .shrink-nav .nav > li { margin: 16px 15px; }
     .nav-white.shrink-nav .navbar-nav li a { color: #fff; }
 
-    .navbar .text-right { background-color: rgba(27, 22, 28, 0.95); clear: both; min-height: 0; padding: 0;  position: absolute; top: 76px; width: 100%; }
+    .navbar .text-right { background-color: rgba(27, 22, 28, 0.95); clear: both; min-height: 0; padding: 0;  position: absolute; top: 80px; width: 100%; }
     .navbar.shrink-nav .text-right { top: 56px; }
     .static-sticky .text-right { top: 90px !important;}
 
@@ -366,6 +370,7 @@
     .sm-margin-lr-four { margin-left: 4% !important; margin-right: 4% !important;}
     .sm-background-image-right { background-position: center right !important;}
     .sm-pull-none { float: none !important}
+    .sm-width-100 { width:100% !important}
 
     /*  features    */
     .features-section.col-md-12.col-sm-6 { padding: 0 2% !important; }
@@ -573,6 +578,8 @@
     #top-search { margin-left: 13px;}
     .search-cart-header i { padding: 5px; }
     .top-cart .fa-shopping-cart { padding: 5px; margin-right: 0;}
+    .page-title-small .breadcrumb { margin-top:2%}
+    
 }
 @media (max-width: 920px) {
     /*  blog home slider  */
@@ -694,7 +701,7 @@
     .xs-letter-spacing-6 { letter-spacing: 6px !important}
     .xs-center-col { float: none !important; margin-left: auto !important; margin-right: auto !important;}
     .xs-padding-eight { padding: 8%; }
-    .xs-position-inherit { position: inherit;}
+    .xs-position-inherit { position: inherit !important;}
     .xs-line-height-18 { line-height: 18px !important;}
     
     /*  background color  */
@@ -1063,6 +1070,7 @@
     
     /*  coming soon  */
     .notify-me-main { position: inherit; margin-top: 27px;}
+    
 }
 @media (max-width: 700px) {
     /*  countdown timer  */
@@ -1168,6 +1176,8 @@
     .btn-black.btn-small.margin-two { margin-top: 5%; }
     .scrollToTop { display: none !important; }
     .highlight-button-black-background { padding: 20px 29px; }
+    .search-form .search-input {font-size:17px; font-weight:400; padding:5px 2px}
+    .search-form .search-button { top:18px; font-size:14px;}
 
     /*  carousel slide  */
     .slider-text .col-md-3 { margin: 0 auto; width: 78%; }
@@ -1194,6 +1204,7 @@
     .key-person:hover .key-person-details { bottom: 200px; }
     .key-person { max-height: 430px; max-width: 274px; margin: 0 auto; }
     .key-person .person-post { display: block; min-height: 0; }
+    .team-member .team-details  { height: 55%;}
 
     /*  case study slider  */
     .case-study-slider .col-sm-5 { margin: 0; width: 95%; }
@@ -1342,7 +1353,7 @@
 
     /*======*  agency  *======*/
     .agency-header h1 { font-size: 47px; line-height: 57px; }
-    .agency-team .team-details { padding-top: 20%; }
+    .agency-team .team-details { padding-top: 20%; height: 100% }
 
     /*======*  restaurant  *======*/
     .restaurant-header h1 { letter-spacing: 4px; }
@@ -1470,7 +1481,7 @@
 /*  only mobile devices landscape view  */
 @media screen and (max-width: 320px) , screen and (max-height: 480px) {
     .navbar-fixed-top .navbar-collapse, 
-    .navbar-fixed-bottom .navbar-collapse { max-height: 235px !important; }
+    .navbar-fixed-bottom .navbar-collapse { max-height: 275px !important; }
 }
 @media (max-width: 320px) {
     .highlight-button-black-border {font-size: 18px;padding: 10px 20px;}
