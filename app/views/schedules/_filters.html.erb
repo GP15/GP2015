@@ -2,47 +2,54 @@
   <div class="container">
     <div class="row">
       <%= search_form_for @q do |f| %>
-        <div class="col-md-3">
+
+        <!-- Select menu for choosing an activity -->
+        <div class="col-md-2 field">
           <%= f.label :activity_id_eq, "Activity", class: "no-margin-bottom" %>
           <%= f.collection_select :activity_id_eq, @activities, :id, :name, include_blank: 'All' %>
         </div>
-        <div class="col-md-3">
+
+        <!-- Select menu for choosing a city -->
+        <div class="col-md-2 field">
           <%= f.label :city_id_eq, "City", class: "no-margin-bottom" %>
           <%= f.collection_select :city_id_eq, @cities, :id, :name, include_blank: 'All' %>
         </div>
-        <div class="col-md-4">
-          <label class="display-block no-margin-bottom">Time</label>
-          <%= f.time_select :starts_at_gteq, ampm: true, minute_step: 15, default: { hour: '07' },
-                with_css_classes: true %>
-          <label class="label-in-between">to</label>
-          <%= f.time_select :ends_at_lteq, ampm: true, minute_step: 15,
-                default: { hour: '23' }, with_css_classes: true %>
-        </div>
-        <div class="col-md-12">
-          <label>Date: </label>
-          <label class="radio-select"><%= f.radio_button :starts_at_eq, Date.today %>Today</label>
-          <label class="radio-select"><%= f.radio_button :starts_at_eq, Date.tomorrow %>Tomorrow</label>
-          <label class="radio-select">
-            <%= f.radio_button :starts_at_eq, Date.today + 2 %><%= (Date.today + 2).strftime("%e %b") %>
-          </label>
-          <label class="radio-select">
-            <%= f.radio_button :starts_at_eq, Date.today + 3 %><%= (Date.today + 3).strftime("%e %b") %>
-          </label>
-          <label class="radio-select">
-            <%= f.radio_button :starts_at_eq, Date.today + 4 %><%= (Date.today + 4).strftime("%e %b") %>
-          </label>
-          <label class="radio-select">
-            <%= f.radio_button :starts_at_eq, Date.today + 5 %><%= (Date.today + 5).strftime("%e %b") %>
-          </label>
-          <label class="radio-select">
-            <%= f.radio_button :starts_at_eq, Date.today + 6 %><%= (Date.today + 6).strftime("%e %b") %>
-          </label>
+
+        <!-- Select menu for choosing a date -->
+        <div class="col-md-2 field">
+          <label class="display-block no-margin-bottom">Date</label>
+          <%= f.select :start_date_eq, options_for_select([
+                ['Today', Time.zone.today],
+                ['Tomorrow', Time.zone.tomorrow],
+                [(Time.zone.today + 2).strftime("%d %b"), Time.zone.today + 2],
+                [(Time.zone.today + 3).strftime("%d %b"), Time.zone.today + 3],
+                [(Time.zone.today + 4).strftime("%d %b"), Time.zone.today + 4],
+                [(Time.zone.today + 5).strftime("%d %b"), Time.zone.today + 5],
+                [(Time.zone.today + 6).strftime("%d %b"), Time.zone.today + 6]
+              ], @q.start_date_eq), include_blank: true %>
         </div>
 
-        <div class="col-md-12 margin-two">
+        <div class="col-md-4 field">
+          <!-- Select menu for choosing a starting time -->
+          <label class="display-block no-margin-bottom">Time</label>
+          <%= f.time_select :start_time_gteq,
+                ampm: true, minute_step: 15, default: { hour: '07' },
+                with_css_classes: true %>
+
+          <label class="label-in-between">to</label>
+
+          <!-- Select menu for choosing an ending time -->
+          <%= f.time_select :end_time_lteq,
+                ampm: true, minute_step: 15, default: { hour: '23', minute: '45' },
+                with_css_classes: true %>
+        </div>
+
+        <!-- Filter & Reset Filter buttons -->
+        <div class="col-md-12">
           <%= f.submit "Filter", class: primary_button_small %>
           <%= link_to "Reset", request.path, class: secondary_button_small %>
         </div>
+
       <% end %>
     </div>
   </div>
