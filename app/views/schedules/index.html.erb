@@ -14,28 +14,36 @@
               <tr>
                 <th>Date</th>
                 <th>Activity</th>
+                <th>Level</th>
                 <th>Studio</th>
                 <th>City</th>
-                <th>Time</th>
-                <th>Age</th>
-                <th>Level</th>
+                <th class="text-center">Time</th>
+                <th class="text-center">Age</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               <% @schedules.each do |schedule| %>
                 <tr>
-                  <td><%= schedule.starts_at.strftime("%-d %b %Y") %></td>
-                  <td><%= link_to schedule.klass.name, schedule_path(schedule), class: "link-underline" if schedule.klass %></td>
-                  <td><%= link_to schedule.partner.company, partner_path(schedule.partner), class: "link-underline" if schedule.partner %></td>
-                  <td><%= schedule.city.name if schedule.city %></td>
+                  <td><%= schedule.starts_at.strftime("%d %b %Y") %></td>
                   <td>
+                    <%= link_to schedule.klass.name, schedule_path(schedule),
+                          class: "link-underline" if schedule.klass %>
+                  </td>
+                  <td><%= schedule.klass.level if schedule.klass %></td>
+                  <td>
+                    <%= link_to schedule.partner.company, partner_path(schedule.partner),
+                          class: "link-underline" if schedule.partner %>
+                  </td>
+                  <td><%= schedule.city.name if schedule.city %></td>
+                  <td class="text-center">
                     <%= schedule.starts_at.strftime("%l:%M%P") %> —
                     <%= schedule.ends_at.strftime("%l:%M%P") %>
                   </td>
-                  <td><%= schedule.klass.age_start %> - <%= schedule.klass.age_end %></td>
-                  <td><%= schedule.klass.level if schedule.klass %></td>
-                  <td><%= reserve_button(schedule) %></td>
+                  <td class="text-center">
+                    <%= schedule.klass.age_start %> - <%= schedule.klass.age_end %>
+                  </td>
+                  <td class="text-center"><%= reserve_button(schedule) %></td>
                 </tr>
               <% end %>
             </tbody>

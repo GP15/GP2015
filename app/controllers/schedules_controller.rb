@@ -102,7 +102,7 @@ class SchedulesController < ApplicationController
       )
     end
 
-    def end_datetime # Copies date from starts_at params.
+    def end_datetime # Modify ends_at params by copying the date from starts_at params.
       DateTime.civil(
         schedule_params["starts_at(1i)"].to_i,
         schedule_params["starts_at(2i)"].to_i, schedule_params["starts_at(3i)"].to_i,
