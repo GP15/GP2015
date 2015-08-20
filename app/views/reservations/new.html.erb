@@ -1,8 +1,9 @@
 <% provide(:title, "Reserve a class for #{@schedule.klass.name}") %>
 
-<%= render 'layouts/nav_dark_text' %>
+<%= render 'layouts/nav' %>
+<%= render partial: 'layouts/page_title', locals: { page_title: 'Reservation' } %>
 
-<section class="margin-one">
+<section class="padding-three">
   <div class="container">
 
     <div class="row">

@@ -22,13 +22,13 @@
       <!-- main menu -->
       <div class="col-md-10 no-padding-right accordion-menu text-right">
         <div class="navbar-collapse collapse">
-          <ul id="accordion" class="nav navbar-nav navbar-right panel-group">
+          <ul id="accordion" class="nav navbar-nav navbar-right panel-group link-white">
             <% if user_signed_in? %>
-              <li><%= link_to "Home",         current_user %></li>
-              <li><%= link_to "Find classes", schedules_path %></li>
-              <li><%= link_to "Partners",     partners_path %></li>
-              <li><%= link_to "Settings",     edit_user_registration_path %></li>
-              <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
+              <li><%= link_to "Dashboard",    current_user %></li>
+              <li><%= link_to "Schedules",    schedules_path  %></li>
+              <li><%= link_to "Partners",     partners_path  %></li>
+              <li><%= link_to "Settings",     edit_user_registration_path  %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: "delete"  %></li>
             <% else %>
               <li><%= link_to "Home",      root_url %></li>
               <li><%= link_to "Partners",  partners_path %></li>
@@ -42,6 +42,8 @@
     </div>
   </div>
 </nav>
+<!--
 <% if user_signed_in? %>
   <div class="alert-style7 alert-success clear-both"><%= notice %></div>
 <% end %>
+ -->

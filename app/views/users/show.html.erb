@@ -1,8 +1,9 @@
-<% provide(:title, "User Dashboard") %>
+<% provide(:title, "Dashboard") %>
 
-<%= render 'layouts/nav_dark_text' %>
+<%= render 'layouts/nav' %>
+<%= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' } %>
 
-<section class="margin-five padding-three">
+<section class="padding-two">
   <div class="container">
     <div class="row">
       <div class="col-md-2">

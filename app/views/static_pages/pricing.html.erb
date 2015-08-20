@@ -1,16 +1,14 @@
 <% provide(:title, "Pricing") %>
 
-<%= render 'layouts/nav_dark_text' %>
+<%= render 'layouts/nav' %>
+<%= render partial: 'layouts/page_title', locals: { page_title: 'Pricing' } %>
 
-<section>
+<section class="padding-two">
   <div class="container">
     <div class="row">
       <div class="pricing">
         <div class="col-md-4 center-col sm-margin-bottom-five sm-no-margin-top">
           <div class="pricing-box no-border">
-            <div class="pricing-title">
-              <h3>Pricing</h3>
-            </div>
             <div class="pricing-price">
               <span class="price-unit">RM</span>99<span class="price-tenure">/month for 1st child</span>
             </div>

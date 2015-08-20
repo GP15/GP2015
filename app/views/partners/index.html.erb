@@ -1,9 +1,9 @@
 <% provide(:title, "Partners") %>
 
-<%= render 'layouts/nav_dark_text' %>
-<%= render 'page_title' %>
+<%= render 'layouts/nav' %>
+<%= render partial: 'layouts/page_title', locals: { page_title: 'Partners' } %>
 
-<section class="padding-two">
+<section class="padding-four">
   <div class="container">
     <div class="row">
       <% @partners.each do |partner| %>
