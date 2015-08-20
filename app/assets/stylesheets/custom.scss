@@ -14,7 +14,10 @@
 .uppercase { text-transform: uppercase !important;}
 .height-300 { max-height: 250px; }
 .link-underline, .link-underline:hover, .underline-hover:hover { text-decoration: underline; }
+.link-white li a { color: #FFF !important; font-weight: 700; }
 .green-text { color: #00BE60 !important; }
+.bg-blue { background-color: #0048B9; }
+
 
 /*  Kits
 ====================================== */
@@ -29,10 +32,36 @@
   font-weight: 600 !important;
 }
 
-.page-title-medium {
+.page-title-default {
+  padding: 100px 0 0;
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #FFF;
+    letter-spacing: 3px;
+    border-bottom: 3px solid #e6af2a;
+  }
+}
+
+.hero-frontpage {
   min-height: 465px;
-  padding: 175px 0 0 !important;
-  h1 { font-size: 25px !important; }
+  padding: 185px 0 0 !important;
+  h1, span { color: #FFF; }
+  h1 {
+    font-size: 25px !important;
+    letter-spacing: 1px !important;
+  }
+}
+
+.hero-partner {
+  min-height: 400px;
+  padding: 100px 0 0 !important;
+  h1, span { color: #FFF; font-weight: 700 !important; }
+  h1 {
+    font-size: 25px !important;
+    letter-spacing: 6px;
+    margin-bottom: 5px;
+  }
 }
 
 .blog-post-images {
