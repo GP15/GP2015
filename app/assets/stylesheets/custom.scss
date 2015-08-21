@@ -1,28 +1,46 @@
-/*  Custom
+/* ===================================
+    Custom
 ====================================== */
-.text-s-medium { font-size:12px !important; line-height:20px !important;}
-.text-13px { font-size:13px !important; line-height:21px !important;}
-.margin-five-top { margin-top: 5% !important; }
-.margin-eight-top { margin-top: 8% !important; }
-.margin-ten-top { margin-top: 10% !important; }
-.margin-two-four { margin-top: 2% !important; margin-bottom: 4% !important; }
-.margin-two-six { margin-top: 2% !important; margin-bottom: 6% !important; }
-.uppercase { text-transform: uppercase !important;}
+
+/* margin */
+.margin-five-top    { margin-top: 5% !important; }
+.margin-eight-top   { margin-top: 8% !important; }
+.margin-ten-top     { margin-top: 10% !important; }
+.margin-two-four    { margin-top: 2% !important; margin-bottom: 4% !important; }
+.margin-two-six     { margin-top: 2% !important; margin-bottom: 6% !important; }
+
+/* height */
 .height-170 { max-height: 170px; }
-.height-300 { max-height: 250px; }
-.link-underline, .link-underline:hover, .underline-hover:hover { text-decoration: underline; }
+.height-250 { max-height: 250px; }
+
+/* links */
+.link-underline,
+.link-underline:hover,
+.underline-hover:hover {
+  text-decoration: underline;
+}
+
 .link-white li a { color: #FFF !important; font-weight: 700; }
-.green-text { color: #00BE60 !important; }
-.bg-blue { background-color: #0048B9; }
 
-
-/*  Typography
+/* ===================================
+    Typography
 ====================================== */
+
+/* text sizes */
+.text-12px { font-size:12px !important; line-height:20px !important; }
+.text-13px { font-size:13px !important; line-height:21px !important; }
+
+/* text color */
+.green-text { color: #00BE60 !important; }
+
+/* text property */
+.uppercase { text-transform: uppercase !important; }
+
+/* description */
 dl {
   margin-top: unset;
   margin-bottom: unset;
 }
-
 .dl-custom {
   margin-top: 20px;
   dt { width: 100px; }
@@ -30,64 +48,13 @@ dl {
   hr { margin: 8px; }
 }
 
-/*  Kits
+/* ===================================
+    Background color
 ====================================== */
-.non-sticky-nav {
-  position: absolute;
-  display: inline-table;
-  .logo-light { height: 55px; vertical-align: middle; display: table-cell; }
-}
+.bg-blue { background-color: #0048B9; }
 
-.page-title span {
-  font-size: 12px !important;
-  font-weight: 600 !important;
-}
-
-.page-title-default {
-  padding: 100px 0 0;
-  h1 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #FFF;
-    letter-spacing: 3px;
-    border-bottom: 3px solid #e6af2a;
-  }
-}
-
-.hero-frontpage {
-  min-height: 465px;
-  padding: 185px 0 0 !important;
-  h1, span { color: #FFF; }
-  h1 {
-    font-size: 25px !important;
-    letter-spacing: 1px !important;
-  }
-}
-
-.hero-partner {
-  min-height: 400px;
-  padding: 100px 0 0 !important;
-  h1, span { color: #FFF; font-weight: 700 !important; }
-  h1 {
-    font-size: 25px !important;
-    letter-spacing: 6px;
-    margin-bottom: 5px;
-  }
-}
-
-.blog-post-images {
-  background-color: #FFF !important;
-  max-height: 150px;
-  min-height: 150px;
-}
-
-/*  Table
-====================================== */
-.table-cell-center {
-  th, td { text-align: center !important; }
-}
-
-/*  Buttons
+/* ===================================
+    Buttons
 ====================================== */
 .btn { margin-right: 5px !important; }
 .btn.btn-small { padding: 1px 10px 2px 12px !important; }
@@ -95,12 +62,20 @@ dl {
   border: 1px solid #000 !important;
   &:hover { background-color: #444 !important; color: #FFF !important; }
 }
-.btn-small-black-border-light:hover { background-color: #FFF !important; color: #000 !important; }
+.btn-small-black-border-light:hover {
+  background-color: #FFF !important;
+  color: #000 !important;
+}
 
-/*  Forms
+/* ===================================
+    Forms
 ====================================== */
 .field {
-  label { margin-bottom: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
+  label {
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 600;
+  }
   input, textarea {
     font-size: 12px;
     margin-bottom: 10px;
@@ -113,6 +88,7 @@ dl {
   input, textarea { border-color: #FF849B; }
 }
 
+// select { width: unset !important; }
 select { font-size: 12px !important; text-transform: none !important; }
 
 .select-short  { width: 50px; }
@@ -135,7 +111,8 @@ select { font-size: 12px !important; text-transform: none !important; }
   input[type="radio"] { margin-right: 6px; }
 }
 
-/*  Alerts
+/* ===================================
+    Alerts
 ====================================== */
 .alert-style7 {
   font-size: 13px;
@@ -147,3 +124,75 @@ select { font-size: 12px !important; text-transform: none !important; }
 .alert-success { color: #000000; background-color: #00FFB2; }
 .alert-danger  { color: #E51313; background-color: #FFF; }
 .alert-success, .alert-danger { border-color: rgba(0,0,0,0); }
+
+/* ===================================
+    Table
+====================================== */
+.table-cell-center {
+  th, td { text-align: center !important; }
+}
+
+/* ===================================
+    Navigation
+====================================== */
+.non-sticky-nav {
+  position: absolute;
+  display: inline-table;
+  .logo-light {
+    height: 55px;
+    vertical-align: middle;
+    display: table-cell;
+  }
+}
+
+/* ===================================
+    Page title
+====================================== */
+.page-title span {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+.page-title-default {
+  padding: 100px 0 0;
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #FFF;
+    letter-spacing: 3px;
+    border-bottom: 3px solid #e6af2a;
+  }
+}
+
+/* ===================================
+    Section
+====================================== */
+.hero-frontpage {
+  min-height: 465px;
+  padding: 185px 0 0 !important;
+  h1, span { color: #FFF; }
+  h1 {
+    font-size: 25px !important;
+    letter-spacing: 1px !important;
+  }
+}
+
+.hero-partner {
+  min-height: 400px;
+  padding: 100px 0 0 !important;
+  h1, span { color: #FFF; font-weight: 700 !important; }
+  h1 {
+    font-size: 25px !important;
+    letter-spacing: 6px;
+    margin-bottom: 5px;
+  }
+}
+
+/* ===================================
+    Panel
+====================================== */
+.blog-post-images {
+  background-color: #FFF !important;
+  max-height: 150px;
+  min-height: 150px;
+}
