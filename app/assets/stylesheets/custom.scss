@@ -1,8 +1,3 @@
-/* ===================================
-    Google font
-====================================== */
-@import url(https://fonts.googleapis.com/css?family=Kreon:700);
-
 /*  Custom
 ====================================== */
 .text-s-medium { font-size:12px !important; line-height:20px !important;}
@@ -17,7 +12,6 @@
 .link-white li a { color: #FFF !important; font-weight: 700; }
 .green-text { color: #00BE60 !important; }
 .bg-blue { background-color: #0048B9; }
-
 
 /*  Kits
 ====================================== */
@@ -131,9 +125,49 @@ select { font-size: 12px !important; text-transform: none !important; }
 .alert-danger  { color: #E51313; background-color: #FFF; }
 .alert-success, .alert-danger { border-color: rgba(0,0,0,0); }
 
-/*  Partners
+/* ===================================
+    Google font
 ====================================== */
-#partner-list { background-color: rgba(165, 190, 230, 0.1); }
+@import url(https://fonts.googleapis.com/css?family=Kreon:700);
+
+/* ===================================
+    Overlay
+====================================== */
+.overlay-dark {
+  background-color: #000;
+  opacity: 0.5;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left: 0;
+}
+
+/* ===================================
+    Partners
+====================================== */
+#partner-list {
+  background-color: rgba(165, 190, 230, 0.1);
+  padding: 50px 0;
+}
+
+.hero-partner-list {
+  height: 350px;
+  padding: 150px 0 0;
+  background: image-url('klcc_350_darken.jpg');
+  background-size: cover !important;
+  background-position: center center;
+  background-repeat: no-repeat !important;
+  position: relative;
+  h1 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #FFF;
+    letter-spacing: 6px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+}
 
 .partner-grid { margin: 0 auto; }
 
@@ -146,7 +180,7 @@ select { font-size: 12px !important; text-transform: none !important; }
   .title {
     font-family: 'Kreon', serif;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     display: block;
     color: #222;
     text-transform: uppercase;
@@ -179,4 +213,11 @@ select { font-size: 12px !important; text-transform: none !important; }
     text-transform:uppercase;
     color: #797979;
   }
+}
+
+/* ===================================
+    Mobile
+====================================== */
+@media screen and (max-width: 767px) {
+  #partner-list { padding: 40px 0; }
 }
