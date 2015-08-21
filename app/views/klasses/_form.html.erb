@@ -5,18 +5,18 @@
   <%= f.text_field :name %>
 </div>
 <div class="field">
-  <%= f.label :activity_id, "Category" %>
+  <%= f.label :activity_id, "Category", class: "display-block" %>
   <%= collection_select(:klass, :activity_id, Activity.order(:name), :id, :name) %>
 </div>
 <div class="field">
-  <%= f.label :level %>
+  <%= f.label :level, class: "display-block" %>
   <%= f.select :level, Klass::LEVEL, include_blank: true %>
 </div>
 <div class="field">
   <%= f.label :age_start, "Age Group", class: "display-block" %>
-  <%= f.select :age_start, 4..17, {}, {class: "select-short"} %>
-  <%= f.label :age_end, " — " %>
-  <%= f.select :age_end, 4..17, {selected: @klass.age_end || 17}, {class: "select-short"} %>
+  <%= f.select :age_start, 4..17, {} %>
+  <%= f.label :age_end, " to ", class: "label-in-between" %>
+  <%= f.select :age_end, 4..17, { selected: @klass.age_end || 17 } %>
 </div>
 <div class="field">
   <%= f.label :description %>

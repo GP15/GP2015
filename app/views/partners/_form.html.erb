@@ -13,11 +13,11 @@
   <%= f.text_area :address, rows: 3 %>
 </div>
 <div class="field">
-  <%= f.label :city_id %>
+  <%= f.label :city_id, class: "display-block" %>
   <%= collection_select(:partner, :city_id, City.order(:name), :id, :name) %>
 </div>
 <div class="field">
-  <%= f.label :state %>
+  <%= f.label :state, class: "display-block" %>
   <%= f.select :state, Partner::STATES %>
 </div>
 <div class="field">

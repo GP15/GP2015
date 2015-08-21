@@ -75,6 +75,7 @@ dl {
     margin-bottom: 0;
     font-size: 13px;
     font-weight: 600;
+    height: 22px;
   }
   input, textarea {
     font-size: 12px;
@@ -88,16 +89,17 @@ dl {
   input, textarea { border-color: #FF849B; }
 }
 
-// select { width: unset !important; }
-select { font-size: 12px !important; text-transform: none !important; }
+select {
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin: 0 0 20px 0;
+  max-width: 100%;
+  resize: none;
+}
 
-.select-short  { width: 50px; }
-.hour, .minute { margin-bottom: 0; }
-.minute { width: 50px; }
+// select menu for time select
 .hour   { width: 70px; }
-.day    { width: 55px; }
-.month  { width: 110px; }
-.year   { width: 70px; }
+.minute { width: 50px; }
 
 .label-in-between { margin: 0 15px; text-transform: none !important; }
 
