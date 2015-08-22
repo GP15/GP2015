@@ -9,10 +9,12 @@
       <div class="col-md-6 center-col text-center">
         <%= link_to "⇽ back", :back, class: "clearfix" %>
 
-        <%= image_tag @schedule.partner.img_url, alt: "photo of #{@schedule.partner.company}", class: "margin-four height-300" %>
+        <%= image_tag @schedule.partner.img_url, alt: "photo of #{@schedule.partner.company}",
+            class: "margin-four height-250" %>
         <span class="clearfix"><%= @schedule.klass.level %></span>
         <h1><%= @schedule.klass.name %></h1>
-        <p><%= link_to @schedule.partner.company, partner_path(@schedule.partner), class: "link-underline" %> — <%= @schedule.city.name %></p>
+        <p><%= link_to @schedule.partner.company, partner_path(@schedule.partner),
+               class: "link-underline" %> — <%= @schedule.city.name %></p>
         <p><%= @schedule.klass.description %></p>
 
         <table class="table">

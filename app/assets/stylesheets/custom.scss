@@ -103,16 +103,6 @@ select {
 
 .label-in-between { margin: 0 15px; text-transform: none !important; }
 
-.radio-select {
-  font-size: 11px;
-  margin: 0 0 0 1px;
-  border: 1px solid #DFDFDF;
-  border-radius: 5px;
-  padding: 0 10px 1px 11px;
-  background-color: #F8F8F8;
-  input[type="radio"] { margin-right: 6px; }
-}
-
 /* ===================================
     Alerts
 ====================================== */
@@ -137,6 +127,10 @@ select {
 /* ===================================
     Navigation
 ====================================== */
+.navbar-default .navbar-nav > li > a:hover {
+  border-bottom: 2px solid #FFF;
+}
+
 .non-sticky-nav {
   position: absolute;
   display: inline-table;

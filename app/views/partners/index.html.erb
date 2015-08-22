@@ -13,8 +13,10 @@
               <%= link_to image_tag(partner.img_url, alt: "photo of #{partner.company}"), partner %>
             </div>
             <div class="post-details">
-              <%= link_to partner.company, partner, class: "post-title margin-one no-margin-bottom" %>
-              <p class="no-padding-top text-s-medium"><%= partner.klasses.map { |klass| klass.name }.join(", ") %></p>
+              <%= link_to partner.company, partner, class: "font-weight-600 margin-three no-margin-bottom" %>
+              <p class="no-padding-top text-12px">
+                <%= partner.klasses.map { |klass| klass.name }.join(", ") %>
+              </p>
               <span class="post-author"><%= partner.city.name %></span>
             </div>
           </div>
