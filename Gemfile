@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise',       '~> 3.5.1' # user authentication
 gem 'ransack',      '~> 1.6.6' # search/filter ActiveRecords
+gem 'faker',        '~> 1.5.0' # generate fake data, useful for db seeds
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
