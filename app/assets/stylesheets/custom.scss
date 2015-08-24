@@ -96,3 +96,35 @@ select { font-size: 12px !important; text-transform: none !important; }
 .alert-success { color: #000000; background-color: #00FFB2; }
 .alert-danger  { color: #E51313; background-color: #FFF; }
 .alert-success, .alert-danger { border-color: rgba(0,0,0,0); }
+
+/*  Partners
+====================================== */
+.partner-grid { margin: 0 auto; }
+
+.partner-grid-item {
+  width: 300px;
+  border: 1px solid rgba(95, 95, 95, 0.15);
+  padding: 20px 20px 8px 20px;
+  margin-bottom: 25px;
+  background-color: #FFF;
+  .title {
+    font-size: 15px;
+    display: block;
+    color: #222;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-top: 5px;
+  }
+  .klass {
+    font-size: 13px;
+    line-height: 20px;
+    color: #333;
+  }
+  .city {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform:uppercase;
+    color: #797979;
+  }
+}

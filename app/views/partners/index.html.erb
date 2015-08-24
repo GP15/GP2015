@@ -3,23 +3,19 @@
 <%= render 'layouts/nav_dark_text' %>
 <%= render 'page_title' %>
 
-<section class="padding-two">
+<section class="padding-two bg-gray">
   <div class="container">
     <div class="row">
-      <% @partners.each do |partner| %>
-        <div class="col-md-4 col-sm-4 margin-four-bottom">
-          <div class="blog-post">
-            <div class="blog-post-images">
-              <%= link_to image_tag(partner.img_url, alt: "photo of #{partner.company}"), partner %>
-            </div>
-            <div class="post-details">
-              <%= link_to partner.company, partner, class: "post-title margin-one no-margin-bottom" %>
-              <p class="no-padding-top text-s-medium"><%= partner.klasses.map { |klass| klass.name }.join(", ") %></p>
-              <span class="post-author"><%= partner.city.name %></span>
-            </div>
+      <div class="partner-grid">
+        <% @partners.each do |partner| %>
+          <div class="partner-grid-item">
+            <%= link_to image_tag(partner.img_url, alt: "photo of #{partner.company}"), partner %>
+            <%= link_to partner.company, partner, class: "title" %>
+            <p class="klass"><%= partner.klasses.map { |klass| klass.name }.join(", ") %></p>
+            <span class="city"><%= partner.city.name %></span>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
