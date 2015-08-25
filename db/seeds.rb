@@ -47,7 +47,7 @@ partners = Partner.all
 levels   = ["", "Beginner", "Intermediate", "Advanced", "Multilevel"]
 
 partners.each do |partner|
-  6.times do |n|
+  rand(0..6).times do |n|
     klass_name = [activities.sample, Faker::Team.creature.capitalize].join(" ")
     partner.klasses.create!(
       name: klass_name,
@@ -55,7 +55,7 @@ partners.each do |partner|
       age_start: rand(4..12),
       age_end: rand(12..17),
       description: Faker::Lorem.paragraph,
-      activity_id: rand(1..7)
+      activity_id: rand(1..6)
     )
   end
 end
