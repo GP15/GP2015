@@ -1,3 +1,8 @@
+/* ===================================
+    Google font
+====================================== */
+@import url(https://fonts.googleapis.com/css?family=Kreon:700);
+
 /*  Custom
 ====================================== */
 .text-s-medium { font-size:12px !important; line-height:20px !important;}
@@ -99,22 +104,25 @@ select { font-size: 12px !important; text-transform: none !important; }
 
 /*  Partners
 ====================================== */
+#partner-list { background-color: rgba(165, 190, 230, 0.1); }
+
 .partner-grid { margin: 0 auto; }
 
 .partner-grid-item {
   width: 300px;
   border: 1px solid rgba(95, 95, 95, 0.15);
-  padding: 20px 20px 8px 20px;
+  padding: 15px 15px 8px 15px;
   margin-bottom: 25px;
   background-color: #FFF;
   .title {
+    font-family: 'Kreon', serif;
+    font-weight: 700;
     font-size: 15px;
     display: block;
     color: #222;
-    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: -1px;
-    margin-top: 5px;
+    margin: 10px 0 5px;
+    line-height: 16px;
   }
   .address {
     font-size: 12px;
