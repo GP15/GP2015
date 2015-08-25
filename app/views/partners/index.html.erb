@@ -11,7 +11,12 @@
           <div class="partner-grid-item">
             <%= link_to image_tag(partner.img_url, alt: "photo of #{partner.company}"), partner %>
             <%= link_to partner.company, partner, class: "title" %>
-            <p class="klass"><%= partner.klasses.map { |klass| klass.name }.join(", ") %></p>
+            <p class="address"><%= partner.address %></p>
+            <div class="activity">
+              <% partner.activities.uniq.each do |activity| %>
+                <span><%= activity.name %></span>
+              <% end %>
+            </div>
             <span class="city"><%= partner.city.name %></span>
           </div>
         <% end %>

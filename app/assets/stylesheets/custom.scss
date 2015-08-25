@@ -116,10 +116,25 @@ select { font-size: 12px !important; text-transform: none !important; }
     letter-spacing: -1px;
     margin-top: 5px;
   }
-  .klass {
-    font-size: 13px;
-    line-height: 20px;
+  .address {
+    font-size: 12px;
+    line-height: 18px;
     color: #333;
+    margin-bottom: 20px;
+  }
+  .activity {
+    font-size: 10px;
+    line-height: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    span {
+      background-color: rgba(255, 0, 85, 0.12);
+      color: #98276C;
+      margin: 5px 3px 0 0;
+      padding: 1px 6px 2px 7px;
+      border-radius: 2px;
+      display: inline-block;
+    }
   }
   .city {
     font-size: 10px;
