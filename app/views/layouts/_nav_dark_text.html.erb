@@ -24,7 +24,8 @@
         <div class="navbar-collapse collapse">
           <ul id="accordion" class="nav navbar-nav navbar-right panel-group">
             <li><%= link_to "Home",      root_url %></li>
-            <li><%= link_to "Partners",  partners_path %></li>
+            <!-- Disable turbolink for partners#index link so isotope.js can work properly -->
+            <li><%= link_to "Partners",  partners_path, :"data-no-turbolink" => true %></li>
             <li><%= link_to "Pricing",   pricing_path %></li>
           </ul>
         </div>

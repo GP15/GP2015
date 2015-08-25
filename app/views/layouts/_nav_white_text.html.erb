@@ -10,9 +10,8 @@
       <div class="col-md-9 text-right">
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Home",      root_url,       class: "white-text" %></li>
+          <li><%= link_to "Partners",  partners_path, :"data-no-turbolink" => true, class: "white-text" %></li>
           <li><%= link_to "Pricing",   pricing_path,   class: "white-text"%></li>
-          <li><%= link_to "Schedules", schedules_path, class: "white-text" %></li>
-          <li><%= link_to "Partners",  partners_path,  class: "white-text" %></li>
         </ul>
       </div>
       <!-- end main menu -->
