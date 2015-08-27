@@ -7,7 +7,7 @@ $(document).ready(function() {
     masonry: {
       columnWidth: 300,
       isFitWidth: true,
-      "gutter": 30
+      "gutter": 50
     }
   });
 
