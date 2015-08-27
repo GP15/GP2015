@@ -5,7 +5,7 @@ class PartnersController < ApplicationController
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
 
   def index
-    @partners = Partner.includes(:city, :klasses).order('created_at DESC')
+    @partners = Partner.includes(:city, :activities).order('created_at DESC')
   end
 
   def show

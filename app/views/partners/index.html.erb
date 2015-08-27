@@ -1,27 +1,30 @@
 <% provide(:title, "Partners") %>
 
 <%= render 'layouts/nav' %>
-<%= render partial: 'layouts/page_title', locals: { page_title: 'Partners' } %>
+<%= render 'page_title' %>
 
-<section class="padding-four">
+<section id="partner-list">
   <div class="container">
     <div class="row">
-      <% @partners.each do |partner| %>
-        <div class="col-md-4 col-sm-4 margin-four-bottom">
-          <div class="blog-post">
-            <div class="blog-post-images">
+      <div class="partner-grid">
+        <% @partners.each do |partner| %>
+          <div class="partner-grid-item">
+            <div class="image">
               <%= link_to image_tag(partner.img_url, alt: "photo of #{partner.company}"), partner %>
             </div>
-            <div class="post-details">
-              <%= link_to partner.company, partner, class: "font-weight-600 margin-three no-margin-bottom" %>
-              <p class="no-padding-top text-12px">
-                <%= partner.klasses.map { |klass| klass.name }.join(", ") %>
-              </p>
-              <span class="post-author"><%= partner.city.name %></span>
+            <div class="partner-grid-details">
+              <%= link_to partner.company, partner, class: "title" %>
+              <p class="address"><%= partner.address %></p>
+              <div class="activity">
+                <% partner.activities.uniq.each do |activity| %>
+                  <span><%= activity.name %></span>
+                <% end %>
+              </div>
+              <span class="city"><%= partner.city.name %></span>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>

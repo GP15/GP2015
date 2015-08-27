@@ -3,6 +3,7 @@ class Partner < ActiveRecord::Base
   belongs_to :city
   has_many   :klasses,   dependent: :destroy
   has_many   :schedules, dependent: :destroy
+  has_many   :activities, through: :klasses
 
   validates :company, :address, presence: true
 
