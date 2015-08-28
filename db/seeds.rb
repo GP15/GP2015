@@ -92,3 +92,42 @@ partners.each do |partner|
     end
   end
 end
+
+# Users
+User.create!(email: "user@example.com", password: "123456")
+
+1.upto(9) do |n|
+  User.create!(email: "user#{n}@example.com", password: "123456")
+end
+
+# Children
+def create_children(user, first_name, last_name, age)
+  user.children.create!(
+    first_name: first_name,
+    last_name:  last_name,
+    birth_year: age
+  )
+end
+
+# create children for first user
+first_user = User.first
+last_name = "Fishmaker"
+
+create_children(first_user, "Alice",   last_name, (Date.current.year - 4))
+create_children(first_user, "Bob",     last_name, (Date.current.year - 7))
+create_children(first_user, "Charlie", last_name, (Date.current.year - 13))
+create_children(first_user, "Dave",    last_name, (Date.current.year - 15))
+
+# create children for the rest
+users = User.where.not(id: 1)
+
+users.each do |user|
+  last_name = Faker::Name.last_name
+
+  rand(0..4).times do
+    first_name = Faker::Name.first_name
+    random_age = rand((Date.current.year - 17)..(Date.current.year - 4))
+
+    create_children(user, first_name, last_name, random_age)
+  end
+end
