@@ -59,3 +59,34 @@ partners.each do |partner|
     )
   end
 end
+
+# Schedules
+partners.each do |partner|
+  if partner.klasses.count > 0
+    klass_id = partner.klasses.pluck(:id)
+    year     = Date.current.year
+    month    = Date.current.month
+
+    rand(0..10).times do
+      klass = Klass.find(klass_id.sample)
+
+      day          = rand(1..28)
+      start_hour   = rand(8..13)
+      start_minute = rand(0..59)
+      end_hour     = rand(13..19)
+      end_minute   = rand(0..59)
+
+      starts_at = DateTime.civil(year, month, day, start_hour, start_minute)
+      ends_at   = DateTime.civil(year, month, day, end_hour, end_minute)
+
+      partner.schedules.create!(
+        klass_id:    klass.id,
+        quantity:    rand(5..25),
+        starts_at:   starts_at,
+        ends_at:     ends_at,
+        city_id:     partner.city_id,
+        activity_id: klass.activity_id
+      )
+    end
+  end
+end
