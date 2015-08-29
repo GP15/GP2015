@@ -26,7 +26,7 @@ states = ["Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang",
 s3_test_url    = "https://s3-ap-southeast-1.amazonaws.com/geniuspass/test/"
 partner_images = (1..5).map { |n| "#{s3_test_url}partner#{n}.jpg" }
 
-20.times do |n|
+20.times do
   street_address    = Faker::Address.street_address
   secondary_address = Faker::Address.secondary_address
   postcode          = Faker::Address.postcode
@@ -72,7 +72,7 @@ partners.each do |partner|
     rand(0..10).times do
       klass = Klass.find(klass_id.sample)
 
-      day          = rand(1..28)
+      day          = rand(1..31)
       start_hour   = rand(8..13)
       start_minute = rand(0..59)
       end_hour     = rand(13..19)
