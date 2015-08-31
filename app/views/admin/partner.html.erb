@@ -3,85 +3,21 @@
 <section class="no-padding-section">
   <div class="container">
 
-    <div class="row">
-      <div class="col-md-12">
-        <h1><%= link_to @partner.company, partner_path(@partner),
-                target: "_blank", class: "underline-hover" %></h1>
-        <small>
-          <% if @partner.phone.present? %>
-            #<span class="padding-left-right-px"><%= @partner.phone %></span>
-          <% end %>
-          #<span class="padding-left-right-px"><%= @partner.address %>, <%= @partner.city.name %>, <%= @partner.state %></span>
-          — <%= link_to "edit", edit_partner_path(@partner), class: "link-underline" %>
-        </small>
-      </div>
-    </div>
+    <%= render 'partner_nav' %>
 
     <div class="row">
-      <div class="col-md-12">
-        <table class="table table-condensed margin-two-six">
-          <thead>
-            <tr>
-              <th>Class</th>
-              <th>Activity</th>
-              <th>Age</th>
-              <th>Level</th>
-              <th>Description</th>
-              <th><%= link_to "+ add", new_partner_klass_path(@partner), class: "pull-right green-text" %></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @klasses.each do |klass| %>
-              <tr>
-                <td><%= klass.name %></td>
-                <td><%= klass.activity.name %></td>
-                <td><%= klass.age_start %> - <%= klass.age_end %></td>
-                <td><%= klass.level %></td>
-                <td><%= klass.description.truncate(80, separator: ' ') %></td>
-                <td><%= link_to "edit", edit_partner_klass_path(@partner, klass),
-                        class: "pull-right link-underline" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+      <div class="col-md-8">
+        <% if @partner.klasses.present? && @schedules.present? %>
+          <%= render 'partner_schedules' %>
+        <% elsif @partner.klasses.present? && @schedules.empty? %>
+          <%= link_to "+ Add a schedule", new_partner_schedule_path(@partner), class: "green-text" %>
+        <% else %>
+          <p>
+            Looks like you don't have any class created.
+            <%= link_to "Create", new_partner_klass_path(@partner), class: "green-text" %> one first.
+          </p>
+        <% end %>
       </div>
     </div>
-
-    <% if @klasses.present? %>
-      <div class="row">
-        <div class="col-md-7">
-          <table class="table table-condensed">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Schedule</th>
-                <th>Class</th>
-                <th class="text-center">Time</th>
-                <th class="text-center">Class Size</th>
-                <th><%= link_to "+ add", new_partner_schedule_path(@partner), class: "pull-right green-text" %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @schedules.each do |schedule| %>
-                <tr>
-                  <td>
-                    <%= link_to 'X', partner_schedule_path(@partner, schedule),
-                        method: :delete,
-                        data: { confirm: "Delete schedule for #{schedule.klass.name} on #{schedule.starts_at.strftime("%d %b %Y")} ?" } %>
-                  </td>
-                  <td><%= schedule.starts_at.strftime("%d %b %Y") %></td>
-                  <td><%= schedule.klass.name if schedule.klass %></td>
-                  <td class="text-center"><%= schedule.starts_at.strftime("%l:%M%P") if schedule.starts_at %> — <%= schedule.ends_at.strftime("%l:%M%P") if schedule.ends_at %></td>
-                  <td class="text-center"><%= schedule.quantity %></td>
-                  <td><%= link_to 'edit', edit_partner_schedule_path(@partner, schedule),
-                          class: "pull-right link-underline" %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    <% end %>
-
   </div>
 </section>

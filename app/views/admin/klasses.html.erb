@@ -1,0 +1,38 @@
+<% provide(:title, "#{@partner.company}: Classes") %>
+
+<section class="no-padding-section">
+  <div class="container">
+
+    <%= render 'partner_nav' %>
+
+    <% if @klasses.empty? %>
+      <%= link_to "+ Add a class", new_partner_klass_path(@partner), class: "green-text" %>
+    <% else %>
+      <table class="table table-condensed table-striped th-border-unset text-13px">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Activity</th>
+            <th>Age</th>
+            <th>Level</th>
+            <th>Description</th>
+            <th><%= link_to "+ add", new_partner_klass_path(@partner), class: "pull-right green-text" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @klasses.each do |klass| %>
+            <tr>
+              <td><%= klass.name %></td>
+              <td><%= klass.activity.name %></td>
+              <td><%= klass.age_start %> - <%= klass.age_end %></td>
+              <td><%= klass.level %></td>
+              <td><%= klass.description.truncate(80, separator: ' ') %></td>
+              <td><%= link_to "edit", edit_partner_klass_path(@partner, klass),
+                      class: "pull-right link-underline" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</section>

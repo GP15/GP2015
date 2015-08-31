@@ -18,7 +18,7 @@ class KlassesController < ApplicationController
     @klass = @partner.klasses.build(klass_params)
 
     if @klass.save
-      redirect_to admin_partner_path(@partner.id), notice: 'New class created.'
+      redirect_to admin_partner_klasses_path(@partner), notice: 'New class created.'
     else
       render :new
     end
@@ -30,7 +30,7 @@ class KlassesController < ApplicationController
 
     if @klass.update(klass_params)
       @klass.schedules.update_all(activity_id: klass_params[:activity_id])
-      redirect_to admin_partner_path(@partner.id), notice: 'Class updated.'
+      redirect_to admin_partner_klasses_path(@partner), notice: 'Class updated.'
     else
       render :edit
     end
@@ -41,7 +41,7 @@ class KlassesController < ApplicationController
     @klass   = @partner.klasses.find(params[:id])
     @klass.destroy
 
-    redirect_to admin_partner_path(@partner.id), notice: 'Class deleted.'
+    redirect_to admin_partner_klasses_path(@partner), notice: 'Class deleted.'
   end
 
   private

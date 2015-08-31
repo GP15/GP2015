@@ -1,0 +1,30 @@
+<table class="table table-condensed table-striped th-border-unset text-13px">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Schedule</th>
+      <th>Class</th>
+      <th class="text-center">Time</th>
+      <th class="text-center">Class Size</th>
+      <th><%= link_to "+ add", new_partner_schedule_path(@partner), class: "pull-right green-text" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td>
+          <%= link_to 'X', partner_schedule_path(@partner, schedule),
+              method: :delete,
+              data: { confirm: "Delete schedule for #{schedule.klass.name} on #{schedule.starts_at.strftime("%-d/%-m/%Y")} ?" } %>
+        </td>
+        <td><%= schedule.starts_at.strftime("%d %b %Y") %></td>
+        <td><%= schedule.klass.name if schedule.klass %></td>
+        <td class="text-center"><%= schedule.starts_at.strftime("%l:%M%P") if schedule.starts_at %>
+        — <%= schedule.ends_at.strftime("%l:%M%P") if schedule.ends_at %></td>
+        <td class="text-center"><%= schedule.quantity %></td>
+        <td><%= link_to 'edit', edit_partner_schedule_path(@partner, schedule),
+                class: "pull-right link-underline" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
