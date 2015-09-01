@@ -6,6 +6,7 @@
       <th>Class</th>
       <th class="text-center">Time</th>
       <th class="text-center">Class Size</th>
+      <th class="text-center">Reservations</th>
       <th><%= link_to "+ add", new_partner_schedule_path(@partner), class: "pull-right green-text" %></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td class="text-center"><%= schedule.starts_at.strftime("%l:%M%P") if schedule.starts_at %>
         — <%= schedule.ends_at.strftime("%l:%M%P") if schedule.ends_at %></td>
         <td class="text-center"><%= schedule.quantity %></td>
+        <td class="text-center green-text"><%= reservation_count(schedule.reservations.size) %></td>
         <td><%= link_to 'edit', edit_partner_schedule_path(@partner, schedule),
                 class: "pull-right link-underline" %></td>
       </tr>

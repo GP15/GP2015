@@ -6,7 +6,7 @@
     <%= render 'partner_nav' %>
 
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-10">
         <% if @partner.klasses.present? && @schedules.present? %>
           <%= render 'partner_schedules' %>
         <% elsif @partner.klasses.present? && @schedules.empty? %>
