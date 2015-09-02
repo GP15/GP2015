@@ -3,7 +3,8 @@
 <section class="no-padding-section">
   <div class="container">
 
-    <%= render 'partner_nav' %>
+    <%= render 'partner_info' %>
+    <%= tabs %>
 
     <% if @klasses.empty? %>
       <%= link_to "+ Add a class", new_partner_klass_path(@partner), class: "green-text" %>
