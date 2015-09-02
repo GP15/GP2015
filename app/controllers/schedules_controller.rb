@@ -61,7 +61,7 @@ class SchedulesController < ApplicationController
     @schedule.ends_at     = end_datetime
 
     if @schedule.save
-      redirect_to admin_partner_path(@partner.id), notice: 'Schedule updated.'
+      redirect_to admin_schedule_path(@schedule), notice: 'Schedule updated.'
     else
       @klasses = @partner.klasses
       render :edit
@@ -71,7 +71,7 @@ class SchedulesController < ApplicationController
   # DELETE /partners/:id/schedules/:id
   def destroy
     @schedule.destroy
-    redirect_to admin_partner_path(@partner.id), notice: 'Schedule deleted.'
+    redirect_to admin_partner_path(@partner), notice: 'Schedule deleted.'
   end
 
   private

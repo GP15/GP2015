@@ -11,7 +11,7 @@
           <%= render 'form', f: f %>
 
           <div class="margin-five pull-right">
-            <%= link_to "Cancel", admin_partner_path(@partner), class: secondary_button_small %>
+            <%= link_to "Cancel", :back, class: secondary_button_small %>
             <%= f.submit "Update", class: primary_button_small %>
           </div>
         <% end %>

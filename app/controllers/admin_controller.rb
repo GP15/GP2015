@@ -19,6 +19,14 @@ class AdminController < ApplicationController
     @klasses = @partner.klasses.includes(:activity).order(:age_start, :age_end, :name)
   end
 
+  # GET admin/schedules/:id
+  def schedule
+    @schedule = Schedule.find(params[:id])
+    @partner  = @schedule.partner
+    @reservations = @schedule.reservations.includes(:child)
+  end
+
+  # GET /admin/settings
   def settings
     @cities     = City.order(:name)
     @activities = Activity.order(:name)

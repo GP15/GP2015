@@ -1,0 +1,54 @@
+<% provide(:title, @schedule.klass.name) %>
+
+<section class="no-padding-section">
+  <div class="container">
+
+    <%= render 'partner_info' %>
+    <%= tabs %>
+
+    <div class="row margin-four">
+      <div class="col-md-3">
+        <div class="box text-13px">
+          <div class="box-title"><%= @schedule.klass.name %></div>
+          <div class="box-body">
+            <dl class="dl-horizontal dl-schedule">
+              <dt>Date</dt>
+              <dd><%= @schedule.starts_at.strftime("%d %b %Y") %></dd>
+              <dt>Time</dt>
+              <dd><%= @schedule.starts_at.strftime("%l:%M%P") %> — <%= @schedule.ends_at.strftime("%l:%M%P") %></dd>
+              <dt>Age</dt>
+              <dd><%= @schedule.klass.age_start %> - <%= @schedule.klass.age_end %></dd>
+              <dt>Max</dt>
+              <dd><%= @schedule.quantity %> students</dd>
+            </dl>
+          </div>
+          <div class="box-buttons">
+              <%= link_to 'edit', edit_partner_schedule_path(@partner, @schedule), class: "edit" %>
+              <%= link_to 'X', partner_schedule_path(@partner, @schedule), method: :delete,
+                  data: { confirm: "Delete this schedule?" }, class: "delete" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <% if @reservations.empty? %>
+          <p>No reservations found.</p>
+        <% else %>
+          <table class="table table-condensed table-striped th-border-unset width-40">
+            <thead>
+              <th>Reservations</th>
+              <th class="pull-right">Age</th>
+            </thead>
+            <tbody class="text-13px">
+              <% @reservations.each do |reservation| %>
+                <tr>
+                  <td><%= reservation.child.first_name %> <%= reservation.child.last_name %></td>
+                  <td><span class="pull-right"><%= age(reservation.child) %></span></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
