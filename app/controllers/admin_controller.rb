@@ -7,6 +7,11 @@ class AdminController < ApplicationController
     @partners   = Partner.includes(:city).order(:company)
   end
 
+  # GET /admin/partners
+  def partners
+    @partners = Partner.includes(:city).order(:company)
+  end
+
   # GET /admin/partners/:id
   def partner
     @partner = Partner.find(params[:id])

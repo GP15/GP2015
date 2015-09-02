@@ -1,0 +1,30 @@
+<section class="padding-one">
+  <div class="container">
+    <div class="row">
+      <h1 class="title-large text-center margin-two-bottom">Partners</h1>
+
+      <div class="col-md-6 col-md-offset-3">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Partner</th>
+              <th colspan="2"><%= link_to "+ add", new_partner_path, class: "pull-right green-text" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @partners.each do |partner| %>
+              <tr>
+                <td><%= link_to partner.company, admin_partner_path(partner), class: "link-underline" %></td>
+                <td><%= partner.city.name %></td>
+                <td class="pull-right">
+                  <%= link_to "link", partner_url(partner), target: "_blank", class: "link-underline" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
