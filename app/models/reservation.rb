@@ -1,7 +1,7 @@
 class Reservation < ActiveRecord::Base
 
   belongs_to :child
-  belongs_to :schedule
+  belongs_to :schedule, counter_cache: true
   belongs_to :user
 
   scope :upcoming, -> { where('schedules.starts_at >= ?', Time.zone.now) }
