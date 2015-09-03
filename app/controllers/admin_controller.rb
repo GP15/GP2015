@@ -4,7 +4,9 @@ class AdminController < ApplicationController
 
   # GET /admin
   def index
-    @partners   = Partner.includes(:city).order(:company)
+    @schedules = Schedule.joins(:reservations).uniq
+                         .includes(:klass, :partner, :reservations)
+                         .sort_by_datetime_asc
   end
 
   # GET /admin/partners
