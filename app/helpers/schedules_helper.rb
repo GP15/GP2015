@@ -23,4 +23,9 @@ module SchedulesHelper
     schedule == true ? "✓" : ""
   end
 
+  # Change text color to gray if schedule is archived.
+  def neutralize_color_if(archived)
+    archived ?  "dark-gray-text" : "green-text"
+  end
+
 end

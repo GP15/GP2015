@@ -18,7 +18,9 @@
         <td class="text-center"><%= schedule.starts_at.strftime("%l:%M%P") if schedule.starts_at %>
         — <%= schedule.ends_at.strftime("%l:%M%P") if schedule.ends_at %></td>
         <td class="text-center"><%= schedule.quantity %></td>
-        <td class="text-center green-text"><%= reservation_count(schedule.reservations.size) %></td>
+        <td class="text-center <%= neutralize_color_if((schedule.archived)) %>">
+          <%= reservation_count(schedule.reservations.size) %>
+        </td>
         <td class="text-center"><%= archived?(schedule.archived) %></td>
         <td><%= link_to "view", admin_schedule_path(schedule), class: "pull-right" %></td>
       </tr>
