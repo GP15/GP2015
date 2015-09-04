@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'admin',              to: 'admin#index'
   get 'admin/partners',     to: 'admin#partners', as: 'admin_partners'
   get 'admin/partners/:id', to: 'admin#partner', as: 'admin_partner'
+  get 'admin/partners/:id/past_schedules', to: 'admin#past_schedules', as: 'admin_partner_past_schedules'
   get 'admin/partners/:id/klasses', to: 'admin#klasses', as: 'admin_partner_klasses'
   get 'admin/schedules/:id',        to: 'admin#schedule', as: 'admin_schedule'
   get 'admin/settings',     to: 'admin#settings'

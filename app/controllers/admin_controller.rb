@@ -17,7 +17,13 @@ class AdminController < ApplicationController
   # GET /admin/partners/:id
   def partner
     @partner = Partner.find(params[:id])
-    @schedules = @partner.schedules.includes(:klass, :reservations).sort_by_datetime_asc
+    @schedules = @partner.schedules.includes(:klass, :reservations).recent.sort_by_datetime_asc
+  end
+
+  # GET /admin/partners/:id/past_schedules
+  def past_schedules
+    @partner = Partner.find(params[:id])
+    @schedules = @partner.schedules.includes(:klass, :reservations).in_the_past.sort_by_datetime_desc
   end
 
   # GET /admin/partners/:id/klasses

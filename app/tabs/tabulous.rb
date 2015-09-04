@@ -2,6 +2,14 @@ Tabulous.setup do
 
   tabs do
 
+    klasses_tab do
+      text          { 'Classes' }
+      link_path     { admin_partner_klasses_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('klasses').of_controller('admin') }
+    end
+
     schedules_tab do
       text          { 'Schedules' }
       link_path     { admin_partner_path }
@@ -10,12 +18,12 @@ Tabulous.setup do
       active_when   { in_action('partner').of_controller('admin') }
     end
 
-    klasses_tab do
-      text          { 'Classes' }
-      link_path     { admin_partner_klasses_path }
+    past_schedules_tab do
+      text          { 'Past Schedules' }
+      link_path     { admin_partner_past_schedules_path }
       visible_when  { true }
       enabled_when  { true }
-      active_when   { in_action('klasses').of_controller('admin') }
+      active_when   { in_action('past_schedules').of_controller('admin') }
     end
 
   end

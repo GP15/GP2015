@@ -1,4 +1,4 @@
-<% provide(:title, @partner.company) %>
+<% provide(:title, "Past Schedules - #{@partner.company}") %>
 
 <section class="no-padding-section">
   <div class="container">
@@ -9,12 +9,9 @@
     <div class="row">
       <div class="col-md-10">
         <% if @partner.klasses.present? && @schedules.present? %>
-          <div class="margin-two-bottom">
-            <%= link_to "+ Add a schedule", new_partner_schedule_path(@partner), class: "green-text" %>
-          </div>
           <%= render 'partner_schedules' %>
         <% elsif @partner.klasses.present? && @schedules.empty? %>
-          <%= link_to "+ Add a schedule", new_partner_schedule_path(@partner), class: "green-text" %>
+          <p>No schedule found.</p>
         <% else %>
           <p>
             Looks like you don't have any class created.

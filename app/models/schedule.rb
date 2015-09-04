@@ -11,7 +11,10 @@ class Schedule < ActiveRecord::Base
                        numericality: { only_integer: true, greater_than: 0 }
 
   scope :sort_by_datetime_asc, -> { order(:starts_at, :ends_at) }
+  scope :sort_by_datetime_desc, -> { order('starts_at DESC, ends_at DESC') }
 
+  scope :in_the_past,        -> { where('starts_at < ?',  Time.zone.now) }
+  scope :recent,             -> { where('starts_at >= ?', Time.zone.now) }
   scope :six_hours_from_now, -> { where('starts_at >= ?', Time.zone.now + 6.hours) }
 
   # Custom Ransack methods
