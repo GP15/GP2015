@@ -6,6 +6,7 @@ class AdminController < ApplicationController
   def index
     @schedules = Schedule.joins(:reservations).uniq
                          .includes(:klass, :partner, :reservations)
+                         .where(archived: false)
                          .sort_by_datetime_asc
   end
 
