@@ -18,4 +18,9 @@ module SchedulesHelper
     end
   end
 
+  # Check if schedule is archived and display appropriate symbol.
+  def archived?(schedule)
+    schedule == true ? "✓" : ""
+  end
+
 end

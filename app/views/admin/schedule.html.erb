@@ -28,6 +28,15 @@
                   data: { confirm: "Delete this schedule?" }, class: "delete" %>
           </div>
         </div>
+        <div class="link-underline margin-four">
+          <% if @schedule.archived %>
+            <%= link_to "Unarchive", unarchive_schedule_path(@schedule), method: :patch,
+                data: { confirm: "Unarchive this schedule?" } %>
+          <% else %>
+            <%= link_to "Archive", archive_schedule_path(@schedule), method: :patch,
+                data: { confirm: "Archive this schedule?" } %>
+          <% end %>
+        </div>
       </div>
       <div class="col-md-9">
         <% if @reservations.empty? %>

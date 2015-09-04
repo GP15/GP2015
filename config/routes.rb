@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get  'pricing', to: 'static_pages#pricing'
 
   resources :schedules, only: [:index, :show] do
+    patch 'archive',   on: :member
+    patch 'unarchive', on: :member
     resources :reservations, only: [:new, :create, :destroy]
   end
 
