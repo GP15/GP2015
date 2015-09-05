@@ -5,6 +5,8 @@ class Klass < ActiveRecord::Base
   has_many   :schedules
 
   validates :name, presence: true
+  validates :reservation_limit, presence: true,
+            numericality: { only_integer: true, greater_than: -1 }
 
   # A class difficulty levels.
   LEVEL = ["Beginner", "Intermediate", "Advanced", "Multilevel"]

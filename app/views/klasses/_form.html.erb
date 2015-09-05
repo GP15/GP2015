@@ -19,6 +19,12 @@
   <%= f.select :age_end, 4..17, { selected: @klass.age_end || 17 } %>
 </div>
 <div class="field">
+  <%= f.label :reservation_limit, "Reservation Limit", class: "display-block margin-one-bottom" %>
+  <%= f.number_field :reservation_limit, class: "width-10 margin-one-right no-margin-bottom" %>
+  <small> per child per month</small>
+  <small class="deep-light-gray-text display-block">Set as 0 for unlimited.</small>
+</div>
+<div class="field margin-two-top">
   <%= f.label :description %>
   <%= f.text_area :description, rows: 5 %>
 </div>

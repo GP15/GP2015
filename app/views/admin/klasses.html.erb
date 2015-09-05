@@ -16,6 +16,7 @@
             <th>Activity</th>
             <th>Age</th>
             <th>Level</th>
+            <th class="text-center">Reservation Limit</th>
             <th>Description</th>
             <th><%= link_to "+ add", new_partner_klass_path(@partner), class: "pull-right green-text" %></th>
           </tr>
@@ -27,6 +28,7 @@
               <td><%= klass.activity.name %></td>
               <td><%= klass.age_start %> - <%= klass.age_end %></td>
               <td><%= klass.level %></td>
+              <td class="text-center"><%= is_unlimited?(klass.reservation_limit) %></td>
               <td><%= klass.description.truncate(80, separator: ' ') %></td>
               <td><%= link_to "edit", edit_partner_klass_path(@partner, klass),
                       class: "pull-right link-underline" %></td>

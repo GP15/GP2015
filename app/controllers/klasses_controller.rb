@@ -47,7 +47,7 @@ class KlassesController < ApplicationController
   private
 
     def klass_params
-      params.require(:klass).permit(:name, :activity_id, :level,
-                                    :age_start, :age_end, :description)
+      params.require(:klass).permit(:name, :activity_id, :level, :age_start, :age_end,
+                                    :reservation_limit, :description)
     end
 end
