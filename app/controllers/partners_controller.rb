@@ -5,7 +5,11 @@ class PartnersController < ApplicationController
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
 
   def index
-    @partners = Partner.includes(:city, :activities).order('created_at DESC')
+    # stackoverflow.com/questions/32411688/rails-optimize-querying-maximum-values-from-associated-table
+    @partners = Partner.joins("left join klasses on klasses.partner_id = partners.id")
+                       .select("partners.*, max(klasses.reservation_limit) as booking_limit")
+                       .includes(:city, :activities)
+                       .group(:id)
   end
 
   def show
