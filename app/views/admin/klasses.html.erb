@@ -29,7 +29,7 @@
               <td><%= klass.age_start %> - <%= klass.age_end %></td>
               <td><%= klass.level %></td>
               <td class="text-center"><%= is_unlimited?(klass.reservation_limit) %></td>
-              <td><%= klass.description.truncate(80, separator: ' ') %></td>
+              <td><%= klass.description.truncate(60, separator: ' ') %></td>
               <td><%= link_to "edit", edit_partner_klass_path(@partner, klass), class: "pull-right" %></td>
             </tr>
           <% end %>
