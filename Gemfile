@@ -22,6 +22,7 @@ group :development, :test do
   gem 'spring'                  # speeds development by running app in background
   gem 'hirb'   # Pretty rails console output. Enable in console using "Hirb.enable".
   gem 'quiet_assets', '~> 1.1.0' # turns off asset pipeline log
+  gem 'bullet',       '~> 4.14.7' # check for N+1 queries and unused eager loading
 end
 
 group :production do

@@ -40,4 +40,11 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Configurations for Bullet gem
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.rails_logger = true # add warnings directly to the Rails log
+  end
+
 end
