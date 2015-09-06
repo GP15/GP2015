@@ -68,16 +68,18 @@ partners.each do |partner|
   if partner.klasses.count > 0
     klass_id = partner.klasses.pluck(:id)
     year     = Date.current.year
-    month    = Date.current.month
+    months   = [Date.current.month, Date.current.month + 1]
+    minute   = [0, 15, 30, 45]
 
     rand(0..10).times do
       klass = Klass.find(klass_id.sample)
 
-      day          = rand(1..31)
+      month        = months.sample
+      day          = rand(1..28)
       start_hour   = rand(8..13)
-      start_minute = rand(0..59)
-      end_hour     = rand(13..19)
-      end_minute   = rand(0..59)
+      start_minute = minute.sample
+      end_hour     = rand(13..22)
+      end_minute   = minute.sample
 
       starts_at = DateTime.civil(year, month, day, start_hour, start_minute)
       ends_at   = DateTime.civil(year, month, day, end_hour, end_minute)
@@ -95,9 +97,9 @@ partners.each do |partner|
 end
 
 # Users
-User.create!(email: "user@example.com", password: "123456")
+User.create!(email: "user1@example.com", password: "123456")
 
-1.upto(9) do |n|
+2.upto(9) do |n|
   User.create!(email: "user#{n}@example.com", password: "123456")
 end
 
@@ -112,12 +114,12 @@ end
 
 # create children for first user
 first_user = User.first
-last_name = "Fishmaker"
+last_name = "von Anon"
 
 create_children(first_user, "Alice",   last_name, (Date.current.year - 4))
 create_children(first_user, "Bob",     last_name, (Date.current.year - 7))
 create_children(first_user, "Charlie", last_name, (Date.current.year - 13))
-create_children(first_user, "Dave",    last_name, (Date.current.year - 15))
+create_children(first_user, "Dave",    last_name, (Date.current.year - 16))
 
 # create children for the rest
 users = User.where.not(id: 1)
