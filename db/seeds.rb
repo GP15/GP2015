@@ -56,6 +56,7 @@ partners.each do |partner|
       level: levels.sample,
       age_start: rand(4..12),
       age_end: rand(12..17),
+      reservation_limit: rand(0..11),
       description: Faker::Lorem.paragraph,
       activity_id: activity.id
     )
