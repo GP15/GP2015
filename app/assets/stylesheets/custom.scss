@@ -217,6 +217,8 @@ select {
   th, td { text-align: center !important; }
 }
 
+.th-border-unset > thead > tr > th { border-bottom: unset; }
+
 /* ===================================
     Navigation
 ====================================== */
