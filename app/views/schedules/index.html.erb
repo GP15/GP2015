@@ -22,18 +22,16 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody class="text-13px">
+            <tbody class="text-13px link-underline">
               <% @schedules.each do |schedule| %>
                 <tr>
                   <td><%= schedule.starts_at.strftime("%d %b %Y") %></td>
                   <td>
-                    <%= link_to schedule.klass.name, schedule_path(schedule),
-                          class: "link-underline" if schedule.klass %>
+                    <%= link_to schedule.klass.name, schedule_path(schedule) if schedule.klass %>
                   </td>
                   <td><%= schedule.klass.level if schedule.klass %></td>
                   <td>
-                    <%= link_to schedule.partner.company, partner_path(schedule.partner),
-                          class: "link-underline" if schedule.partner %>
+                    <%= link_to schedule.partner.company, partner_path(schedule.partner) if schedule.partner %>
                   </td>
                   <td><%= schedule.city.name if schedule.city %></td>
                   <td class="text-center">

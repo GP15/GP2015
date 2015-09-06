@@ -25,11 +25,11 @@
 .width-10 { width: 10% !important; }
 
 /* links */
-.link-underline,
-.link-underline:hover,
-.underline-hover:hover {
-  text-decoration: underline;
-}
+// .underline, .underline:hover, .underline-hover:hover {
+//   text-decoration: underline;
+// }
+
+.link-underline a { text-decoration: underline; }
 
 .link-white li a { color: #FFF !important; font-weight: 700; }
 
@@ -85,7 +85,7 @@ dl {
 /* ===================================
     Buttons
 ====================================== */
-.btn { margin-right: 5px !important; }
+.btn { margin-right: 5px !important; text-decoration: none !important; }
 .btn.btn-small { padding: 1px 10px 2px 12px !important; }
 .highlight-button-dark {
   border: 1px solid #000 !important;

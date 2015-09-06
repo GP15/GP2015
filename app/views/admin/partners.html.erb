@@ -11,14 +11,12 @@
               <th colspan="2"><%= link_to "+ add", new_partner_path, class: "pull-right green-text" %></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="link-underline">
             <% @partners.each do |partner| %>
               <tr>
-                <td><%= link_to partner.company, admin_partner_path(partner), class: "link-underline" %></td>
+                <td><%= link_to partner.company, admin_partner_path(partner) %></td>
                 <td><%= partner.city.name %></td>
-                <td class="pull-right">
-                  <%= link_to "link", partner_url(partner), target: "_blank", class: "link-underline" %>
-                </td>
+                <td><%= link_to "link", partner_url(partner), target: "_blank", class: "pull-right" %></td>
               </tr>
             <% end %>
           </tbody>

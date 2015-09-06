@@ -13,11 +13,11 @@
               <th><%= link_to "+ add", new_city_path, class: "pull-right green-text" %></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="link-underline">
             <% @cities.each do |city| %>
               <tr>
                 <td><%= city.name %></td>
-                <td><%= link_to "edit", edit_city_path(city), class: "pull-right link-underline" %></td>
+                <td><%= link_to "edit", edit_city_path(city), class: "pull-right" %></td>
               </tr>
             <% end %>
           </tbody>
@@ -32,11 +32,11 @@
               <th><%= link_to "+ add", new_activity_path, class: "pull-right green-text" %></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="link-underline">
             <% @activities.each do |activity| %>
               <tr>
                 <td><%= activity.name %></td>
-                <td><%= link_to "edit", edit_activity_path(activity), class: "pull-right link-underline" %></td>
+                <td><%= link_to "edit", edit_activity_path(activity), class: "pull-right" %></td>
               </tr>
             <% end %>
           </tbody>

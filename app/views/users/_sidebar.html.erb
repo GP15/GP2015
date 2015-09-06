@@ -5,10 +5,11 @@
       <th><%= link_to "+ add", new_user_child_path(current_user), class: "pull-right green-text" %></th>
     </tr>
   </thead>
-  <tbody class="text-13px">
+  <tbody class="text-13px link-underline">
     <% @children.each do |child| %>
       <tr>
-        <td colspan="2"><%= link_to child.first_name, edit_user_child_path(current_user, child), class: "link-underline" %> (<%= age(child) %>)</td>
+        <td><%= link_to child.first_name, edit_user_child_path(current_user, child) %></td>
+        <td class="pull-right"><%= age(child) %></td>
       </tr>
     <% end %>
   </tbody>
