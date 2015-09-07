@@ -20,8 +20,11 @@
           <%= render 'reservations' %>
         <% end %>
 
-        <% if @children.present? %>
+        <% if @children.present? && (Time.zone.now <= @schedule.starts_at - 6.hours) %>
           <%= render 'form' %>
+        <% elsif Time.zone.now.between?(@schedule.starts_at - 6.hours, @schedule.starts_at) %>
+          <span>Note:</span>
+          <p>A class starting less than 6 hours can't be reserved for additional children.</p>
         <% end %>
 
         <% if @reservations.empty? && @children.empty? %>
