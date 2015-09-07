@@ -5,24 +5,30 @@
     <div class="row">
       <h1 class="title-large text-center margin-two-bottom">Partners</h1>
 
-      <div class="col-md-6 col-md-offset-3">
-        <table class="table table-condensed table-striped th-border-unset">
-          <thead>
-            <tr>
-              <th>Partner</th>
-              <th colspan="2"><%= link_to "+ add", new_partner_path, class: "pull-right green-text" %></th>
-            </tr>
-          </thead>
-          <tbody class="link-underline">
-            <% @partners.each do |partner| %>
+      <div class="col-md-6 center-col">
+        <% if City.count == 0 %>
+          <p class="text-center">
+            You need to <%= link_to "add a city", new_city_path, class: "underline" %> before you can add a partner.
+          </p>
+        <% else %>
+          <table class="table table-condensed table-striped">
+            <thead>
               <tr>
-                <td><%= link_to partner.company, admin_partner_path(partner) %></td>
-                <td><%= partner.city.name %></td>
-                <td><%= link_to "link", partner_url(partner), target: "_blank", class: "pull-right" %></td>
+                <th>Partner</th>
+                <th colspan="2"><%= link_to "+ add", new_partner_path, class: "pull-right green-text" %></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody class="link-underline">
+              <% @partners.each do |partner| %>
+                <tr>
+                  <td><%= link_to partner.company, admin_partner_path(partner) %></td>
+                  <td><%= partner.city.name %></td>
+                  <td><%= link_to "link", partner_url(partner), target: "_blank", class: "pull-right" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
       </div>
 
     </div>
