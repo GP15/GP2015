@@ -22,7 +22,7 @@
             <% @schedules.each do |schedule| %>
               <tr>
                 <td><%= schedule.starts_at.strftime("%d %b %Y") %></td>
-                <td><%= schedule.klass.name if schedule.klass %></td>
+                <td><%= link_to_reservation_if(schedule) %></td>
                 <td>
                   <%= schedule.starts_at.strftime("%l:%M%P") %> —
                   <%= schedule.ends_at.strftime("%l:%M%P") %>

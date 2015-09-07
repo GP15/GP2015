@@ -18,6 +18,15 @@ module SchedulesHelper
     end
   end
 
+  # Link to new reservation page if signed in.
+  def link_to_reservation_if(schedule)
+    if user_signed_in?
+      link_to schedule.klass.name, new_schedule_reservation_path(schedule), class: "underline"
+    else
+      link_to schedule.klass.name, schedule_path(schedule), class: "underline"
+    end
+  end
+
   # Check if schedule is archived and display appropriate symbol.
   def archived?(schedule)
     schedule == true ? "✓" : ""

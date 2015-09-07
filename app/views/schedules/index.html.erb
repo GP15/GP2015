@@ -27,7 +27,7 @@
                 <tr>
                   <td><%= schedule.starts_at.strftime("%d %b %Y") %></td>
                   <td>
-                    <%= link_to schedule.klass.name, schedule_path(schedule) if schedule.klass %>
+                    <%= link_to schedule.klass.name, new_schedule_reservation_path(schedule) if schedule.klass %>
                   </td>
                   <td><%= schedule.klass.level if schedule.klass %></td>
                   <td>
@@ -41,7 +41,9 @@
                   <td class="text-center">
                     <%= schedule.klass.age_start %> - <%= schedule.klass.age_end %>
                   </td>
-                  <td class="text-center"><%= reserve_button(schedule) %></td>
+                  <td class="text-center">
+                    <%= link_to 'Reserve', new_schedule_reservation_path(schedule), class: primary_button_small %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

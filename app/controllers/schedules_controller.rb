@@ -3,6 +3,7 @@ class SchedulesController < ApplicationController
   layout 'admin', except: [:index, :show]
 
   before_action :authenticate_admin!, except: [:index, :show]
+  before_action :authenticate_user!,  only:   [:index]
   before_action :set_partner,         except: [:index, :show, :archive, :unarchive]
   before_action :set_schedule,        only:   [:edit, :update, :destroy]
   before_action :set_klass,           only:   [:create, :update]
