@@ -9,45 +9,18 @@
       <div class="col-md-6 center-col text-center">
         <%= link_to "⇽ back", :back, class: "clearfix" %>
 
-        <%= image_tag @schedule.partner.img_url, alt: "photo of #{@schedule.partner.company}",
-            class: "margin-four height-250" %>
-        <span class="clearfix"><%= @schedule.klass.level %></span>
-        <h1><%= @schedule.klass.name %></h1>
-        <p><%= link_to @schedule.partner.company, partner_path(@schedule.partner),
-               class: "link-underline" %> — <%= @schedule.city.name %></p>
-        <p><%= @schedule.klass.description %></p>
+        <%= render 'shared/schedule' %>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="padding-one text-center">Date</th>
-              <th class="padding-one text-center">Time</th>
-              <th class="padding-one text-center">Age</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="padding-two">
-                <%= @schedule.starts_at.strftime("%A, %-d %b %Y") %>
-              </td>
-              <td class="padding-two">
-                <%= @schedule.starts_at.strftime("%l:%M%P") %> — <%= @schedule.ends_at.strftime("%l:%M%P") %>
-              </td>
-              <td class="padding-two">
-                <%= @schedule.klass.age_start %> - <%= @schedule.klass.age_end %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <% if Time.zone.now >= (@schedule.starts_at - 6.hours) %>
-          <p class="deep-light-gray-text">This schedule can't be reserved anymore.</p>
-        <% elsif user_signed_in? && (Time.zone.now < (@schedule.starts_at - 6.hours)) %>
-          <%= link_to "Reserve This Class", new_schedule_reservation_path(@schedule), class: primary_button_medium %>
-        <% else %>
-          <p>Interested to reserve this class for your child?</p>
-          <%= link_to "Get GeniusPass Membership", invite_path, class: primary_button_medium %>
-        <% end %>
+        <div class="margin-eight-top">
+          <% if Time.zone.now >= (@schedule.starts_at - 6.hours) %>
+            <p class="deep-light-gray-text">This schedule can't be reserved anymore.</p>
+          <% elsif user_signed_in? && (Time.zone.now < (@schedule.starts_at - 6.hours)) %>
+            <%= link_to "Reserve This Class", new_schedule_reservation_path(@schedule), class: primary_button_medium %>
+          <% else %>
+            <p>Interested to reserve this class for your child?</p>
+            <%= link_to "Get GeniusPass Membership", invite_path, class: primary_button_medium %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
