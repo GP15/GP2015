@@ -5,7 +5,9 @@
       <tr>
         <th></th>
         <th class="date">Reserved on</th>
-        <th></th>
+        <% if Time.zone.now <= @schedule.starts_at %>
+          <th></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -13,11 +15,13 @@
         <tr>
           <td><%= reservation.child.first_name if reservation.child %></td>
           <td class="date"><%= reservation.created_at.strftime("%-d %b %Y") %></td>
-          <td class="action">
-            <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation),
-                method: :delete,
-                data: { confirm: "Cancel reservation for #{reservation.child.first_name}?" } %>
-          </td>
+          <% if Time.zone.now <= @schedule.starts_at %>
+            <td class="action">
+              <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation),
+                  method: :delete,
+                  data: { confirm: "Cancel reservation for #{reservation.child.first_name}?" } %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
