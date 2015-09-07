@@ -3,59 +3,32 @@
 <%= render 'layouts/nav' %>
 <%= render partial: 'layouts/page_title', locals: { page_title: 'Reservation' } %>
 
-<section class="padding-three">
+<section class="padding-three-six">
   <div class="container">
-
     <div class="row">
-      <div class="col-sm-9 center-col border padding-one">
-        <%= render 'ticket' %>
-      </div>
-    </div>
 
-    <% if @schedule.klass.reservation_limit > 0 %>
-      <div class="row">
-        <div class="col-md-8 center-col margin-two-top">
-          <p>
-            Note: This class can only be reserved for a maximum <%= @schedule.klass.reservation_limit %> times/child/month. Make sure to not overbook!
-          </p>
-        </div>
+      <div class="col-md-6">
+        <%= render 'shared/schedule' %>
       </div>
-    <% end %>
 
-    <% if @reservations.present? %>
-      <div class="row">
-        <div class="col-md-3 center-col margin-four">
-          <h4 class="text-center border-bottom">Current reservations</h4>
-          <ul>
-            <% @reservations.each do |reservation| %>
-              <li>
-                <%= reservation.child.first_name if reservation.child %>
-                <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation),
-                      method: :delete,
-                      data: { confirm: "Cancel reservation for #{reservation.child.first_name}?" },
-                      class: "pull-right" %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
+      <div class="col-md-5 col-md-offset-1">
+        <% if @schedule.klass.reservation_limit > 0 %>
+          <%= render 'limit_notice' %>
+        <% end %>
 
-    <% if @children.present? %>
-      <div class="row margin-four">
-        <div class="col-md-3 center-col">
+        <% if @reservations.present? %>
+          <%= render 'reservations' %>
+        <% end %>
+
+        <% if @children.present? %>
           <%= render 'form' %>
-        </div>
-      </div>
-    <% end %>
+        <% end %>
 
-    <% if @reservations.empty? && @children.empty? %>
-      <div class="row margin-four">
-        <div class="text-center">
-          <p class="light-gray-text">You have no eligible children to reserve this class.</p>
-        </div>
+        <% if @reservations.empty? && @children.empty? %>
+          <%= render 'eligibility_notice' %>
+        <% end %>
       </div>
-    <% end %>
 
+    </div>
   </div>
 </section>

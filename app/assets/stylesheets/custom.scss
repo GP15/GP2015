@@ -17,6 +17,9 @@
 .margin-two-four    { margin-top: 2% !important; margin-bottom: 4% !important; }
 .margin-two-six     { margin-top: 2% !important; margin-bottom: 6% !important; }
 
+/* padding */
+.padding-three-six { padding-top: 3% !important; padding-bottom: 6% !important; }
+
 /* height */
 .height-170 { max-height: 170px; }
 .height-250 { max-height: 250px; }
@@ -66,12 +69,7 @@ dl {
   margin-top: unset;
   margin-bottom: unset;
 }
-.dl-custom {
-  margin-top: 20px;
-  dt { width: 100px; }
-  dd { margin-left: 120px; }
-  hr { margin: 8px; }
-}
+
 .dl-schedule {
   dt { width: 70px; text-align: right; margin-bottom: 5px; }
   dd { margin-left: 90px; }
@@ -162,6 +160,7 @@ select {
     margin: 0 !important;
     padding: 0 20px;
     top: 2px;
+    letter-spacing: 1px;
   }
   li.active {
     border: 1px solid #e5e5e5;
@@ -407,6 +406,42 @@ select {
   hr { margin: 3px 10px; }
 }
 
+/* ===================================
+    Reservations
+====================================== */
+.reservation-limit-notice {
+  margin: 0 0 40px;
+  padding: 15px 0 13px;
+  border: 1px solid #eee;
+  text-align: center;
+  p { margin-bottom: 0; }
+  span {
+    display: block;
+    font-weight: bold;
+    letter-spacing: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.reservation-list {
+  margin: 0 0 60px;
+  h3 {
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-family: 'Roboto Condensed', 'Open Sans', sans-serif;
+    font-size: 18px;
+  }
+  table, thead, tbody, tr { border: 1px solid #eee; width: 100%; }
+  th { font-weight: normal; font-size: 13px; text-transform: uppercase; }
+  th, td { padding: 0 10px; border-left: 1px solid #eee; }
+  th.date { font-size: 11px; letter-spacing: 1px; }
+  td.date { width: 110px; }
+  td.action { width: 30px; }
+  .date { text-align: center; }
+}
+
+/* ===================================
     Mobile
 ====================================== */
 @media screen and (max-width: 767px) {
