@@ -32,7 +32,7 @@
 //   text-decoration: underline;
 // }
 
-.underline, .link-underline a { text-decoration: underline; }
+.underline, .underline:hover, .link-underline a { text-decoration: underline; }
 
 .link-white li a { color: #FFF !important; font-weight: 700; }
 

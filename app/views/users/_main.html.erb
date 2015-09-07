@@ -16,7 +16,11 @@
     <div class="tab-pane fade in active" id="tab3_sec1">
       <div class="row">
         <div class="col-md-12 col-sm-12">
-          <%= render 'reservations', reservations: @current_reservations %>
+          <% if @current_reservations.empty? %>
+            <p>You have no new reservations in the meantime. Find new schedules to reserve in the <%= link_to "schedules", schedules_path, class: "underline" %> section.</p>
+          <% else %>
+            <%= render 'reservations', reservations: @current_reservations %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -25,8 +29,12 @@
     <div class="tab-pane fade in" id="tab3_sec2">
       <div class="row">
         <div class="col-md-12 col-sm-12">
-          <p class="gray-text">Reservations in the past 2 months:</p>
-          <%= render 'reservations', reservations: @past_reservations %>
+          <% if @past_reservations.empty? %>
+            <p>No reservations found in the past.</p>
+          <% else %>
+            <p class="gray-text">Reservations in the past 2 months:</p>
+            <%= render 'reservations', reservations: @past_reservations %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -35,4 +43,3 @@
   <!-- end tab content section -->
 </div>
 <!-- end tab -->
-
