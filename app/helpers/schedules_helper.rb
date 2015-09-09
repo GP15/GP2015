@@ -1,14 +1,5 @@
 module SchedulesHelper
 
-  # Shows either a single date or a date range.
-  def compare_date(start_date, end_date)
-    if start_date.strftime("%d %b %Y") == end_date.strftime("%d %b %Y")
-      "#{start_date.strftime("%d %b %Y")}"
-    else
-      "#{start_date.strftime("%d")} - #{end_date.strftime("%d %b %Y")}"
-    end
-  end
-
   # Reserve buttons that appears in a schedule table.
   def reserve_button(schedule)
     if user_signed_in?
