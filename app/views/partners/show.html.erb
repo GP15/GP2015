@@ -28,7 +28,7 @@
                   <%= schedule.ends_at.strftime("%l:%M%P") %>
                 </td>
                 <td><%= schedule.klass.level if schedule.klass %></td>
-                <td><%= schedule.klass.age_start %>-<%= schedule.klass.age_end %></td>
+                <td><%= schedule.klass.age_start %> - <%= schedule.klass.age_end %></td>
                 <td><%= reserve_button(schedule) %></td>
               </tr>
             <% end %>
