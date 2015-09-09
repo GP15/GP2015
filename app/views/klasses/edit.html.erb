@@ -13,7 +13,7 @@
           <div class="margin-five clearfix">
             <%= link_to 'Delete', [@partner, @klass], method: :delete,
                 data: { confirm: "Delete class <#{@klass.name}>?" },
-                class: "pull-left link-underline padding-two"  %>
+                class: "pull-left underline padding-two"  %>
             <%= f.submit "Update", class: "highlight-button-dark btn btn-small button pull-right" %>
             <%= link_to "Cancel", admin_partner_klasses_path(@partner),
                 class: "btn-small-black-border-light btn btn-small button pull-right" %>

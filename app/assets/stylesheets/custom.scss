@@ -28,11 +28,9 @@
 .width-10 { width: 10% !important; }
 
 /* links */
-// .underline, .underline:hover, .underline-hover:hover {
-//   text-decoration: underline;
-// }
-
-.underline, .underline:hover, .link-underline a { text-decoration: underline; }
+.underline, .underline:hover,
+.underline-hover:hover,
+.link-underline a { text-decoration: underline; }
 
 .link-white li a { color: #FFF !important; font-weight: 700; }
 

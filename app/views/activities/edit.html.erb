@@ -12,7 +12,7 @@
           <div class="margin-five clearfix">
             <%= link_to 'Delete', @activity, method: :delete,
                 data: { confirm: "Delete activity <#{@activity.name}>?" },
-                class: "pull-left link-underline padding-two"  %>
+                class: "pull-left underline padding-two"  %>
             <%= f.submit "Update", class: "highlight-button-dark btn btn-small button pull-right" %>
             <%= link_to "Cancel", admin_settings_path,
                 class: "btn-small-black-border-light btn btn-small button pull-right" %>
