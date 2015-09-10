@@ -11,9 +11,8 @@
           <%= render 'form', f: f %>
 
           <div class="pull-right">
-            <%= link_to "Cancel", current_user,
-                class: "btn-small-black-border-light btn btn-small button" %>
-            <%= f.submit "Add", class: "highlight-button-dark btn btn-small button" %>
+            <%= link_to "Cancel", current_user, class: secondary_button_small %>
+            <%= f.submit "Add", class: primary_button_small %>
           </div>
         <% end %>
 

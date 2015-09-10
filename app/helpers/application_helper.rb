@@ -23,15 +23,19 @@ module ApplicationHelper
 
   # Used as CSS classes
   def primary_button_small
+    "highlight-button-dark btn btn-small button"
+  end
+
+  def primary_button_small_round
     "highlight-button-dark btn btn-small btn-round button"
+  end
+
+  def secondary_button_small
+    "btn-small-black-border-light btn btn-small button"
   end
 
   def primary_button_medium
     "highlight-button-dark btn btn-medium btn-round button"
-  end
-
-  def secondary_button_small
-    "btn-small-black-border-light btn btn-small btn-round button"
   end
 
 end

@@ -42,7 +42,8 @@
                     <%= schedule.klass.age_start %> - <%= schedule.klass.age_end %>
                   </td>
                   <td class="text-center">
-                    <%= link_to 'Reserve', new_schedule_reservation_path(schedule), class: primary_button_small %>
+                    <%= link_to 'Reserve', new_schedule_reservation_path(schedule),
+                        class: primary_button_small_round %>
                   </td>
                 </tr>
               <% end %>

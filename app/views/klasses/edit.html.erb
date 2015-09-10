@@ -14,9 +14,9 @@
             <%= link_to 'Delete', [@partner, @klass], method: :delete,
                 data: { confirm: "Delete class <#{@klass.name}>?" },
                 class: "pull-left underline padding-two"  %>
-            <%= f.submit "Update", class: "highlight-button-dark btn btn-small button pull-right" %>
+            <%= f.submit "Update", class: "#{primary_button_small} pull-right" %>
             <%= link_to "Cancel", admin_partner_klasses_path(@partner),
-                class: "btn-small-black-border-light btn btn-small button pull-right" %>
+                class: "#{secondary_button_small} pull-right" %>
           </div>
         <% end %>
 
