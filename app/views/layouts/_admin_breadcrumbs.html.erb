@@ -1,6 +1,5 @@
 <ol class="breadcrumb text-13px">
   <li><%= link_to "Home", admin_path %></li>
   <li><%= link_to @partner.company, admin_partner_path(@partner) %></li>
-  <li><%= @schedule.klass.name %></li>
-  <li class="active">Reservations</li>
+  <li class="active"><%= @schedule.klass.name %>: Reservations</li>
 </ol>

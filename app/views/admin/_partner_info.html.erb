@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-12">
-    <h1><%= link_to @partner.company, admin_partner_path(@partner), class: "underline-hover" %></h1>
+    <h1><%= link_to @partner.company, partner_path(@partner), target: "_blank",
+            class: "underline-hover" %></h1>
     <small>
       <% if @partner.phone.present? %>
         #<span class="padding-left-right-px"><%= @partner.phone %></span>
