@@ -4,6 +4,8 @@ class Reservation < ActiveRecord::Base
   belongs_to :schedule, counter_cache: true
   belongs_to :user
 
+  validates_presence_of :child_id
+
   scope :upcoming, -> { where('schedules.starts_at >= ?', Time.zone.now) }
 
   scope :sort_by_datetime_asc,  -> { order('schedules.starts_at ASC,  schedules.ends_at ASC') }

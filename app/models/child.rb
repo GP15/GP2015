@@ -4,7 +4,7 @@ class Child < ActiveRecord::Base
   has_many   :reservations, dependent: :destroy
   has_many   :schedules, through: :reservations
 
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :first_name, :last_name, :birth_year
 
   scope :sort_by_age_name, -> { order('birth_year DESC', 'first_name ASC') }
 

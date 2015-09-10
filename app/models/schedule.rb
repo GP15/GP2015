@@ -7,8 +7,8 @@ class Schedule < ActiveRecord::Base
   has_many   :reservations, dependent: :destroy
   has_many   :children, through: :reservations
 
-  validates :quantity, presence: true,
-                       numericality: { only_integer: true, greater_than: 0 }
+  validates_presence_of :klass_id, :starts_at, :ends_at, :quantity
+  validates_numericality_of :quantity, only_integer: true, greater_than: 0
 
   scope :sort_by_datetime_asc, -> { order(:starts_at, :ends_at) }
   scope :sort_by_datetime_desc, -> { order('starts_at DESC, ends_at DESC') }

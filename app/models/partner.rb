@@ -5,7 +5,7 @@ class Partner < ActiveRecord::Base
   has_many   :schedules, dependent: :destroy
   has_many   :activities, through: :klasses
 
-  validates :company, :address, presence: true
+  validates_presence_of :company, :address, :city_id
 
   # A list of states & federal territories in Malaysia.
   STATES = ["Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang",
