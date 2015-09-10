@@ -1,0 +1,40 @@
+<table class="table table-condensed table-striped th-border-unset">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Activity</th>
+      <th>Level</th>
+      <th>Studio</th>
+      <th>City</th>
+      <th class="text-center">Time</th>
+      <th class="text-center">Age</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody class="text-13px link-underline">
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.starts_at.strftime("%d %b %Y") %></td>
+        <td>
+          <%= link_to schedule.klass.name, new_schedule_reservation_path(schedule) if schedule.klass %>
+        </td>
+        <td><%= schedule.klass.level if schedule.klass %></td>
+        <td>
+          <%= link_to schedule.partner.company, partner_path(schedule.partner) if schedule.partner %>
+        </td>
+        <td><%= schedule.city.name if schedule.city %></td>
+        <td class="text-center">
+          <%= schedule.starts_at.strftime("%l:%M%P") %> —
+          <%= schedule.ends_at.strftime("%l:%M%P") %>
+        </td>
+        <td class="text-center">
+          <%= schedule.klass.age_start %> - <%= schedule.klass.age_end %>
+        </td>
+        <td class="text-center">
+          <%= link_to 'Reserve', new_schedule_reservation_path(schedule),
+              class: primary_button_small_round %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
