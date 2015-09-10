@@ -12,7 +12,7 @@
           <li><%= link_to "Home", admin_path %></li>
           <li><%= link_to "Partners", admin_partners_path %></li>
           <li><%= link_to "Settings", admin_settings_path %></li>
-          <li><%= link_to current_admin.email, admin_root_path %></li>
+          <li><%= link_to "Profile",  admin_root_path %></li>
           <li><%= link_to "logout", destroy_admin_session_path, method: :delete %></li>
         </ul>
       </div>
