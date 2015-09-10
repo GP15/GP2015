@@ -32,7 +32,6 @@
           <% if @past_reservations.empty? %>
             <p>No reservations found in the past.</p>
           <% else %>
-            <p class="gray-text">Reservations in the past 2 months:</p>
             <%= render 'reservations', reservations: @past_reservations %>
           <% end %>
         </div>
