@@ -236,11 +236,6 @@ select {
 /* ===================================
     Page title
 ====================================== */
-.page-title span {
-  font-size: 12px !important;
-  font-weight: 600 !important;
-}
-
 .page-title-default {
   padding: 100px 0 0;
   h1 {
@@ -253,27 +248,33 @@ select {
 }
 
 /* ===================================
-    Section
+    Hero
 ====================================== */
-.hero-frontpage {
-  min-height: 465px;
-  padding: 185px 0 0 !important;
-  h1, span { color: #FFF; }
-  h1 {
-    font-size: 25px !important;
-    letter-spacing: 1px !important;
-  }
+.hero {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  h1, p, span { color: #FFF; }
+  h1 { font-size: 25px; letter-spacing: 1px; }
+  p { font-weight: 600; letter-spacing: 1px;}
 }
 
-.hero-partner {
-  min-height: 400px;
-  padding: 100px 0 0 !important;
-  h1, span { color: #FFF; font-weight: 700 !important; }
-  h1 {
-    font-size: 25px !important;
-    letter-spacing: 6px;
-    margin-bottom: 5px;
-  }
+.hero-1 {
+  height: 465px;
+  padding: 175px 0 0;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6), rgba(0,0,0,0.3)),
+              image-url('hero1_465.jpg');
+  h1 { margin-bottom: 15px; font-weight: 600; }
+  p { font-size: 14px; }
+}
+
+.hero-2 {
+  height: 335px;
+  padding: 80px 0 0;
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.6), rgba(0,0,0,0.1)),
+              image-url('hero2_335.jpg');
+  h1 { margin-bottom: 15px; font-weight: 600; }
+  p { font-size: 13px; }
 }
 
 /* ===================================

@@ -1,0 +1,14 @@
+/*!
+ *  style-ie.ccs is Only for IE Browsers
+ */
+
+/* search and cart */
+.top-cart a.shopping-cart { padding-bottom: 30px;}
+#top-search { padding-bottom: 0;}
+.search-cart-header i { padding-bottom: 30px;}
+.search-cart-header .subtitle { padding-bottom: 30px;}
+
+.shrink-nav .search-cart-header .subtitle { padding-bottom: 30px;  right: 0; }
+.shrink-nav .search-cart-header i { padding-bottom: 0px; }
+.sticky-nav { display: block; height: 57px;}
+nav .container { display: block;}
