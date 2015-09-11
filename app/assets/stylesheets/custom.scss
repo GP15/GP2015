@@ -280,6 +280,29 @@ select {
 /* ===================================
     Partners
 ====================================== */
+.hero-partner {
+  height: 350px;
+  padding: 150px 0 0;
+  h1 { font-weight: 700; margin-bottom: 0px; }
+  p { margin-bottom: 0; }
+  .phone { font-weight: 600; letter-spacing: 1px; }
+}
+
+.activities {
+  border: 1px solid #EEE;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 40px;
+  h3 {
+    font-family: 'Roboto Condensed', 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+  }
+  p { margin-bottom: 0; word-spacing: 1px; }
+}
+
 .hero-partner-list {
   height: 350px;
   padding: 150px 0 0;

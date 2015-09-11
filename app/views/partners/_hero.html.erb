@@ -1,17 +1,18 @@
-<section class="page-title hero-partner parallax3 parallax-fix"
-         style="background: url(<%= @partner.img_url %>) 50%;">
-  <div class="opacity-full bg-blue"></div>
+<section class="hero hero-partner"
+         style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url(<%= @partner.img_url %>);">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 margin-eight-top center-col text-center">
+      <div class="col-lg-12 col-md-12 col-sm-12 text-center center-col">
+
+        <span class="phone"><%= @partner.phone %></span>
+
         <h1><%= @partner.company %></h1>
 
-        <span class="text-uppercase">
-          <%= @partner.address %>, <%= @partner.city.name %>, <%= @partner.state %>
-        </span><br>
-        <span>
-          <%= @partner.phone %> # <%= @klasses.map { |klass| klass.name }.join(", ") %>
-        </span>
+        <div class="address">
+          <p><%= @partner.address %>, <%= @partner.city.name %>, <%= @partner.state %></p>
+        </div>
+
       </div>
     </div>
   </div>
