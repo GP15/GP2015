@@ -3,6 +3,8 @@
 
 <%= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' } %>
 
+<%= render 'shared/notice' if flash.present? %>
+
 <section class="padding-two">
   <div class="container">
     <div class="row">
