@@ -13,6 +13,9 @@
   font-weight: 300;
 }
 
+/* background color */
+.bg-midnite-blue { background-color: #122E5A; }
+
 /* margin */
 .margin-two-top     { margin-top: 2% !important; }
 .margin-five-top    { margin-top: 5% !important; }
@@ -80,11 +83,6 @@ dl {
   dt { width: 70px; text-align: right; margin-bottom: 5px; }
   dd { margin-left: 90px; }
 }
-
-/* ===================================
-    Background color
-====================================== */
-.bg-blue { background-color: #0048B9; }
 
 /* ===================================
     Buttons
@@ -250,7 +248,8 @@ select {
     font-weight: 600;
     color: #FFF;
     letter-spacing: 3px;
-    border-bottom: 3px solid #e6af2a;
+    margin-bottom: 10px;
+    text-align: center;
   }
 }
 
