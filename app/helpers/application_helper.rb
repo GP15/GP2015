@@ -15,10 +15,15 @@ module ApplicationHelper
     end
   end
 
-  # Changes the logo link. If user is signed in, redirect to user dashboard.
-  # Otherwise clicking the logo will redirect to homepage.
+  # Change the logo link
   def logo_url
-    user_signed_in? ? current_user : root_url
+    if user_signed_in?
+      current_user
+    elsif admin_signed_in?
+      current_admin
+    else
+      root_url
+    end
   end
 
   # Used as CSS classes

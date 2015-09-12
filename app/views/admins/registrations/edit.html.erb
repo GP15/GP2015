@@ -1,8 +1,8 @@
 <% provide(:title, "Admin Profile") %>
 
-<%= link_to "⇽ back to admin area", admin_path %>
+<%= link_to "⇽ back to admin area", admin_path, class: "underline" %>
 
-<h1 class="title-large text-center margin-two-six">
+<h1 class="title-font-300 text-center content-top-margin margin-five-bottom">
   <%= resource_name.to_s.humanize %> Profile
 </h1>
 
@@ -31,6 +31,6 @@
   </div>
 
   <div class="margin-five">
-    <%= f.submit "Update", class: "highlight-button-dark btn btn-small button" %>
+    <%= f.submit "Update", class: primary_button_small %>
   </div>
 <% end %>

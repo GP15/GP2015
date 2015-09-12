@@ -1,5 +1,7 @@
 <% provide(:title, "Admin Login") %>
 
+<h1 class="title-font-300 text-center content-top-margin margin-five-bottom">Login</h1>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -14,11 +16,11 @@
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, class: "text-transform-unset" %>
+      <%= f.label :remember_me, class: "font-weight-400" %>
     </div>
   <% end -%>
 
   <div class="margin-five">
-    <%= f.submit "Login", class: "highlight-button-dark btn btn-small button" %>
+    <%= f.submit "Login", class: primary_button_small %>
   </div>
 <% end %>

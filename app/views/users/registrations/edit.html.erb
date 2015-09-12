@@ -1,8 +1,8 @@
 <% provide(:title, "Profile") %>
 
-<%= link_to "⇽ back", :back, class: "underline" %>
+<%= link_to "⇽ back to Dashboard", current_user, class: "underline" %>
 
-<h1 class="text-center margin-ten-ten">Profile</h1>
+<h1 class="title-font-300 text-center content-top-margin margin-five-bottom">Profile</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -26,8 +26,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div class="field margin-ten-top">
+    <%= f.label :current_password %> <i>(input your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
