@@ -1,12 +1,14 @@
 <% provide(:title, "Reserve a class for #{@schedule.klass.name}") %>
 
-<%= render 'shared/notice' if flash.present? %>
+<%= render 'shared/notice' if flash[:notice].present? %>
 
 <section class="margin-four-top">
   <div class="container">
     <div class="row">
 
       <div class="col-md-6">
+        <p class="text-center"><%= attendees(@schedule.reservations.count, @schedule.quantity) %></p>
+
         <%= render 'shared/schedule' %>
       </div>
 
@@ -19,11 +21,16 @@
           <%= render 'reservations' %>
         <% end %>
 
-        <% if @children.present? && (Time.zone.now <= @schedule.starts_at - 6.hours) %>
+        <%= render 'shared/inline_error' if flash[:error].present? %>
+
+        <% if @children.present? && (Time.zone.now <= @schedule.starts_at - 6.hours) && (@schedule.reservations.count < @schedule.quantity) %>
           <%= render 'form' %>
         <% elsif Time.zone.now.between?(@schedule.starts_at - 6.hours, @schedule.starts_at) %>
           <span>Note:</span>
-          <p>A class starting less than 6 hours can't be reserved for additional children.</p>
+          <p>A class starting less than 6 hours from now can't be reserved for additional children.</p>
+        <% elsif Time.zone.now >= @schedule.starts_at - 6.hours %>
+          <span>Note:</span>
+          <p>This class is past the scheduled time and can't be reserved anymore.</p>
         <% end %>
 
         <% if @reservations.empty? && @children.empty? %>

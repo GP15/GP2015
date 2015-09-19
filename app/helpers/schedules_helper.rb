@@ -28,4 +28,13 @@ module SchedulesHelper
     archived ?  "dark-gray-text" : "green-text"
   end
 
+  # Show number of attendees.
+  def attendees(total_reservations, class_size)
+    if total_reservations < class_size
+      "Attendees : #{total_reservations} / #{class_size}"
+    else
+      "This class is fully booked."
+    end
+  end
+
 end

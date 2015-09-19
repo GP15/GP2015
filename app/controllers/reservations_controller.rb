@@ -18,8 +18,11 @@ class ReservationsController < ApplicationController
     @reservation = @schedule.reservations.build(child_params)
     @reservation.user_id = current_user.id
 
-    if @reservation.save
+    if (@schedule.reservations.count < @schedule.quantity) && @reservation.save
       flash[:notice] = "Class reserved for #{@reservation.child.first_name}."
+      redirect_to new_schedule_reservation_path(@schedule)
+    elsif (@schedule.reservations.count >= @schedule.quantity)
+      flash[:error] = "This class has been fully booked. Please choose another schedule."
       redirect_to new_schedule_reservation_path(@schedule)
     else
       render :new

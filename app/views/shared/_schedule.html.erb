@@ -23,6 +23,9 @@
       <dt>Age:</dt>
       <dd><%= @schedule.klass.age_start %> - <%= @schedule.klass.age_end %></dd>
       <hr>
+      <dt>Max:</dt>
+      <dd><%= pluralize(@schedule.quantity, "participant") %> </dd>
+      <hr>
     </dl>
 
     <div class="address">
