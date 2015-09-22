@@ -80,7 +80,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
 
     @schedule.update(archived: true)
-    redirect_to admin_schedule_path(@schedule), notice: 'Schedule archived.'
+    redirect_to admin_schedule_path(@schedule), notice: 'Schedule deactivated.'
   end
 
   # PATCH /schedules/:id/unarchive
@@ -88,7 +88,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
 
     @schedule.update(archived: false)
-    redirect_to admin_schedule_path(@schedule), notice: 'Schedule unarchived.'
+    redirect_to admin_schedule_path(@schedule), notice: 'Schedule activated.'
   end
 
   private

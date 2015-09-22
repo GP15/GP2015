@@ -29,11 +29,11 @@
         </div>
         <div class="link-underline margin-four">
           <% if @schedule.archived %>
-            <%= link_to "Unarchive", unarchive_schedule_path(@schedule), method: :patch,
-                data: { confirm: "Unarchive this schedule?" } %>
+            <%= link_to "Activate", unarchive_schedule_path(@schedule), method: :patch,
+                data: { confirm: "Activate this schedule?" } %>
           <% else %>
-            <%= link_to "Archive", archive_schedule_path(@schedule), method: :patch,
-                data: { confirm: "Archive this schedule?" } %>
+            <%= link_to "Deactivate", archive_schedule_path(@schedule), method: :patch,
+                data: { confirm: "Deactivate this schedule?" } %>
           <% end %>
         </div>
       </div>
