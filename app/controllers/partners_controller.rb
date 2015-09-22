@@ -13,7 +13,10 @@ class PartnersController < ApplicationController
 
   def show
     @klasses   = @partner.klasses.order(:name)
-    @schedules = @partner.schedules.includes(:klass).six_hours_from_now.sort_by_datetime_asc
+    @schedules = @partner.schedules.not_archived
+                         .includes(:klass)
+                         .six_hours_from_now
+                         .sort_by_datetime_asc
   end
 
   def new

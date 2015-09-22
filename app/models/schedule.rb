@@ -17,6 +17,8 @@ class Schedule < ActiveRecord::Base
   scope :recent,             -> { where('starts_at >= ?', Time.zone.now) }
   scope :six_hours_from_now, -> { where('starts_at >= ?', Time.zone.now + 6.hours) }
 
+  scope :not_archived, -> { where.not('archived') }
+
   # Custom Ransack methods
   ransacker :start_date, type: :date do
     Arel.sql('starts_at::date')   # filter only the date from starts_at attribute

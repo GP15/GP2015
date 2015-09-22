@@ -14,7 +14,7 @@ class SchedulesController < ApplicationController
     @cities     = City.order(:name)
     @q          = Schedule.ransack(params[:q])
     @q.sorts    = ['starts_at asc', 'ends_at asc'] if @q.sorts.empty?
-    @schedules  = @q.result.includes(:klass, :partner, :city).six_hours_from_now
+    @schedules  = @q.result.not_archived.includes(:klass, :partner, :city).six_hours_from_now
   end
 
   # GET /schedules/:id
