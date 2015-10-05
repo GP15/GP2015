@@ -112,7 +112,7 @@ class SchedulesController < ApplicationController
     # Put the value from the single date select into starts_at & ends_at attributes.
 
     def start_datetime # Needed so the starts_at params is not nil.
-      DateTime.civil(
+      Time.zone.local(
         schedule_params["starts_at(1i)"].to_i,
         schedule_params["starts_at(2i)"].to_i, schedule_params["starts_at(3i)"].to_i,
         schedule_params["starts_at(4i)"].to_i, schedule_params["starts_at(5i)"].to_i
@@ -120,7 +120,7 @@ class SchedulesController < ApplicationController
     end
 
     def end_datetime # Modify ends_at params by copying the date from starts_at params.
-      DateTime.civil(
+      Time.zone.local(
         schedule_params["starts_at(1i)"].to_i,
         schedule_params["starts_at(2i)"].to_i, schedule_params["starts_at(3i)"].to_i,
         schedule_params["ends_at(4i)"].to_i, schedule_params["ends_at(5i)"].to_i
