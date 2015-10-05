@@ -12,9 +12,43 @@ class SchedulesController < ApplicationController
   def index
     @activities = Activity.order(:name)
     @cities     = City.order(:name)
-    @q          = Schedule.ransack(params[:q])
-    @q.sorts    = ['starts_at asc', 'ends_at asc'] if @q.sorts.empty?
-    @schedules  = @q.result.not_archived.includes(:klass, :partner, :city).six_hours_from_now
+
+    # Using Ransack to filter Activity, City, Date, Starting Time, & Ending Time for Schedules.
+    # Unfortunately when left to default setting, Ransack will use today's date when filtering
+    # the starting time and ending time since we're using separate select menu for date & time.
+
+    params[:q] = {} unless params[:q]
+
+    # Copies the date params from date select to replace the date params from the time select menu.
+    if params[:q][:start_date_eq].present?
+      date  = Time.zone.parse(params[:q][:start_date_eq])
+
+      year  = date.strftime("%Y")
+      month = date.strftime("%m")
+      day   = date.strftime("%e")
+
+      params[:q]["starts_at_gteq(1i)"] = year
+      params[:q]["starts_at_gteq(2i)"] = month
+      params[:q]["starts_at_gteq(3i)"] = day
+
+      params[:q]["ends_at_lteq(1i)"]   = year
+      params[:q]["ends_at_lteq(2i)"]   = month
+      params[:q]["ends_at_lteq(3i)"]   = day
+    end
+
+    # Ransacking starts here.
+    @q       = Schedule.ransack(params[:q])
+    @q.sorts = ['starts_at asc', 'ends_at asc'] if @q.sorts.empty?
+
+    if params[:q].present?
+      @schedules = @q.result # Result of Ransacking.
+    else
+      # When not filtering anything aka visiting /schedules, show all schedules from tomorrow.
+      @schedules = Schedule.where('starts_at::date = ?', Time.zone.tomorrow)
+    end
+
+    # Final filtering
+    @schedules = @schedules.not_archived.includes(:klass, :partner, :city).six_hours_from_now
   end
 
   # GET /schedules/:id

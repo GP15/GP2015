@@ -19,17 +19,12 @@ class Schedule < ActiveRecord::Base
 
   scope :not_archived, -> { where.not('archived') }
 
-  # Custom Ransack methods
+
+
+  # Custom Ransack method.
+  # Adding this is kinda redundant if you look at the sql generated but...
   ransacker :start_date, type: :date do
     Arel.sql('starts_at::date')   # filter only the date from starts_at attribute
-  end
-
-  ransacker :start_time, type: :time do
-    Arel.sql('starts_at::time')   # filter only the time from starts_at attribute
-  end
-
-  ransacker :end_time, type: :time do
-    Arel.sql('ends_at::time')     # filter only the time from ends_at attribute
   end
 
 end

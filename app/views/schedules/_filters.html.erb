@@ -28,20 +28,20 @@
                 [(Time.zone.today + 4).strftime("%d %b"), Time.zone.today + 4],
                 [(Time.zone.today + 5).strftime("%d %b"), Time.zone.today + 5],
                 [(Time.zone.today + 6).strftime("%d %b"), Time.zone.today + 6]
-              ], @q.start_date_eq), { include_blank: true }, { class: "width-100" } %>
+              ], selected: default_date_select(@q) ), {}, { class: "width-100" } %>
         </div>
 
         <div class="col-md-4 field">
           <!-- Select menu for choosing a starting time -->
           <label class="display-block">Time</label>
-          <%= f.time_select :start_time_gteq,
+          <%= f.time_select :starts_at_gteq,
                 ampm: true, minute_step: 15, default: { hour: '07' },
                 with_css_classes: true %>
 
           <label class="label-in-between">to</label>
 
           <!-- Select menu for choosing an ending time -->
-          <%= f.time_select :end_time_lteq,
+          <%= f.time_select :ends_at_lteq,
                 ampm: true, minute_step: 15, default: { hour: '23', minute: '45' },
                 with_css_classes: true %>
         </div>
