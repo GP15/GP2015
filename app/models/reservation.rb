@@ -6,8 +6,8 @@ class Reservation < ActiveRecord::Base
 
   validates_presence_of :child_id
 
-  scope :upcoming, -> { where('schedules.starts_at >= ?', Time.zone.now) }
-  scope :in_the_past, -> { where('schedules.starts_at < ?', Time.zone.now) }
+  scope :upcoming,    -> { where('schedules.ends_at >= ?', Time.zone.now) }
+  scope :in_the_past, -> { where('schedules.ends_at < ?',  Time.zone.now) }
 
   scope :sort_by_datetime_asc,  -> { order('schedules.starts_at ASC,  schedules.ends_at ASC') }
   scope :sort_by_datetime_desc, -> { order('schedules.starts_at DESC, schedules.ends_at DESC') }
