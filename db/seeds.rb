@@ -4,6 +4,9 @@
 # Admins
 Admin.create!(email: "admin@example.com", password: "123456")
 
+# Time Zone
+Time.zone = "Kuala Lumpur"
+
 # Cities
 cities = ["Klang", "Shah Alam", "Subang", "Petaling Jaya", "Puchong", "Kuala Lumpur"]
 
@@ -81,8 +84,8 @@ partners.each do |partner|
       end_hour     = rand(13..22)
       end_minute   = minute.sample
 
-      starts_at = DateTime.civil(year, month, day, start_hour, start_minute)
-      ends_at   = DateTime.civil(year, month, day, end_hour, end_minute)
+      starts_at = Time.zone.local(year, month, day, start_hour, start_minute)
+      ends_at   = Time.zone.local(year, month, day, end_hour, end_minute)
 
       partner.schedules.create!(
         klass_id:    klass.id,
