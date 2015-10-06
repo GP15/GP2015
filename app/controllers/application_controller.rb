@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
       Time.zone = current_user.time_zone
     elsif current_admin
       Time.zone = current_admin.time_zone
+    else
+      Time.zone = "Kuala Lumpur"
     end
   end
 
