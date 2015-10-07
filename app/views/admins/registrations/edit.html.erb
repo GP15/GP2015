@@ -1,17 +1,14 @@
 <% provide(:title, "Admin Profile") %>
-
 <%= link_to "⇽ back to admin area", admin_path, class: "underline" %>
-
 <h1 class="title-font-300 text-center content-top-margin margin-five-bottom">
   <%= resource_name.to_s.humanize %> Profile
 </h1>
-
 <%= form_for(resource, as: resource_name, url: admin_registration_path(resource), html: { method: :patch }) do |f| %>
   <%= devise_error_messages! %>
-
+  
   <div class="field">
     <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
   </div>
 
   <div class="field">
