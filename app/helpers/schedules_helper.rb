@@ -38,9 +38,9 @@ module SchedulesHelper
   end
 
   # Show selected date for Schedule's date filter.
-  def default_date_select(q)
-    if params[:q][:start_date_eq].present?
-      q.start_date_eq
+  def default_date_select
+    if params["start_date"].present?
+      params["start_date"]
     else
       ['Tomorrow', Time.zone.tomorrow]
     end

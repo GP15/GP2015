@@ -20,8 +20,8 @@ class SchedulesController < ApplicationController
     params[:q] = {} unless params[:q]
 
     # Copies the date params from date select to replace the date params from the time select menu.
-    if params[:q][:start_date_eq].present?
-      date  = Time.zone.parse(params[:q][:start_date_eq])
+    if params["start_date"].present?
+      date  = Time.zone.parse(params["start_date"])
 
       year  = date.strftime("%Y")
       month = date.strftime("%m")
@@ -44,7 +44,7 @@ class SchedulesController < ApplicationController
       @schedules = @q.result # Result of Ransacking.
     else
       # When not filtering anything aka visiting /schedules, show all schedules from tomorrow.
-      @schedules = Schedule.where('starts_at::date = ?', Time.zone.tomorrow)
+      @schedules = Schedule.only_tomorrow
     end
 
     # Final filtering

@@ -20,7 +20,7 @@
         <!-- Select menu for choosing a date -->
         <div class="col-md-2 field">
           <label class="display-block">Date</label>
-          <%= f.select :start_date_eq, options_for_select([
+          <%= select_tag "start_date", options_for_select([
                 ['Today', Time.zone.today],
                 ['Tomorrow', Time.zone.tomorrow],
                 [(Time.zone.today + 2).strftime("%d %b"), Time.zone.today + 2],
@@ -28,7 +28,7 @@
                 [(Time.zone.today + 4).strftime("%d %b"), Time.zone.today + 4],
                 [(Time.zone.today + 5).strftime("%d %b"), Time.zone.today + 5],
                 [(Time.zone.today + 6).strftime("%d %b"), Time.zone.today + 6]
-              ], selected: default_date_select(@q) ), {}, { class: "width-100" } %>
+              ], selected: default_date_select), { class: "width-100" } %>
         </div>
 
         <div class="col-md-4 field">

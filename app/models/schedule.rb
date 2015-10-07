@@ -19,12 +19,8 @@ class Schedule < ActiveRecord::Base
 
   scope :not_archived, -> { where.not('archived') }
 
-
-
-  # Custom Ransack method.
-  # Adding this is kinda redundant if you look at the sql generated but...
-  ransacker :start_date, type: :date do
-    Arel.sql('starts_at::date')   # filter only the date from starts_at attribute
+  def self.only_tomorrow
+    where('starts_at BETWEEN ? AND ?', Time.zone.tomorrow.beginning_of_day, Time.zone.tomorrow.end_of_day)
   end
 
 end
