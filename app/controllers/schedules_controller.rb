@@ -36,18 +36,19 @@ class SchedulesController < ApplicationController
       params[:q]["ends_at_lteq(3i)"]   = day
     end
 
-    # Ransacking starts here.
-    @q       = Schedule.ransack(params[:q])
+    @q = Schedule.ransack(params[:q]) # Filter with Ransack
 
     if params[:q].present?
-      @schedules = @q.result # Result of Ransacking.
+      @schedules = @q.result          # Result of Ransack
     else
       # When not filtering anything aka visiting /schedules, show all schedules from tomorrow.
       @schedules = Schedule.only_tomorrow
     end
 
     # Final filtering
-    @schedules = @schedules.not_archived.includes(:klass, :partner, :city).six_hours_from_now
+    @schedules = @schedules.not_archived
+                           .includes(:klass, :partner, :city)
+                           .six_hours_from_now
                            .sort_by_datetime_asc
   end
 
