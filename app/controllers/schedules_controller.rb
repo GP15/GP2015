@@ -38,7 +38,6 @@ class SchedulesController < ApplicationController
 
     # Ransacking starts here.
     @q       = Schedule.ransack(params[:q])
-    @q.sorts = ['starts_at asc', 'ends_at asc'] if @q.sorts.empty?
 
     if params[:q].present?
       @schedules = @q.result # Result of Ransacking.
@@ -49,6 +48,7 @@ class SchedulesController < ApplicationController
 
     # Final filtering
     @schedules = @schedules.not_archived.includes(:klass, :partner, :city).six_hours_from_now
+                           .sort_by_datetime_asc
   end
 
   # GET /schedules/:id
