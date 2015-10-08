@@ -9,6 +9,7 @@ class PartnersController < ApplicationController
                        .select("partners.*, max(klasses.reservation_limit) as booking_limit")
                        .includes(:city, :activities)
                        .group(:id)
+                       .order(:company)
   end
 
   def show
