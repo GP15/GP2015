@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'cards/new'
 
   root 'static_pages#index'
   get  'invite',  to: 'static_pages#invite'
@@ -13,6 +14,9 @@ Rails.application.routes.draw do
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
 
   resources :users, only: [:show] do
+    collection do
+      get :select_plan
+    end
     resources :children, except: [:index, :show]
   end
 
@@ -39,4 +43,9 @@ Rails.application.routes.draw do
     patch 'admin/:id',     to: 'devise/registrations#update', as: 'admin_registration'
   end
 
+  ## subscriptions ##
+  resources :subscriptions
+
+  ## cards ##
+  resources :cards
 end

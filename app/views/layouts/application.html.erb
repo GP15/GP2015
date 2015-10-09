@@ -12,10 +12,8 @@
   <%= render 'layouts/shim' %> <!-- fixes for Internet Explorer -->
 </head>
 <body class="text-med black-text">
-
   <%= render 'layouts/nav' %>
-
   <%= yield %>
-
+  <%= yield :javascript if params[:controller].eql?('cards') || params[:controller].eql?('subscriptions') %>
 </body>
 </html>

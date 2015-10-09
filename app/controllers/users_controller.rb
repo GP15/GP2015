@@ -9,9 +9,4 @@ class UsersController < ApplicationController
     @current_reservations = @reservations.upcoming.sort_by_datetime_asc
     @past_reservations = @reservations.in_the_past.sort_by_datetime_desc
   end
-
-  def select_plan
-    @plans = 
-  end
-
 end

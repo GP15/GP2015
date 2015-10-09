@@ -1,0 +1,40 @@
+<% provide(:title, "Dashboard") %>
+<% provide(:nav_color, "link-white") %>
+<%= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' } %>
+<%= render 'shared/notice' if flash.present? %>
+
+<section class="padding-two">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-md-offset-1">
+        <%= form_for(@subscription) do |f| %>
+          <div class="field">
+            <%= f.label :select_plan %><br />
+            <%= f.radio_button :plan_id, "RM99", checked: true %>
+            <%= f.label :plan, "RM99", class: 'multiple_classes' %><br />
+            <%= f.radio_button :plan_id, "RM49", checked: false %>
+            <%= f.label :plan, "RM49", class: 'multiple_classes' %><br />
+          </div>
+          <div class="field">
+            <%= f.label :quantity %><br />
+            <%= f.select :quantity, (0..10) %>
+          </div>
+          <div id="dropin"></div>
+          <%= f.submit "Subscribe", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= content_for :javascript do %>
+ <%= javascript_include_tag "https://js.braintreegateway.com/v2/braintree.js" %>
+ <script type="text/javascript">
+   var client_token = "<%= @client_token %>";
+   braintree.setup(
+     client_token,
+     'dropin', {
+       container: 'dropin'
+     });
+ </script>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan_id: MyString
+  user_id: 1
+  renewal_date: 2015-10-09
+  status: false
+  subscription_id: MyString
+
+two:
+  plan_id: MyString
+  user_id: 1
+  renewal_date: 2015-10-09
+  status: false
+  subscription_id: MyString

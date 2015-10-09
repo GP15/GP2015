@@ -97,10 +97,10 @@ partners.each do |partner|
 end
 
 # Users
-User.create!(email: "user1@example.com", password: "123456")
+User.create!(email: "user1@example.com", password: "123456", name: Faker::Name.name, location: Faker::Address.street_address)
 
 2.upto(9) do |n|
-  User.create!(email: "user#{n}@example.com", password: "123456")
+  User.create!(email: "user#{n}@example.com", password: "123456", name: Faker::Name.name, location: Faker::Address.street_address)
 end
 
 # Children

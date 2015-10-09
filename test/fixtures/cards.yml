@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last4: MyString
+  card_type: MyString
+  card_id: MyString
+
+two:
+  last4: MyString
+  card_type: MyString
+  card_id: MyString
