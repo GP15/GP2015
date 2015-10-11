@@ -1,7 +1,7 @@
 class ChildrenController < ApplicationController
 
-  before_action :authenticate_user!
-  before_action :set_user
+  before_action :authenticate_user!, :set_user
+  before_action :validate_child, only: [ :new, :create ]
 
   # GET /users/:user_id/children/new
   def new
@@ -44,12 +44,17 @@ class ChildrenController < ApplicationController
   end
 
   private
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
-    def set_user
-      @user = User.find(params[:user_id])
-    end
+  def child_params
+    params.require(:child).permit(:first_name, :last_name, :birth_year)
+  end
 
-    def child_params
-      params.require(:child).permit(:first_name, :last_name, :birth_year)
+  def validate_child
+    unless current_user.can_add_child?
+      redirect_to new_subscription_path, notice: "Please subscribe for the child before registering"
     end
+  end
 end

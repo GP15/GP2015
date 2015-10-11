@@ -5,6 +5,7 @@ class Child < ActiveRecord::Base
   has_many   :schedules, through: :reservations
 
   validates_presence_of :first_name, :last_name, :birth_year
+  validate :child_limit
 
   scope :sort_by_age_name, -> { order('birth_year DESC', 'first_name ASC') }
 
@@ -18,4 +19,9 @@ class Child < ActiveRecord::Base
     where.not(id: (reservations.map(&:child_id)))
   end
 
+  def child_limit
+    unless user.can_add_child?
+      errors.add(:user_id, "No more subscriptions found, Please Subscribe before resgistering Child")
+    end
+  end
 end

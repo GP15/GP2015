@@ -14,7 +14,7 @@ module Payment
   end
 
   def create_subscription(plan_id, nounce)
-    result = Braintree::Subscription.create(payment_method_token: token, plan_id: plan_id)
+    result = Braintree::Subscription.create(payment_method_token: nounce, plan_id: plan_id)
     result.subscription.id
   end
 end

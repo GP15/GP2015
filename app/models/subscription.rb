@@ -15,4 +15,21 @@ class Subscription < ActiveRecord::Base
     end
     self.save!
   end
+
+  def subscriped_on
+    created_at.strftime('%d,%B-%y at %H:%M %p')
+  end
+
+  def plan
+    p = Plan.new
+    plan = p.get_plan(plan_id)
+  end
+
+  def renewal_date
+    created_at + 30.days
+  end
+
+  def print_status
+    status ? 'Active' : 'De-Active'
+  end
 end

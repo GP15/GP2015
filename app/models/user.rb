@@ -19,4 +19,12 @@ include Payment
     self.customer_id = customer.customer.id
     self.save!
   end
+
+  def total_subscriptions
+    subscriptions.sum(:quantity)
+  end
+
+  def can_add_child?
+    children.count + 1 < total_subscriptions
+  end
 end

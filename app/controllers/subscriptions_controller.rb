@@ -14,6 +14,11 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def show
+    @subscription = current_user.subscriptions.find(params[:id])
+    @plan = @subscription.plan
+  end
+
   private
   def subscription_params
     params.require(:subscription).permit(:plan_id, :quantity)

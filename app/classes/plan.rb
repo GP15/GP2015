@@ -4,7 +4,7 @@ class Plan
   end
 
   def get_plan(name)
-    @plans.select{|p| p.name.eql(name)}.first
+    @plans.select{|p| p.name.eql?(name)}.first
   end
 
   def get_registration_plans(names)
