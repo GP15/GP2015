@@ -8,7 +8,7 @@
   <tbody class="text-13px link-underline">
     <% @children.each do |child| %>
       <tr>
-        <td><%= link_to child.first_name, edit_user_child_path(current_user, child) %></td>
+        <td><%= child.first_name %></td>
         <td class="pull-right"><%= age(child) %></td>
       </tr>
     <% end %>
