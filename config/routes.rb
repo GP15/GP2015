@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'admin/partners/:id/past_schedules', to: 'admin#past_schedules', as: 'admin_partner_past_schedules'
   get 'admin/partners/:id/klasses', to: 'admin#klasses', as: 'admin_partner_klasses'
   get 'admin/schedules/:id',        to: 'admin#schedule', as: 'admin_schedule'
+  get 'admin/users',        to: 'admin#users'
   get 'admin/settings',     to: 'admin#settings'
 
   resources :cities, path: 'city', except: [:index, :show]

@@ -40,6 +40,10 @@ class AdminController < ApplicationController
     @reservations = @schedule.reservations.includes(:child)
   end
 
+  def users
+    @users = User.order(:created_at)
+  end
+
   # GET /admin/settings
   def settings
     @cities     = City.order(:name)
