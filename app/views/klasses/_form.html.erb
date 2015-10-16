@@ -14,9 +14,9 @@
 </div>
 <div class="field">
   <%= f.label :age_start, "Age Group", class: "display-block" %>
-  <%= f.select :age_start, 4..17, {} %>
+  <%= f.select :age_start, 0..50, {} %>
   <%= f.label :age_end, " to ", class: "label-in-between" %>
-  <%= f.select :age_end, 4..17, { selected: @klass.age_end || 17 } %>
+  <%= f.select :age_end, 0..50, { selected: @klass.age_end || 50 } %>
 </div>
 <div class="field">
   <%= f.label :reservation_limit, "Reservation Limit", class: "display-block margin-one-bottom" %>
