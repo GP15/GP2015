@@ -14,7 +14,6 @@
             <th>Amount</th>
             <th>Summary</th>
             <th>Plan Duration</th>
-            <th>Renewal Date</th>
             <th>Status</th>
           </tr>
           <tr>
@@ -23,7 +22,6 @@
             <td><%= "#{@plan.currency_iso_code} #{@plan.price.to_f}" %></td>
             <td><%= @plan.description %></td>
             <td><%= @plan.billing_frequency.to_s + " month" %></td>
-            <td><label class="label label-default"><%= @subscription.renewal_date.strftime('%d-%B-%Y') %></label></td>
             <td><label class="label label-success"><%= @subscription.print_status %></label></td>
           </tr>
         </table>

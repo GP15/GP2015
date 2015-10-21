@@ -2,6 +2,7 @@
 <% provide(:nav_color, "link-white") %>
 
 <%= render partial: 'layouts/page_title', locals: { page_title: 'Schedules' } %>
+<%= render 'shared/notice' if flash.present? %>
 <%= render 'filters' %>
 
 <section class="padding-one">

@@ -8,26 +8,31 @@
   <tbody class="text-13px link-underline">
     <% @children.each do |child| %>
       <tr>
-        <td><%= link_to child.first_name, edit_user_child_path(current_user, child) %></td>
-        <td class="pull-right"><%= age(child) %></td>
+        <td><%= link_to child.first_name, child_path(child) %></td>
+        <td class="pull-right">
+          <%= age(child) %>
+          <%= link_to edit_user_child_path(current_user, child) do %>
+            Edit
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<table class="table table-condensed">
+<!-- <table class="table table-condensed">
   <thead>
     <tr>
       <th>Plans</th>
-      <th><%= link_to "+ subscribe", new_subscription_path, class: "pull-right green-text" %></th>
+      <th><%#= link_to "+ subscribe", new_subscription_path, class: "pull-right green-text" %></th>
     </tr>
   </thead>
   <tbody class="text-13px link-underline">
-    <% @subscriptions.each do |subscription| %>
+    <%# @subscriptions.each do |subscription| %>
       <tr>
-        <td><%= link_to subscription.plan_id, subscription_path(subscription) %></td>
-        <td class="pull-right"><%= subscription.subscriped_on %></td>
+        <td><%#= link_to subscription.plan_id, subscription_path(subscription) %></td>
+        <td class="pull-right"><%#= subscription.subscriped_on %></td>
       </tr>
-    <% end %>
+    <%# end %>
   </tbody>
-</table>
+</table> -->

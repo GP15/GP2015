@@ -20,6 +20,11 @@ Rails.application.routes.draw do
     resources :children, except: [:index, :show]
   end
 
+  resources :children, only: [:show] do
+    ## subscriptions ##
+    resources :subscriptions, only: [:new, :create, :show, :destroy]
+  end
+
   resources :partners do
     resources :klasses, :schedules, except: [:index, :show]
   end
@@ -43,8 +48,6 @@ Rails.application.routes.draw do
     patch 'admin/:id',     to: 'devise/registrations#update', as: 'admin_registration'
   end
 
-  ## subscriptions ##
-  resources :subscriptions
 
   ## cards ##
   resources :cards

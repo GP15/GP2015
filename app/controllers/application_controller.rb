@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
   # Devise: Redirect user after successful login
   def after_sign_in_path_for(user)
-    request.referer == (new_user_session_url) || request.referer == (new_admin_session_url)  ? current_user : new_subscription_path
+    request.referer == (new_user_session_url) || request.referer == (new_admin_session_url)  ? current_user : new_user_child_path(current_user)
   end
 
   def configure_permitted_parameters
@@ -19,14 +19,16 @@ class ApplicationController < ActionController::Base
 
   def check_credit_card_added
     if should_subscribe?
-      redirect_to new_subscription_path, notice: "Please Select Plan"
+      child = current_user.children.without_subscriptions.first
+      redirect_to child_path(child), notice: "Please subscribe for #{child.full_name}"
     end
   end
 
   def should_subscribe?
     current_user.present? &&
     !devise_controller? &&
-    !current_user.subscriptions.present? &&
-    !params[:controller].eql?("subscriptions")    
+    (current_user.children.without_subscriptions.length != 0) &&
+    !params[:controller].eql?("children") &&
+    !params[:controller].eql?("subscriptions")
   end
 end

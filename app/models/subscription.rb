@@ -1,6 +1,10 @@
 class Subscription < ActiveRecord::Base
   ## Associations ##
   belongs_to :user
+  belongs_to :child
+
+  ## Validations ##
+  validates :child_id, presence: true
 
   ## Instance Methods ##
   def sync_subscription(nounce)
@@ -9,10 +13,8 @@ class Subscription < ActiveRecord::Base
       :payment_method_nonce => nounce
     )
     token = result.payment_method.token
-    (1..quantity).each do
-      result = Braintree::Subscription.create(payment_method_token: token, plan_id: plan_id)
-      self.subscription_ids << result.subscription.id
-    end
+    result = Braintree::Subscription.create(payment_method_token: token, plan_id: plan_id)
+    self.subscription_ids << result.subscription.id
     self.save!
   end
 
@@ -31,5 +33,10 @@ class Subscription < ActiveRecord::Base
 
   def print_status
     status ? 'Active' : 'De-Active'
+  end
+
+  def unsubscribe
+    result = Braintree::Subscription.cancel(subscription_ids.first)
+    self.update_attributes(status: false, cancelled_on: DateTime.now)
   end
 end

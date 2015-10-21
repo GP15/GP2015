@@ -1,0 +1,46 @@
+<% provide(:title, "Dashboard") %>
+<% provide(:nav_color, "link-white") %>
+<%= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' } %>
+<%= render 'shared/notice' if flash.present? %>
+
+<section class="padding-two">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-md-offset-1">
+        <div class="panel">
+          <div class="panel-heading"><header><%= @child.full_name %></header></div>
+          <div class="panel-body">
+            <p>
+              <strong>First name</strong>
+              <%= @child.first_name %>
+            </p>
+            <p>
+              <strong>Last name</strong>
+              <%= @child.last_name %>
+            </p>
+            <p>
+              <strong>Age</strong>
+              <%= @child.age %> years
+            </p>
+            <p>
+              <strong>Subscribed Plans</strong>
+              <ol>
+                <% @child.subscriptions.each do |plan| %>
+                  <li>
+                      <%= link_to plan.plan_id, child_subscription_path(@child, plan) %> -
+                      <%= plan.subscriped_on %>
+                      <label class="label label-success"><%= plan.print_status %></label>
+                      <%= link_to 'Unsubscribe', child_subscription_path(@child, plan), method: :delete, data: { confirm: "Are you sure?" } if plan.status %>
+                  </li>
+                <% end %>
+              </ol>
+            </p>
+            <div class="footer">
+              <%= link_to @subscriptions.present? ? "Subscribe for new Plan" : "Subscribe Now", new_child_subscription_path(@child), class: 'btn btn-success' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

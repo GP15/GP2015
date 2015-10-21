@@ -24,7 +24,11 @@ include Payment
     subscriptions.sum(:quantity)
   end
 
-  def can_add_child?
-    children.count + 1 < total_subscriptions
+  def can_avail_discounted_plans?
+    children.count > 1
+  end
+
+  def customer
+    Braintree::Customer.find(customer_id)
   end
 end

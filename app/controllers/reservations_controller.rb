@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
 
   # GET /schedules/:schedule_id/reservations/new
   def new
-    @reservations = current_user.reservations.where(schedule_id: @schedule).includes(:child)
+    @reservations = current_user.reservations.eager_load(:schedule, :child).where(schedule_id: @schedule)
     @children = current_user.children
                   .age_between(@schedule.klass)
                   .without(@reservations)
@@ -32,10 +32,11 @@ class ReservationsController < ApplicationController
   # DELETE /schedules/:schedule_id/reservations/:id
   def destroy
     @reservation = @schedule.reservations.find(params[:id])
-    @reservation.destroy
-
-    flash[:notice] = "Canceled reservation for #{@reservation.child.first_name}."
-    redirect_to new_schedule_reservation_path(@schedule)
+    if @reservation.cancel_reservation?
+      redirect_to new_schedule_reservation_path(@schedule), notice: "Canceled reservation for #{@reservation.child.first_name}."
+    else
+      redirect_to new_schedule_reservation_path(@schedule), notice: "Sorry could not cancell your reservation, Please try again."
+    end
   end
 
   private
