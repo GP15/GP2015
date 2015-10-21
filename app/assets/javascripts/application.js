@@ -12,4 +12,9 @@
 //
 //= require jquery2
 //= require jquery_ujs
+//= require slick.min
+//= require gmaps.min
+//= require chosen.min
+//= require ion.rangeSlider.min
+//= require moment.min
 //= require_tree .
