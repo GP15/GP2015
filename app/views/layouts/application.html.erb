@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %> <!-- fixes for Internet Explorer -->
 </head>
@@ -17,6 +18,7 @@
 
   <%= render 'layouts/footer' %>
 
-  <%= javascript_include_tag 'application' %>
+  <%= yield :bottom_js %>
+
 </body>
 </html>
