@@ -1,0 +1,38 @@
+<header>
+  <nav class="navbar navbar-default nav-transparent overlay-nav non-sticky-nav">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- Mobile Navigation Panel Button -->
+        <a class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-nav" aria-expanded="false" aria-controls="navbar">
+          <i class="fa fa-bars"></i>
+        </a>
+
+        <!-- Logo -->
+        <%= link_to image_tag("logo2.png", title: "Genius Pass", alt: "Genius Pass"), root_url, class: "brand-logo navbar-brand" %>
+      </div>
+
+      <!-- Top Navigation -->
+      <div id="top-nav" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <!-- Main Navigation -->
+          <ul class="main-nav">
+            <li><%= link_to "Home",      root_url %></li>
+            <li><%= link_to "Schedules", schedules_path %></li>
+            <li><%= link_to "Partners",  partners_path, :"data-no-turbolink" => true %></li>
+          </ul>
+
+          <!-- Separator -->
+          <hr>
+
+          <!-- Login & Sign Up Button -->
+          <!--
+          <div class="button-menu">
+            <a id="login" class="btn-menu secondary" href="login.html" title="Login"><span data-title="Login">Login</span></a>
+            <a id="signup" class="btn-menu" href="sign-up.html" title="Sign Up"><span data-title="Sign Up">Sign Up</span></a>
+          </div>
+          -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

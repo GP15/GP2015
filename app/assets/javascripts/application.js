@@ -12,4 +12,7 @@
 //
 //= require jquery2
 //= require jquery_ujs
-//= require_tree .
+//= require bootstrap
+//= require imagesloaded.pkgd.min
+//= require jquery.isotope.min
+//= require partners

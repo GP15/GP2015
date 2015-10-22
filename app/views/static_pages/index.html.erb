@@ -1,79 +1,212 @@
-<% provide(:title, "Unlimited Classes For Your Children") %>
-<% provide(:nav_color, "link-white") %>
+<% content_for :bottom_js do %>
+  <%= javascript_include_tag 'slick.min' %>
+  <%= javascript_include_tag 'https://maps.google.com/maps/api/js?sensor=true' %>
+  <%= javascript_include_tag 'gmaps.min' %>
+  <%= javascript_include_tag 'chosen.min' %>
+  <%= javascript_include_tag 'ion.rangeSlider.min' %>
+  <%= javascript_include_tag 'moment.min' %>
+  <%= javascript_include_tag 'frontpage' %>
+<% end %>
 
-<!-- Hero unit -->
-<section class="hero hero-1">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-9 center-col text-center">
-				<h1>Unlimited Access Pass for Your Kids</h1>
-				<p>GeniusPass gets your children unlimited access to training classes and facilities for a monthly subscription. Transform their lifestyles. Make them a Genius.</p>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- end Hero unit -->
+<%= render 'layouts/nav2' %>
 
-<!-- How it Works -->
-<section class="padding-two">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7 col-sm-10 center-col text-center margin-two-six">
-        <h5 class="no-margin-top">How it works</h5>
-        <div class="separator-line bg-yellow margin-three"></div>
+<div class="content home-page no-padding">
+  <!-- Section - Main -->
+  <div class="section-row" id="section-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="page-heading section-headline">One Pass</h2>
+          <br>
+          <h2 class="page-heading section-headline">Unlimited Activities</h2>
+          <div class="text-center">
+            <h3 class="page-heading section-subheading">For Children</h3>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <!-- features grid -->
-      <!-- features item -->
-      <div class="col-md-3 col-xs-6 text-center features-box-style1 sm-margin-bottom-six">
-        <i class="icon-laptop medium-icon gray-text"></i>
-        <h5 class="margin-ten no-margin-top xs-margin-bottom-five">Discover</h5>
-        <p class="deep-gray-text text-12px letter-spacing-1">Spend quality time exploring classes with your children.</p>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="section-text">GeniusPass is a monthly membership created exclusively for children to provide them unlimited access to variety of activities in top studios and facilities.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="map-image">
+            <%= image_tag "malaysia-map.png", title: "Malaysia", alt: "Malaysia" %>
+            <p class="map-label">We're Now In Malaysia</p>
+          </div>
+        </div>
       </div>
-      <!-- end features item -->
-      <!-- features item -->
-      <div class="col-md-3 col-xs-6 text-center features-box-style1 sm-margin-bottom-six">
-        <i class="icon-calendar medium-icon gray-text"></i>
-        <h5 class="margin-ten no-margin-top xs-margin-bottom-five">Book</h5>
-        <p class="deep-gray-text text-12px letter-spacing-1">Reserve their favourite classes from thousands of options.</p>
-      </div>
-      <!-- end features item -->
-      <!-- features item -->
-      <div class="col-md-3 col-xs-6 text-center features-box-style1 sm-margin-bottom-six">
-        <i class="icon-map medium-icon gray-text"></i>
-        <h5 class="margin-ten no-margin-top xs-margin-bottom-five">Walk In</h5>
-        <p class="deep-gray-text text-12px letter-spacing-1">Your children can walk into the reserved classes by showing a GeniusPass card.</p>
-      </div>
-      <!-- end features item -->
-      <!-- features item -->
-      <div class="col-md-3 col-xs-6 text-center features-box-style1 sm-margin-bottom-six">
-        <i class="icon-bike medium-icon gray-text"></i>
-        <h5 class="margin-ten no-margin-top xs-margin-bottom-five">Fun & Learn</h5>
-        <p class="deep-gray-text text-12px letter-spacing-1">Your loved ones enjoy the exclusive classes and learn new skills.</p>
-      </div>
-      <!-- end features item -->
-      <!-- end features grid -->
     </div>
   </div>
-</section>
-<!-- end How it Works -->
 
-<!-- Hero unit -->
-<section class="hero hero-2">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-6">
-				<h1>Thousands of Activities</h1>
-				<p>Now children from age 4 to 17 can enjoy variety of classes like Taekwondo, Futsal, Badminton, Swimming, Painting, Arithmetic, Karate, Zumba, Yoga, Ballet, Drumming, and more. We are adding new classes and facilities everyday.</p>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- end Hero unit -->
+  <!-- Section - Flags -->
+  <div class="section-row" id="section-flags">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 text-left-not-xs text-left-not-sm text-center-xs text-center-sm">
+          <span class="small-heading">Expanding Across</span>
+          <h3 class="page-heading heading">8 Cities <span>&amp; Counting</span></h3>
+        </div>
+        <div class="col-md-7">
+          <div class="flag-list">
+            <ul>
+              <li class="flag-icon"><%= image_tag "flags/SG.png", alt: "Singapore", title: "Singapore" %></li>
+              <li class="flag-icon"><%= image_tag "flags/MY.png", alt: "Malaysia", title: "Malaysia" %></li>
+              <li class="flag-icon"><%= image_tag "flags/KR.png", alt: "South Korea", title: "South Korea" %></li>
+              <li class="flag-icon"><%= image_tag "flags/IN.png", alt: "India", title: "India" %></li>
+              <li class="flag-icon"><%= image_tag "flags/ID.png", alt: "Indonesia", title: "Indonesia" %></li>
+              <li class="flag-icon"><%= image_tag "flags/HK.png", alt: "Hong Kong", title: "Hong Kong" %></li>
+              <li class="flag-icon"><%= image_tag "flags/CN.png", alt: "China", title: "China" %></li>
+              <li class="flag-icon"><%= image_tag "flags/AU.png", alt: "Australia", title: "Australia" %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- Request Invite section -->
-<section class="padding-four">
-  <%= render 'shared/invite' %>
-</section>
-<!-- end Request Invite section -->
+  <!-- Section - Features -->
+  <div class="section-row" id="section-features">
+    <div class="container">
+      <div class="slider-features row">
+        <div class="slider-features-container col-sm-6 col-md-4 col-md-offset-1">
+          <div class="slider-phone-frame"></div>
+          <div class="slider-features-images">
+            <div class="feature-image"><%= image_tag "app-screenshot1.png", alt: "App Screenshot", title: "App Screenshot" %></div>
+            <div class="feature-image"><%= image_tag "app-screenshot2.png", alt: "App Screenshot", title: "App Screenshot" %></div>
+            <div class="feature-image"><%= image_tag "app-screenshot3.png", alt: "App Screenshot", title: "App Screenshot" %></div>
+            <div class="feature-image"><%= image_tag "app-screenshot4.png", alt: "App Screenshot", title: "App Screenshot" %></div>
+          </div>
+        </div>
+        <div class="slider-features-container col-sm-6 col-md-6 text-center-xs">
+          <div class="slider-features-content">
+            <div class="feature-content">
+              <h1 class="page-heading feature-title">Choose <span>Activity</span></h1>
+              <p class="feature-description">Variety of activities for your children</p>
+            </div>
+            <div class="feature-content">
+              <h1 class="page-heading feature-title">Choose <span>Location</span></h1>
+              <p class="feature-description">Search preferred locations near you</p>
+            </div>
+            <div class="feature-content">
+              <h1 class="page-heading feature-title"><span>Reserve</span> Activities</h1>
+              <p class="feature-description">Walk-in to explore, enjoy and learn</p>
+            </div>
+            <div class="feature-content">
+              <h1 class="page-heading feature-title"><span>IOS and Android</span> Mobile App</h1>
+              <p class="feature-description">Launching soon</p>
+            </div>
+          </div>
+          <div class="slider-nav">
+            <div class="slider-dots"></div>
+            <div class="slider-arrows"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section - Subscription -->
+  <div class="section-row" id="section-subscription">
+    <div class="container">
+      <p class="section-text text-center">Keep up-to-date with our latest happenings!</p>
+      <div class="subscription-form-container">
+        <span class="form-label label-success">Thank you! Form has been submitted!</span>
+        <span class="form-label label-danger">Sorry! Form failed to submit! Please try again.</span>
+
+        <form class="subscription-form" method="POST">
+          <input name="email" id="email-address" class="form-field" placeholder="Enter your email..." type="text" />
+          <input type="submit" class="form-submit-btn" value="Submit" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section - Partners -->
+  <div class="section-row" id="section-partners">
+    <div class="container">
+      <h1 class="page-heading section-heading">Our Partners</h1>
+      <div class="partners-list">
+        <div class="row">
+          <div class="col-md-3 col-sm-4">
+            <div class="partner-details">
+              <div class="partner-info">
+                <%= image_tag "fitness-place1.jpg", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-bg" %>
+                <%= image_tag "partner-logo1.png", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-logo" %>
+                <div class="label-title">Company Name - 1</div>
+                <div class="bg-overlay"></div>
+              </div>
+              <div class="label-activities">Surfing</div>
+            </div>
+          </div>
+          <div class="col-md-5 col-sm-4">
+            <div class="partner-details">
+              <div class="partner-info">
+                <%= image_tag "fitness-place2.jpg", alt: "Company Name - 2", title: "Company Name - 2", class: "partner-bg" %>
+                <%= image_tag "partner-logo2.png", alt: "Company Name - 2", title: "Company Name - 2", class: "partner-logo" %>
+                <div class="label-title">Company Name - 2</div>
+                <div class="bg-overlay"></div>
+              </div>
+              <div class="label-activities">Skating, Ice or Roller</div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <div class="partner-details">
+              <div class="partner-info">
+                <%= image_tag "fitness-place3.jpg", alt: "Company Name - 3", title: "Company Name - 3", class: "partner-bg" %>
+                <%= image_tag "partner-logo3.png", alt: "Company Name - 3", title: "Company Name - 3", class: "partner-logo" %>
+                <div class="label-title">Company Name - 3</div>
+                <div class="bg-overlay"></div>
+              </div>
+              <div class="label-activities">BMX Bike Riding</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5 col-sm-4">
+            <div class="partner-details">
+              <div class="partner-info">
+                <%= image_tag "fitness-place4.jpg", alt: "Company Name - 4", title: "Company Name - 4", class: "partner-bg" %>
+                <%= image_tag "partner-logo4.png", alt: "Company Name - 4", title: "Company Name - 4", class: "partner-logo" %>
+                <div class="label-title">Company Name - 4</div>
+                <div class="bg-overlay"></div>
+              </div>
+              <div class="label-activities">Skateboarding</div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <div class="partner-details">
+              <div class="partner-info">
+                <%= image_tag "fitness-place5.jpg", alt: "Company Name - 5", title: "Company Name - 5", class: "partner-bg" %>
+                <%= image_tag "partner-logo5.png", alt: "Company Name - 5", title: "Company Name - 5", class: "partner-logo" %>
+                <div class="label-title">Company Name - 5</div>
+                <div class="bg-overlay"></div>
+              </div>
+              <div class="label-activities">Running, Jogging, Walking</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <a href="/partners", title: "Partners" class="partner-explore">
+              <div class="partner-content">
+                <div class="label-title">Explore All Our Partners</div>
+                <div class="label-description">See All +</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section - Location -->
+  <div class="section-row" id="section-location">
+    <div id="nearby-places" class="location-map"></div>
+    <a href="/partners", title: "Find Nearby Places" class="location-info hidden-xs">
+      <div class="location-info-container">
+        <h3 class="page-heading location-info-counter">285</h3>
+        <h4 class="page-heading location-info-title">Activities Location</h4>
+        <span class="location-info-description">Find nearby places</span>
+      </div>
+      <div class="location-info-bar">See All +</div>
+    </a>
+  </div>
+</div>
