@@ -12,4 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
+ *= require slick
+ *= require chosen.min
+ *= require ion.rangeSlider
  */
