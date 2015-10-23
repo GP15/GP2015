@@ -16,3 +16,4 @@
 //= require imagesloaded.pkgd.min
 //= require jquery.isotope.min
 //= require partners
+//= require google_analytics
