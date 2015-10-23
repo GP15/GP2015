@@ -5,7 +5,7 @@ module SchedulesHelper
     if user_signed_in?
       link_to 'Reserve', new_schedule_reservation_path(schedule), class: primary_button_small_round
     else
-      link_to 'Reserve', invite_path, class: primary_button_small_round
+      link_to 'Reserve', new_user_session_path, class: primary_button_small_round
     end
   end
 

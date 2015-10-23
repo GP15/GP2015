@@ -8,9 +8,9 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def invite
-  end
+  # def invite
+  # end
 
-  def pricing
-  end
+  # def pricing
+  # end
 end
