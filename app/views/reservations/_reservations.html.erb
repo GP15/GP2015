@@ -1,11 +1,12 @@
 <div class="reservation-list">
   <h3>Reservations</h3>
+
   <table>
     <thead>
       <tr>
         <th></th>
         <th class="date">Created on</th>
-        <% if Time.zone.now <= @schedule.starts_at %>
+        <% if (Time.zone.now < @schedule.starts_at) && (Time.zone.now < @schedule.starts_at.yesterday.end_of_day) %>
           <th></th>
         <% end %>
       </tr>
@@ -15,7 +16,7 @@
         <tr>
           <td><%= reservation.child.first_name if reservation.child %></td>
           <td class="date"><%= reservation.created_at.strftime("%-d %b %Y") %></td>
-          <% if Time.zone.now <= @schedule.starts_at %>
+          <% if (Time.zone.now < @schedule.starts_at) && (Time.zone.now < @schedule.starts_at.yesterday.end_of_day) %>
             <td class="action">
               <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation),
                   method: :delete,
@@ -26,4 +27,10 @@
       <% end %>
     </tbody>
   </table>
+
+  <% if Time.zone.now < @schedule.starts_at %>
+    <p class="margin-eight-top">
+      Note: A reservation can't be canceled once it's passed 11:59pm before the schedule starts next day. Non-attendance for a confirmed reservation will be charged RM20.
+    </p>
+  <% end %>
 </div>
