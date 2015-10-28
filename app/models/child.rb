@@ -15,7 +15,7 @@ class Child < ActiveRecord::Base
 
   #scope :valid_children_wrt_subscriptions, -> (user){ where.not(id: user.children.joins(:subscription, :reservations).select("COUNT(reservations.child_id) as counts, subscriptions.plan_id, children.id").group("subscriptions.plan_id, children.id, reservations.child_id").having("reservations.child_id > 4 AND subscriptions.plan_id IN (?)", ['RM49','RM39']).ids) }
 
-  scope :valid_children_wrt_subscriptions, -> (user){ where.not(id: user.reservations.eager_load(child: :subscription).where(subscriptions: {plan_id: ['RM49', 'RM39']}).group('reservations.child_id').count.collect{|k,v| k if v >= 4 }) }
+  scope :valid_children_wrt_subscriptions, -> (user){ where.not(id: user.reservations.eager_load(child: :subscription).where(subscriptions: {plan_id: ['RM49', 'RM39']}).where("DATE(subscriptions.start_date) <= ? AND DATE(subscriptions.renewal_date) >= ?", Date.today, Date.today).group('reservations.child_id').count.collect{|k,v| k if v >= 4 }) }
   ## Class Methods ##
   # A scope that checks for a class's age requirement.
   def self.age_between(klass)
