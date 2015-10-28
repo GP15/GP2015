@@ -14,8 +14,13 @@ class Subscription < ActiveRecord::Base
     )
     token = result.payment_method.token
     result = Braintree::Subscription.create(payment_method_token: token, plan_id: plan_id)
-    self.subscription_id = result.subscription.id
-    self.save!
+    if result.success?
+      self.subscription_id = result.subscription.id
+      self.start_date = DateTime.now
+      self.save!
+    else
+      false
+    end
   end
 
   def subscriped_on

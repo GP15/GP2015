@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get  'invite',  to: 'static_pages#invite'
   get  'pricing', to: 'static_pages#pricing'
 
+  post 'charged_successfully', to: 'subscriptions#charged_successfully'
+
   resources :schedules, only: [:index, :show] do
     patch 'archive',   on: :member
     patch 'unarchive', on: :member
