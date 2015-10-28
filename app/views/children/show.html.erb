@@ -22,22 +22,24 @@
               <strong>Age</strong>
               <%= @child.age %> years
             </p>
-            <p>
-              <strong>Subscribed Plans</strong>
-              <ol>
-                <% @child.subscriptions.each do |plan| %>
+            <% if @subscription.present? && @subscription.status %>
+              <p>
+                <strong>Subscribed Plan</strong>
+                <ol>
+                  <% plan = @subscription %>
                   <li>
-                      <%= link_to plan.plan_id, child_subscription_path(@child, plan) %> -
-                      <%= plan.subscriped_on %>
-                      <label class="label label-success"><%= plan.print_status %></label>
-                      <%= link_to 'Unsubscribe', child_subscription_path(@child, plan), method: :delete, data: { confirm: "Are you sure?" } if plan.status %>
+                    <%= link_to plan.plan_id, child_subscription_path(@child, plan) %> -
+                    <%= plan.subscriped_on %>
+                    <label class="label label-success"><%= plan.print_status %></label>
+                    <%= link_to 'Unsubscribe', child_subscription_path(@child, plan), method: :delete, data: { confirm: "Are you sure?" } if plan.status %>
                   </li>
-                <% end %>
-              </ol>
-            </p>
-            <div class="footer">
-              <%= link_to @subscriptions.present? ? "Subscribe for new Plan" : "Subscribe Now", new_child_subscription_path(@child), class: 'btn btn-success' %>
-            </div>
+                </ol>
+              </p>
+            <% else %>
+              <div class="footer">
+                <%= link_to @subscription.present? ? "Subscribe for new Plan" : "Subscribe Now", new_child_subscription_path(@child), class: 'btn btn-success' %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

@@ -28,7 +28,11 @@ class ApplicationController < ActionController::Base
     current_user.present? &&
     !devise_controller? &&
     (current_user.children.without_subscriptions.length != 0) &&
-    !params[:controller].eql?("children") &&
-    !params[:controller].eql?("subscriptions")
+    not_controller_with_action('children', 'show') &&
+    not_controller_with_action('subscriptions', '')
+  end
+
+  def not_controller_with_action(controller, action)
+    !(params[:controller].eql?(controller) && (action.present? ? params[:action].eql?(action) : true))
   end
 end

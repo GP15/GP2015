@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904143210) do
+ActiveRecord::Schema.define(version: 20151028052041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,12 +91,26 @@ ActiveRecord::Schema.define(version: 20150904143210) do
 
   add_index "partners", ["city_id"], name: "index_partners_on_city_id", using: :btree
 
+  create_table "reservation_cancellations", force: :cascade do |t|
+    t.string   "transaction_id"
+    t.float    "amount",         default: 0.0
+    t.integer  "reservation_id"
+    t.integer  "user_id"
+    t.string   "card_type"
+    t.string   "last4"
+    t.integer  "child_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.integer  "child_id"
     t.integer  "schedule_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "deleted",     default: false
+    t.datetime "deleted_at"
   end
 
   add_index "reservations", ["child_id", "schedule_id"], name: "index_reservations_on_child_id_and_schedule_id", using: :btree
@@ -123,6 +137,19 @@ ActiveRecord::Schema.define(version: 20150904143210) do
   add_index "schedules", ["partner_id"], name: "index_schedules_on_partner_id", using: :btree
   add_index "schedules", ["starts_at", "ends_at"], name: "index_schedules_on_starts_at_and_ends_at", using: :btree
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.string   "plan_id"
+    t.integer  "user_id"
+    t.date     "renewal_date"
+    t.boolean  "status",          default: true
+    t.integer  "quantity",        default: 1
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "child_id"
+    t.datetime "cancelled_on"
+    t.string   "subscription_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -136,6 +163,9 @@ ActiveRecord::Schema.define(version: 20150904143210) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "location"
+    t.string   "customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

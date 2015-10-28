@@ -19,7 +19,7 @@ class Reservation < ActiveRecord::Base
   # end
 
   def can_be_cancelled?
-    schedule.starts_at.day > Date.today.day
+    (schedule.starts_at - DateTime.now).round >= 1
   end
 
   def cancellation_charge

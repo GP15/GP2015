@@ -14,7 +14,7 @@ class Subscription < ActiveRecord::Base
     )
     token = result.payment_method.token
     result = Braintree::Subscription.create(payment_method_token: token, plan_id: plan_id)
-    self.subscription_ids << result.subscription.id
+    self.subscription_id = result.subscription.id
     self.save!
   end
 
@@ -36,7 +36,7 @@ class Subscription < ActiveRecord::Base
   end
 
   def unsubscribe
-    result = Braintree::Subscription.cancel(subscription_ids.first)
+    result = Braintree::Subscription.cancel(subscription_id)
     self.update_attributes(status: false, cancelled_on: DateTime.now)
   end
 end

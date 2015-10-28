@@ -27,7 +27,7 @@ class ChildrenController < ApplicationController
   # GET children/:id
   def show
     @child = current_user.children.find(params[:id])
-    @subscriptions = @child.subscriptions
+    @subscription = @child.subscription
   end
 
   # PATCH/PUT /users/:user_id/children/:id
