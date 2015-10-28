@@ -30,7 +30,7 @@
           <p>A class starting less than 6 hours from now can't be reserved for additional children.</p>
         <% elsif Time.zone.now >= @schedule.starts_at - 6.hours %>
           <span>Note:</span>
-          <p>This class is past the scheduled time and can't be reserved anymore.</p>
+          <p>This class is past the scheduled starting time and can't be reserved anymore.</p>
         <% end %>
 
         <% if @reservations.empty? && @children.empty? %>
