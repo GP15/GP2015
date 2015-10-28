@@ -12,8 +12,15 @@ class Reservation < ActiveRecord::Base
   scope :sort_by_datetime_asc,  -> { order('schedules.starts_at ASC,  schedules.ends_at ASC') }
   scope :sort_by_datetime_desc, -> { order('schedules.starts_at DESC, schedules.ends_at DESC') }
 
-  # def self.created_between(start_time, end_time)
-  #   where('schedules.starts_at >= ? AND schedules.starts_at < ?', start_time, end_time)
-  # end
+  # https://github.com/robinbortlik/validates_overlap
+  # Prevent user from reserving overlapping schedules.
+  validates "schedules.starts_at", "schedules.ends_at",
+    overlap: {
+      query_options: { includes: :schedule },
+      exclude_edges: ["starts_at", "ends_at"],
+      scope: { "reservations.child_id" => proc { |reservation| reservation.child_id } },
+      message_content: "This child already has other reservation(s) that overlaps this schedule.
+                        Please choose another schedule."
+    }
 
 end
