@@ -7,6 +7,7 @@ class ReservationsController < ApplicationController
   def new
     @reservations = current_user.reservations.eager_load(:schedule, :child).where(schedule_id: @schedule)
     @children = current_user.children
+                  .valid_children_wrt_subscriptions(current_user)
                   .age_between(@schedule.klass)
                   .without(@reservations)
                   .sort_by_age_name
