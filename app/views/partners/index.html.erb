@@ -14,13 +14,12 @@
             </div>
             <div class="partner-grid-details">
               <%= link_to partner.company, partner, class: "title" %>
-              <p class="address"><%= partner.address %></p>
-              <span class="city"><%= partner.city.name %></span>
               <div class="activity">
                 <% partner.activities.uniq.each do |activity| %>
                   <span><%= activity.name %></span>
                 <% end %>
               </div>
+              <span class="city"><%= partner.city.name %></span>
               <% if partner.booking_limit.to_i > 0 %>
                 <span class="limit">Up to <%= partner.booking_limit %> visits per month</span>
               <% end %>
