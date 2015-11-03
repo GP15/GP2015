@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
 
+  get 'terms',   to: 'static_pages#terms'
+  get 'privacy', to: 'static_pages#privacy'
+
   resources :schedules, only: [:index, :show] do
     patch 'archive',   on: :member
     patch 'unarchive', on: :member
