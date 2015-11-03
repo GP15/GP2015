@@ -1,4 +1,4 @@
-<table class="table table-condensed table-striped th-border-unset">
+<table class="table table-responsive-block activity-table">
   <thead>
     <tr>
       <th></th>
@@ -10,22 +10,22 @@
       <th></th>
     </tr>
   </thead>
-  <tbody class="text-13px link-underline">
+  <tbody>
     <% reservations.each do |reservation| %>
       <tr>
-        <td><%= reservation.child.first_name %></td>
-        <td><%= reservation.schedule.starts_at.strftime("%-d %b %Y") %></td>
-        <td>
+        <td class="name-col" data-title="Name"><%= reservation.child.first_name %></td>
+        <td class="date-col" data-title="Date"><%= reservation.schedule.starts_at.strftime("%-d %b %Y") %></td>
+        <td class="time-col" data-title="Time">
           <%= reservation.schedule.starts_at.strftime("%l:%M%P") %> -
           <%= reservation.schedule.ends_at.strftime("%l:%M%P") %>
         </td>
-        <td><%= reservation.schedule.klass.name %></td>
-        <td>
+        <td class="activity-col" data-title="Activity"><%= reservation.schedule.klass.name %></td>
+        <td class="studio-col" data-title="Studio">
           <%= link_to reservation.schedule.partner.company, partner_path(reservation.schedule.partner) %>
         </td>
-        <td><%= reservation.schedule.city.name %></td>
-        <td>
-          <%= link_to "view", new_schedule_reservation_path(reservation.schedule) %>
+        <td class="city-col" data-title="City"><%= reservation.schedule.city.name %></td>
+        <td class="availability-col" data-title="Availability">
+          <%= link_to "view", new_schedule_reservation_path(reservation.schedule), class: "gp-button" %>
         </td>
       </tr>
     <% end %>
