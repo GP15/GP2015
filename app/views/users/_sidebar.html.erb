@@ -1,18 +1,3 @@
 <div class="content-sidebar">
-  <div class="sidebar-widget">
-    <h3>Children</h3>
-    <div class="children-list">
-      <table class="table children-list-table">
-        <% @children.each do |child| %>
-          <tr>
-            <td class="children-name"><%= child.first_name %> <%= child.last_name %></td>
-            <td class="children-number"><%= age(child) %></td>
-          </tr>
-        <% end %>
-      </table>
-      <div class="sidebar-footer">
-        <%= link_to "+ Add", new_user_child_path(current_user), class: "gp-button" %>
-      </div>
-    </div>
-  </div>
+  <%= render 'shared/children_list' %>
 </div>
