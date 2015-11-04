@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def faq
+  end
+
   def terms
   end
 
