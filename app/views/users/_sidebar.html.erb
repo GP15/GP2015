@@ -25,7 +25,7 @@
     <tr>
       <th>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-          View Refer Link
+          refer to friend
         </button>
       </th>
     </tr>
@@ -39,11 +39,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Your Refer Link</h4>
+        <h4 class="modal-title" id="myModalLabel">Liked Us, refer to friend</h4>
       </div>
       <div class="modal-body">
-        <%= link_to "#{root_url}reference/#{current_user.promo_code}", '#' %><br/>
-        <%= link_to "Share", '#', class: 'btn btn-success btn-lg' %>
+        <% if current_user.promo_code.present? %>
+          <%= link_to "#{root_url}reference/#{current_user.promo_code}", '#' %><br/>
+          <%= link_to "Share", '#', class: 'btn btn-success btn-lg' %>
+        <% else %>
+          <%= link_to "Get your referral link", user_promo_code_path(current_user), class: 'btn btn-success btn-lg', method: :post %>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

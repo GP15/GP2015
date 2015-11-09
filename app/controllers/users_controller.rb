@@ -9,4 +9,12 @@ class UsersController < ApplicationController
     @past_reservations = @reservations.in_the_past.sort_by_datetime_desc
     #@subscriptions = current_user.subscriptions
   end
+
+  def promo_code
+    if current_user.promo_code.nil?
+      current_user.promo_code = current_user.generate_promo_code
+      current_user.save
+    end
+    redirect_to current_user
+  end
 end
