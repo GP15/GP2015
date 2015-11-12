@@ -1,22 +1,29 @@
 <% provide(:title, 'Add child') %>
+<% provide(:page_title_bg, asset_path('page-bg-child.jpg')) %>
 
-<section class="margin-one">
+<div class="content add-child-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Add Child' } %>
+
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-3">
+        <div class="content-sidebar">
+          <%# render 'shared/children_list' %>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="content-main">
+          <h3>Add Child</h3>
 
-        <h1 class="title-large text-center margin-four-bottom">Add Child</h1>
+          <%= form_for [@user, @child], html: { class: "form-container form-horizontal" } do |f| %>
+            <%= render 'form', f: f %>
 
-        <%= form_for [@user, @child] do |f| %>
-          <%= render 'form', f: f %>
-
-          <div class="pull-right">
-            <%= link_to "Cancel", current_user, class: secondary_button_small %>
-            <%= f.submit "Add", class: primary_button_small %>
-          </div>
-        <% end %>
-
+            <div class="form-group form-action">
+              <%= f.submit "Add", class: "form-submit-btn gp-button" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
