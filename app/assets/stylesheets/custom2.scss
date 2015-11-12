@@ -1302,7 +1302,7 @@ header nav #top-nav hr {
 /* Form Field Icon */
 .form-container .form-group-icon:before {
 	content: '';
-	background: #fff url('../images/form-field-icon-sprite.png');
+	background: #fff image-url('form-field-icon-sprite.png');
 	width: 25px;
 	height: 25px;
 	position: absolute;

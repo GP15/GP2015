@@ -1,32 +1,37 @@
 <% provide(:title, "Login") %>
 
-<div class="container content-top-margin">
-  <div class="row">
-    <h1 class="title-font-300 text-center margin-five-bottom">Login</h1>
+<div class="content login-page">
+  <div class="container">
+    <div class="form-popup-container">
+      <h1>Login</h1>
+      <div class="login-avatar"></div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-      </div>
-
-      <% if devise_mapping.rememberable? -%>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, class: "font-weight-400" %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+          html: {class: "login-form form-container"}) do |f| %>
+        <div class="form-group form-group-icon form-group-email field">
+          <%= f.email_field :email, placeholder: "Email", autofocus: true, class: "form-control" %>
         </div>
-      <% end -%>
 
-      <div class="actions margin-three">
-        <%= f.submit "Log in", class: primary_button_small %>
-      </div>
+        <div class="form-group form-group-icon form-group-password field">
+          <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control" %>
+        </div>
 
-      <%= render "users/shared/links" %>
-    <% end %>
+        <% if devise_mapping.rememberable? -%>
+          <div class="form-group field">
+            <div class="checkbox">
+              <label><%= f.check_box :remember_me %>Remember Me</label>
+            </div>
+          </div>
+        <% end -%>
+
+        <div class="form-group">
+          <%= f.submit "Login", class: "form-submit-btn gp-button" %>
+        </div>
+
+        <br />
+        <span class="form-meta"><%= link_to "Forgot your password?", new_user_password_path %></span>
+        <span class="form-meta">Don't have a login? <%= link_to "Sign up", new_user_registration_path %></span>
+      <% end %>
+    </div>
   </div>
 </div>
