@@ -1,12 +1,12 @@
-<div class="schedule-item">
-  <div class="image">
+<div class="schedule-item-container">
+  <div class="schedule-image">
     <%= image_tag @schedule.partner.img_url, alt: "photo of #{@schedule.partner.company}" %>
   </div>
 
-  <div class="schedule-item-details">
+  <div class="schedule-details">
     <div class="level"><%= @schedule.klass.level %></div>
 
-    <h1><%= @schedule.klass.name %></h1>
+    <h3 class="activity"><%= @schedule.klass.name %></h3>
 
     <div class="partner">by <%= link_to @schedule.partner.company, partner_path(@schedule.partner) %></div>
 
@@ -30,7 +30,10 @@
 
     <div class="address">
       <h3>Address</h3>
-      <p><%= @schedule.partner.address %>, <%= @schedule.city.name %>, <%= @schedule.partner.state %></p>
+      <p>
+        <i class="fa fa-map-marker"></i>
+        <%= @schedule.partner.address %>, <%= @schedule.city.name %>, <%= @schedule.partner.state %>
+      </p>
     </div>
   </div>
 </div>

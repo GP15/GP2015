@@ -1,29 +1,28 @@
-<div class="reservation-list">
-  <h3>Reservations</h3>
-  <table>
-    <thead>
-      <tr>
+<h3>Reservations</h3>
+<table class="table reservation-list-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th class="date">Created on</th>
+      <% if Time.zone.now <= @schedule.starts_at %>
         <th></th>
-        <th class="date">Created on</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.child.first_name if reservation.child %></td>
+        <td class="date"><%= reservation.created_at.strftime("%-d %b %Y") %></td>
         <% if Time.zone.now <= @schedule.starts_at %>
-          <th></th>
+          <td class="action">
+            <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation),
+                method: :delete,
+                data: { confirm: "Cancel reservation for #{reservation.child.first_name}?" },
+                class: "gp-button" %>
+          </td>
         <% end %>
       </tr>
-    </thead>
-    <tbody>
-      <% @reservations.each do |reservation| %>
-        <tr>
-          <td><%= reservation.child.first_name if reservation.child %></td>
-          <td class="date"><%= reservation.created_at.strftime("%-d %b %Y") %></td>
-          <% if Time.zone.now <= @schedule.starts_at %>
-            <td class="action">
-              <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation),
-                  method: :delete,
-                  data: { confirm: "Cancel reservation for #{reservation.child.first_name}?" } %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+    <% end %>
+  </tbody>
+</table>
