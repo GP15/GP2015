@@ -21,6 +21,7 @@
               <!-- Disable turbolink for partners#index link so isotope.js can work properly -->
               <li><%= link_to "Partners",  partners_path, :"data-no-turbolink" => true %></li>
               <li><%= link_to "Profile",   edit_user_registration_path  %></li>
+              <hr>
               <li><%= link_to "Logout",    destroy_user_session_path, method: "delete"  %></li>
             </ul>
           <% else %>
@@ -29,6 +30,7 @@
               <li><%= link_to "Partners",  partners_path, :"data-no-turbolink" => true %></li>
               <li><%= link_to "Schedules", schedules_path %></li>
             </ul>
+            <hr>
             <!-- Login & Sign Up Button -->
             <div class="button-menu">
               <%= link_to new_user_session_path, id: "login", class: "btn-menu secondary" do %>
