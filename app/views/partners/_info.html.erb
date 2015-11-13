@@ -1,0 +1,14 @@
+<ul>
+  <li class="studio-address">
+    <span>Address</span>
+    <p><%= @partner.address %>, <%= @partner.city.name %>, <%= @partner.state %></p>
+  </li>
+  <li class="studio-contact">
+    <span>Contact</span>
+    <p><%= @partner.phone %></p>
+  </li>
+  <li class="studio-activity">
+    <span>Activities</span>
+    <p><%= @klasses.map { |klass| klass.name }.join(", ") %></p>
+  </li>
+</ul>
