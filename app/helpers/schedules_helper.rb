@@ -3,18 +3,18 @@ module SchedulesHelper
   # Reserve buttons that appears in a schedule table.
   def reserve_button(schedule)
     if user_signed_in?
-      link_to 'Reserve', new_schedule_reservation_path(schedule), class: primary_button_small_round
+      link_to 'Reserve', new_schedule_reservation_path(schedule), class: "gp-button"
     else
-      link_to 'Reserve', new_user_session_path, class: primary_button_small_round
+      link_to 'Reserve', new_user_session_path, class: "gp-button"
     end
   end
 
   # Link to new reservation page if signed in.
   def link_to_reservation_if(schedule)
     if user_signed_in?
-      link_to schedule.klass.name, new_schedule_reservation_path(schedule), class: "underline"
+      link_to schedule.klass.name, new_schedule_reservation_path(schedule)
     else
-      link_to schedule.klass.name, schedule_path(schedule), class: "underline"
+      link_to schedule.klass.name, schedule_path(schedule)
     end
   end
 

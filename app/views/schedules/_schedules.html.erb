@@ -13,7 +13,7 @@
   <tbody class="text-13px link-underline">
     <% @schedules.each do |schedule| %>
       <tr>
-        <td><%= link_to_reservation_if(schedule) %></td>
+        <td><%= schedule.klass.name %></td>
         <td>
           <%= link_to schedule.partner.company, partner_path(schedule.partner) if schedule.partner %>
         </td>

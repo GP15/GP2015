@@ -16,4 +16,6 @@
 //= require imagesloaded.pkgd.min
 //= require jquery.isotope.min
 //= require partners
+//= require schedules
 //= require google_analytics
+//= require faq

@@ -1,14 +1,22 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-<div class="field">
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+<div class="form-group field">
+  <%= f.label :first_name, class: "col-sm-4 control-label capitalize" %>
+  <div class="col-sm-8">
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
 </div>
-<div class="field">
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+
+<div class="form-group field">
+  <%= f.label :last_name, class: "col-sm-4 control-label capitalize" %>
+  <div class="col-sm-8">
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
 </div>
-<div class="field">
-  <%= f.label :birth_year, class: "display-block" %>
-  <%= f.select :birth_year, (Date.current.year - 17)..(Date.current.year - 4) %>
+
+<div class="form-group field">
+  <%= f.label :birth_year, class: "col-sm-4 control-label capitalize" %>
+  <div class="col-sm-8">
+    <%= f.select :birth_year, (Date.current.year - 17)..(Date.current.year - 4), {}, {class: "form-control required"} %>
+  </div>
 </div>
