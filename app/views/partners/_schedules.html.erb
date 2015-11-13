@@ -14,7 +14,7 @@
       <% @schedules.each do |schedule| %>
         <tr>
           <td class="date-col" data-title="Date"><%= schedule.starts_at.strftime("%d %b %Y") %></td>
-          <td class="activity-col" data-title="Activity"><%= link_to_reservation_if(schedule) %></td>
+          <td class="activity-col" data-title="Activity"><%= schedule.klass.name %></td>
           <td class="time-col" data-title="Time">
             <%= schedule.starts_at.strftime("%l:%M%P") %> — <%= schedule.ends_at.strftime("%l:%M%P") %>
           </td>
