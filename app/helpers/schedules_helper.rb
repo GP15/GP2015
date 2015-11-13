@@ -5,7 +5,7 @@ module SchedulesHelper
     if user_signed_in?
       link_to 'Reserve', new_schedule_reservation_path(schedule), class: "gp-button"
     else
-      link_to 'Reserve', new_user_session_path, class: "gp-button"
+      link_to 'Reserve', new_user_registration_path, class: "gp-button"
     end
   end
 

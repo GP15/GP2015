@@ -10,7 +10,7 @@
       <th></th>
     </tr>
   </thead>
-  <tbody class="text-13px link-underline">
+  <tbody class="text-13px">
     <% @schedules.each do |schedule| %>
       <tr>
         <td><%= schedule.klass.name %></td>
@@ -26,10 +26,7 @@
           <%= schedule.klass.age_start %> - <%= schedule.klass.age_end %>
         </td>
         <td class="text-center"><%= schedule.klass.level if schedule.klass %></td>
-        <td class="text-center">
-          <%= link_to 'Reserve', new_schedule_reservation_path(schedule),
-              class: primary_button_small_round %>
-        </td>
+        <td class="text-center"><%= reserve_button(schedule) %></td>
       </tr>
     <% end %>
   </tbody>
