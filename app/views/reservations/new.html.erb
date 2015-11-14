@@ -33,7 +33,6 @@
             <%= render 'form' %>
           <% elsif Time.zone.now.between?(@schedule.starts_at - 6.hours, @schedule.starts_at) %>
             <div class="schedule-notes">
-              <span>Note:</span>
               <p>A class starting less than 6 hours from now can't be reserved for additional children.</p>
             </div>
           <% elsif Time.zone.now >= @schedule.starts_at - 6.hours %>
