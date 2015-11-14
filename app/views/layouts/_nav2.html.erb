@@ -36,7 +36,9 @@
               <%= link_to new_user_session_path, id: "login", class: "btn-menu secondary" do %>
                 <span data-title="Login">Login</span>
               <% end %>
-              <!-- <a id="signup" class="btn-menu" href="sign-up.html" title="Sign Up"><span data-title="Sign Up">Sign Up</span></a> -->
+              <%= link_to new_user_registration_path, id: "signup", class: "btn-menu" do %>
+                <span data-title="Sign Up">Sign Up</span>
+              <% end %>
             </div>
           <% end %>
         </ul>
