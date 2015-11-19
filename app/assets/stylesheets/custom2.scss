@@ -126,18 +126,15 @@ header nav .container {
 /* Logo */
 header nav .brand-logo {
 	width: auto;
-	height: 70px;
-	padding: 0 70px 0 0;
+	height: inherit;
+	padding: 0 !important;
 	position: relative;
 }
 header nav .brand-logo img {
-	width: 100%;
+	width: auto;
 	height: auto;
 	max-height: 100%;
 	padding: 15px;
-}
-@media screen and (max-width: 991px) {
-	header nav .brand-logo { height: 60px; }
 }
 
 /* Navbar */
@@ -155,6 +152,7 @@ header nav .navbar-header .navbar-toggle {
 	top: 0;
 	right: 0;
 	cursor: pointer;
+	z-index: 999;
 }
 header nav .navbar-header .navbar-toggle i {
 	font-size: 18px;
@@ -213,8 +211,8 @@ header nav #top-nav hr {
 }
 @media screen and (max-width: 991px) {
 	.main-nav, .button-menu { margin: 7.5px -15px; }
+	.main-nav { margin-top: 0 !important; }
 	.main-nav li a {
-		font-size: 13px;
 		text-align: center;
 		text-transform: uppercase;
 		padding: 7px 15px;
@@ -245,8 +243,8 @@ header nav #top-nav hr {
 	font-weight: 500;
 }
 @media screen and (max-width: 991px) {
+	.button-menu .btn-menu { display: block; }
 	.button-menu .btn-menu span {
-		font-size: 13px;
 		color: #1b1b1b;
 		text-align: center;
 		text-transform: uppercase;
