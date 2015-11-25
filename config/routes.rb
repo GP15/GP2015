@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'admin/users',        to: 'admin#users'
   get 'admin/settings',     to: 'admin#settings'
 
+  match 'users/:id' => 'users#destroy', via: :delete, as: 'admin_destroy_user'
+
   resources :cities, path: 'city', except: [:index, :show]
   resources :activities, except: [:index, :show]
 
