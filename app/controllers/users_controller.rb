@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_admin!, only: [:destroy]
 
   # GET /users/:id
   def show
@@ -9,6 +10,14 @@ class UsersController < ApplicationController
 
     @current_reservations = @reservations.upcoming.sort_by_datetime_asc
     @past_reservations = @reservations.in_the_past.sort_by_datetime_desc
+  end
+
+  # DELETE /users/:id
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    redirect_to admin_users_path, notice: "User deleted."
   end
 
 end

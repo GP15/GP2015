@@ -1,0 +1,41 @@
+<% provide(:title, "Frequently Asked Questions") %>
+<% provide(:page_title_bg, asset_path('page-bg.jpg')) %>
+
+<div class="content faq-page white-bg">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'FAQ' } %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1 col-md-12">
+        <div class="row">
+          <!-- FAQ sidebar -->
+          <div class="col-md-4">
+            <div class="faq-question-links">
+              <h3>Frequently Asked Questions</h3>
+              <ul>
+                <li><a href="#faq-1">Item 1</a></li>
+                <li><a href="#faq-2">Item 2</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- FAQ content -->
+          <div class="col-md-8">
+            <ul class="faq-question-list">
+              <li>
+                <h3 id="faq-1" class="faq-question">Item 1</h3>
+                <p class="faq-answer">Item 1 Explanation Paragraph 1</p>
+                <p class="faq-answer">Item 1 Explanation Paragraph 2</p>
+              </li>
+
+              <li>
+                <h3 id="faq-2" class="faq-question">Item 2</h3>
+                <p class="faq-answer">Item 2 Explanation Paragraph 1</p>
+                <p class="faq-answer">Item 2 Explanation Paragraph 2</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,18 @@
 <% provide(:title, "Dashboard") %>
-<% provide(:nav_color, "link-white") %>
+<% provide(:page_title_bg, asset_path('page-bg-dashboard.jpg')) %>
 
-<%= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' } %>
+<div class="content dashboard-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' } %>
+  <%= render 'shared/notice' if flash.present? %>
 
-<%= render 'shared/notice' if flash.present? %>
-
-<section class="padding-two">
   <div class="container">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-3">
         <%= render 'sidebar' %>
       </div>
-      <div class="col-md-9 col-md-offset-1">
+      <div class="col-md-9">
         <%= render 'main' %>
       </div>
     </div>
   </div>
-</section>
+</div>

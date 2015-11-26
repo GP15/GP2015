@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
 
+  get 'faq',     to: 'static_pages#faq'
+  get 'terms',   to: 'static_pages#terms'
+  get 'privacy', to: 'static_pages#privacy'
+
   resources :schedules, only: [:index, :show] do
     patch 'archive',   on: :member
     patch 'unarchive', on: :member
@@ -26,6 +30,8 @@ Rails.application.routes.draw do
   get 'admin/schedules/:id',        to: 'admin#schedule', as: 'admin_schedule'
   get 'admin/users',        to: 'admin#users'
   get 'admin/settings',     to: 'admin#settings'
+
+  match 'users/:id' => 'users#destroy', via: :delete, as: 'admin_destroy_user'
 
   resources :cities, path: 'city', except: [:index, :show]
   resources :activities, except: [:index, :show]

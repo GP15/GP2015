@@ -5,7 +5,7 @@
     <div class="row">
       <h1 class="title-large text-center margin-five-bottom">Users</h1>
 
-      <div class="col-md-6 center-col">
+      <div class="col-md-8 center-col">
         <% if @users.empty? %>
           <p class="text-center">No users found.</p>
         <% else %>
@@ -13,8 +13,9 @@
             <thead>
               <tr>
                 <th>Email</th>
-                <th>Sign Up On</th>
-                <th>Last Sign In</th>
+                <th>Date Sign Up</th>
+                <th>Last Login</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody class="link-underline">
@@ -23,6 +24,8 @@
                   <td><%= user.email %></td>
                   <td><%= user.created_at.strftime("%d %b %Y") %></td>
                   <td><%= user.last_sign_in_at.strftime("%d %b %Y") if user.last_sign_in_at %></td>
+                  <td><%= link_to 'delete', admin_destroy_user_path(user), method: :delete,
+                  data: { confirm: "Delete this user?" }, class: "delete" %></td>
                 </tr>
               <% end %>
             </tbody>

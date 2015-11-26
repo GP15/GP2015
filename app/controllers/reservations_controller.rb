@@ -2,14 +2,11 @@ class ReservationsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_schedule
+  before_action :set_reservations
+  before_action :set_children
 
   # GET /schedules/:schedule_id/reservations/new
   def new
-    @reservations = current_user.reservations.where(schedule_id: @schedule).includes(:child)
-    @children = current_user.children
-                  .age_between(@schedule.klass)
-                  .without(@reservations)
-                  .sort_by_age_name
     @reservation = @reservations.build
   end
 
@@ -42,6 +39,16 @@ class ReservationsController < ApplicationController
 
     def set_schedule
       @schedule = Schedule.find(params[:schedule_id])
+    end
+
+    def set_reservations
+      @reservations = current_user.reservations.where(schedule_id: @schedule).includes(:child)
+    end
+
+    def set_children
+      @children = current_user.children.age_between(@schedule.klass)
+                                       .without(@reservations)
+                                       .sort_by_age_name
     end
 
     def child_params

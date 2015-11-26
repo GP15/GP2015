@@ -1,43 +1,53 @@
 <% provide(:title, "Reserve a class for #{@schedule.klass.name}") %>
+<% provide(:page_title_bg, asset_path('page-bg-reservation.jpg')) %>
 
-<%= render 'shared/notice' if flash[:notice].present? %>
+<div class="content reservation-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Reservation' } %>
+  <%= render 'shared/notice' if flash[:notice].present? %>
 
-<section class="margin-four-top">
   <div class="container">
     <div class="row">
 
-      <div class="col-md-6">
-        <p class="text-center"><%= attendees(@schedule.reservations.count, @schedule.quantity) %></p>
-
-        <%= render 'shared/schedule' %>
+      <div class="col-md-7">
+        <div class="attendees-stat content-main">
+          <p><%= attendees(@schedule.reservations.count, @schedule.quantity) %></p>
+        </div>
+        <div class="content-main">
+          <%= render 'shared/schedule' %>
+        </div>
       </div>
 
-      <div class="col-md-5 col-md-offset-1">
+      <div class="col-md-5">
         <% if @schedule.klass.reservation_limit > 0 %>
           <%= render 'limit_notice' %>
         <% end %>
 
-        <% if @reservations.present? %>
-          <%= render 'reservations' %>
-        <% end %>
+        <div class="reservation-list content-main">
+          <% if @reservations.present? %>
+            <%= render 'reservations' %>
+          <% end %>
 
-        <%= render 'shared/inline_error' if flash[:error].present? %>
+          <%= render 'shared/inline_error' if flash[:error].present? %>
 
-        <% if @children.present? && (Time.zone.now <= @schedule.starts_at - 6.hours) && (@schedule.reservations.count < @schedule.quantity) %>
-          <%= render 'form' %>
-        <% elsif Time.zone.now.between?(@schedule.starts_at - 6.hours, @schedule.starts_at) %>
-          <span>Note:</span>
-          <p>A class starting less than 6 hours from now can't be reserved for additional children.</p>
-        <% elsif Time.zone.now >= @schedule.starts_at - 6.hours %>
-          <span>Note:</span>
-          <p>This class is past the scheduled time and can't be reserved anymore.</p>
-        <% end %>
+          <% if @children.present? && (Time.zone.now <= @schedule.starts_at - 6.hours) && (@schedule.reservations.count < @schedule.quantity) %>
+            <%= render 'form' %>
+          <% elsif Time.zone.now.between?(@schedule.starts_at - 6.hours, @schedule.starts_at) %>
+            <div class="schedule-notes">
+              <p>A class starting less than 6 hours from now can't be reserved for additional children.</p>
+            </div>
+          <% elsif Time.zone.now >= @schedule.starts_at - 6.hours %>
+            <div class="schedule-notes">
+              <span>Note:</span>
+              <p>This class is past the scheduled time and can't be reserved anymore.</p>
+            </div>
+          <% end %>
 
-        <% if @reservations.empty? && @children.empty? %>
-          <%= render 'eligibility_notice' %>
-        <% end %>
+          <% if @reservations.empty? && @children.empty? %>
+            <%= render 'eligibility_notice' %>
+          <% end %>
+        </div>
       </div>
 
     </div>
   </div>
-</section>
+</div>

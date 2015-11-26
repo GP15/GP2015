@@ -1,11 +1,18 @@
 class StaticPagesController < ApplicationController
 
-  layout 'application2', only: [:index]
-
   def index
     if user_signed_in?
       redirect_to current_user
     end
+  end
+
+  def faq
+  end
+
+  def terms
+  end
+
+  def privacy
   end
 
   # def invite

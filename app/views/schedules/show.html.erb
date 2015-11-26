@@ -1,16 +1,16 @@
 <% provide(:title, "#{@schedule.klass.name} (#{@schedule.starts_at.strftime("%-d %b %Y")})
                     by #{@schedule.partner.company}") %>
 
-<section class="padding-seven">
+<div class="content">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 center-col text-center">
+      <div class="col-md-6 center-col">
 
-        <%= link_to "⇽ back", :back, class: "clearfix" %>
+        <div class="content-main">
+          <%= render 'shared/schedule' %>
+        </div>
 
-        <%= render 'shared/schedule' %>
-
-        <div class="margin-eight-top">
+        <div class="margin-eight-top text-center">
           <% if Time.zone.now >= (@schedule.starts_at - 6.hours) %>
             <p class="deep-light-gray-text">This schedule can't be reserved anymore.</p>
           <% elsif user_signed_in? && (Time.zone.now < (@schedule.starts_at - 6.hours)) %>
@@ -24,4 +24,4 @@
       </div>
     </div>
   </div>
-</section>
+</div>

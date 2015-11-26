@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
 
-  devise :database_authenticatable, :registerable, :rememberable, :trackable
+  devise :database_authenticatable, :registerable, :rememberable, :trackable, :recoverable
 
   has_many :children, dependent: :destroy
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   has_many :schedules, through: :reservations
 
   validates_presence_of :email

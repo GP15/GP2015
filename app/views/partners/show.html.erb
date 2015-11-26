@@ -1,51 +1,16 @@
 <% provide(:title, @partner.company) %>
-<% provide(:nav_color, "link-white") %>
+<% provide(:page_title_bg, asset_path('page-bg-partner.jpg')) %>
 
-<%= render 'hero' %>
-
-<section class="padding-two">
+<div class="content partner-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Partner' } %>
   <div class="container">
-
     <div class="row">
-      <div class="activities">
-        <h3>Activities</h3>
-        <p><%= @klasses.map { |klass| klass.name }.join(", ") %></p>
+      <div class="col-md-8">
+        <%= render 'main' %>
+      </div>
+      <div class="col-md-4 hidden-xs">
+        <%= render 'sidebar' %>
       </div>
     </div>
-
-    <div class="row">
-      <% if @schedules.present? %>
-        <table class="table table-cell-center table-condensed table-striped th-border-unset">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Activity</th>
-              <th>Time</th>
-              <th>Level</th>
-              <th>Age</th>
-              <th>Availability</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @schedules.each do |schedule| %>
-              <tr>
-                <td><%= schedule.starts_at.strftime("%d %b %Y") %></td>
-                <td><%= link_to_reservation_if(schedule) %></td>
-                <td>
-                  <%= schedule.starts_at.strftime("%l:%M%P") %> —
-                  <%= schedule.ends_at.strftime("%l:%M%P") %>
-                </td>
-                <td><%= schedule.klass.level if schedule.klass %></td>
-                <td><%= schedule.klass.age_start %> - <%= schedule.klass.age_end %></td>
-                <td><%= reserve_button(schedule) %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <% else %>
-        <p class="text-center margin-five-top">No current schedules in the meantime.</p>
-      <% end %>
-    </div>
-
   </div>
-</section>
+</div>
