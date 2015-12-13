@@ -1,7 +1,7 @@
 class ChildrenController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_user
+  before_action :set_user, except: [:show]
 
   # GET /users/:user_id/children/new
   def new
@@ -13,7 +13,7 @@ class ChildrenController < ApplicationController
     @child = @user.children.build(child_params)
 
     if @child.save
-      redirect_to current_user, notice: "#{@child.first_name} added to children list."
+      redirect_to @child, notice: "#{@child.first_name} added to children list."
     else
       render :new
     end
@@ -22,6 +22,12 @@ class ChildrenController < ApplicationController
   # GET /users/:user_id/children/:id/edit
   def edit
     @child = @user.children.find(params[:id])
+  end
+
+  # GET children/:id
+  def show
+    @child = current_user.children.find(params[:id])
+    @subscription = @child.subscription
   end
 
   # PATCH/PUT /users/:user_id/children/:id
@@ -44,12 +50,11 @@ class ChildrenController < ApplicationController
   end
 
   private
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
-    def set_user
-      @user = User.find(params[:user_id])
-    end
-
-    def child_params
-      params.require(:child).permit(:first_name, :last_name, :birth_year)
-    end
+  def child_params
+    params.require(:child).permit(:first_name, :last_name, :birth_year)
+  end
 end

@@ -19,7 +19,6 @@
   <%= render 'layouts/shim' %>
 </head>
 <body class="text-med black-text">
-
   <%= render 'layouts/nav2' %>
 
   <%= yield %>
@@ -27,6 +26,8 @@
   <%= render 'layouts/footer' %>
 
   <%= yield :bottom_js %>
+
+  <%= yield :javascript if params[:controller].eql?('cards') || params[:controller].eql?('subscriptions') %>
 
 </body>
 </html>

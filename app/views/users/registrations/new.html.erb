@@ -6,8 +6,13 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
   </div>
 
   <div class="field">
@@ -21,6 +26,20 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="mc-field-group field">
+    <label for="mce-CITY" class="letter-spacing-1">Your City <span class="asterisk">*</span></label>
+    <select name="user[location]" class="required" id="mce-CITY">
+      <option value=""></option>
+      <option value="Klang">Klang</option>
+      <option value="Kuala Lumpur">Kuala Lumpur</option>
+      <option value="Petaling Jaya">Petaling Jaya</option>
+      <option value="Puchong">Puchong</option>
+      <option value="Putrajaya">Putrajaya</option>
+      <option value="Shah Alam">Shah Alam</option>
+      <option value="Subang Jaya">Subang Jaya</option>
+    </select>
   </div>
 
   <div class="actions margin-three-ten">

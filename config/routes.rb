@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  get 'cards/new'
 
   root 'static_pages#index'
 
   get 'faq',     to: 'static_pages#faq'
   get 'terms',   to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
+
+  post 'charged_successfully', to: 'subscriptions#charged_successfully'
 
   resources :schedules, only: [:index, :show] do
     patch 'archive',   on: :member
@@ -15,7 +18,16 @@ Rails.application.routes.draw do
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
 
   resources :users, only: [:show] do
-    resources :children, except: [:index, :show, :edit]
+    collection do
+      get :select_plan
+    end
+    post :promo_code
+    resources :children, except: [:index, :show]
+  end
+
+  resources :children, only: [:show] do
+    ## subscriptions ##
+    resources :subscriptions, only: [:new, :create, :show, :destroy]
   end
 
   resources :partners do
@@ -44,4 +56,7 @@ Rails.application.routes.draw do
     patch 'admin/:id',     to: 'devise/registrations#update', as: 'admin_registration'
   end
 
+
+  ## cards ##
+  resources :cards
 end

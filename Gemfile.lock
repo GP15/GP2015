@@ -40,6 +40,8 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    braintree (2.49.0)
+      builder (>= 2.0.0)
     builder (3.2.2)
     bullet (4.14.7)
       activesupport (>= 3.0.0)
@@ -175,6 +177,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  braintree
   bullet (~> 4.14.7)
   byebug
   coffee-rails (~> 4.1.0)
@@ -195,3 +198,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   validates_overlap (~> 0.5.2)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.6
