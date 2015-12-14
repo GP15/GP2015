@@ -23,7 +23,7 @@
             <% end %>
           </div>
           <div id="dropin"></div>
-          <%= f.submit "Subscribe", class: "btn btn-success" %>
+          <%= f.submit "Subscribe", class: "btn btn-success", :disabled => true, :id => "suscribe_btn" %>
         <% end %>
       </div>
     </div>
@@ -37,7 +37,8 @@
    braintree.setup(
      client_token,
      'dropin', {
-       container: 'dropin'
+       container: 'dropin',
+       onReady: function(){ $("#suscribe_btn").prop('disabled', false); }
      });
  </script>
 <% end %>
