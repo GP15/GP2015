@@ -25,14 +25,15 @@
               = f.label :plan, "RM49 (4 Classes/Month)", class: 'multiple_classes'
               %br/
           #dropin
-          = f.submit "Subscribe", class: "btn btn-success"
+          = f.submit "Subscribe", class: "btn btn-success", :id => "suscribe_btn"
 
 = content_for :javascript do
   = javascript_include_tag "https://js.braintreegateway.com/v2/braintree.js"
   :javascript
-    var client_token = "#{@client_token}";
-    braintree.setup(
-      client_token,
-      'dropin', {
-        container: 'dropin'
-      });
+     var client_token = "<%= @client_token %>";
+     braintree.setup(
+       client_token,
+       'dropin', {
+         container: 'dropin',
+         onReady: function(){ $("#suscribe_btn").prop('disabled', false); }
+       });
