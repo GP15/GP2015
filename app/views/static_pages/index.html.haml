@@ -7,7 +7,7 @@
   = javascript_include_tag 'ion.rangeSlider.min'
   = javascript_include_tag 'moment.min'
   = javascript_include_tag 'frontpage'
-.content.home-page.no-padding
+.content.home-page.white-bg.no-padding
   / Section - Main
   #section-main.section-row
     .container
@@ -18,144 +18,139 @@
             %h2.page-heading.section-headline Unlimited Activities
             .text-center
               %h3.page-heading.section-subheading For Children
+      .row
+        .col-md-6
+          %p.section-text GeniusPass is a monthly membership created exclusively for children to provide them unlimited access to variety of activities in top studios and facilities.
+        .col-md-6
+          .map-image
+            = image_tag "malaysia-map.png", title: "Malaysia", alt: "Malaysia"
+            %p.map-label We're Now In Malaysia
+  / Section - Flags
+  #section-flags.section-row
+    .container
+      .row
+        .col-md-5.text-left-not-xs.text-left-not-sm.text-center-xs.text-center-sm
+          %span.small-heading Expanding Across
+          %h3.page-heading.heading
+            8 Cities
+            %span Counting
+        .col-md-7
+          .flag-list
+            %ul
+              %li.flag-icon= image_tag "flags/SG.png", alt: "Singapore", title: "Singapore"
+              %li.flag-icon= image_tag "flags/MY.png", alt: "Malaysia", title: "Malaysia"
+              %li.flag-icon= image_tag "flags/KR.png", alt: "South Korea", title: "South Korea"
+              %li.flag-icon= image_tag "flags/IN.png", alt: "India", title: "India"
+              %li.flag-icon= image_tag "flags/ID.png", alt: "Indonesia", title: "Indonesia"
+              %li.flag-icon= image_tag "flags/HK.png", alt: "Hong Kong", title: "Hong Kong"
+              %li.flag-icon= image_tag "flags/CN.png", alt: "China", title: "China"
+              %li.flag-icon= image_tag "flags/AU.png", alt: "Australia", title: "Australia"
+  / Section - Features
+  #section-features.section-row
+    .container
+      .slider-features.row
+        .slider-features-container.col-sm-6.col-md-4.col-md-offset-1
+          .slider-phone-frame
+          .slider-features-images
+            .feature-image= image_tag "app-screenshot1.png", alt: "App Screenshot", title: "App Screenshot"
+            .feature-image= image_tag "app-screenshot2.png", alt: "App Screenshot", title: "App Screenshot"
+            .feature-image= image_tag "app-screenshot3.png", alt: "App Screenshot", title: "App Screenshot"
+            .feature-image= image_tag "app-screenshot4.png", alt: "App Screenshot", title: "App Screenshot"
+        .slider-features-container.col-sm-6.col-md-6.text-center-xs
+          .slider-features-content
+            .feature-content
+              %h1.page-heading.feature-title
+                Choose
+                %span Activity
+              %p.feature-description Variety of activities for your children
+            .feature-content
+              %h1.page-heading.feature-title
+                Choose
+                %span Location
+              %p.feature-description Search preferred locations near you
+            .feature-content
+              %h1.page-heading.feature-title
+                %span Reserve
+                Activities
+              %p.feature-description Walk-in to explore, enjoy and learn
+            .feature-content
+              %h1.page-heading.feature-title
+                %span IOS and Android
+                Mobile App
+              %p.feature-description Launching soon
+          .slider-nav
+            .slider-dots
+            .slider-arrows
+  / Section - Subscription
+  #section-subscription.section-row
+    .container
+      %p.section-text.text-center Keep up-to-date with our latest happenings!
+      .mc_embed_signup.subscription-form-container
+        %form#mc-embedded-subscribe-form.validate.subscription-form{:action => "//geniuspass.us10.list-manage.com/subscribe/post?u=06b2675db3a573a09ca434ca3&id=2b51fe0248", :method => "post", :name => "mc-embedded-subscribe-form", :target => "_blank"}
+          .mc-field-group
+            %input#mce-EMAIL.form-field{:name => "EMAIL", :placeholder => "Enter your email...", :type => "email"}/
+          #mce-responses.clear
+            #mce-error-response.response{:style => "display:none"}
+            #mce-success-response.response{:style => "display:none"}
+          / real people should not fill this in and expect good things - do not remove this or risk form bot signups
+          %div{:style => "position: absolute; left: -5000px;"}
+            %input{:name => "b_06b2675db3a573a09ca434ca3_2b51fe0248", :tabindex => "-1", :type => "text", :value => ""}
+            %input#mc-embedded-subscribe.form-submit-btn{:name => "submit", :type => "submit", :value => "Submit"}/
+  / Section - Partners
+  #section-partners.section-row
+    .container
+      %h1.page-heading.section-heading Our Partners
+      .partners-list
         .row
-          .col-md-6
-            %p.section-text GeniusPass is a monthly membership created exclusively for children to provide them unlimited access to variety of activities in top studios and facilities.
-          .col-md-6
-            .map-image
-              = image_tag "malaysia-map.png", title: "Malaysia", alt: "Malaysia"
-              %p.map-label We're Now In Malaysia
-    / Section - Flags
-    #section-flags.section-row
-      .container
+          .col-md-3.col-sm-4
+            .partner-details
+              .partner-info
+                = image_tag "fitness-place1.jpg", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-bg"
+                = image_tag "partner-logo1.png", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-logo"
+                .label-title Company Name - 1
+                .bg-overlay
+              .label-activities Surfing
+          .col-md-5.col-sm-4
+            .partner-details
+              .partner-info
+                = image_tag "fitness-place2.jpg", alt: "Company Name - 2", title: "Company Name - 2", class: "partner-bg"
+                = image_tag "partner-logo2.png", alt: "Company Name - 2", title: "Company Name - 2", class: "partner-logo"
+                .label-title Company Name - 2
+                .bg-overlay
+              .label-activities Skating, Ice or Roller
+          .col-md-4.col-sm-4
+            .partner-details
+              .partner-info
+                = image_tag "fitness-place3.jpg", alt: "Company Name - 3", title: "Company Name - 3", class: "partner-bg"
+                = image_tag "partner-logo3.png", alt: "Company Name - 3", title: "Company Name - 3", class: "partner-logo"
+                .label-title Company Name - 3
+                .bg-overlay
+              .label-activities BMX Bike Riding
         .row
-          .col-md-5.text-left-not-xs.text-left-not-sm.text-center-xs.text-center-sm
-            %span.small-heading Expanding Across
-            %h3.page-heading.heading
-              8 Cities
-              %span Counting
-          .col-md-7
-            .flag-list
-              %ul
-                %li.flag-icon= image_tag "flags/SG.png", alt: "Singapore", title: "Singapore"
-                %li.flag-icon= image_tag "flags/MY.png", alt: "Malaysia", title: "Malaysia"
-                %li.flag-icon= image_tag "flags/KR.png", alt: "South Korea", title: "South Korea"
-                %li.flag-icon= image_tag "flags/IN.png", alt: "India", title: "India"
-                %li.flag-icon= image_tag "flags/ID.png", alt: "Indonesia", title: "Indonesia"
-                %li.flag-icon= image_tag "flags/HK.png", alt: "Hong Kong", title: "Hong Kong"
-                %li.flag-icon= image_tag "flags/CN.png", alt: "China", title: "China"
-                %li.flag-icon= image_tag "flags/AU.png", alt: "Australia", title: "Australia"
-    / Section - Features
-    #section-features.section-row
-      .container
-        .slider-features.row
-          .slider-features-container.col-sm-6.col-md-4.col-md-offset-1
-            .slider-phone-frame
-            .slider-features-images
-              .feature-image= image_tag "app-screenshot1.png", alt: "App Screenshot", title: "App Screenshot"
-              .feature-image= image_tag "app-screenshot2.png", alt: "App Screenshot", title: "App Screenshot"
-              .feature-image= image_tag "app-screenshot3.png", alt: "App Screenshot", title: "App Screenshot"
-              .feature-image= image_tag "app-screenshot4.png", alt: "App Screenshot", title: "App Screenshot"
-          .slider-features-container.col-sm-6.col-md-6.text-center-xs
-            .slider-features-content
-              .feature-content
-                %h1.page-heading.feature-title
-                  Choose
-                  %span Activity
-                %p.feature-description Variety of activities for your children
-              .feature-content
-                %h1.page-heading.feature-title
-                  Choose
-                  %span Location
-                %p.feature-description Search preferred locations near you
-              .feature-content
-                %h1.page-heading.feature-title
-                  %span Reserve
-                  Activities
-                %p.feature-description Walk-in to explore, enjoy and learn
-              .feature-content
-                %h1.page-heading.feature-title
-                  %span IOS and Android
-                  Mobile App
-                %p.feature-description Launching soon
-            .slider-nav
-              .slider-dots
-              .slider-arrows
-    / Section - Subscription
-    #section-subscription.section-row
-      .container
-        %p.section-text.text-center Keep up-to-date with our latest happenings!
-        .mc_embed_signup.subscription-form-container
-          %form#mc-embedded-subscribe-form.validate.subscription-form{:action => "//geniuspass.us10.list-manage.com/subscribe/post?u=06b2675db3a573a09ca434ca3&id=2b51fe0248", :method => "post", :name => "mc-embedded-subscribe-form", :target => "_blank"}
-            .mc-field-group
-              %input#mce-EMAIL.form-field{:name => "EMAIL", :placeholder => "Enter your email...", :type => "email"}/
-            #mce-responses.clear
-              #mce-error-response.response{:style => "display:none"}
-              #mce-success-response.response{:style => "display:none"}
-            / real people should not fill this in and expect good things - do not remove this or risk form bot signups
-            %div{:style => "position: absolute; left: -5000px;"}
-              %input{:name => "b_06b2675db3a573a09ca434ca3_2b51fe0248", :tabindex => "-1", :type => "text", :value => ""}
-              %input#mc-embedded-subscribe.form-submit-btn{:name => "submit", :type => "submit", :value => "Submit"}/
-      / Section - Partners
-      #section-partners.section-row
-        .container
-          %h1.page-heading.section-heading Our Partners
-          .partners-list
-            .row
-              .col-md-3.col-sm-4
-                .partner-details
-                  .partner-info
-                    = image_tag "fitness-place1.jpg", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-bg"
-                    = image_tag "partner-logo1.png", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-logo"
-                    .label-title Company Name - 1
-                    .bg-overlay
-                  .label-activities Surfing
-              .col-md-5.col-sm-4
-                .partner-details
-                  .partner-info
-                    = image_tag "fitness-place2.jpg", alt: "Company Name - 2", title: "Company Name - 2", class: "partner-bg"
-                    = image_tag "partner-logo2.png", alt: "Company Name - 2", title: "Company Name - 2", class: "partner-logo"
-                    .label-title Company Name - 2
-                    .bg-overlay
-                  .label-activities Skating, Ice or Roller
-              .col-md-4.col-sm-4
-                .partner-details
-                  .partner-info
-                    = image_tag "fitness-place3.jpg", alt: "Company Name - 3", title: "Company Name - 3", class: "partner-bg"
-                    = image_tag "partner-logo3.png", alt: "Company Name - 3", title: "Company Name - 3", class: "partner-logo"
-                    .label-title Company Name - 3
-                    .bg-overlay
-                  .label-activities BMX Bike Riding
-            .row
-              .col-md-5.col-sm-4
-                .partner-details
-                  .partner-info
-                    = image_tag "fitness-place4.jpg", alt: "Company Name - 4", title: "Company Name - 4", class: "partner-bg"
-                    = image_tag "partner-logo4.png", alt: "Company Name - 4", title: "Company Name - 4", class: "partner-logo"
-                    .label-title Company Name - 4
-                    .bg-overlay
-                  .label-activities Skateboarding
-              .col-md-4.col-sm-4
-                .partner-details
-                  .partner-info
-                    = image_tag "fitness-place5.jpg", alt: "Company Name - 5", title: "Company Name - 5", class: "partner-bg"
-                    = image_tag "partner-logo5.png", alt: "Company Name - 5", title: "Company Name - 5", class: "partner-logo"
-                    .label-title Company Name - 5
-                    .bg-overlay
-                  .label-activities Running, Jogging, Walking
-              .col-md-3.col-sm-4
-                %a{:href => "/partners"}>
-                ", title: ""Partners" class="partner-explore"&gt;
-                .partner-content
-                  .label-title Explore All Our Partners
-                  .label-description See All +
-    / Section - Location
-    #section-location.section-row
-      #nearby-places.location-map
-      = succeed "," do
-        = link_to partners_path, :class => "location-info hidden-xs" do 
-          .location-info-container
-            %h3.page-heading.location-info-counter 285
-            %h4.page-heading.location-info-title Activities Location
-            %span.location-info-description Find nearby places
-          .location-info-bar See All +
+          .col-md-5.col-sm-4
+            .partner-details
+              .partner-info
+                = image_tag "fitness-place4.jpg", alt: "Company Name - 4", title: "Company Name - 4", class: "partner-bg"
+                = image_tag "partner-logo4.png", alt: "Company Name - 4", title: "Company Name - 4", class: "partner-logo"
+                .label-title Company Name - 4
+                .bg-overlay
+              .label-activities Skateboarding
+          .col-md-4.col-sm-4
+            .partner-details
+              .partner-info
+                = image_tag "fitness-place5.jpg", alt: "Company Name - 5", title: "Company Name - 5", class: "partner-bg"
+                = image_tag "partner-logo5.png", alt: "Company Name - 5", title: "Company Name - 5", class: "partner-logo"
+                .label-title Company Name - 5
+                .bg-overlay
+              .label-activities Running, Jogging, Walking
+            
+  / Section - Location
+  #section-location.section-row
+    #nearby-places.location-map
+
+    = link_to partners_path, :class => "location-info hidden-xs" do 
+      .location-info-container
+        %h3.page-heading.location-info-counter 285
+        %h4.page-heading.location-info-title Activities Location
+        %span.location-info-description Find nearby places
+      .location-info-bar See All +
