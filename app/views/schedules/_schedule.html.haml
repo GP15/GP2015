@@ -1,0 +1,13 @@
+%tr
+  %td.activity-col{"data-title" => "Activities"}
+    = schedule.klass.name
+  %td.studio-col{"data-title" => "Studio"}
+    = link_to schedule.partner.company, partner_path(schedule.partner) if schedule.partner
+  %td.location{"data-title" => "Location"} 
+    = schedule.city.name if schedule.city
+  %td.age-col{"data-title" => "Age"} 
+    = schedule.starts_at.strftime("%l:%M%P")
+    —
+    \#{schedule.ends_at.strftime("%l:%M%P")}
+  %td.availability-col
+    = reserve_button(schedule)

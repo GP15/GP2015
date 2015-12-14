@@ -1,0 +1,48 @@
+/ Footer Widget Area
+.footer-widget-area
+  .container
+    .row
+      .col-md-6
+        #about.footer-widget
+          %h3.page-heading.footer-title.primary
+            Genius
+            %strong Pass
+          %p.footer-content GeniusPass is the first membership created exclusively for children to provide them unlimited access to variety of top studios and facilities. One single pass that is going to transform the lifestyle of children to a brighter future generation.
+        #social-media.footer-widget
+          .social-media-icon-list
+            %a.social-media-icon.facebook{:href => "https://www.facebook.com/GeniusPass-Malaysia-417492548424501", :target => "_blank", :title => "Like Us On Facebook"}
+              %i.fa.fa-facebook
+            %a.social-media-icon.twitter{:href => "https://twitter.com/GeniusPass", :target => "_blank", :title => "Follow Us On Twitter"}
+              %i.fa.fa-twitter
+            %a.social-media-icon.instagram{:href => "https://www.instagram.com/geniuspass_malaysia", :target => "_blank", :title => "Follow Us On Instagram"}
+              %i.fa.fa-instagram
+      .col-md-3
+        #quick-link.footer-widget
+          %h3.page-heading.footer-title Learn More
+          %ul.footer-nav
+            %li= link_to "Schedules", schedules_path
+            %li= link_to "Partners",  partners_path, :"data-no-turbolink" => true
+            %li= link_to "FAQ",       faq_path
+      .col-md-3
+        #contact.footer-widget
+          %h3.page-heading.footer-title Contact Us
+          .contact-info
+            .contact-details.contact-email
+              %i.fa.fa-envelope-o
+              %a.contact-text{:href => "mailto:ask@geniuspass.com", :title => "Contact via email"} ask@geniuspass.com
+        #contact-partner.footer-widget
+          %h3.page-heading.footer-title Interested to Partner?
+          .contact-info
+            .contact-details.contact-email-partner
+              %i.fa.fa-envelope-o
+              %a.contact-text{:href => "mailto:partner@geniuspass.com", :title => "Contact via email"} partner@geniuspass.com
+/ Footer
+%footer
+  .container
+    .row
+      .col-md-6.text-left-not-xs.text-left-not-sm.text-center-xs.text-center-sm
+        %p.copyright-text © Copyright 2015 - Genius Pass - All Rights Reserved
+      .col-md-6
+        %ul.bottom-nav
+          %li= link_to "Privacy Policy", privacy_path
+          %li= link_to "Terms & Conditions", terms_path

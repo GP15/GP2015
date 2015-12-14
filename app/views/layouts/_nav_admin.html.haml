@@ -1,0 +1,20 @@
+%nav.navbar.navbar-default.navbar-fixed-top.overlay-nav.sticky-nav.position-relative{:role => "navigation"}
+  .container
+    .row
+      / logo
+      .col-md-3.pull-left
+        = link_to "GeniusPass: Admin", admin_path, class: "logo-light text-large"
+      / end logo
+      / main menu
+      .col-md-9.text-right
+        %ul.nav.navbar-nav.navbar-right
+          - if admin_signed_in?
+            %li= link_to "Home", admin_path
+            %li= link_to "Partners", admin_partners_path
+            %li= link_to "Users",    admin_users_path
+            %li= link_to "Settings", admin_settings_path
+            %li= link_to "Profile",  admin_root_path
+            %li= link_to "logout", destroy_admin_session_path, method: :delete
+          - else
+            %li= link_to "Go to GeniusPass.com",  root_url
+      / end main menu

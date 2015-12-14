@@ -1,0 +1,19 @@
+- provide(:title, "Terms of Use")
+- provide(:page_title_bg, asset_path('page-bg.jpg'))
+.content.terms-page.white-bg
+  = render partial: 'layouts/page_title', locals: { page_title: 'Terms of Use' }
+  .container
+    %p Some intro goes here...
+    %ol.privacy-policy-list
+      %li.a
+        Title 1
+        %ol
+          %li Item 1
+          %li Item 2
+          %li etc
+      %li.a
+        Title 2
+        %ol
+          %li Item 1
+          %li Item 2
+          %li etc

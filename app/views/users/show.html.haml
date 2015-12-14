@@ -1,0 +1,11 @@
+- provide(:title, "Dashboard")
+- provide(:page_title_bg, asset_path('page-bg-dashboard.jpg'))
+.content.dashboard-page
+  = render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' }
+  = render 'shared/notice' if flash.present?
+  .container
+    .row
+      .col-md-3
+        = render 'sidebar'
+      #main.col-md-9
+        = render 'main'

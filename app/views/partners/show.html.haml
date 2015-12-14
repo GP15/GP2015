@@ -1,0 +1,10 @@
+- provide(:title, @partner.company)
+- provide(:page_title_bg, asset_path('page-bg-partner.jpg'))
+.content.partner-page
+  = render partial: 'layouts/page_title', locals: { page_title: 'Partner' }
+  .container
+    .row
+      .col-md-8
+        = render 'main'
+      .col-md-4.hidden-xs
+        = render 'sidebar'

@@ -1,0 +1,14 @@
+- provide(:title, 'Edit child')
+%section.margin-one
+  .container
+    .row
+      .col-md-4.col-md-offset-4
+        %h1.title-large.text-center.margin-four-bottom Edit Child
+        = form_for [@user, @child] do |f|
+          = render 'form', f: f
+          .margin-five.clearfix
+            = link_to 'Delete', [@user, @child], method: :delete, |
+              data: { confirm: "Remove #{@child.first_name}?" },  |
+              class: "pull-left underline padding-two"            |
+            = f.submit "Update", class: "#{primary_button_small} pull-right"
+            = link_to "Cancel", current_user, class: "#{secondary_button_small} pull-right"

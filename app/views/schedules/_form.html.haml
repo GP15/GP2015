@@ -1,0 +1,15 @@
+= render 'shared/error_messages', object: f.object
+.field
+  = f.label :klass_id, "Class", class: "display-block"
+  = collection_select(:schedule, :klass_id, @klasses.order(:name), :id, :name)
+.field
+  %label.display-block Date
+  = f.date_select :starts_at, order: [:day, :month, :year]
+.field
+  = f.label :starts_at, class: "display-block"
+  = f.time_select :starts_at, ignore_date: true, ampm: true, minute_step: 15
+  = f.label :ends_at, class: "display-block"
+  = f.time_select :ends_at, ignore_date: true, ampm: true, minute_step: 15
+.field
+  = f.label :quantity, "No. of students"
+  = f.number_field :quantity

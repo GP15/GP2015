@@ -1,0 +1,48 @@
+.schedule-filter
+  = search_form_for @q do |f|
+    .various-filter
+      .row
+        / Select menu for choosing an activity
+        .col-md-4.filter-box
+          = f.label :activity_id_eq, "Activity", class: "display-block"
+          = f.collection_select :activity_id_eq, @activities, :id, :name, |
+            { include_blank: 'All' }, { :class => "form-control" }              |
+        / Select menu for choosing a city
+        .col-md-4.filter-box
+          = f.label :city_id_eq, "City", class: "display-block"
+          = f.collection_select :city_id_eq, @cities, :id, :name, |
+          { include_blank: 'All' }, { class: "form-control" }      |
+
+        / Select menu for choosing a date
+        .col-md-4.filter-box
+          %label.display-block Time
+          .schedule-time-slider
+          = hidden_field_tag "q['starts_at_gteq']"                              
+          = hidden_field_tag "q['ends_at_lteq']"
+          
+    .date-filter
+      .date-filter-inner
+        %ul#date-filter-choose
+          %li.selected
+            %a.date-nav{"data-date" => Time.zone.today, :href => "#", :title => "Today"} Today
+          %li
+            %a.date-nav{"data-date" => Time.zone.tomorrow, :href => "#", :title => "Tomorrow"} Tomorrow
+          %li
+            %a.date-nav{"data-date" => Time.zone.today + 2, :href => "#", :title => (Time.zone.today + 2).strftime("%d %b")} 
+              = (Time.zone.today + 2).strftime("%d %b")
+          %li
+            %a.date-nav{"data-date" => Time.zone.today + 3, :href => "#", :title => (Time.zone.today + 3).strftime("%d %b")} 
+              = (Time.zone.today + 3).strftime("%d %b")
+          %li
+            %a.date-nav{"data-date" => Time.zone.today + 4, :href => "#", :title => (Time.zone.today + 4).strftime("%d %b")} 
+              = (Time.zone.today + 4).strftime("%d %b")
+          %li
+            %a.date-nav{"data-date" => Time.zone.today + 5, :href => "#", :title => (Time.zone.today + 5).strftime("%d %b")} 
+              = (Time.zone.today + 5).strftime("%d %b")
+          %li
+            %a.date-nav{"data-date" => Time.zone.today + 6, :href => "#", :title => (Time.zone.today + 6).strftime("%d %b")} 
+              = (Time.zone.today + 6).strftime("%d %b")
+          
+        %input#q_start_date_eq{:name => "q[start_date_eq]", :type => "hidden", :value => ""}/
+    .filter-submit
+      %input.gp-button.filter-submit-btn{:name => "commit", :type => "submit", :value => "Filter"}/

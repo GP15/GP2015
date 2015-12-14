@@ -1,0 +1,16 @@
+- provide(:title, "#{@schedule.klass.name} (#{@schedule.starts_at.strftime("%-d %b %Y")})
+- by #{@schedule.partner.company}")
+.content
+  .container
+    .row
+      .col-md-6.center-col
+        .content-main
+          = render 'shared/schedule'
+        .margin-eight-top.text-center
+          - if Time.zone.now >= (@schedule.starts_at - 6.hours)
+            %p.deep-light-gray-text This schedule can't be reserved anymore.
+          - elsif user_signed_in? && (Time.zone.now < (@schedule.starts_at - 6.hours))
+            = link_to "Reserve This Class", new_schedule_reservation_path(@schedule), class: primary_button_medium
+          - else
+            %p Interested to reserve this class for your child?
+            = link_to "Get GeniusPass Membership", new_user_registration_path, class: primary_button_medium

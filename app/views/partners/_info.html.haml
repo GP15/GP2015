@@ -1,0 +1,12 @@
+%ul
+  %li.studio-address
+    %span Address
+    %p
+      = @partner.address
+      , #{@partner.city.name}, #{@partner.state}
+  %li.studio-contact
+    %span Contact
+    %p= @partner.phone
+  %li.studio-activity
+    %span Activities
+    %p= @klasses.map { |klass| klass.name }.join(", ")

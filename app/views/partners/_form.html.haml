@@ -1,0 +1,20 @@
+= render 'shared/error_messages', object: f.object
+.field
+  = f.label :company
+  = f.text_field :company
+.field
+  = f.label :phone
+  = f.text_field :phone
+.field
+  = f.label :address
+  = f.text_area :address, rows: 3
+.field
+  = f.label :city_id, class: "display-block"
+  = collection_select(:partner, :city_id, City.order(:name), :id, :name)
+.field
+  = f.label :state, class: "display-block"
+  = f.select :state, Partner::STATES
+.field
+  = f.label :Picture, "Picture Link"
+  = f.text_field :img_url, placeholder: "http://"
+  %small Before uploading a picture, make sure to compress the filesize to be less than 150KB for better loading time.

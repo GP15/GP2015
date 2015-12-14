@@ -1,0 +1,31 @@
+%nav.navbar.navbar-default.nav-transparent.overlay-nav.non-sticky-nav{:role => "navigation"}
+  .container
+    .row
+      / logo
+      .col-md-2.pull-left
+        = link_to image_tag("logo2.png", class: "logo-style-2"), logo_url, class: "logo-light"
+      / end logo
+      / toggle navigation for mobile devices
+      .navbar-header.col-sm-8.col-xs-2.pull-right
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+      / end toggle navigation
+      / main menu
+      .col-md-10.no-padding-right.accordion-menu.text-right
+        .navbar-collapse.collapse
+          %ul#accordion{:class => "nav navbar-nav navbar-right panel-group #{yield(:nav_color)}"}
+            - if user_signed_in?
+              %li= link_to "Dashboard",    current_user
+              %li= link_to "Schedules",    schedules_path
+              / Disable turbolink for partners#index link so isotope.js can work properly
+              %li= link_to "Partners",     partners_path, :"data-no-turbolink" => true
+              %li= link_to "Profile",      edit_user_registration_path
+              %li= link_to "Logout", destroy_user_session_path, method: "delete"
+            - else
+              %li= link_to "Partners",  partners_path, :"data-no-turbolink" => true
+              %li= link_to "Schedules", schedules_path
+              %li= link_to "Login",     new_user_session_path
+      / end main menu

@@ -1,0 +1,21 @@
+- provide(:title, "Login")
+.content.login-page
+  .container
+    .login-container
+      %h1 Login
+      .login-avatar
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form form-container form-horizontal' }, defaults: { label: false  }) do |f|
+        = f.input :email, placeholder: "Email", autofocus: true
+        = f.input :password, placeholder: "Password", autocomplete: "off"
+        - if devise_mapping.rememberable?
+          .form-group.field
+            .checkbox
+              %label
+                = f.check_box :remember_me
+                Remember Me
+        .form-group
+          = f.submit "Login", class: "form-submit-btn gp-button"
+        %br/
+        %span.form-meta= link_to "Forgot your password?", new_user_password_path
+        %span.form-meta
+          Don't have a login? #{link_to "Sign up", new_user_registration_path}

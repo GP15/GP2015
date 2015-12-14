@@ -1,0 +1,8 @@
+%tr
+  %td= reservation.child.first_name if reservation.child
+  %td.date= reservation.created_at.strftime("%-d %b %Y")
+  - if Time.zone.now <= @schedule.starts_at
+    %td.action
+      = link_to 'cancel', schedule_reservation_path(@schedule, reservation),                                                                                                                       |
+        method: :delete,                                                                                                                                                                           |
+        data: { confirm: "Cancel reservation for #{reservation.child.first_name}? Cancellation charge will be : RM#{reservation.cancellation_charge}".html_safe } if reservation.can_be_cancelled? |

@@ -1,0 +1,27 @@
+- provide(:title, "Admin Profile")
+.container
+  .row
+    .col-md-5.center-col
+      %h1.title-font-300.text-center.margin-five
+        = resource_name.to_s.humanize
+        Profile
+      = form_for(resource, as: resource_name, url: admin_registration_path(resource), |
+        html: { method: :patch }) do |f|                                              |
+        = devise_error_messages!
+        .field
+          = f.label :email
+          = f.email_field :email, autofocus: true
+        .field
+          = f.label :password
+          %i (leave blank if you don't want to change it)
+          = f.password_field :password, autocomplete: "off"
+        .field
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, autocomplete: "off"
+        %br/
+        .field.margin-five-top
+          = f.label :current_password
+          %i (input your current password to confirm your changes)
+          = f.password_field :current_password, autocomplete: "off"
+        .margin-five
+          = f.submit "Update", class: primary_button_small

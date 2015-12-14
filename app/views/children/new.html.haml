@@ -1,0 +1,15 @@
+- provide(:title, 'Add child')
+- provide(:page_title_bg, asset_path('page-bg-child.jpg'))
+.content.add-child-page
+  = render partial: 'layouts/page_title', locals: { page_title: 'Add Child' }
+  .container
+    .row
+      .col-md-3
+        .content-sidebar
+      .col-md-9
+        .content-main
+          %h3 Add Child
+          = form_for [@user, @child], html: { class: "form-container form-horizontal" } do |f|
+            = render 'form', f: f
+            .form-group.form-action
+              = f.submit "Add", class: "form-submit-btn gp-button"

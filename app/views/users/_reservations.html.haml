@@ -1,0 +1,25 @@
+%table.table.table-responsive-block.activity-table
+  %thead
+    %tr
+      %th
+      %th Date
+      %th Time
+      %th Activity
+      %th Studio
+      %th City
+      %th
+  %tbody
+    - reservations.each do |reservation|
+      %tr
+        %td.name-col{"data-title" => "Name"}= reservation.child.first_name
+        %td.date-col{"data-title" => "Date"}= reservation.schedule.starts_at.strftime("%-d %b %Y")
+        %td.time-col{"data-title" => "Time"}
+          = reservation.schedule.starts_at.strftime("%l:%M%P")
+          \-
+          \#{reservation.schedule.ends_at.strftime("%l:%M%P")}
+        %td.activity-col{"data-title" => "Activity"}= reservation.schedule.klass.name
+        %td.studio-col{"data-title" => "Studio"}
+          = link_to reservation.schedule.partner.company, partner_path(reservation.schedule.partner)
+        %td.city-col{"data-title" => "City"}= reservation.schedule.city.name
+        %td.availability-col{"data-title" => "Availability"}
+          = link_to "view", new_schedule_reservation_path(reservation.schedule), class: "gp-button"

@@ -1,0 +1,23 @@
+= render 'shared/error_messages', object: f.object
+.field
+  = f.label :name
+  = f.text_field :name
+.field
+  = f.label :activity_id, "Category", class: "display-block"
+  = collection_select(:klass, :activity_id, Activity.order(:name), :id, :name)
+.field
+  = f.label :level, class: "display-block"
+  = f.select :level, Klass::LEVEL, include_blank: true
+.field
+  = f.label :age_start, "Age Group", class: "display-block"
+  = f.select :age_start, 0..50, {}
+  = f.label :age_end, " to ", class: "label-in-between"
+  = f.select :age_end, 0..50, { selected: @klass.age_end || 50 }
+.field
+  = f.label :reservation_limit, "Reservation Limit", class: "display-block margin-one-bottom"
+  = f.number_field :reservation_limit, class: "width-10 margin-one-right no-margin-bottom"
+  %small per child per month
+  %small.deep-light-gray-text.display-block Set as 0 for unlimited.
+.field.margin-two-top
+  = f.label :description
+  = f.text_area :description, rows: 5

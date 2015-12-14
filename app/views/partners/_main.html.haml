@@ -1,0 +1,18 @@
+.content-main
+  .studio-top
+    .studio-image{:style => "background-image: url(#{@partner.img_url});"}
+    .studio-info
+      %h1.studio-name= @partner.company
+      - if @partner.klasses.maximum(:reservation_limit).to_i > 0
+        %span.studio-description
+          Up to #{@partner.klasses.maximum(:reservation_limit)} visits per month
+.content-main.visible-xs
+  .studio-map
+    %a{:href => "https://www.google.com/maps/place/Seksyen+16,+40200+Shah+Alam,+Selangor/"}
+      %img{:src => "http://maps.googleapis.com/maps/api/staticmap?center=Seksyen+16,+40200+Shah+Alam,+Selangor&zoom=14&scale=1&size=350x300&maptype=roadmap&format=png&visual_refresh=true"}/
+  .studio-details
+    = render 'info'
+.content-main
+  .studio-listing
+    %h3 Upcoming Activities
+    = render 'schedules'

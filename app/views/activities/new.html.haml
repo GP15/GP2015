@@ -1,0 +1,11 @@
+- provide(:title, 'Add activity')
+%section.padding-one
+  .container
+    .row
+      .col-md-4.col-md-offset-4
+        %h1.title-large.text-center.margin-two-six Add Activity
+        = form_for(@activity) do |f|
+          = render 'form', f: f
+          .margin-five.pull-right
+            = link_to "Cancel", admin_settings_path, class: secondary_button_small
+            = f.submit "Create", class: primary_button_small

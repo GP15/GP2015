@@ -1,0 +1,42 @@
+.container
+  / Title
+  .row
+    .col-md-7.col-sm-10.center-col.text-center.margin-two-four
+      %h2.no-margin-top Request an Invite
+      .separator-line.bg-yellow.margin-three
+      %p.letter-spacing-1.no-margin-bottom Early adopters will be rewarded with discount coupons!
+      %small.no-margin Promotion open for the first 100 children in each city.
+  / End Title
+  / Begin MailChimp Signup Form
+  .row
+    #mc_embed_signup.col-md-6.col-md-offset-3
+      %form#mc-embedded-subscribe-form.validate{:action => "//geniuspass.us10.list-manage.com/subscribe/post?u=06b2675db3a573a09ca434ca3&id=2b51fe0248", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
+        #mc_embed_signup_scroll
+          .mc-field-group.field
+            %label.letter-spacing-1{:for => "mce-EMAIL"}
+              Email Address
+              %span.asterisk *
+            %input#mce-EMAIL.required.email{:name => "EMAIL", :type => "email", :value => ""}/
+          .mc-field-group.field
+            %label.letter-spacing-1{:for => "mce-CITY"}
+              Your City
+              %span.asterisk *
+            %select#mce-CITY.required{:name => "CITY"}
+              %option{:value => ""}
+              %option{:value => "Klang"} Klang
+              %option{:value => "Kuala Lumpur"} Kuala Lumpur
+              %option{:value => "Petaling Jaya"} Petaling Jaya
+              %option{:value => "Puchong"} Puchong
+              %option{:value => "Putrajaya"} Putrajaya
+              %option{:value => "Shah Alam"} Shah Alam
+              %option{:value => "Subang Jaya"} Subang Jaya
+          #mce-responses.clear
+            #mce-error-response.response{:style => "display:none"}
+            #mce-success-response.response{:style => "display:none"}
+          / real people should not fill this in and expect good things - do not remove this or risk form bot signups
+          %div{:style => "position: absolute; left: -5000px;"}
+            %input{:name => "b_06b2675db3a573a09ca434ca3_2b51fe0248", :tabindex => "-1", :type => "text", :value => ""}/
+          / end hidden input
+          .clear.margin-five
+            %input#mc-embedded-subscribe.highlight-button-dark.btn.btn-small.btn-round.button{:name => "subscribe", :type => "submit", :value => "Submit"}/
+  / End MailChimp Signup Form

@@ -1,0 +1,11 @@
+- provide(:title, 'Add schedule')
+%section.padding-one
+  .container
+    .row
+      .col-md-4.center-col
+        %h1.title-large.text-center.margin-four-bottom Add Schedule
+        = form_for [@partner, @schedule] do |f|
+          = render 'form', f: f
+          .margin-five.pull-right
+            = link_to "Cancel", admin_partner_path(@partner), class: secondary_button_small
+            = f.submit "Create", class: primary_button_small

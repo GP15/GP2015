@@ -8,23 +8,22 @@
 	/**
 	 * Dropdown Select
 	 */
-	function formDropdownSelect() {
-		$('.form-select-control').chosen({
-			disable_search_threshold: 10,
-			width: '100%'
-		});
-	}
-	formDropdownSelect();
+	// function formDropdownSelect() {
+	// 	$('.form-select-control').chosen({
+	// 		disable_search_threshold: 10,
+	// 		width: '100%'
+	// 	});
+	// }
+	// formDropdownSelect();
 
 	/**
 	 * Range Slider
 	 */
 	function formRangeSlider() {
 		var $rangeSlider = $('.schedule-time-slider'),
-			$startTimeHour = $('#q_start_time_gteq_4i'),
-			$startTimeMinute = $('#q_start_time_gteq_5i'),
-			$endTimeHour = $('#q_end_time_lteq_4i'),
-			$endTimeMinute = $('#q_end_time_lteq_5i');
+			$startTime = $('#q__starts_at_gteq_'),
+			$endTime = $('#q__ends_at_lteq_');
+			
 
 		// Create time slider
 		$rangeSlider.ionRangeSlider({
@@ -43,10 +42,8 @@
 			},
 			onChange: function(value) {
 				// Pass data value to input
-				$startTimeHour.val(moment(value.from, "X").format("h"));
-				$startTimeMinute.val(moment(value.from, "X").format("mm"));
-				$endTimeHour.val(moment(value.to, "X").format("h"));
-				$endTimeMinute.val(moment(value.to, "X").format("mm"));
+				$startTime.val(moment(value.from, "X").format("h") + ":" +moment(value.from, "X").format("mm"));
+				$endTimeHour.val(moment(value.to, "X").format("h") + ":" +moment(value.to, "X").format("mm"));
 			}
 		});
 	}

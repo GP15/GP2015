@@ -1,0 +1,51 @@
+- provide(:title, "#{@schedule.klass.name} - Reservations")
+%section.no-padding-section
+  .container
+    = render 'layouts/admin_breadcrumbs'
+    .row.margin-four
+      .col-md-3
+        .box.text-13px
+          .box-title= @schedule.klass.name
+          .box-body
+            %dl.dl-horizontal.dl-schedule
+              %dt Date
+              %dd= @schedule.starts_at.strftime("%d %b %Y")
+              %dt Time
+              %dd
+                = @schedule.starts_at.strftime("%l:%M%P")
+                — #{@schedule.ends_at.strftime("%l:%M%P")}
+              %dt Age
+              %dd
+                = @schedule.klass.age_start
+                \- #{@schedule.klass.age_end}
+              %dt Max
+              %dd
+                = @schedule.quantity
+                students
+          .box-buttons
+            = link_to 'edit', edit_partner_schedule_path(@partner, @schedule), class: "edit"
+            = link_to 'X', partner_schedule_path(@partner, @schedule), method: :delete, |
+              data: { confirm: "Delete this schedule?" }, class: "delete"               |
+        .link-underline.margin-four
+          - if @schedule.archived
+            = link_to "Activate", unarchive_schedule_path(@schedule), method: :patch, |
+              data: { confirm: "Activate this schedule?" }                            |
+          - else
+            = link_to "Deactivate", archive_schedule_path(@schedule), method: :patch, |
+              data: { confirm: "Deactivate this schedule?" }                          |
+      .col-md-9
+        - if @reservations.empty?
+          %p No reservations found.
+        - else
+          %table.table.table-condensed.table-striped.th-border-unset.width-40
+            %thead
+              %th Reservations
+              %th.pull-right Age
+            %tbody.text-13px
+              - @reservations.each do |reservation|
+                %tr
+                  %td
+                    = reservation.child.first_name
+                    = reservation.child.last_name
+                  %td
+                    %span.pull-right= age(reservation.child)

@@ -1,0 +1,26 @@
+- provide(:title, "Dashboard")
+- provide(:nav_color, "link-white")
+= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' }
+= render 'shared/notice' if flash.present?
+%section.padding-two
+  .container
+    .row
+      .col-md-9.col-md-offset-1
+        %table.table
+          %tr
+            %th Plan Name
+            %th Subscriped On
+            %th Amount
+            %th Summary
+            %th Plan Duration
+            %th Status
+          %tr
+            %td
+              %label.label.label-primary= @subscription.plan_id
+            %td
+              %label.label.label-default= @subscription.subscriped_on
+            %td= "#{@plan.currency_iso_code} #{@plan.price.to_f}"
+            %td= @plan.description
+            %td= @plan.billing_frequency.to_s + " month"
+            %td
+              %label.label.label-success= @subscription.print_status

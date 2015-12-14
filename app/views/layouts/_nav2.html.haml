@@ -1,0 +1,35 @@
+%body
+  %header
+    %nav.navbar.navbar-default.nav-transparent.overlay-nav.non-sticky-nav
+      .container
+        .navbar-header
+          / Mobile Navigation Panel Button
+          %a.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#top-nav", "data-toggle" => "collapse"}
+            %i.fa.fa-bars
+          / Logo
+          = link_to image_tag("logo.png", title: "Genius Pass", alt: "Genius Pass"), root_url, class: "brand-logo navbar-brand"
+        / Top Navigation
+        #top-nav.navbar-collapse.collapse
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %ul.main-nav
+                %li= link_to "Dashboard", current_user
+                %li= link_to "Schedules", schedules_path
+                / Disable turbolink for partners#index link so isotope.js can work properly
+                %li= link_to "Partners",  partners_path, :"data-no-turbolink" => true
+                %li= link_to "Profile",   edit_user_registration_path
+                %hr/
+                %li= link_to "Logout",    destroy_user_session_path, method: "delete"
+            - else
+              / Main Navigation
+              %ul.main-nav
+                %li= link_to "Home", root_path
+                %li= link_to "Partners",  partners_path, :"data-no-turbolink" => true
+                %li= link_to "Schedules", schedules_path
+              %hr/
+              / Login & Sign Up Button
+              .button-menu
+                = link_to new_user_session_path, id: "login", class: "btn-menu secondary" do
+                  %span{"data-title" => "Login"} Login
+                = link_to new_user_registration_path, id: "signup", class: "btn-menu" do
+                  %span{"data-title" => "Sign Up"} Sign Up

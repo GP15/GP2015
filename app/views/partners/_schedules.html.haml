@@ -1,0 +1,22 @@
+- if @schedules.present?
+  %table.table.table-responsive-block.schedule-table
+    %thead
+      %tr
+        %th Date
+        %th Activity
+        %th Time
+        %th Difficulty
+        %th.text-center Availability
+    %tbody
+      - @schedules.each do |schedule|
+        %tr
+          %td.date-col{"data-title" => "Date"}= schedule.starts_at.strftime("%d %b %Y")
+          %td.activity-col{"data-title" => "Activity"}= schedule.klass.name
+          %td.time-col{"data-title" => "Time"}
+            = schedule.starts_at.strftime("%l:%M%P")
+            to #{schedule.ends_at.strftime("%l:%M%P")}
+          %td.difficulty-col{"data-title" => "Difficulty"}
+            = schedule.klass.level if schedule.klass
+          %td.availability-col{"data-title" => "Availability"}= reserve_button(schedule)
+- else
+  %p.text-center.margin-five-top No upcoming activities in the meantime.
