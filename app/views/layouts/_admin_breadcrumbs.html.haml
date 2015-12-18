@@ -1,0 +1,6 @@
+%ol.breadcrumb.text-13px
+  %li= link_to "Home", admin_path
+  %li= link_to @partner.company, admin_partner_path(@partner)
+  %li.active
+    = @schedule.klass.name
+    \: Reservations

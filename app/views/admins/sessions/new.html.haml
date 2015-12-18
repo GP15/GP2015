@@ -1,0 +1,20 @@
+- provide(:title, "Admin Login")
+.container
+  .row
+    .col-md-4.col-md-offset-4
+      %h1.title-font-300.text-center.content-top-margin.margin-five-bottom Login
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true
+        .field
+          = f.label :password
+          %br/
+          = f.password_field :password, autocomplete: "off"
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me
+            = f.label :remember_me, class: "font-weight-400"
+        .margin-five
+          = f.submit "Login", class: primary_button_small

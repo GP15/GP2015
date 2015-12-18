@@ -1,0 +1,39 @@
+- provide(:title, "Dashboard")
+- provide(:nav_color, "link-white")
+= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' }
+= render 'shared/notice' if flash.present?
+%section.padding-two
+  .container
+    .row
+      .col-md-9.col-md-offset-1
+        = form_for(@subscription, url: child_subscriptions_path(@child)) do |f|
+          .field
+            = f.label :select_plan
+            %br/
+            - if current_user.can_avail_discounted_plans?
+              = f.radio_button :plan_id, "RM79", checked: true
+              = f.label :plan, "RM79 (Unlimited Classes/Month)", class: 'multiple_classes'
+              %br/
+              = f.radio_button :plan_id, "RM39", checked: false
+              = f.label :plan, "RM39 (4 Classes/Month)", class: 'multiple_classes'
+              %br/
+            - else
+              = f.radio_button :plan_id, "RM99", checked: true
+              = f.label :plan, "RM99 (Unlimited Classes/Month)", class: 'multiple_classes'
+              %br/
+              = f.radio_button :plan_id, "RM49", checked: false
+              = f.label :plan, "RM49 (4 Classes/Month)", class: 'multiple_classes'
+              %br/
+          #dropin
+          = f.submit "Subscribe", class: "btn btn-success", :id => "suscribe_btn"
+
+= content_for :javascript do
+  = javascript_include_tag "https://js.braintreegateway.com/v2/braintree.js"
+  :javascript
+     var client_token = "<%= @client_token %>";
+     braintree.setup(
+       client_token,
+       'dropin', {
+         container: 'dropin',
+         onReady: function(){ $("#suscribe_btn").prop('disabled', false); }
+       });

@@ -1,0 +1,21 @@
+- provide(:title, "Pricing")
+%section
+  .container
+    .row
+      .pricing
+        .col-md-4.center-col.sm-margin-bottom-five.sm-no-margin-top
+          .pricing-box.no-border
+            .pricing-title
+              %h1 Pricing
+            .pricing-price
+              %span.price-unit> RM
+              99
+              %span.price-tenure /month for 1st child
+            .pricing-features
+              %ul
+                %li
+                  %strong Unlimited
+                  Classes
+                %li Extra child will only cost RM70/mth/child
+            .pricing-action
+              = link_to 'Request Invite', invite_path, class: "highlight-button-dark btn btn-medium btn-round button"

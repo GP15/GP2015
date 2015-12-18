@@ -1,0 +1,28 @@
+%section.padding-one
+  .container
+    .row
+      %h1.title-large.text-center.margin-four-bottom New Reservations
+      .col-md-10.center-col
+        - if @schedules.empty?
+          %p.text-center You have no new reservations in the meantime.
+        - else
+          %table.table.table-condensed.table-striped.th-border-unset.text-13px.link-underline
+            %thead
+              %tr
+                %th Schedule
+                %th Class
+                %th Time
+                %th Partner
+                %th.text-center Reservations
+                %th
+            %tbody
+              - @schedules.each do |schedule|
+                %tr
+                  %td= schedule.starts_at.strftime("%d %b %Y")
+                  %td= schedule.klass.name if schedule.klass
+                  %td
+                    = schedule.starts_at.strftime("%l:%M%P") if schedule.starts_at
+                    — #{schedule.ends_at.strftime("%l:%M%P") if schedule.ends_at}
+                  %td= link_to schedule.partner.company, admin_partner_path(schedule.partner)
+                  %td.text-center.green-text= reservation_count(schedule.reservations.size)
+                  %td= link_to "view", admin_schedule_path(schedule), class: "pull-right"

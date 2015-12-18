@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require imagesloaded.pkgd.min
+//= require ion.rangeSlider.min
+//= require moment.min
 //= require jquery.isotope.min
 //= require partners
 //= require schedules

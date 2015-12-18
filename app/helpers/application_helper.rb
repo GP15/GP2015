@@ -1,5 +1,12 @@
 module ApplicationHelper
 
+  # Active top link css
+
+  def current_path(path)
+    "active" if current_page?(path)
+  end
+
+
   # Returns the webpage's full title on a per-page basis.
   def full_title(page_title = '', options = {})
     if options == 'admin'

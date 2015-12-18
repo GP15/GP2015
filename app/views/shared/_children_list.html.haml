@@ -1,0 +1,12 @@
+.sidebar-widget
+  %h3 Children
+  .children-list
+    %table.table.children-list-table
+      - @children.each do |child|
+        %tr
+          %td.children-name
+            = child.first_name
+            = child.last_name
+          %td.children-number= age(child)
+    .sidebar-footer
+      = link_to "+ Add", new_user_child_path(current_user), class: "gp-button"

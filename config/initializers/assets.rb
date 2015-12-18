@@ -13,4 +13,6 @@ Rails.application.config.assets.precompile += %w( slick.min.js
                                                   chosen.min.js
                                                   ion.rangeSlider.min.js
                                                   moment.min.js
-                                                  frontpage.js )
+                                                  frontpage.js 
+                                                  ion.rangeSlider.css
+                                                  ion.rangeSlider.min.js)

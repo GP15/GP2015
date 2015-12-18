@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= full_title(yield(:title))
+    %meta{:content => "GeniusPass gets your children unlimited access to training classes and facilities for a monthly subscription.", :name => "description"}/
+    %meta{:content => "", :name => "keywords"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width,initial-scale=1.0,maximum-scale=1", :name => "viewport"}/
+    / Facebook Meta Tags
+    %meta{:content => "GeniusPass - Unlimited Access Pass for Your Child", :property => "og:title"}/
+    %meta{:content => "website", :property => "og:type"}/
+    %meta{:content => "https://geniuspass.com/", :property => "og:url"}/
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    = render 'layouts/shim'
+  %body.text-med.black-text
+    = render 'layouts/nav2'
+    = yield
+    = render 'layouts/footer'
+    = yield :bottom_js
+    = yield :javascript if params[:controller].eql?('cards') || params[:controller].eql?('subscriptions')

@@ -1,5 +1,26 @@
 module SchedulesHelper
 
+
+  # date heading
+
+  def date_header
+    if params[ :start_date].present?
+      Date.parse(params[ :start_date]).strftime("%A, %d %B %Y")
+    else
+      Time.zone.tomorrow.strftime("%A, %d %B %Y")
+    end
+  end
+
+
+  # Hash of dates for filters
+  def date_hash
+    h = Hash.new 
+    h["Today"] = Time.zone.today.strftime("%d-%m-%Y")
+    h["Tomorrow"] = Time.zone.tomorrow.strftime("%d-%m-%Y")
+    (2...6).map{ |i| h[i.days.from_now.strftime("%d %b")] = i.days.from_now.strftime("%d-%m-%Y")}
+    h
+  end
+
   # Reserve buttons that appears in a schedule table.
   def reserve_button(schedule)
     if user_signed_in?

@@ -1,0 +1,6 @@
+.reservation-limit-notice.content-main
+  %p This partner can only be reserved for a maximum
+  %span
+    = @schedule.klass.reservation_limit
+    times/child/month
+  %p Make sure to not overbook!

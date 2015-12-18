@@ -1,0 +1,29 @@
+- provide(:title, "Schedules")
+- provide(:page_title_bg, asset_path('page-bg-schedules.jpg'))
+.content.schedules-page
+  = render partial: 'layouts/page_title', locals: { page_title: 'Schedules' }
+  = render 'shared/notice' if flash.present?
+  .container
+    #activity-schedule.content-main
+      = render 'filters'
+
+      %h3.page-heading.schedule-date 
+        = date_header
+
+      - if @schedules.present?
+        %table.table.table-responsive-block.schedule-table
+          %thead
+            %tr
+              %th Activities
+              %th Studio
+              %th Location
+              %th Age
+              %th
+          %tbody
+            = render :partial => 'schedule', :collection => @schedules
+      - else
+        %p.text-center No activity found.
+
+
+
+
