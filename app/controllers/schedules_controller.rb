@@ -15,30 +15,23 @@ class SchedulesController < ApplicationController
     # Using Ransack to filter Activity, City, Date, Starting Time, & Ending Time for Schedules.
     # Unfortunately when left to default setting, Ransack will use today's date when filtering
     # the starting time and ending time since we're using separate select menu for date & time.
-
     params[:q] = {} unless params[:q]
 
     # Copies the date params from date select to replace the date params from the time select menu.
-    if params["start_date"].present?
-      date  = Time.zone.parse(params["start_date"])
+   
+    date = Date.tomorrow
+    date = Date.parse(params[:start_date])                     if params[:start_date].present?
+    start_time = date.beginning_of_day
+    end_time   = date.end_of_day
+    start_time = format_datetime( date, params[ :start_time])  if params[ :start_time].present?
+    end_time   = format_datetime( date, params[ :end_time])    if params[ :end_time].present?
 
-      year  = date.strftime("%Y")
-      month = date.strftime("%m")
-      day   = date.strftime("%e")
-
-      params[:q]["starts_at_gteq(1i)"] = year
-      params[:q]["starts_at_gteq(2i)"] = month
-      params[:q]["starts_at_gteq(3i)"] = day
-
-      params[:q]["ends_at_lteq(1i)"]   = year
-      params[:q]["ends_at_lteq(2i)"]   = month
-      params[:q]["ends_at_lteq(3i)"]   = day
-    end
-
+    # byebug
     @q = Schedule.ransack(params[:q]) # Filter with Ransack
-
     if params[:q].present?
-      @schedules = @q.result          # Result of Ransack
+      @schedules =  @q.result             # Result of Ransack
+      @schedules =  @schedules.where( 'starts_at BETWEEN ? AND ?', start_time, end_time) 
+
     else
       # When not filtering anything aka visiting /schedules, show all schedules from tomorrow.
       @schedules = Schedule.only_tomorrow
@@ -47,8 +40,9 @@ class SchedulesController < ApplicationController
     # Final filtering
     @schedules = @schedules.not_archived
                            .includes(:klass, :partner, :city)
-                           .six_hours_from_now
                            .sort_by_datetime_asc
+
+    #@date = Date.parse(@date).strftime("%A, %d %B %Y")
   end
 
   # GET /schedules/:id
@@ -144,6 +138,9 @@ class SchedulesController < ApplicationController
     end
 
     # Put the value from the single date select into starts_at & ends_at attributes.
+    def format_datetime( date, time)
+      DateTime.parse("#{date} #{time}")
+    end
 
     def start_datetime # Needed so the starts_at params is not nil.
       Time.zone.local(

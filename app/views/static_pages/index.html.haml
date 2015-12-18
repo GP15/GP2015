@@ -89,13 +89,15 @@
         %form#mc-embedded-subscribe-form.validate.subscription-form{:action => "//geniuspass.us10.list-manage.com/subscribe/post?u=06b2675db3a573a09ca434ca3&id=2b51fe0248", :method => "post", :name => "mc-embedded-subscribe-form", :target => "_blank"}
           .mc-field-group
             %input#mce-EMAIL.form-field{:name => "EMAIL", :placeholder => "Enter your email...", :type => "email"}/
+            / real people should not fill this in and expect good things - do not remove this or risk form bot signups
+            %div{:style => "position: absolute; left: -5000px;"}
+              %input{:name => "b_06b2675db3a573a09ca434ca3_2b51fe0248", :tabindex => "-1", :type => "text", :value => ""}
+            %input#mc-embedded-subscribe.form-submit-btn{:name => "submit", :type => "submit", :value => "Submit"}/
           #mce-responses.clear
             #mce-error-response.response{:style => "display:none"}
             #mce-success-response.response{:style => "display:none"}
-          / real people should not fill this in and expect good things - do not remove this or risk form bot signups
-          %div{:style => "position: absolute; left: -5000px;"}
-            %input{:name => "b_06b2675db3a573a09ca434ca3_2b51fe0248", :tabindex => "-1", :type => "text", :value => ""}
-            %input#mc-embedded-subscribe.form-submit-btn{:name => "submit", :type => "submit", :value => "Submit"}/
+
+
   / Section - Partners
   #section-partners.section-row
     .container

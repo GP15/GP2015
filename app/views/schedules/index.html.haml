@@ -7,20 +7,22 @@
     #activity-schedule.content-main
       = render 'filters'
 
-      %h3.page-heading.schedule-date Tuesday, 06 October 2015
-      %table.table.table-responsive-block.schedule-table
-        %thead
-          %tr
-            %th Activities
-            %th Studio
-            %th Location
-            %th Age
-            %th
-        %tbody
-          - if @schedules.present?
+      %h3.page-heading.schedule-date 
+        = date_header
+
+      - if @schedules.present?
+        %table.table.table-responsive-block.schedule-table
+          %thead
+            %tr
+              %th Activities
+              %th Studio
+              %th Location
+              %th Age
+              %th
+          %tbody
             = render :partial => 'schedule', :collection => @schedules
-          - else
-            %p No activity found.
+      - else
+        %p.text-center No activity found.
 
 
 

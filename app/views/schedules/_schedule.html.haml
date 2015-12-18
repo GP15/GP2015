@@ -6,8 +6,6 @@
   %td.location{"data-title" => "Location"} 
     = schedule.city.name if schedule.city
   %td.age-col{"data-title" => "Age"} 
-    = schedule.starts_at.strftime("%l:%M%P")
-    —
-    \#{schedule.ends_at.strftime("%l:%M%P")}
+    = "#{schedule.klass.age_start} - #{schedule.klass.age_end} #{schedule.klass.level if schedule.klass}"
   %td.availability-col
     = reserve_button(schedule)

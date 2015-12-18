@@ -13,19 +13,26 @@
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %ul.main-nav
-                %li= link_to "Dashboard", current_user
-                %li= link_to "Schedules", schedules_path
+                %li{:class => current_path(current_user)}
+                  = link_to "Dashboard", current_user
+                %li{ :class => current_path(schedules_path)}
+                  = link_to "Schedules", schedules_path
                 / Disable turbolink for partners#index link so isotope.js can work properly
-                %li= link_to "Partners",  partners_path, :"data-no-turbolink" => true
-                %li= link_to "Profile",   edit_user_registration_path
+                %li{:class => current_path(partners_path)}
+                  = link_to "Partners",  partners_path, :"data-no-turbolink" => true
+                %li{:class => current_path(schedules_path)}
+                  = link_to "Profile",   edit_user_registration_path
                 %hr/
                 %li= link_to "Logout",    destroy_user_session_path, method: "delete"
             - else
               / Main Navigation
               %ul.main-nav
-                %li= link_to "Home", root_path
-                %li= link_to "Partners",  partners_path, :"data-no-turbolink" => true
-                %li= link_to "Schedules", schedules_path
+                %li{:class => current_path(root_path)}
+                  = link_to "Home", root_path
+                %li{:class => current_path(partners_path)}
+                  = link_to "Partners",  partners_path, :"data-no-turbolink" => true
+                %li{:class => current_path(schedules_path)}
+                  = link_to "Schedules", schedules_path
               %hr/
               / Login & Sign Up Button
               .button-menu

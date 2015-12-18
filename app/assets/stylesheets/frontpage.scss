@@ -1634,6 +1634,31 @@ header nav #top-nav hr {
 	padding: 0;
 	margin: 0;
 }
+
+#activity-schedule .schedule-filter .date-filter #date-filter-choose label
+{
+	background-color: transparent;
+    color: #b4e2f4;
+    margin-bottom: 0px;
+    padding: 5px 15px;
+}
+#activity-schedule .schedule-filter .date-filter #date-filter-choose label:hover
+{
+	background-color: #1f9dce;
+}
+#activity-schedule .schedule-filter .date-filter #date-filter-choose input[type="radio"]:checked + label 
+{
+    background-color: #fff;
+    color: #146584;
+}
+
+#activity-schedule .schedule-filter .date-filter #date-filter-choose input[type="radio"]
+{
+	width: 0px;
+	margin: 0px;
+	padding: 0px;
+	opacity: 0;
+}
 #activity-schedule .schedule-filter .date-filter #date-filter-choose li {
 	display: inline-block;
 }
