@@ -64,6 +64,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    excon (0.45.4)
     execjs (2.6.0)
     faker (1.5.0)
       i18n (~> 0.5)
@@ -93,6 +94,14 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mandrill-api (1.0.53)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
+    mandrill_mailer (1.2.0)
+      actionpack
+      activejob
+      activesupport
+      mandrill-api (~> 1.0.9)
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.8.0)
@@ -205,6 +214,7 @@ DEPENDENCIES
   haml-rails
   hirb
   jquery-rails
+  mandrill_mailer
   pg
   puma
   quiet_assets (~> 1.1.0)

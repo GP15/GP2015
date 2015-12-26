@@ -16,6 +16,17 @@ class AdminController < ApplicationController
     @partners = Partner.includes(:city).order(:company)
   end
 
+  def featured
+    if params[:featured].present? && params[:featured].length <= 5
+      Partner.update_all( :featured => false)
+      Partner.where(:id => params[:featured]).map{ |partner| partner.update_attributes( :featured => true)}
+      flash[:notice] = "Featured partners added successfully."
+    else
+      flash[:error] = "Featured partners could not be added."
+    end 
+    redirect_to admin_partners_path
+  end 
+
   # GET /admin/partners/:id
   def partner
     @partner = Partner.find(params[:id])
