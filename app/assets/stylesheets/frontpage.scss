@@ -1683,7 +1683,7 @@ header nav #top-nav hr {
 	display: none;
 }
 @media screen and (max-width: 767px) {
-	#activity-schedule .schedule-filter .date-filter #date-filter-choose { display: none; }
+	#activity-schedule .schedule-filter .date-filter #date-filter-choose { display: block; }
 	#activity-schedule .schedule-filter .date-filter #date_filter_dropdown_chosen { display: block; }
 }
 @media (min-width: 1200px) {
