@@ -1,39 +1,112 @@
 - provide(:title, "Dashboard")
 - provide(:nav_color, "link-white")
-= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' }
-= render 'shared/notice' if flash.present?
-%section.padding-two
+- provide(:page_title_bg, asset_path('page-bg-child.jpg'))
+.content.subscribe-page
+  = render partial: 'layouts/page_title', locals: { page_title: 'Subscribe' }
+  = render 'shared/notice' if flash.present?
+
   .container
     .row
-      .col-md-9.col-md-offset-1
+      .col-md-3
+        = render :partial => 'users/sidebar'
+      .col-md-9
+        .content-main
+          %h3 Select Your Plan
+          .package-list
+            .row
+              .col-md-4
+                .package-box
+                  .package-title Basic
+                  .package-price.price-small Free
+                  .package-details
+                    %p.package-description 1 Activity Per Month
+                    .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM0"} Select Plan
+                  .package-select-button
+              - if current_user.can_avail_discounted_plans?
+                .col-md-4
+                  .package-box.package-featured
+                    .package-title Deluxe
+                    .package-price
+                      .price-plan
+                        .currency RM
+                        .price-number 79
+                        .plan / Month
+                    .package-details
+                      %p.package-description 4 Activities Per Month
+                      .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM79"} Select Plan
+                    .package-select-button
+                .col-md-4
+                  .package-box
+                    .package-title Exclusive
+                    .package-price
+                      .price-plan
+                        .currency RM
+                        .price-number 39
+                        .plan / Month
+                    .package-details
+                      %p.package-description Unlimited Activities Per Month
+                      .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM39"} Select Plan
+                    .package-select-button
+
+              - else
+                .col-md-4
+                  .package-box.package-featured
+                    .package-title Deluxe
+                    .package-price
+                      .price-plan
+                        .currency RM
+                        .price-number 99
+                        .plan / Month
+                    .package-details
+                      %p.package-description 4 Activities Per Month
+                      .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM99"} Select Plan
+                    .package-select-button
+                .col-md-4
+                  .package-box
+                    .package-title Exclusive
+                    .package-price
+                      .price-plan
+                        .currency RM
+                        .price-number 49
+                        .plan / Month
+                    .package-details
+                      %p.package-description Unlimited Activities Per Month
+                      .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM79"} Select Plan
+                    .package-select-button
+#package-subscription.modal.fade{:role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4.modal-title Subscribe Your Plan
+      .modal-body
         = form_for(@subscription, url: child_subscriptions_path(@child)) do |f|
           .field
-            = f.label :select_plan
-            %br/
-            - if current_user.can_avail_discounted_plans?
-              = f.radio_button :plan_id, "RM79", checked: true
-              = f.label :plan, "RM79 (Unlimited Classes/Month)", class: 'multiple_classes'
-              %br/
-              = f.radio_button :plan_id, "RM39", checked: false
-              = f.label :plan, "RM39 (4 Classes/Month)", class: 'multiple_classes'
-              %br/
-            - else
-              = f.radio_button :plan_id, "RM99", checked: true
-              = f.label :plan, "RM99 (Unlimited Classes/Month)", class: 'multiple_classes'
-              %br/
-              = f.radio_button :plan_id, "RM49", checked: false
-              = f.label :plan, "RM49 (4 Classes/Month)", class: 'multiple_classes'
-              %br/
-          #dropin
+            = f.hidden_field :plan_id
+            #dropin
           = f.submit "Subscribe", class: "btn btn-success", :id => "suscribe_btn"
+      .modal-footer
+        %button.gp-button.default{"data-dismiss" => "modal", :type => "button"} Cancel
+
+
+:javascript
+  $(document).ready(function(){
+    $(".open-modal").click(function() {
+      var planId = $(this).data('id');
+      $("#subscription_plan_id").val( planId );
+    });
+  });
 
 = content_for :javascript do
   = javascript_include_tag "https://js.braintreegateway.com/v2/braintree.js"
   :javascript
-     var client_token = "<%= @client_token %>";
+     var client_token = "#{@client_token}";
      braintree.setup(
        client_token,
        'dropin', {
          container: 'dropin',
          onReady: function(){ $("#suscribe_btn").prop('disabled', false); }
        });
+
+

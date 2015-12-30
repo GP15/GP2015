@@ -1,25 +1,33 @@
 - provide(:title, "Dashboard")
 - provide(:nav_color, "link-white")
-= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' }
-= render 'shared/notice' if flash.present?
-%section.padding-two
+- provide(:page_title_bg, asset_path('page-bg-child.jpg'))
+.content.subscribe-page
+  = render partial: 'layouts/page_title', locals: { page_title: 'Subscribe' }
+  = render 'shared/notice' if flash.present?
   .container
     .row
-      .col-md-9.col-md-offset-1
-        .panel
-          .panel-heading
-            %header= @child.full_name
-          .panel-body
-            %p
-              %strong First name
-              = @child.first_name
-            %p
-              %strong Last name
-              = @child.last_name
-            %p
-              %strong Age
-              = @child.age
-              years
+      .col-md-3
+        = render :partial => 'users/sidebar'
+      .col-md-9
+        .content-main
+          %h3 Subscribe
+          .profile-details-panel.panel
+            .panel-heading
+              %h3
+                Subscribe for
+                %span= @child.full_name
+
+            .panel-body
+              %p
+                %strong First name:
+                = @child.first_name
+              %p
+                %strong Last name:
+                = @child.last_name
+              %p
+                %strong Age:
+                = @child.age
+                years
             - if @subscription.present? && @subscription.status
               %p
                 %strong Subscribed Plan
@@ -32,5 +40,5 @@
                   %label.label.label-success= plan.print_status
                   = link_to 'Unsubscribe', child_subscription_path(@child, plan), method: :delete, data: { confirm: "Are you sure?" } if plan.status
             - else
-              .footer
-                = link_to @subscription.present? ? "Subscribe for new Plan" : "Subscribe Now", new_child_subscription_path(@child), class: 'btn btn-success'
+              .panel-footer
+                = link_to @subscription.present? ? "Subscribe for new Plan" : "Subscribe Now", new_child_subscription_path(@child), class: 'gp-button'

@@ -1464,7 +1464,7 @@ select.form-control {
 }
 .package-list .package-box.package-featured .package-title:before {
 	content: '';
-	background: transparent url('../images/featured-ribbon.png') center/80px 80px no-repeat;
+	background: transparent image-url('featured-ribbon.png') center/80px 80px no-repeat;
 	width: 80px;
 	height: 80px;
 	position: absolute;

@@ -12,12 +12,16 @@ class Subscription < ActiveRecord::Base
       :customer_id => user.customer_id,
       :payment_method_nonce => nounce
     )
-    token = result.payment_method.token
-    result = Braintree::Subscription.create(payment_method_token: token, plan_id: plan_id)
     if result.success?
-      self.subscription_id = result.subscription.id
-      self.start_date = DateTime.now
-      self.save!
+      token = result.payment_method.token
+      result = Braintree::Subscription.create(payment_method_token: token, plan_id: plan_id)
+      if result.success?
+        self.subscription_id = result.subscription.id
+        self.start_date = DateTime.now
+        self.save!
+      else
+        false
+      end 
     else
       false
     end
