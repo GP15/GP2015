@@ -36,6 +36,7 @@
 
     $rangeSlider.ionRangeSlider
       type: 'double'
+      step: 900
       grid: false
       force_edges: true
       hide_min_max: true
@@ -43,7 +44,6 @@
       max: max
       from: start
       to: end
-      step: 900
       prettify: (num) ->
         # Format time
         moment(num, 'X').format 'h:mm A'
