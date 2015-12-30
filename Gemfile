@@ -15,9 +15,12 @@ gem 'validates_overlap', '~> 0.5.2' # check for overlapping time records
 gem 'simple_form'
 gem 'haml-rails'
 gem 'mandrill_mailer'               # Provides mailing functionality.
-
-                                    # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'carrierwave'                   # Upload images 
+gem 'rmagick'                       # Supports cropping of images
+                                    
+group :doc do                       
+  gem 'sdoc', '~> 0.4.0'            # bundle exec rake doc:rails generates the API under doc/api.
+end
 
 group :development, :test do
   gem 'byebug'                    # access debugger console by calling it in code

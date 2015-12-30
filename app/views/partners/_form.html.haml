@@ -15,6 +15,10 @@
   = f.label :state, class: "display-block"
   = f.select :state, Partner::STATES
 .field
+  = f.label :logo, class: "display-block"
+  = f.file_field :logo
+
+.field
   = f.label :Picture, "Picture Link"
   = f.text_field :img_url, placeholder: "http://"
   %small Before uploading a picture, make sure to compress the filesize to be less than 150KB for better loading time.

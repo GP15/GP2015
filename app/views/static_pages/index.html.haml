@@ -112,7 +112,10 @@
               .partner-details
                 .partner-info
                   = image_tag partner.img_url, :class => "partner-bg"
-                  = image_tag "partner-logo1.png", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-logo"
+                  - if partner.logo.present?
+                    = image_tag partner.logo.thumb.url, :class => "partner-logo"
+                  - else
+                    = image_tag "partner-logo1.png", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-logo"
                   .label-title= partner.company
                   .bg-overlay
                 - if partner.activities.present?

@@ -5,7 +5,9 @@ class Partner < ActiveRecord::Base
   has_many   :schedules, dependent: :destroy
   has_many   :activities, through: :klasses
 
-  validates_presence_of :company, :address, :city_id
+  mount_uploader :logo, LogoUploader
+
+  validates_presence_of :company, :address, :city_id#, :logo
   validate   :featured_limit
 
   scope :featured_partners, -> { where( :featured => true )}
