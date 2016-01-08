@@ -12,6 +12,14 @@ class Partner < ActiveRecord::Base
 
   scope :featured_partners, -> { where( :featured => true )}
 
+  geocoded_by :full_street_address   # can also be an IP address
+  before_save :geocode          # auto-fetch coordinates
+
+
+  def full_street_address
+    "#{address}, #{city.name}, #{state}"
+  end
+
   # A list of states & federal territories in Malaysia.
   STATES = ["Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang",
             "Perak", "Perlis", "Penang", "Sabah", "Sarawak", "Selangor",

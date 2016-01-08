@@ -10,4 +10,3 @@ ActionMailer::Base.delivery_method = :smtp
 MandrillMailer.configure do |config|
   config.api_key = "q0_HK2rlJPjI8lwUwq2_Gg"
 end
-

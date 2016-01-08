@@ -21,3 +21,5 @@
 //= require schedules
 //= require google_analytics
 //= require faq
+//= require underscore
+//= require gmaps/google

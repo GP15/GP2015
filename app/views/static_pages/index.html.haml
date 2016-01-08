@@ -1,8 +1,6 @@
 - provide(:title, "Unlimited Classes For Your Children")
 - content_for :bottom_js do
   = javascript_include_tag 'slick.min'
-  = javascript_include_tag 'https://maps.google.com/maps/api/js?sensor=true'
-  = javascript_include_tag 'gmaps.min'
   = javascript_include_tag 'chosen.min'
   = javascript_include_tag 'ion.rangeSlider.min'
   = javascript_include_tag 'moment.min'
@@ -121,12 +119,15 @@
                 - if partner.activities.present?
                   .label-activities= partner.try(:activities).try(:pluck, :name).try(:join ,", ")
 
-            
+
   / Section - Location
   #section-location.section-row
-    #nearby-places.location-map
+    %div{:style => "width: 100%;"}
+      #map{:style => "width: 100%; height: 500px;"}
+    = render :partial => "shared/map",
+            :locals => { :markers => markers_ary( Partner.all.featured_partners)}
 
-    = link_to partners_path, :class => "location-info hidden-xs" do 
+    = link_to partners_path, :class => "location-info hidden-xs" do
       .location-info-container
         %h3.page-heading.location-info-counter 285
         %h4.page-heading.location-info-title Activities Location

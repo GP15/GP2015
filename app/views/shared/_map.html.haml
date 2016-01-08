@@ -1,0 +1,29 @@
+%script{:src => "//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=®ion="}
+%script{:src => "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"}
+%script{:src => "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js", :type => "text/javascript"}
+
+
+
+
+
+:javascript
+
+  handler = Gmaps.build('Google');
+  handler.buildMap(
+    { provider:
+      {
+        scrollwheel: false,
+        mapTypeControl: false,
+        panControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL,
+            position: google.maps.ControlPosition.LEFT_TOP
+        },
+      }, internal: {id: 'map'}}, function()
+  {
+    var markers = handler.addMarkers(#{markers.to_json});
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });

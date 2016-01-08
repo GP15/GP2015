@@ -2,6 +2,24 @@ module ApplicationHelper
 
   # Active top link css
 
+  def markers_ary( partners)
+    partner_ary = []
+    partners.map do |partner|
+     partner_ary.push(
+                        { :lat =>partner.latitude ,
+                          :lng => partner.longitude,
+                          :picture =>
+                          {
+                            :url => asset_path('map-marker.png'),
+                            :width =>  36,
+                            :height => 42
+                          }
+                        }
+                      )
+    end
+    partner_ary
+  end
+
   def current_path(path)
     "active" if current_page?(path)
   end
