@@ -13,7 +13,8 @@ module ApplicationHelper
                             :url => asset_path('map-marker.png'),
                             :width =>  36,
                             :height => 42
-                          }
+                          },
+                          :infowindow => partner.company
                         }
                       )
     end
