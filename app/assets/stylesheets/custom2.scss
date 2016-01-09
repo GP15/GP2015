@@ -1315,11 +1315,11 @@ select.form-control {
 	top: 10px;
 	left: 15px;
 }
-.form-container .form-group-name:before { background-position: 0 0; }
-.form-container .form-group-email:before { background-position: -25px 0; }
-.form-container .form-group-password:before { background-position: -50px 0; }
-.form-container .form-group-password-confirm:before { background-position: -75px 0; }
-.form-container .form-group-city:before { background-position: -100px 0; }
+.form-container .user_name:before { background-position: 0 0; }
+.form-container .user_email:before { background-position: -25px 0; }
+.form-container .user_password:before { background-position: -50px 0; }
+.form-container .user_password_confirmation:before { background-position: -75px 0; }
+.form-container .user_location:before { background-position: -100px 0; }
 .form-container .form-group-icon .form-control { padding: 10px 15px 10px 50px !important; }
 
 /* Form Field Error */
