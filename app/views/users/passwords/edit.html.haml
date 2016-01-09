@@ -3,12 +3,13 @@
   .container
     .form-popup-container
       %h1 Change your password
-      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, defaults: { label: false  }) do |f|
+      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'login-form form-container form-horizontal' }, defaults: { label: false  }) do |f|
         = devise_error_messages!
         = f.hidden_field :reset_password_token
         = f.input :password, autofocus: true, autocomplete: "off"
         = f.input :password_confirmation, autocomplete: "off"
-        = f.submit "Change my password", class: "form-submit-btn gp-button"
+        .form-group
+          = f.submit "Change my password", class: "form-submit-btn gp-button"
         %br/
         %span.form-meta
           Don't have a login? #{link_to "Sign up", new_user_registration_path}
