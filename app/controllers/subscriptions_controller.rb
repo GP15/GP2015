@@ -4,17 +4,22 @@ class SubscriptionsController < ApplicationController
   def new
     @client_token = Braintree::ClientToken.generate(customer_id: current_user.customer_id)
     @subscription = @child.build_subscription
+    @user = current_user
   end
 
   def create
     @subscription = @child.build_subscription(subscription_params)
     @subscription.user = current_user
     if @subscription.save
-      if @subscription.sync_subscription(params[:payment_method_nonce])
-        redirect_to schedules_path, notice: "You have subscribed successfully"
+      unless @subscription.subscription_type == SubscriptionType.free.first
+        if @subscription.sync_subscription(params[:payment_method_nonce])
+          redirect_to schedules_path, notice: "You have subscribed successfully"
+        else
+          @subscription.destroy
+          redirect_to child_path(@child), notice: "Please try again"
+        end
       else
-        @subscription.destroy
-        redirect_to child_path(@child), notice: "Please try again"
+        redirect_to schedules_path, notice: "You free subscription added successfully."
       end
     else
       render :new

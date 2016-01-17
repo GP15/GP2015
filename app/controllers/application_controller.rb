@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
 
   def should_subscribe?
     current_user.present? &&
-    !devise_controller? &&
+    !(controller_name == ("users") || devise_controller?) &&
     (current_user.children.without_subscriptions.length != 0) &&
     not_controller_with_action('children', 'show') &&
     not_controller_with_action('subscriptions', '')

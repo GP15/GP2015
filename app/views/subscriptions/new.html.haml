@@ -1,78 +1,75 @@
-- provide(:title, "Dashboard")
+- provide(:title, "Payment")
 - provide(:nav_color, "link-white")
 - provide(:page_title_bg, asset_path('page-bg-child.jpg'))
 .content.subscribe-page
-  = render partial: 'layouts/page_title', locals: { page_title: 'Subscribe' }
+  = render partial: 'layouts/page_title', locals: { page_title: 'Payment' }
   = render 'shared/notice' if flash.present?
 
   .container
-    .row
-      .col-md-3
-        = render :partial => 'users/sidebar'
-      .col-md-9
-        .content-main
-          %h3 Select Your Plan
-          .package-list
-            .row
-              .col-md-4
-                .package-box
-                  .package-title Basic
-                  .package-price.price-small Free
-                  .package-details
-                    %p.package-description 1 Activity Per Month
-                    .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM0"} Select Plan
-                  .package-select-button
-              - if current_user.can_avail_discounted_plans?
-                .col-md-4
-                  .package-box.package-featured
-                    .package-title Deluxe
-                    .package-price
-                      .price-plan
-                        .currency RM
-                        .price-number 79
-                        .plan / Month
-                    .package-details
-                      %p.package-description 4 Activities Per Month
-                      .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM79"} Select Plan
-                    .package-select-button
-                .col-md-4
-                  .package-box
-                    .package-title Exclusive
-                    .package-price
-                      .price-plan
-                        .currency RM
-                        .price-number 39
-                        .plan / Month
-                    .package-details
-                      %p.package-description Unlimited Activities Per Month
-                      .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM39"} Select Plan
-                    .package-select-button
+    .content-main
+      %h3 Select Your Plan
+      .package-pricing-table-container
+        .package-pricing-table
+          .package-pricing-title Amateur
+          .package-pricing-price
+            %span.package-pricing-currency RM
+            %span.package-pricing-number 59
+            %span.package-pricing-subtitle Per Month
+            %span.package-pricing-details 4 Activities Per Month
+          .package-pricing-content
+            %p We make it really simple for you:
+            %ul
+              %li
+                %i.fa.fa-check
+                Auto Renewal
+              %li
+                %i.fa.fa-check
+                No Contract
+              %li
+                %i.fa.fa-check
+                No Termination Fee
+              %li
+                %i.fa.fa-check
+                Cancel Anytime
+          .package-pricing-action
+            .gp-link{"data-toggle" => "collapse", :href => "#package-promocode-amateur", :title => "Got Promo Code?"} Got Promo Code?
+            #package-promocode-amateur.package-promo-code.collapse
+              #promo_code_plan
+                = render :partial => "users/referal_code_form"
 
-              - else
-                .col-md-4
-                  .package-box.package-featured
-                    .package-title Deluxe
-                    .package-price
-                      .price-plan
-                        .currency RM
-                        .price-number 99
-                        .plan / Month
-                    .package-details
-                      %p.package-description 4 Activities Per Month
-                      .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM99"} Select Plan
-                    .package-select-button
-                .col-md-4
-                  .package-box
-                    .package-title Exclusive
-                    .package-price
-                      .price-plan
-                        .currency RM
-                        .price-number 49
-                        .plan / Month
-                    .package-details
-                      %p.package-description Unlimited Activities Per Month
-                      .gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM79"} Select Plan
-                    .package-select-button
+            %button.gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM79", "data-promocode" => ""} Select Plan
+        .package-pricing-table.featured
+          .package-pricing-title Pro
+          .package-pricing-price
+            %span.package-pricing-currency RM
+            %span.package-pricing-number 99
+            %span.package-pricing-subtitle Per Month
+            %span.package-pricing-details Unlimited Activities Per Month
+          .package-pricing-content
+            %p We make it really simple for you:
+            %ul
+              %li
+                %i.fa.fa-check
+                Auto Renewal
+              %li
+                %i.fa.fa-check
+                No Contract
+              %li
+                %i.fa.fa-check
+                No Termination Fee
+              %li
+                %i.fa.fa-check
+                Cancel Anytime
+          .package-pricing-action
+            .gp-link{"data-toggle" => "collapse", :href => "#package-promocode-pro", :title => "Got Promo Code?"} Got Promo Code?
+            #package-promocode-pro.package-promo-code.collapse
+              = render :partial => "users/referal_code_form"
+            %button.gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM79", "data-promocode" => ""} Select Plan
+      %p.basic-package-link
+        %a.gp-link{:href => "#", :target => "_blank", :title => "Try Our Basic Package For Free"} Try our Basic Package for FREE
+        %span (1 Activity Per Month)
+
+
 #package-subscription.modal.fade{:role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content
@@ -84,6 +81,7 @@
         = form_for(@subscription, url: child_subscriptions_path(@child)) do |f|
           .field
             = f.hidden_field :plan_id
+            = f.hidden_field :promo_code
             #dropin
           = f.submit "Subscribe", class: "btn btn-success", :id => "suscribe_btn"
       .modal-footer
@@ -93,8 +91,10 @@
 :javascript
   $(document).ready(function(){
     $(".open-modal").click(function() {
+      var promo_code = $(this).data('promocode')
       var planId = $(this).data('id');
       $("#subscription_plan_id").val( planId );
+      $("#subscription_promo_code.val( promo_code)")
     });
   });
 
@@ -108,5 +108,3 @@
          container: 'dropin',
          onReady: function(){ $("#suscribe_btn").prop('disabled', false); }
        });
-
-

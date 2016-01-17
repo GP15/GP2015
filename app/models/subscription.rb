@@ -2,9 +2,11 @@ class Subscription < ActiveRecord::Base
   ## Associations ##
   belongs_to :user
   belongs_to :child
+  belongs_to :subscription_type
 
   ## Validations ##
-  validates :child_id, presence: true
+  validates :child_id, :subscription_type_id, presence: true
+  validate  :valid_promo_code
 
   ## Instance Methods ##
   def sync_subscription(nounce)
@@ -14,14 +16,20 @@ class Subscription < ActiveRecord::Base
     )
     if result.success?
       token = result.payment_method.token
-      result = Braintree::Subscription.create(payment_method_token: token, plan_id: plan_id)
+      result = Braintree::Subscription.create(
+                            :payment_method_token => token,
+                            :plan_id => plan_id,
+                            :discounts =>
+                                      {
+                                        :add => [ :amount => "RM20"]
+                                      })
       if result.success?
         self.subscription_id = result.subscription.id
         self.start_date = DateTime.now
         self.save!
       else
         false
-      end 
+      end
     else
       false
     end
@@ -48,4 +56,18 @@ class Subscription < ActiveRecord::Base
     result = Braintree::Subscription.cancel(subscription_id)
     self.update_attributes(status: false, cancelled_on: DateTime.now)
   end
+
+  private
+
+  def valid_promo_code
+    if promo_code.present?
+      referred_by = User.find_by_promo_code( promo_code)
+      unless referred_by
+        errors.add( :promo_code, "Invalid promo code")
+      else
+        errors.add( :promo_code, "You can not use your own promo code")   if referred_by == user
+      end
+    end
+  end
+
 end

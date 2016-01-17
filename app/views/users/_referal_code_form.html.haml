@@ -1,0 +1,10 @@
+= simple_form_for(@user,
+                  :url => check_referal_code_users_path,
+                  :remote => true,
+                  :html => { :method => :post, :class => "form-container form-horizontal" }) do |f|
+
+  .form-group.field
+    .promocode-input.col-sm-8
+      = f.input :referal_code, :label => false
+    .promocode-submit.col-sm-4
+      = f.submit :submit, :class => "form-submit-btn gp-button"

@@ -14,6 +14,14 @@ cities.each do |city|
   City.create!(name: city)
 end
 
+# Subscription Plans
+
+SubscriptionType.create( :name => "Free", :price => "RM0", :activities_allowed => "1")
+SubscriptionType.create( :name => "Amateur", :price => "RM59", :activities_allowed => "4")
+SubscriptionType.create( :name => "Pro", :price => "RM99", :activities_allowed => "Unlimited")
+
+
+
 # Activities
 activities = ["Yoga", "Tennis", "Taekwondo", "Drumming", "Arithmetic", "Rock Climbing"]
 

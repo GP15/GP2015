@@ -44,7 +44,7 @@
 		 -o-transition: background-color 300ms ease, color 300ms ease;
 			transition: background-color 300ms ease, color 300ms ease;
 	padding: 5px 15px !important;
-	margin: 0 !important;
+	margin: 0;
 	display: inline-block;
 }
 .gp-button:hover,
@@ -1231,10 +1231,10 @@ header nav #top-nav hr {
 .form-container.form-horizontal .required
 {
 	font-size: inherit;
-	font-size: inherit; 
-	display: inherit; 
-	text-transform: inherit; 
-	letter-spacing: inherit;  
+	font-size: inherit;
+	display: inherit;
+	text-transform: inherit;
+	letter-spacing: inherit;
 }
 
 
@@ -1646,7 +1646,7 @@ header nav #top-nav hr {
 {
 	background-color: #1f9dce;
 }
-#activity-schedule .schedule-filter .date-filter #date-filter-choose input[type="radio"]:checked + label 
+#activity-schedule .schedule-filter .date-filter #date-filter-choose input[type="radio"]:checked + label
 {
     background-color: #fff;
     color: #146584;
@@ -2098,7 +2098,7 @@ header nav #top-nav hr {
 .social-media-icon-list .social-media-icon:last-child {
 	margin-right: 0 !important;
 }
-.social-media-icon-list .social-media-icon i { 
+.social-media-icon-list .social-media-icon i {
 	font-size: 27px;
 	color: #fff;
 	margin: 0 !important;

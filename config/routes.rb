@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     collection do
       get :select_plan
+      get :new_referal_code
+      post :check_referal_code
     end
     post :promo_code
     resources :children, except: [:index, :show]
