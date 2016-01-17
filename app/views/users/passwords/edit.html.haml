@@ -3,7 +3,12 @@
   .container
     .form-popup-container
       %h1 Change your password
-      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'login-form form-container form-horizontal' }, defaults: { label: false  }) do |f|
+      = simple_form_for(resource,
+                        :as => resource_name,
+                        :url => password_path(resource_name),
+                        :html => {  :method => :put,
+                                    :class  => 'form-group-icon login-form form-container form-horizontal' },
+                                    :defaults => { label: false  }) do |f|
         = devise_error_messages!
         = f.hidden_field :reset_password_token
         = f.input :password, autofocus: true, autocomplete: "off", :placeholder => "Password"

@@ -8,10 +8,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @subscription = @child.build_subscription(subscription_params)
-    @subscription.user = current_user
+    @subscription.user = @user
     if @subscription.save
-      unless @subscription.subscription_type == SubscriptionType.free.first
+      unless @subscription.subscription_type == SubscriptionType.free
         if @subscription.sync_subscription(params[:payment_method_nonce])
           redirect_to schedules_path, notice: "You have subscribed successfully"
         else
@@ -52,6 +53,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:plan_id)
+    params.require(:subscription).permit( :promo_code, :subscription_type_id)
   end
 end

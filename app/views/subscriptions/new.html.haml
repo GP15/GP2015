@@ -9,13 +9,18 @@
     .content-main
       %h3 Select Your Plan
       .package-pricing-table-container
+
+        - plan = SubscriptionType.amateur
         .package-pricing-table
-          .package-pricing-title Amateur
+          .package-pricing-title
+            = plan.name
           .package-pricing-price
             %span.package-pricing-currency RM
-            %span.package-pricing-number 59
+            %span.package-pricing-number
+              = plan.price
             %span.package-pricing-subtitle Per Month
-            %span.package-pricing-details 4 Activities Per Month
+            %span.package-pricing-details
+              = "#{plan.activities_allowed} Activities Per Month"
           .package-pricing-content
             %p We make it really simple for you:
             %ul
@@ -32,17 +37,30 @@
                 %i.fa.fa-check
                 Cancel Anytime
           .package-pricing-action
-            .gp-link{"data-toggle" => "collapse", :href => "#package-promocode-amateur", :title => "Got Promo Code?"} Got Promo Code?
+            .gp-link{ :data => { :toggle => "collapse"},
+                      :href => "#package-promocode-amateur",
+                      :title => "Got Promo Code?"}
+              Got Promo Code?
             #package-promocode-amateur.package-promo-code.collapse
-              #promo_code_plan
+              .promo_code_plan
                 = render :partial => "users/referal_code_form"
 
-            %button.gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM79", "data-promocode" => ""} Select Plan
+            %button.gp-button.open-modal{ :href => "#",
+                                          :title => "Select Plan",
+                                          :data =>  { :target => "#package-subscription",
+                                                      :toggle => "modal",
+                                                      :id => "RM79",
+                                                      :promocode => "",
+                                                      :subscription_type_id => "#{plan.id}"}  } Select Plan
+
         .package-pricing-table.featured
-          .package-pricing-title Pro
+          - plan = SubscriptionType.pro
+          .package-pricing-title
+            = plan.name
           .package-pricing-price
             %span.package-pricing-currency RM
-            %span.package-pricing-number 99
+            %span.package-pricing-number
+              = plan.price
             %span.package-pricing-subtitle Per Month
             %span.package-pricing-details Unlimited Activities Per Month
           .package-pricing-content
@@ -61,12 +79,27 @@
                 %i.fa.fa-check
                 Cancel Anytime
           .package-pricing-action
-            .gp-link{"data-toggle" => "collapse", :href => "#package-promocode-pro", :title => "Got Promo Code?"} Got Promo Code?
+            .gp-link{ :data => {:toggle => "collapse"},
+                      :href => "#package-promocode-pro",
+                      :title => "Got Promo Code?"} Got Promo Code?
             #package-promocode-pro.package-promo-code.collapse
-              = render :partial => "users/referal_code_form"
-            %button.gp-button.open-modal{"data-target" => "#package-subscription", "data-toggle" => "modal", :href => "#", :title => "Select Plan", "data-id" => "RM79", "data-promocode" => ""} Select Plan
+              .promo_code_plan
+                = render :partial => "users/referal_code_form"
+            %button.gp-button.open-modal{ :href => "#",
+                                          :title => "Select Plan",
+                                          :data =>  { :target => "#package-subscription",
+                                                      :toggle => "modal",
+                                                      :id => "RM79",
+                                                      :promocode => "",
+                                                      :subscription_type_id => "#{plan.id}"}  } Select Plan
+
       %p.basic-package-link
-        %a.gp-link{:href => "#", :target => "_blank", :title => "Try Our Basic Package For Free"} Try our Basic Package for FREE
+        - plan = SubscriptionType.free
+        = link_to "Try our Basic Package for FREE",
+                  child_subscriptions_path( @child,
+                    :subscription => { :subscription_type_id => plan.id }),
+                  :method => :post,
+                  :class => "gp-link"
         %span (1 Activity Per Month)
 
 
@@ -82,6 +115,7 @@
           .field
             = f.hidden_field :plan_id
             = f.hidden_field :promo_code
+            = f.hidden_field :subscription_type_id
             #dropin
           = f.submit "Subscribe", class: "btn btn-success", :id => "suscribe_btn"
       .modal-footer
@@ -91,10 +125,12 @@
 :javascript
   $(document).ready(function(){
     $(".open-modal").click(function() {
-      var promo_code = $(this).data('promocode')
+      var promo_code = $(this).data('promocode');
+      var subscription_type_id = $(this).data('subscription-type-id')
       var planId = $(this).data('id');
       $("#subscription_plan_id").val( planId );
-      $("#subscription_promo_code.val( promo_code)")
+      $("#subscription_promo_code").val( promo_code);
+      $("#subscription_subscription_type_id").val( subscription_type_id);
     });
   });
 

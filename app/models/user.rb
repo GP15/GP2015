@@ -8,10 +8,13 @@ class User < ActiveRecord::Base
   attr_accessor :referal_code, :being_referred
 
   ## Associations ##
-  has_many :children, dependent: :destroy
-  has_many :reservations, dependent: :destroy
-  has_many :schedules, through: :reservations
-  has_many :subscriptions, dependent: :destroy
+  has_many :children,         :dependent => :destroy
+  has_many :reservations,     :dependent => :destroy
+  has_many :schedules,        :through => :reservations
+  has_many :subscriptions,    :dependent => :destroy
+  has_many :referals
+  has_many :referred_tos,     :through => :referals, :source => :user
+  has_many :referred_froms,   :through => :referals, :source => :referred_to
 
   ## Validations ##
   validates_presence_of :email, :name, :location
@@ -40,6 +43,13 @@ class User < ActiveRecord::Base
     children.count > 1
   end
 
+  def can_have_referal_discounts?
+    available_referals.present?
+  end
+
+  def available_referals
+    referals.where( :rewards_used => false)
+  end
   def customer
     Braintree::Customer.find(customer_id)
   end
@@ -63,6 +73,11 @@ class User < ActiveRecord::Base
       else
         if referred_by == self
           errors.add( :referal_code, "You can not use your own promo code")
+          return false
+        end
+
+        if referred_froms.find_by_promo_code( referal_code)
+          errors.add( :referal_code, "You can not use promo code more than once.")
           return false
         end
       end

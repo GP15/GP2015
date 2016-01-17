@@ -3,7 +3,11 @@
   .container
     .login-container
       %h1 Login
-      = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form form-container form-horizontal' }, defaults: { label: false  }) do |f|
+      = simple_form_for(resource,
+                        :as => resource_name,
+                        :url => session_path(resource_name),
+                        :html => { :class => 'login-form form-container form-horizontal form-group-icon' },
+                        :defaults => { label: false  }) do |f|
         = f.input :email, placeholder: "Email", autofocus: true
         = f.input :password, placeholder: "Password", autocomplete: "off"
         - if devise_mapping.rememberable?
