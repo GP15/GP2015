@@ -1239,7 +1239,6 @@ header nav #top-nav hr {
 
 
 .form-container .form-group .control-label {
-	font-weight: 500;
 	padding: 8px 8px 0 0;
 }
 .form-container .form-group .form-control {
@@ -1283,7 +1282,7 @@ header nav #top-nav hr {
 
 /* Form Field Error */
 .form-container .form-group.has-error .form-control { border-color: #d55; }
-.form-container .form-group.has-error .help-block {
+.form-container .form-group.has-error span.help-block {
 	background-color: #d55;
 	font-family: 'Roboto', sans-serif;
 	font-size: 13px;
@@ -1298,7 +1297,7 @@ header nav #top-nav hr {
 }
 
 /* Form Help Text */
-.form-container .form-group .help-block {
+.form-container .form-group span.help-block {
 	font-family: 'Roboto', sans-serif;
 	font-size: 12px;
 	font-weight: 300;

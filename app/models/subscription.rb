@@ -29,7 +29,7 @@ class Subscription < ActiveRecord::Base
                                       })
 
       if result.success?
-        referred_by.referals.build(:referred_to_id => user.id).save
+        referred_by.referals.build(:referred_to_id => user.id).save     if promo_code.present?
         self.subscription_id = result.subscription.id
         self.start_date = DateTime.now
         self.save!

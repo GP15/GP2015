@@ -14,6 +14,8 @@ class Reservation < ActiveRecord::Base
   scope :sort_by_datetime_asc,  -> { order('schedules.starts_at ASC,  schedules.ends_at ASC') }
   scope :sort_by_datetime_desc, -> { order('schedules.starts_at DESC, schedules.ends_at DESC') }
 
+  before_create :check_authorization_for_reservation
+
   # https://github.com/robinbortlik/validates_overlap
   # Prevent user from reserving overlapping schedules.
   validates "schedules.starts_at", "schedules.ends_at",
@@ -53,5 +55,16 @@ class Reservation < ActiveRecord::Base
     card = tran.credit_card_details
     self.create_reservation_cancellation(user_id: user_id, child_id: child_id, transaction_id: tran.id, last4: card.last_4, card_type: card.card_type, amount: tran.amount.to_f)
     self.update_attributes(deleted: true, deleted_at: DateTime.now)
+  end
+
+  private
+
+  def check_authorization_for_reservation
+    unless child.subscription.subscription_type.pro?
+      unless child.reservations < child.subscription.subscription_type.activities_allowed.to_i
+        errors.add(:base, "Plan limit reached. Please buy a subscription.")
+        return false
+      end
+    end
   end
 end

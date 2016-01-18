@@ -1,0 +1,25 @@
+.form-section
+  %h3.form-section-subtitle
+    = child.first_name
+    = child.last_name
+  .form-group.field
+    %label.col-sm-4.control-label Package Type
+    .col-sm-8
+      = text_field_tag  :package_type,
+                        child.subscription.subscription_type.name,
+                        :readonly => true,
+                        :disabled => true
+  .form-group.field
+    %label.col-sm-4.control-label Membership Status
+    .col-sm-8
+      = text_field_tag  :membership_status,
+                          child.subscription.subscription_type.status,
+                          :readonly => true,
+                          :disabled => true
+  .form-group.field
+    %label.col-sm-4.control-label Renewal Date
+    .col-sm-8
+      = text_field_tag  :renewal_date,
+                          child.subscription.renewal_date.to_date,
+                          :readonly => true,
+                          :disabled => true

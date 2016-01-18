@@ -10,59 +10,37 @@
       .col-md-9
         .content-main
           %h3 Edit Profile Details
-          = form_for(resource, as: resource_name, url: registration_path(resource_name),              |
-            html: { method: :put, class: "edit-profile-form form-container form-horizontal" }) do |f| |
+
+          = simple_form_for(resource,
+                            :as => resource_name,
+                            :url => registration_path(resource_name),
+                            :html => {  :method => :put,
+                                        :class => "edit-profile-form form-container form-horizontal" },
+                            :defaults => {  :wrapper_html => { :class => 'field' },
+                                            :input_html =>   { :class => 'col-sm-8' },
+                                            :label_html =>   { :class => 'col-sm-4'}}) do |f|
+
             = devise_error_messages!
+
             .form-section
-              %h3.form-section-title Profile Details
-            .form-group.field.margin-five-top
-              = f.label :email, class: "col-sm-4 control-label"
-              .col-sm-8
-                = f.email_field :email, autofocus: true, class: "form-control"
-            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-              %div
-                Currently waiting confirmation for: #{resource.unconfirmed_email}
-            .form-group.field
-              = f.label :password, class: "col-sm-4 control-label"
-              .col-sm-8
-                = f.password_field :password, autocomplete: "off", class: "form-control"
-                %span.help-block (leave blank if you don't want to change it)
-            .form-group.field
-              = f.label :password_confirmation, class: "col-sm-4 control-label"
-              .col-sm-8
-                = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
-            .form-group.field
-              = f.label :current_password, class: "col-sm-4 control-label"
-              .col-sm-8
-                = f.password_field :current_password, autocomplete: "off", class: "form-control"
-                %span.help-block (input your current password to confirm your changes)
+              %h3.form-section-title
+                Profile Details
+            = f.input :name
+            = f.input :email
+            = f.input :location, collection: City.pluck( :name )
+
 
             .form-separator
             .form-section
-              %h3.form-section-title Membership Details
-            .form-group.field
-              = f.label :location, :class => 'col-sm-4 control-label'
-              .col-sm-8
-                = f.select :location, City.pluck( :name),{}, { :class => 'form-control'}
-            .form-group.field
-              %label.col-sm-4.control-label{:for => "user_package_type"} Package Type
-              .col-sm-8
-                %input#user_package_type.form-control{:name => "user[package_type]", :readonly => "readonly", :type => "text", :value => ""}/
-            .form-group.field
-              %label.col-sm-4.control-label{:for => "user_status"} Membership Status
-              .col-sm-8
-                %input#user_status.form-control{:name => "user[status]", :readonly => "readonly", :type => "text", :value => ""}/
-            .form-group.field
-              %label.col-sm-4.control-label{:for => "user_renewal_date"} Subscription Renewal Date
-              .col-sm-8
-                %input#user_renewal_date.form-control{:name => "user[renewal_date]", :readonly => "readonly", :type => "text", :value => ""}/
-            .form-group.field
-              %label.col-sm-4.control-label{:for => "user_credit_card"} Credit Card
-              .col-sm-8
-                %input#user_credit_card.form-control{:name => "user[credit_card]", :type => "text", :value => ""}/
-            .form-group.form-action.pull-right
-              .col-sm-8.col-sm-offset-4
-                %input.form-submit-btn.gp-button{:name => "commit", :type => "submit", :value => "Update"}/
+              %h3.form-section-title
+                Membership details
+            = render :partial => 'children/child', :collection => resource.children
 
-            .form-group.form-action
-              = f.submit "Update", class: "form-submit-btn gp-button"
+            .form-separator
+            .form-section
+              %h3.form-section-title
+                Change Password
+            = f.input :current_password, :hint => "(input your current password to confirm your changes)"
+            = f.input :password, :hint => "(leave blank if you don't want to change it)"
+            = f.input :password_confirmation
+            = f.submit "Update", :class => "form-submit-btn gp-button pull-right"
