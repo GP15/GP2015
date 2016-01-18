@@ -13,7 +13,7 @@
     %label.col-sm-4.control-label Membership Status
     .col-sm-8
       = text_field_tag  :membership_status,
-                          child.subscription.subscription_type.status,
+                          child.subscription.status,
                           :readonly => true,
                           :disabled => true
   .form-group.field

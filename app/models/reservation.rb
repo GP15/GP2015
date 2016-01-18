@@ -61,7 +61,7 @@ class Reservation < ActiveRecord::Base
 
   def check_authorization_for_reservation
     unless child.subscription.subscription_type.pro?
-      unless child.reservations < child.subscription.subscription_type.activities_allowed.to_i
+      unless child.reservations.count < child.subscription.subscription_type.activities_allowed.to_i
         errors.add(:base, "Plan limit reached. Please buy a subscription.")
         return false
       end
