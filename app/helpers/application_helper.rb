@@ -14,7 +14,8 @@ module ApplicationHelper
                             :width =>  36,
                             :height => 42
                           },
-                          :infowindow => partner.company
+                          :infowindow => "<div class='heading-blue'> #{partner.company}</div>
+                                          <div class='content-grey'> #{partner.address}</div>"
                         }
                       )
     end

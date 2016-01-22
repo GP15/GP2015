@@ -3,7 +3,7 @@
     .row
       .studio-map.col-sm-6.col-md-12
         %div{:style => "width: 100%;"}
-          #map{:style => "width: 100%; height: 300px;"}
+          #map.map-height{:style => "width: 100%"}
         = render :partial => "shared/map",
                 :locals => { :markers => markers_ary( [@partner])}
       .studio-details.col-sm-6.col-md-12

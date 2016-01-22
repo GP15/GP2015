@@ -9,6 +9,8 @@ class Partner < ActiveRecord::Base
 
   validates_presence_of :company, :address, :city_id#, :logo
   validate   :featured_limit
+  validates :user_allowed, numericality: { greater_than: 0, allow_nil: false }
+
 
   scope :featured_partners, -> { where( :featured => true )}
 
@@ -28,8 +30,10 @@ class Partner < ActiveRecord::Base
 
 
   def featured_limit
-    errors.add( :featured, "can not be greater than 5.") if Partner.featured_partners.count >= 5
-    return false
+    if featured
+      errors.add( :featured, "can not be greater than 5.") if Partner.featured_partners.count >= 5
+      return false
+    end
 	end
 
 end

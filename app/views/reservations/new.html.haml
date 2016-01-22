@@ -13,6 +13,7 @@
       .col-md-5
         - if @schedule.klass.reservation_limit > 0
           = render 'limit_notice'
+
         .reservation-list.content-main
           - if @reservations.present?
             %h3 Reservations
@@ -25,6 +26,7 @@
                     %th
               %tbody
                 = render :partial => 'reservation', :collection => @reservations
+
             - if Time.zone.now < @schedule.ends_at
               .schedule-notes.margin-two-six
                 %span Note:
@@ -42,7 +44,5 @@
               %p This class is past the scheduled time and can't be reserved anymore.
           - if @reservations.empty? && @children.empty?
             = render 'eligibility_notice'
-
-
-
-          
+          %p.notice
+            = "You have #{current_user.reservation_allowed_for_partner(@schedule.partner)} out of #{@schedule.partner.user_allowed} sessions left for this month #{@schedule.partner.company}."

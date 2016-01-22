@@ -39,6 +39,20 @@ class User < ActiveRecord::Base
     subscriptions.sum(:quantity)
   end
 
+  def can_make_reservation_for_partner?(ptnr)
+    reservation_made_for_partner(ptnr) < ptnr.user_allowed
+  end
+
+  def reservation_allowed_for_partner(ptnr)
+    ptnr.user_allowed - reservation_made_for_partner(ptnr)
+  end
+
+  def reservation_made_for_partner(ptnr)
+    num = 0
+    reservations.this_month.map { |reservation| num = num + 1 if reservation.schedule.partner == ptnr}
+    return num
+  end
+
   def can_avail_discounted_plans?
     children.count > 1
   end

@@ -10,7 +10,9 @@ class Reservation < ActiveRecord::Base
 
   scope :upcoming,    -> { where('schedules.ends_at >= ?', Time.zone.now) }
   scope :in_the_past, -> { where('schedules.ends_at < ?',  Time.zone.now) }
-
+  scope :this_month,  -> { where("created_at > ? AND created_at < ?",
+                                  Time.now.beginning_of_month,
+                                  Time.now.end_of_month) }
   scope :sort_by_datetime_asc,  -> { order('schedules.starts_at ASC,  schedules.ends_at ASC') }
   scope :sort_by_datetime_desc, -> { order('schedules.starts_at DESC, schedules.ends_at DESC') }
 

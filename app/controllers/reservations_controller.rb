@@ -20,15 +20,19 @@ class ReservationsController < ApplicationController
   def create
     @reservation = @schedule.reservations.build(child_params)
     @reservation.user_id = current_user.id
-
-    if (@schedule.reservations.count < @schedule.quantity) && @reservation.save
-      flash[:notice] = "Class reserved for #{@reservation.child.first_name}."
-      redirect_to new_schedule_reservation_path(@schedule)
-    elsif (@schedule.reservations.count >= @schedule.quantity)
-      flash[:error] = "This class has been fully booked. Please choose another schedule."
-      redirect_to new_schedule_reservation_path(@schedule)
+    if current_user.can_make_reservation_for_partner?(@schedule.partner)
+      if (@schedule.reservations.count < @schedule.quantity) && @reservation.save
+        flash[:notice] = "Class reserved for #{@reservation.child.first_name}."
+        redirect_to new_schedule_reservation_path(@schedule)
+      elsif (@schedule.reservations.count >= @schedule.quantity)
+        flash[:error] = "This class has been fully booked. Please choose another schedule."
+        redirect_to new_schedule_reservation_path(@schedule)
+      else
+        render :new
+      end
     else
-      render :new
+      flash[:error] = "You quota limit for #{@schedule.partner.company} has been reached."
+      redirect_to new_schedule_reservation_path(@schedule)
     end
   end
 

@@ -1,0 +1,24 @@
+/* ===================================
+    Mobile
+====================================== */
+@media screen and (max-width: 767px) {
+  #section-location { height: 200px;}
+  .map-height-main{ height: 350px;}
+  .map-height{ height: 200px;}
+}
+
+.map-height-main{ height: 500px;}
+.map-height{ height: 300px;}
+.heading-blue
+{
+  font-family: 'Oswald', sans-serif;
+  color: #3eb4e2;
+  font-size: 15px;
+  font-weight: 400;
+}
+.content-grey
+{
+  color: #1b1b1b;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+}
