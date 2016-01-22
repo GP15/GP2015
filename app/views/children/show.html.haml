@@ -6,7 +6,7 @@
   = render 'shared/notice' if flash.present?
   .container
     .row
-      .col-md-3
+      .col-md-3.hide-for-small
         = render :partial => 'users/sidebar'
       .col-md-9
         .content-main
@@ -41,4 +41,5 @@
                   = link_to 'Unsubscribe', child_subscription_path(@child, plan), method: :delete, data: { confirm: "Are you sure?" } if plan.status
             - else
               .panel-footer
+                = link_to "Edit", edit_user_child_path(current_user, @child), :class => "gp-button"
                 = link_to @subscription.present? ? "Subscribe for new Plan" : "Subscribe Now", new_child_subscription_path(@child), class: 'gp-button'
