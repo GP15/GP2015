@@ -1,0 +1,20 @@
+- provide(:title, "Promo Codes")
+%section.padding-one
+  .container
+    .row
+      %h1.title-large.text-center.margin-two-bottom Promo Codes
+      .col-md-6.center-col
+        %table.table.table-condensed.table-striped
+          %thead
+            %tr
+              %th Name
+              %th Code
+              %th{:colspan => "2"}= link_to "+ add", new_promo_code_path, class: "pull-right green-text"
+          %tbody.link-underline
+            - @promo_codes.each do |promo_code|
+              %tr
+                %td= promo_code.name
+                %td= promo_code.code
+                %td= link_to 'Show', promo_code
+                %td= link_to 'Edit', edit_promo_code_path(promo_code)
+                %td= link_to 'Destroy', promo_code, :method => :delete, :data => { :confirm => 'Are you sure?' }

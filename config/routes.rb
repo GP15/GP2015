@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :promo_codes
   get 'cards/new'
 
   root 'static_pages#index'

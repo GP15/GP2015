@@ -1,0 +1,15 @@
+- provide(:title, @promo_code.name)
+%section.no-padding-section
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        %h1.title-large.text-center.margin-two-bottom= @promo_code.name
+        %p
+          %b Name:
+          = @promo_code.name
+        %p
+          %b Code:
+          = @promo_code.code
+        .margin-five.pull-right
+          = link_to 'Edit', edit_promo_code_path(@promo_code), :class => primary_button_small
+          = link_to 'Back', promo_codes_path, :class => secondary_button_small

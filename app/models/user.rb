@@ -15,11 +15,13 @@ class User < ActiveRecord::Base
   has_many :referals
   has_many :referred_tos,     :through => :referals, :source => :user
   has_many :referred_froms,   :through => :referals, :source => :referred_to
+  has_secure_token :promo_code
 
   ## Validations ##
   validates_presence_of :email, :name, :location
-  validates_uniqueness_of :email
+  validates_uniqueness_of :email, :promo_code
   validates_confirmation_of :password
+
 
   ## Callbacks ##
   after_create :create_customer
@@ -68,20 +70,14 @@ class User < ActiveRecord::Base
     Braintree::Customer.find(customer_id)
   end
 
-  def generate_promo_code
-    code = ''
-    begin
-      code = SecureRandom.urlsafe_base64(7)
-    end while User.with_code(code).nil?
-    code
-  end
+
 
   private
 
   def verify_promo_code
     if being_referred
       referred_by = User.find_by_promo_code( referal_code )
-      unless referred_by
+      unless referred_by.present? || PromoCode.find_by_code( referal_code ).present?
         errors.add( :referal_code, "Invalid promo code")
         return false
       else
@@ -90,7 +86,7 @@ class User < ActiveRecord::Base
           return false
         end
 
-        if referred_froms.find_by_promo_code( referal_code)
+        if subscriptions.find_by_promo_code( referal_code).present?
           errors.add( :referal_code, "You can not use promo code more than once.")
           return false
         end

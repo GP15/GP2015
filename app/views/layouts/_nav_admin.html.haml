@@ -14,6 +14,7 @@
             %li= link_to "Users",    admin_users_path
             %li= link_to "Settings", admin_settings_path
             %li= link_to "Profile",  admin_root_path
+            %li= link_to "Promo Code", promo_codes_path
             %li= link_to "logout", destroy_admin_session_path, method: :delete
           - else
             %li= link_to "Go to GeniusPass.com",  root_url

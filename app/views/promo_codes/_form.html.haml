@@ -1,0 +1,10 @@
+= simple_form_for(@promo_code) do |f|
+  = render 'shared/error_messages', object: f.object
+
+
+  .form-inputs
+    = f.input :name
+
+  .margin-five.pull-right
+    = link_to "Cancel", promo_codes_path, class: secondary_button_small
+    = f.submit "Create", class: primary_button_small

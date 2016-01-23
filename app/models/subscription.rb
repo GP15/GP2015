@@ -29,7 +29,7 @@ class Subscription < ActiveRecord::Base
                                       })
 
       if result.success?
-        referred_by.referals.build(:referred_to_id => user.id).save     if promo_code.present?
+        referred_by.referals.build(:referred_to_id => user.id).save     if promo_code.present? && referred_by.present?
         self.subscription_id = result.subscription.id
         self.start_date = DateTime.now
         self.save!
@@ -86,10 +86,12 @@ class Subscription < ActiveRecord::Base
 
   def valid_promo_code
     if promo_code.present?
-      unless referred_by
+      unless referred_by.present? || PromoCode.find_by_code( promo_code)
         errors.add( :promo_code, "Invalid promo code")
       else
-        errors.add( :promo_code, "You can not use your own promo code")   if referred_by == user
+        if user.subscriptions.where.not( :id => self.id).where(:promo_code => promo_code ).present?
+          errors.add( :promo_code, "You can not use your own promo code")
+        end
       end
     end
   end
