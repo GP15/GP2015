@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  # formatted time
+  def format_time(time)
+    time.strftime("%I:%M%P")
+  end
+
   # Active top link css
 
   def markers_ary( partners)

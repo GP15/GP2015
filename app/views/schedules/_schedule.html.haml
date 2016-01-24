@@ -5,7 +5,11 @@
     = link_to schedule.partner.company, partner_path(schedule.partner) if schedule.partner
   %td.location{"data-title" => "Location"}
     = schedule.city.name if schedule.city
+  %td.time-col{"data-title" => "Time"}
+    = "#{format_time(schedule.starts_at)} - #{format_time(schedule.ends_at)}"
   %td.age-col{"data-title" => "Age"}
-    = "#{schedule.klass.age_start} - #{schedule.klass.age_end} #{schedule.klass.level if schedule.klass}"
+    = "#{schedule.klass.age_start} - #{schedule.klass.age_end}"
+  %td.difficulty-col{"data-title" => "Difficulty"}
+    = "#{schedule.klass.level if schedule.klass}"
   %td.availability-col
     = reserve_button(schedule)

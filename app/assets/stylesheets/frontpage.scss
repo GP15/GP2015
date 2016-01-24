@@ -60,12 +60,12 @@
 	border-bottom: 1px solid #ececec !important;
 	line-height: normal !important;
 }
-.table-responsive-block th { padding: 15px !important; }
-.table-responsive-block td { padding: 8px 15px !important; }
+.table-responsive-block th { padding: 5px !important; }
+.table-responsive-block td { padding: 5px !important; }
 @media screen and (max-width: 767px) {
 	.table-responsive-block tbody tr {
 		border-bottom: 1px solid #ececec !important;
-		padding: 15px 0 !important;
+		padding: 5px !important;
 		display: block;
 	}
 	.table-responsive-block th { display: none; }

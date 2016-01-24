@@ -7,7 +7,7 @@
     #activity-schedule.content-main
       = render 'filters'
 
-      %h3.page-heading.schedule-date 
+      %h3.page-heading.schedule-date
         = date_header
 
       - if @schedules.present?
@@ -17,13 +17,11 @@
               %th Activities
               %th Studio
               %th Location
+              %th Time
               %th Age
+              %th Difficulty
               %th
           %tbody
             = render :partial => 'schedule', :collection => @schedules
       - else
         %p.text-center No activity found.
-
-
-
-

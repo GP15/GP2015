@@ -14,10 +14,10 @@ module SchedulesHelper
 
   # Hash of dates for filters
   def date_hash
-    h = Hash.new 
+    h = Hash.new
     h["Today"] = Time.zone.today.strftime("%d-%m-%Y")
     h["Tomorrow"] = Time.zone.tomorrow.strftime("%d-%m-%Y")
-    (2...6).map{ |i| h[i.days.from_now.strftime("%d %b")] = i.days.from_now.strftime("%d-%m-%Y")}
+    (2...7).map{ |i| h[i.days.from_now.strftime("%d %b")] = i.days.from_now.strftime("%d-%m-%Y")}
     h
   end
 

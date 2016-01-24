@@ -4,7 +4,9 @@
       %tr
         %th Date
         %th Activity
+        %th Outlet
         %th Time
+        %th Age
         %th Difficulty
         %th.text-center Availability
     %tbody
@@ -12,9 +14,12 @@
         %tr
           %td.date-col{"data-title" => "Date"}= schedule.starts_at.strftime("%d %b %Y")
           %td.activity-col{"data-title" => "Activity"}= schedule.klass.name
+          %td.outlet-col{"data-title" => "Outlet"}= schedule.city.name
           %td.time-col{"data-title" => "Time"}
-            = schedule.starts_at.strftime("%l:%M%P")
-            to #{schedule.ends_at.strftime("%l:%M%P")}
+            = format_time(schedule.starts_at)
+            to #{format_time(schedule.ends_at)}
+          %td.age-col{"data-title" => "Age"}
+            = "#{schedule.klass.age_start} - #{schedule.klass.age_end}"
           %td.difficulty-col{"data-title" => "Difficulty"}
             = schedule.klass.level if schedule.klass
           %td.availability-col{"data-title" => "Availability"}= reserve_button(schedule)
