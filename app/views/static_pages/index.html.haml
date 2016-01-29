@@ -126,7 +126,7 @@
     %div{:style => "width: 100%;"}
       #map.map-height-main{:style => "width: 100%"}
     = render :partial => "shared/map",
-            :locals => { :markers => markers_ary( @featured_partners)}
+            :locals => { :markers => markers_ary( Partner.all)}
 
     = link_to partners_path, :class => "location-info hidden-xs" do
       .location-info-container

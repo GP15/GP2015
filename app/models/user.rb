@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   has_many :referals
   has_many :referred_tos,     :through => :referals, :source => :user
   has_many :referred_froms,   :through => :referals, :source => :referred_to
-  has_secure_token :promo_code
 
   ## Validations ##
   validates_presence_of :email, :name, :location
@@ -70,7 +69,13 @@ class User < ActiveRecord::Base
     Braintree::Customer.find(customer_id)
   end
 
-
+  def generate_promo_code
+    code = ''
+    begin
+      code = SecureRandom.urlsafe_base64(7)
+    end while User.with_code(code).nil?
+    code
+  end
 
   private
 
