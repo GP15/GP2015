@@ -23,4 +23,23 @@ class Schedule < ActiveRecord::Base
     where('starts_at BETWEEN ? AND ?', Time.zone.tomorrow.beginning_of_day, Time.zone.tomorrow.end_of_day)
   end
 
+  def self.yearly_in_one_hour
+    where("recurrence = ? and archived = ? and starts_at BETWEEN ? and ?", 'Yearly', false, 1.year.from_now, (1.year.from_now + 5.minutes) )
+  end
+
+  def self.monthly_in_one_hour
+    where("recurrence = ? and archived = ? and starts_at BETWEEN ? and ?", 'Monthly', false, 1.month.from_now, (1.month.from_now + 5.minutes) )
+  end
+
+  def self.daily_in_one_hour
+    where("recurrence = ? and archived = ? and starts_at BETWEEN ? and ?", 'Daily', false, 1.day.from_now, (1.day.from_now + 5.minutes) )
+  end
+
+  def self.not_recuring_in_one_hour
+    where("recurrence = ? and archived = ? and starts_at BETWEEN ? and ?", 'None', false, Time.now, (Time.now + 5.minutes) )
+  end
+
+  def self.in_one_hour
+    yearly_in_one_hour + monthly_in_one_hour + daily_in_one_hour + not_recuring_in_one_hour
+  end
 end
