@@ -69,7 +69,8 @@ class SchedulesController < ApplicationController
       klass_id:    schedule_params[:klass_id],
       quantity:    schedule_params[:quantity],
       starts_at:   start_datetime,
-      ends_at:     end_datetime
+      ends_at:     end_datetime,
+      recurrence:  schedule_params[:recurrence]
     )
 
     if @schedule.save
@@ -88,6 +89,7 @@ class SchedulesController < ApplicationController
     @schedule.quantity    = schedule_params[:quantity]
     @schedule.starts_at   = start_datetime
     @schedule.ends_at     = end_datetime
+    @schedule.recurrence  = schedule_params[:recurrence]
 
     if @schedule.save
       redirect_to admin_schedule_path(@schedule), notice: 'Schedule updated.'
@@ -122,7 +124,7 @@ class SchedulesController < ApplicationController
   private
 
     def schedule_params
-      params.require(:schedule).permit(:klass_id, :starts_at, :ends_at, :quantity)
+      params.require(:schedule).permit(:klass_id, :starts_at, :ends_at, :quantity, :recurrence)
     end
 
     def set_partner

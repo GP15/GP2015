@@ -1,4 +1,5 @@
 class Schedule < ActiveRecord::Base
+  RECURRENCES = [ "None", "Daily", "Monthly", "Yearly" ]
 
   belongs_to :city
   belongs_to :partner
