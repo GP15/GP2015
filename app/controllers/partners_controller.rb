@@ -1,7 +1,7 @@
 class PartnersController < ApplicationController
   layout 'admin', except: [:index, :show]
 
-  before_action :authenticate_admin!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show, :loadmore]
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
 
   def index
