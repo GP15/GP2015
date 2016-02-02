@@ -24,7 +24,7 @@
         / Select menu for choosing a age
         .col-md-3.filter-box
           = f.label :age, "Age", class: "display-block"
-          = select_tag :age, options_for_select([""] + (1..18).to_a, params[:q][:age]), class: "form-control"
+          = select_tag :age, options_for_select([""] + (1..18).to_a, params[:age]), class: "form-control"
           
     .date-filter
       .date-filter-inner
