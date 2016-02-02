@@ -31,7 +31,7 @@ class SchedulesController < ApplicationController
     if params[:q].present?
       @schedules =  @q.result             # Result of Ransack
       @schedules =  @schedules.where( 'starts_at BETWEEN ? AND ?', start_time, end_time) 
-
+      
     else
       # When not filtering anything aka visiting /schedules, show all schedules from tomorrow.
       @schedules = Schedule.only_tomorrow
@@ -42,6 +42,7 @@ class SchedulesController < ApplicationController
                            .includes(:klass, :partner, :city)
                            .sort_by_datetime_asc
 
+    @schedules =  @schedules.select{|schedule| schedule.klass.age_start <= params[:age].to_i && schedule.klass.age_end >= params[:age].to_i } unless params[:age].to_i == 0
     #@date = Date.parse(@date).strftime("%A, %d %B %Y")
   end
 
