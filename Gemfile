@@ -21,7 +21,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'has_secure_token'
-
+gem 'sidekiq'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'            # bundle exec rake doc:rails generates the API under doc/api.
