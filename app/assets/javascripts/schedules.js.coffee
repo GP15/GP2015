@@ -59,6 +59,10 @@
   ###
 
   formDateSelect = ->
+    $dateFilter = $('#date-filter-choose')
+    $dateFilter.on 'click', ->
+      $(".filter-submit-btn").click()
+      
     $dateFilterChoose = $('#date-filter-choose li')
     $dateFilterDropdown = $('#date-filter-dropdown')
     $dateInput = $('#q_start_date_eq')
