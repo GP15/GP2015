@@ -36,7 +36,7 @@
 
     $rangeSlider.ionRangeSlider
       type: 'double'
-      step: 900
+      step: 3600
       grid: false
       force_edges: true
       hide_min_max: true
