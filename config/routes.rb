@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   end
 
   resources :partners do
+    collection do
+      get :loadmore
+    end
     resources :klasses, :schedules, except: [:index, :show]
   end
 
