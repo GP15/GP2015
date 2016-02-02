@@ -142,7 +142,7 @@ class SchedulesController < ApplicationController
 
     # Put the value from the single date select into starts_at & ends_at attributes.
     def format_datetime( date, time)
-      DateTime.parse("#{date} #{time}")
+      Time.zone.parse("#{date} #{time}")
     end
 
     def start_datetime # Needed so the starts_at params is not nil.
