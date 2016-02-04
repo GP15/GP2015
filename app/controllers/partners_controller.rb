@@ -1,7 +1,7 @@
 class PartnersController < ApplicationController
   layout 'admin', except: [:index, :show]
 
-  before_action :authenticate_admin!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show, :loadmore]
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,7 +9,15 @@ class PartnersController < ApplicationController
                        .select("partners.*, max(klasses.reservation_limit) as booking_limit")
                        .includes(:city, :activities)
                        .group(:id)
-                       .order(:company)
+                       .order(:company).limit(6)
+  end
+  def loadmore 
+    @partners = Partner.joins("left join klasses on klasses.partner_id = partners.id")
+                       .select("partners.*, max(klasses.reservation_limit) as booking_limit")
+                       .includes(:city, :activities)
+                       .group("partners.id")
+                       .order(:company).paginate(page: params[:page], per_page: 6)
+    render layout: false
   end
 
   def show
@@ -58,7 +66,7 @@ class PartnersController < ApplicationController
     end
 
     def partner_params
-      params.require(:partner).permit(:company, :phone, :address, :state,
+      params.require(:partner).permit(:company, :phone, :address, :state, :email,
                     :city_id, :img_url, :logo, :latitude, :longitude, :user_allowed)
     end
 end

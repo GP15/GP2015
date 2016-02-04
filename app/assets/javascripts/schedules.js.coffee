@@ -36,7 +36,7 @@
 
     $rangeSlider.ionRangeSlider
       type: 'double'
-      step: 900
+      step: 3600
       grid: false
       force_edges: true
       hide_min_max: true
@@ -59,6 +59,10 @@
   ###
 
   formDateSelect = ->
+    $dateFilter = $('#date-filter-choose')
+    $dateFilter.on 'click', ->
+      $(".filter-submit-btn").click()
+      
     $dateFilterChoose = $('#date-filter-choose li')
     $dateFilterDropdown = $('#date-filter-dropdown')
     $dateInput = $('#q_start_date_eq')
