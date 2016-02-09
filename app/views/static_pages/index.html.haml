@@ -130,7 +130,7 @@
 
     = link_to partners_path, :class => "location-info hidden-xs" do
       .location-info-container
-        %h3.page-heading.location-info-counter 285
+        %h3.page-heading.location-info-counter= Partner.count
         %h4.page-heading.location-info-title Activities Location
         %span.location-info-description Find nearby places
       .location-info-bar See All +

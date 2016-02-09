@@ -4,22 +4,27 @@
     .various-filter
       .row
         / Select menu for choosing an activity
-        .col-md-4.filter-box
+        .col-md-3.filter-box
           = f.label :activity_id_eq, "Activity", class: "display-block"
           = f.collection_select :activity_id_eq, @activities, :id, :name, |
             { include_blank: 'All', :selected => params[ :q][ :activity_id_eq]  }, { :class => "form-control" }              |
         / Select menu for choosing a city
-        .col-md-4.filter-box
+        .col-md-3.filter-box
           = f.label :city_id_eq, "City", class: "display-block"
           = f.collection_select :city_id_eq, @cities, :id, :name, |
           { include_blank: 'All', :selected => params[ :q][ :city_id_eq] }, { class: "form-control" }      |
 
         / Select menu for choosing a date
-        .col-md-4.filter-box
-          %label.display-block Time
+        .col-md-3.filter-box
+          %label.display-block Start Time
           .schedule-time-slider
           = hidden_field_tag :start_time, params[ :start_time]                              
           = hidden_field_tag :end_time, params[ :end_time]
+          
+        / Select menu for choosing a age
+        .col-md-3.filter-box
+          = f.label :age, "Age", class: "display-block"
+          = select_tag :age, options_for_select([""] + (1..18).to_a, params[:age]), class: "form-control"
           
     .date-filter
       .date-filter-inner

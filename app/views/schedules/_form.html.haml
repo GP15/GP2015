@@ -11,5 +11,9 @@
   = f.label :ends_at, class: "display-block"
   = f.time_select :ends_at, ignore_date: true, ampm: true, minute_step: 15
 .field
+  = f.label :recurrence, "Recurrrence"
+  %br/
+  = f.select :recurrence, options_for_select(Schedule::RECURRENCES, @schedule.recurrence)
+.field
   = f.label :quantity, "No. of students"
   = f.number_field :quantity

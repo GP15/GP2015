@@ -14,6 +14,9 @@
               %dd
                 = @schedule.starts_at.strftime("%l:%M%P")
                 — #{@schedule.ends_at.strftime("%l:%M%P")}
+              %dt Recurrence:
+              %dd
+                = @schedule.recurrence
               %dt Age
               %dd
                 = @schedule.klass.age_start

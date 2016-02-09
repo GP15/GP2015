@@ -3,9 +3,6 @@
 %script{:src => "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js", :type => "text/javascript"}
 
 
-
-
-
 :javascript
 
   handler = Gmaps.build('Google');
@@ -25,5 +22,15 @@
   {
     var markers = handler.addMarkers(#{markers.to_json});
     handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
+    handler.map.centerOn(markers[0]);
+
+    if ( #{markers.length} == 1)
+    {
+      handler.getMap().setZoom(12);
+    }
+    else
+    {
+      handler.getMap().setZoom(4);
+    }
+    //handler.fitMapToBounds();
   });
