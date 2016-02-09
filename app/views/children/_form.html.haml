@@ -2,9 +2,9 @@
 .form-group.field
   = f.label :first_name, class: "col-sm-4 control-label capitalize"
   .col-sm-8
-    = f.text_field :first_name, class: "form-control"
+    = f.text_field :first_name, class: "form-control", placeholder: 'Same as identity card'
 .form-group.field
-  = f.label :last_name, class: "col-sm-4 control-label capitalize"
+  = f.label :last_name, class: "col-sm-4 control-label capitalize", placeholder: "Same as identity card"
   .col-sm-8
     = f.text_field :last_name, class: "form-control"
 .form-group.field

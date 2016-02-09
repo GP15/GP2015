@@ -9,7 +9,7 @@
             = child.first_name
             = child.last_name
           %td.children-number= age(child)
-          %td.children-edit
-            = link_to " ", edit_user_child_path(current_user, child), :class => "fa fa-pencil"
+          /%td.children-edit
+          /  = link_to " ", edit_user_child_path(current_user, child), :class => "fa fa-pencil"
     .sidebar-footer
       = link_to "+ Add", new_user_child_path(current_user), class: "gp-button"
