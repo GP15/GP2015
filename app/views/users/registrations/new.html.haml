@@ -12,6 +12,7 @@
         = f.input :email, :placeholder => "Email"
         = f.input :password, autocomplete: "off", :placeholder => "Password"
         = f.input :password_confirmation, autocomplete: "off", :placeholder => "Password Confirmation"
+        = f.input :phone_no, :placeholder => "Phone no"
         = f.input :location, :collection => City.pluck( :name)
         .form-group
           = f.submit "Sign up", class: "form-submit-btn gp-button"
