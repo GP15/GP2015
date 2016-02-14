@@ -120,6 +120,15 @@
                 - if partner.activities.present?
                   .label-activities= partner.try(:activities).try(:pluck, :name).uniq.try(:join ,", ")
 
+          .col-sm-4{ :class => "col-md-3"}
+            .partner-details{style: 'background: orange'}
+              .partner-info
+                %br/
+                %br/
+                %br/
+                %h2.text-center= "#{Partner.count} partners available"
+                %br/
+                .label-title= link_to "View more..", partners_path
 
   / Section - Location
   #section-location.section-row
