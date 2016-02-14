@@ -118,7 +118,7 @@
                   .label-title= partner.company
                   .bg-overlay
                 - if partner.activities.present?
-                  .label-activities= partner.try(:activities).try(:pluck, :name).try(:join ,", ")
+                  .label-activities= partner.try(:activities).try(:pluck, :name).uniq.try(:join ,", ")
 
 
   / Section - Location
