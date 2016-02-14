@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-  RECURRENCES = [ "None", "Daily", "Monthly", "Yearly" ]
+  RECURRENCES = [ "None", "Weekly", "Daily", "Monthly", "Yearly" ]
 
   belongs_to :city
   belongs_to :partner
@@ -41,6 +41,14 @@ class Schedule < ActiveRecord::Base
     }
   end
 
+  def self.weekly_in_one_hour
+    where("recurrence = ? and archived = ?", "Weekly", false ).select{|schedule| 
+      schedule.starts_at.wday == Time.now.wday &&
+      time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) && 
+      time_in_minutes(schedule.starts_at) < ( time_in_minutes(1.hour.from_now) + 5 ) 
+    }
+  end
+
   def self.daily_in_one_hour
     where("recurrence = ? and archived = ?", "Daily", false ).select{|schedule| 
       time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) && 
@@ -53,7 +61,7 @@ class Schedule < ActiveRecord::Base
   end
 
   def self.in_one_hour
-    yearly_in_one_hour + monthly_in_one_hour + daily_in_one_hour + not_recuring_in_one_hour
+    yearly_in_one_hour + monthly_in_one_hour + weekly_in_one_hour + daily_in_one_hour + not_recuring_in_one_hour
   end
 
   def self.time_in_minutes full_time
