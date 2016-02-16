@@ -1,3 +1,6 @@
+.row
+  .pull-right
+    = link_to "Change Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button pull-right'
 - if child.subscription.present?
   .form-section
     %h3.form-section-subtitle

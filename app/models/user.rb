@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
 
   ## Callbacks ##
-  after_create :create_customer
+  after_create :create_customer, :send_welcome_mail
   before_update :verify_promo_code
   ## Scopes ##
   scope :with_code, ->(code){ find_by(promo_code: code) }
@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     self.customer_id = customer.customer.id
     self.promo_code = self.generate_promo_code
     self.save!
+  end
+
+  def send_welcome_mail
+    WelcomeMailer.invite(self).deliver_now
   end
 
   def total_subscriptions
