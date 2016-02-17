@@ -42,22 +42,30 @@ class Reservation < ActiveRecord::Base
     if !can_be_cancelled?
       return false
     else
-      token = user.customer.payment_methods.first.token
-      result = Braintree::Transaction.sale(:amount => cancellation_charge.to_s, :payment_method_token => token, customer_id: user.customer_id)
-      if result.success?
-        mark_cancelled(result)
-        true
+      if user.customer.payment_methods.first
+        token = user.customer.payment_methods.first.token
+        result = Braintree::Transaction.sale(:amount => cancellation_charge.to_s, :payment_method_token => token, customer_id: user.customer_id)
+        if result.success?
+          mark_cancelled(result)
+          true
+        else
+          false
+        end
       else
-        false
+        mark_cancelled(nil)
+        true
       end
     end
   end
 
   def mark_cancelled(result)
-    tran = result.transaction
-    card = tran.credit_card_details
-    self.create_reservation_cancellation(user_id: user_id, child_id: child_id, transaction_id: tran.id, last4: card.last_4, card_type: card.card_type, amount: tran.amount.to_f)
+    if result
+      tran = result.transaction
+      card = tran.credit_card_details
+      self.create_reservation_cancellation(user_id: user_id, child_id: child_id, transaction_id: tran.id, last4: card.last_4, card_type: card.card_type, amount: tran.amount.to_f)
+    end
     self.update_attributes(deleted: true, deleted_at: DateTime.now)
+    ReservationMailer.cancelation(self).deliver_now
   end
 
   private
