@@ -2,8 +2,8 @@ require "mandrill"
 
 class BaseMandrillMailer < ActionMailer::Base
   default(
-    from: "support@geniuspass.com",
-    reply_to: "support@geniuspass.com"
+    from: "info@geniuspass.com",
+    reply_to: "info@geniuspass.com"
   )
 
   private

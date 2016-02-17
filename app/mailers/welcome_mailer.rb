@@ -1,5 +1,5 @@
 class WelcomeMailer < BaseMandrillMailer
-  default from: 'admin@example.com'
+  default from: 'info@geniuspass.com'
 
   def invite(user)
     subject = "Welcome to GeniusPass"

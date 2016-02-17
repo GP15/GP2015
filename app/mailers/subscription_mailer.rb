@@ -1,5 +1,5 @@
 class SubscriptionMailer < BaseMandrillMailer
-  default from: 'admin@example.com'
+  default from: 'info@geniuspass.com'
 
   def invite(user)
     subject = "You are subscribed"
