@@ -17,6 +17,7 @@ class Reservation < ActiveRecord::Base
   scope :sort_by_datetime_desc, -> { order('schedules.starts_at DESC, schedules.ends_at DESC') }
 
   before_create :check_authorization_for_reservation
+  after_create :send_reservation_notification
 
   # https://github.com/robinbortlik/validates_overlap
   # Prevent user from reserving overlapping schedules.
@@ -60,6 +61,9 @@ class Reservation < ActiveRecord::Base
   end
 
   private
+  def send_reservation_notification
+    ClassBookingMailer.notification(self).deliver
+  end
 
   def check_authorization_for_reservation
     unless child.subscription.subscription_type.pro?
