@@ -8,7 +8,7 @@
                         :url => registration_path(resource_name),
                         :html => {  :class => 'signup-form form-container form-horizontal form-group-icon' },
                                     :defaults => { label: false  }) do |f|
-        = f.input :name, autofocus: true, :placeholder => "Full Name (as per ID)"
+        = f.input :name, autofocus: true, :placeholder => "Parent Name (as per ID)"
         = f.input :email, :placeholder => "Email"
         = f.input :password, autocomplete: "off", :placeholder => "Password"
         = f.input :password_confirmation, autocomplete: "off", :placeholder => "Password Confirmation"
