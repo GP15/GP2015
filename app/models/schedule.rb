@@ -15,10 +15,13 @@ class Schedule < ActiveRecord::Base
   scope :sort_by_datetime_desc, -> { order('starts_at DESC, ends_at DESC') }
 
   scope :in_the_past,        -> { where('ends_at < ?',    Time.zone.now) }
-  scope :recent,             -> { where('ends_at >= ?',   Time.zone.now) }
   scope :six_hours_from_now, -> { where('starts_at >= ?', Time.zone.now + 6.hours) }
 
   scope :not_archived, -> { where.not('archived') }
+
+  def self.recent
+    where("recurrence in (?) or (ends_at > ?)", ['Daily', 'Monthly', 'Weekly', 'Yearly'], Time.zone.now )
+  end
 
   def self.only_tomorrow
     where('starts_at BETWEEN ? AND ?', Time.zone.tomorrow.beginning_of_day, Time.zone.tomorrow.end_of_day)
@@ -62,6 +65,37 @@ class Schedule < ActiveRecord::Base
 
   def self.in_one_hour
     yearly_in_one_hour + monthly_in_one_hour + weekly_in_one_hour + daily_in_one_hour + not_recuring_in_one_hour
+  end
+
+  def scheduled_dates
+    if self.recurrence.nil? || self.recurrence == "None"
+      [ self.starts_at.to_date ]
+    else
+      scheduled_dates_array = Array.new
+      last_date = self.starts_at
+      until last_date > 10.days.from_now do
+        scheduled_dates_array.push last_date.to_date
+        last_date += self.recurrence_interval
+      end
+      scheduled_dates_array
+    end
+  end
+
+  def recurrence_interval
+    case self.recurrence
+    when nil
+      100.years
+    when "None"
+      100.years
+    when "Daily"
+      1.day
+    when "Weekly"
+      7.days
+    when "Monthly"
+      1.month
+    when "Yearly"
+      1.year
+    end
   end
 
   def self.time_in_minutes full_time

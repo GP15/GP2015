@@ -20,6 +20,6 @@
         %td.text-center= schedule.quantity
         %td{:class => "text-center #{neutralize_color_if((schedule.archived))}"}
           = reservation_count(schedule.reservations.size)
-        %td.text-center= archived?(schedule.archived)
         %td.text-center= schedule.recurrence
+        %td.text-center= archived?(schedule.archived)
         %td= link_to "view", admin_schedule_path(schedule), class: "pull-right"
