@@ -42,3 +42,4 @@ group :production do
   gem 'rails_12factor'          # output logs to stdout for 3rd party log apps
   gem 'puma'                    # webserver recommended by Heroku
 end
+gem 'bootsy'

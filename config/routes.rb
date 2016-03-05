@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  resources :static_page_contents
   resources :promo_codes
   get 'cards/new'
 

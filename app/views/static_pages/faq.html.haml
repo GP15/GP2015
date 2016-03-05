@@ -3,26 +3,4 @@
 .content.faq-page.white-bg
   = render partial: 'layouts/page_title', locals: { page_title: 'FAQ' }
   .container
-    .row
-      .col-lg-10.col-lg-offset-1.col-md-12
-        .row
-          / FAQ sidebar
-          .col-md-4
-            .faq-question-links
-              %h3 Frequently Asked Questions
-              %ul
-                %li
-                  %a{:href => "#faq-1"} Item 1
-                %li
-                  %a{:href => "#faq-2"} Item 2
-          / FAQ content
-          .col-md-8
-            %ul.faq-question-list
-              %li
-                %h3#faq-1.faq-question Item 1
-                %p.faq-answer Item 1 Explanation Paragraph 1
-                %p.faq-answer Item 1 Explanation Paragraph 2
-              %li
-                %h3#faq-2.faq-question Item 2
-                %p.faq-answer Item 2 Explanation Paragraph 1
-                %p.faq-answer Item 2 Explanation Paragraph 2
+    = StaticPageContent.find_by_key('faq').value.html_safe
