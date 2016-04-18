@@ -9,11 +9,11 @@
                         :html => {  :class => 'signup-form form-container form-horizontal form-group-icon' },
                                     :defaults => { label: false  }) do |f|
         = f.input :name, autofocus: true, :placeholder => "Parent Name (as per ID)"
-        = f.input :email, :placeholder => "Email"
+        = f.input :email, :placeholder => "Email", input_html: {value: session[:email]}
         = f.input :password, autocomplete: "off", :placeholder => "Password"
         = f.input :password_confirmation, autocomplete: "off", :placeholder => "Password Confirmation"
         = f.input :phone_no, :placeholder => "Phone no"
-        = f.input :location, :collection => City.pluck( :name)
+        = f.input :location, input_html: {value: session[:zipcode]}
         .form-group
           = f.submit "Sign up", class: "form-submit-btn gp-button"
           %small By clicking "Sign Up" you agree to our Terms of Use and Privacy Policy

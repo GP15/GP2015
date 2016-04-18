@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Pincode:
+  = @zipcode.pincode
+
+= link_to 'Edit', edit_zipcode_path(@zipcode)
+\|
+= link_to 'Back', zipcodes_path

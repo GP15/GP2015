@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
+  resources :contact_requests
+  resources :zipcodes do
+    collection do
+      post :contact_request
+    end
+  end
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :static_page_contents
   resources :promo_codes
   get 'cards/new'
 
   root 'static_pages#index'
-
+ 
+  get 'comming_soon', to: 'static_pages#comming_soon', as: 'comming_soon'
   get 'faq',     to: 'static_pages#faq'
   get 'terms',   to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'

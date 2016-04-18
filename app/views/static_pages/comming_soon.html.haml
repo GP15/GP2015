@@ -1,10 +1,4 @@
 - provide(:title, "Unlimited Classes For Your Children")
-- content_for :bottom_js do
-  = javascript_include_tag 'slick.min'
-  = javascript_include_tag 'chosen.min'
-  = javascript_include_tag 'ion.rangeSlider.min'
-  = javascript_include_tag 'moment.min'
-  = javascript_include_tag 'frontpage'
 .content.home-page.white-bg.no-padding
   / Section - Main
   #section-main.section-row
@@ -19,7 +13,11 @@
       .row
         .col-md-12
           .col-md-6
-            %p.section-text GeniusPass is a monthly membership created exclusively for children to provide them unlimited access to variety of activities in top studios and facilities.
+            %p.section-text 
+              %h3 WE ARE GETTING THERE!
+              Unfortunetly GeniusPass isn't in your neighbourhood just yet. 
+              %br/
+              Stay tuned!
           .col-md-6
             .map-image
               = image_tag "malaysia-map.png", title: "Malaysia", alt: "Malaysia"
@@ -27,7 +25,7 @@
         .col-md-12
           = form_tag contact_request_zipcodes_path do
             .col-md-6
-              = email_field_tag :email, nil,  placeholder: "Email", class: 'contact-request-text'
+              = text_field_tag :email, nil,  placeholder: "Email", class: 'contact-request-text'
             .col-md-3
               = text_field_tag :zipcode, nil, placeholder: 'Pincode', class: 'contact-request-text'
             .col-md-3

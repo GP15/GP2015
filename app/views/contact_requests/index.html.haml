@@ -1,0 +1,17 @@
+.container
+  .col-md-12
+    %h1 Listing sign in requests
+    
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Email
+          %th Zipcode
+          %th
+    
+      %tbody
+        - @contact_requests.each do |contact_request|
+          %tr
+            %td= contact_request.email
+            %td= contact_request.zipcode
+            %td= link_to 'Destroy', contact_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
