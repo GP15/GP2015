@@ -10,6 +10,7 @@
     { provider:
       {
         scrollwheel: false,
+        draggable: false,
         mapTypeControl: false,
         panControl: false,
         scaleControl: false,
@@ -26,11 +27,11 @@
 
     if ( #{markers.length} == 1)
     {
-      handler.getMap().setZoom(12);
+      handler.getMap().setZoom(14);
     }
     else
     {
-      handler.getMap().setZoom(4);
+      handler.getMap().setZoom(8);
     }
     //handler.fitMapToBounds();
   });
