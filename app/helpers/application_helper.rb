@@ -21,7 +21,8 @@ module ApplicationHelper
                           },
                           :infowindow => "<div class='heading-blue'> #{partner.company}</div>
                                           <div class='content-grey'> #{partner.address}</div>"
-                        }
+                        },
+                        :option => { :do_clustering => false}
                       )
     end
     partner_ary

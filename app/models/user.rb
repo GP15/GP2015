@@ -28,6 +28,15 @@ class User < ActiveRecord::Base
   ## Scopes ##
   scope :with_code, ->(code){ find_by(promo_code: code) }
 
+
+  def should_upgrade?(child_id)
+    subs = subscriptions.where( :child_id => child_id).try(:first)
+    if subs
+      subs.subscription_type.free && Chlid.find_by_id( child_id).try( :reservations).try(:count).to_i >= 2
+    else
+      return false
+    end
+  end
   ## Instance Methods ##
   def create_customer
     customer = Braintree::Customer.create(first_name: name, email: email)

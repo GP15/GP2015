@@ -46,3 +46,6 @@
             = render 'eligibility_notice'
           %p.notice
             = "You have #{current_user.reservation_allowed_for_partner(@schedule.partner)} out of #{@schedule.partner.user_allowed} sessions left for this month #{@schedule.partner.company}."
+          - if current_user.children && current_user.should_upgrade?(current_user.children.first.id)
+            = link_to "Upgrade Now", new_child_subscription_path(current_user.children.first.id),
+                        :class => "btn btn-danger col-md-12", :id => "upgrade"

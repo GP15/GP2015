@@ -1,5 +1,6 @@
 - provide(:title, "Password Reset")
 .content.forgot-password-page
+  = render :partial => 'shared/devise_messages'
   .container
     .form-popup-container
       %h1 Recover Password
