@@ -1,0 +1,5 @@
+.container.content.faq-page.white-bg
+  = render partial: 'layouts/page_title', locals: { page_title: @static_page_content.key }
+  = @static_page_content.value.html_safe
+%br/
+= link_to 'Back', static_page_contents_path

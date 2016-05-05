@@ -26,12 +26,11 @@ class SchedulesController < ApplicationController
     start_time = format_datetime( date, params[ :start_time])  if params[ :start_time].present?
     end_time   = format_datetime( date, params[ :end_time])    if params[ :end_time].present?
 
+
     # byebug
     @q = Schedule.ransack(params[:q]) # Filter with Ransack
     if params[:q].present?
       @schedules =  @q.result             # Result of Ransack
-      @schedules =  @schedules.where( 'starts_at BETWEEN ? AND ?', start_time, end_time) 
-      
     else
       # When not filtering anything aka visiting /schedules, show all schedules from tomorrow.
       @schedules = Schedule.only_tomorrow
@@ -42,8 +41,18 @@ class SchedulesController < ApplicationController
                            .includes(:klass, :partner, :city)
                            .sort_by_datetime_asc
 
+    @schedules =  @schedules.select{|schedule| 
+      time_in_minutes(start_time) <= time_in_minutes(schedule.starts_at) && 
+      time_in_minutes(end_time) >= time_in_minutes(schedule.starts_at)
+    }     
+
     @schedules =  @schedules.select{|schedule| schedule.klass.age_start <= params[:age].to_i && schedule.klass.age_end >= params[:age].to_i } unless params[:age].to_i == 0
+    @schedules =  @schedules.select{|schedule| schedule.scheduled_dates.include?(date)}
     #@date = Date.parse(@date).strftime("%A, %d %B %Y")
+  end
+
+  def time_in_minutes(full_time)
+    full_time.hour * 60 + full_time.min 
   end
 
   # GET /schedules/:id

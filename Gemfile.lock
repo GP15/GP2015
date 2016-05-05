@@ -40,6 +40,10 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootsy (2.2.1)
+      carrierwave (~> 0.10)
+      mini_magick (~> 4.3)
+      remotipart (~> 1.2)
     braintree (2.49.0)
       builder (>= 2.0.0)
     builder (3.2.2)
@@ -156,6 +160,7 @@ GEM
       activesupport
       mandrill-api (~> 1.0.9)
     mime-types (2.6.1)
+    mini_magick (4.3.6)
     mini_portile (0.6.2)
     minitest (5.8.0)
     nenv (0.2.0)
@@ -211,6 +216,7 @@ GEM
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    remotipart (1.2.1)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rmagick (2.15.4)
@@ -274,6 +280,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootsy
   braintree
   bullet (~> 4.14.7)
   byebug
@@ -308,4 +315,4 @@ DEPENDENCIES
   will_paginate (~> 3.0.6)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

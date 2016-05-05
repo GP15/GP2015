@@ -8,6 +8,8 @@ class Subscription < ActiveRecord::Base
   validates :child_id, :subscription_type_id, presence: true
   validate  :valid_promo_code
 
+  after_create :send_subscription_notification
+
   ## Instance Methods ##
   def sync_subscription(nounce)
     result = Braintree::PaymentMethod.create(
@@ -80,6 +82,10 @@ class Subscription < ActiveRecord::Base
 
   def referred_by
     User.find_by_promo_code( promo_code)
+  end
+
+  def send_subscription_notification
+    SubscriptionMailer.invite(self.user).deliver_now    
   end
 
   private

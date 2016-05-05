@@ -12,6 +12,7 @@
 //
 //= require jquery2
 //= require jquery_ujs
+//= require bootsy
 //= require bootstrap
 //= require imagesloaded.pkgd.min
 //= require ion.rangeSlider.min

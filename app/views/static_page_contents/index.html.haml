@@ -1,0 +1,24 @@
+- provide(:title, "Staic page management")
+- provide(:page_title_bg, asset_path('page-bg.jpg'))
+.container.content.faq-page.white-bg
+  = render partial: 'layouts/page_title', locals: { page_title: 'Static Page Management' }
+  %h1 Admin Static Pages
+
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th Key
+        %th
+        %th
+        %th
+    
+    %tbody
+      - @static_page_contents.each do |static_page_content|
+        %tr
+          %td= static_page_content.key
+          %td= link_to 'Show', static_page_content
+          %td= link_to 'Edit', edit_static_page_content_path(static_page_content)
+          %td= link_to 'Destroy', static_page_content, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
+  = link_to 'New Static page content', new_static_page_content_path, class: 'btn btn-primary'

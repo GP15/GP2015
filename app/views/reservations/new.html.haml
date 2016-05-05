@@ -6,13 +6,13 @@
   .container
     .row
       .col-md-7
-        %p.text-center
-          = attendees(@schedule.reservations.count, @schedule.quantity)
+        /%p.text-center
+        /  = attendees(@schedule.reservations.count, @schedule.quantity)
         .content-main
           = render 'shared/schedule'
       .col-md-5
-        - if @schedule.klass.reservation_limit > 0
-          = render 'limit_notice'
+        /- if @schedule.klass.reservation_limit > 0
+        /  = render 'limit_notice'
 
         .reservation-list.content-main
           - if @reservations.present?

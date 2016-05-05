@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130113217) do
+ActiveRecord::Schema.define(version: 20160418121837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,20 @@ ActiveRecord::Schema.define(version: 20160130113217) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "children", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -57,6 +71,13 @@ ActiveRecord::Schema.define(version: 20160130113217) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_requests", force: :cascade do |t|
+    t.string   "email"
+    t.string   "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -160,6 +181,13 @@ ActiveRecord::Schema.define(version: 20160130113217) do
   add_index "schedules", ["partner_id"], name: "index_schedules_on_partner_id", using: :btree
   add_index "schedules", ["starts_at", "ends_at"], name: "index_schedules_on_starts_at_and_ends_at", using: :btree
 
+  create_table "static_page_contents", force: :cascade do |t|
+    t.string   "key"
+    t.text     "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "subscription_types", force: :cascade do |t|
     t.string   "name"
     t.string   "price"
@@ -203,9 +231,16 @@ ActiveRecord::Schema.define(version: 20160130113217) do
     t.string   "customer_id"
     t.string   "promo_code",             limit: 10
     t.integer  "referred",                          default: 0
+    t.string   "phone_no"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "zipcodes", force: :cascade do |t|
+    t.string   "pincode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

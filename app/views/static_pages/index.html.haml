@@ -17,12 +17,21 @@
             .text-center
               %h3.page-heading.section-subheading For Children
       .row
-        .col-md-6
-          %p.section-text GeniusPass is a monthly membership created exclusively for children to provide them unlimited access to variety of activities in top studios and facilities.
-        .col-md-6
-          .map-image
-            = image_tag "malaysia-map.png", title: "Malaysia", alt: "Malaysia"
-            %p.map-label We're Now In Malaysia
+        .col-md-12
+          .col-md-6
+            %p.section-text GeniusPass is a monthly membership created exclusively for children to provide them unlimited access to variety of activities in top studios and facilities.
+          .col-md-6
+            .map-image
+              = image_tag "malaysia-map.png", title: "Malaysia", alt: "Malaysia"
+              %p.map-label We're Now In Malaysia
+        .col-md-12
+          = form_tag contact_request_zipcodes_path do
+            .col-md-6
+              = email_field_tag :email, nil,  placeholder: "Email", class: 'contact-request-text'
+            .col-md-3
+              = text_field_tag :zipcode, nil, placeholder: 'Postcode', class: 'contact-request-text'
+            .col-md-3
+              = submit_tag "Get moving", class: 'btn btn-primary'
   / Section - Flags
   #section-flags.section-row
     .container
@@ -79,21 +88,6 @@
           .slider-nav
             .slider-dots
             .slider-arrows
-  / Section - Subscription
-  #section-subscription.section-row
-    .container
-      %p.section-text.text-center Keep up-to-date with our latest happenings!
-      .mc_embed_signup.subscription-form-container
-        %form#mc-embedded-subscribe-form.validate.subscription-form{:action => "//geniuspass.us10.list-manage.com/subscribe/post?u=06b2675db3a573a09ca434ca3&id=2b51fe0248", :method => "post", :name => "mc-embedded-subscribe-form", :target => "_blank"}
-          .mc-field-group
-            %input#mce-EMAIL.form-field{:name => "EMAIL", :placeholder => "Enter your email...", :type => "email"}/
-            / real people should not fill this in and expect good things - do not remove this or risk form bot signups
-            %div{:style => "position: absolute; left: -5000px;"}
-              %input{:name => "b_06b2675db3a573a09ca434ca3_2b51fe0248", :tabindex => "-1", :type => "text", :value => ""}
-            %input#mc-embedded-subscribe.form-submit-btn{:name => "submit", :type => "submit", :value => "Submit"}/
-          #mce-responses.clear
-            #mce-error-response.response{:style => "display:none"}
-            #mce-success-response.response{:style => "display:none"}
 
 
   / Section - Partners
@@ -114,12 +108,21 @@
                   - if partner.logo.present?
                     = image_tag partner.logo.thumb.url, :class => "partner-logo"
                   - else
-                    = image_tag "partner-logo1.png", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-logo"
+                    = image_tag "logo.png", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-logo default-partner-logo"
                   .label-title= partner.company
                   .bg-overlay
                 - if partner.activities.present?
-                  .label-activities= partner.try(:activities).try(:pluck, :name).try(:join ,", ")
+                  .label-activities= partner.try(:activities).try(:pluck, :name).uniq.try(:join ,", ")
 
+          .col-sm-4{ :class => "col-md-3"}
+            .partner-details{style: 'background: orange'}
+              .partner-info
+                %br/
+                %br/
+                %br/
+                %h2.text-center= "#{Partner.count} partners available"
+                %br/
+                .label-title= link_to "View more..", partners_path
 
   / Section - Location
   #section-location.section-row
@@ -134,3 +137,19 @@
         %h4.page-heading.location-info-title Activities Location
         %span.location-info-description Find nearby places
       .location-info-bar See All +
+  / Section - Subscription
+  #section-subscription.section-row
+    .container
+      %p.section-text.text-center
+        %b 
+          READY TO JOIN
+          %br/
+          REQUEST AN INVITE
+        .col-md-offset-3.col-md-6
+          = form_tag contact_request_zipcodes_path do
+            .col-md-12
+              = text_field_tag :email, nil, placeholder: 'Email', class: 'form-control'
+            .col-md-12
+              = text_field_tag :zipcode, nil, placeholder: 'Postcode', class: 'form-control'
+            .col-md-12
+              = submit_tag "Submit", class: 'btn btn-primary'

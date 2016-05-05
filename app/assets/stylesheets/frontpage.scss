@@ -580,6 +580,7 @@ header nav #top-nav hr {
 	text-align: center;
 	margin: 15px auto 0;
 	position: relative;
+      
 }
 .subscription-form-container .form-label {
 	font-weight: 'Roboto', sans-serif;
@@ -932,6 +933,7 @@ header nav #top-nav hr {
 	background: #fff image-url('row-bg-subscription.png') top repeat-x;
 	width: 100%;
 	height: auto;
+        background-size: 100% 100%;
 }
 
 /* -----------------------------------*/
@@ -992,6 +994,11 @@ header nav #top-nav hr {
 	left: 10px;
 	z-index: 10;
 }
+
+.default-partner-logo{
+  background: white;
+  padding: 20px 2px;
+}
 .partners-list .partner-details .partner-info .label-title {
 	font-family: 'Oswald', sans-serif;
 	font-size: 21px;
@@ -1004,6 +1011,8 @@ header nav #top-nav hr {
 	bottom: 10px;
 	left: 55px;
 	z-index: 10;
+        height: 60px;
+        overflow: hidden;
 }
 .partners-list .partner-details .partner-info .bg-overlay {
 	background: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.8));

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Email:
+  = @contact_request.email
+%p
+  %b Zipcode:
+  = @contact_request.zipcode
+
+= link_to 'Edit', edit_contact_request_path(@contact_request)
+\|
+= link_to 'Back', contact_requests_path

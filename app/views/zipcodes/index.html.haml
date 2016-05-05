@@ -1,0 +1,18 @@
+.container
+  %h1 Area zipcodes
+
+  .pull-right= link_to 'New Zipcode', new_zipcode_path, class: 'btn btn-primary'
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th Pincode
+        %th
+        %th
+    
+    %tbody
+      - @zipcodes.each do |zipcode|
+        %tr
+          %td= zipcode.pincode
+          %td= link_to 'Edit', edit_zipcode_path(zipcode)
+          %td= link_to 'Destroy', zipcode, :method => :delete, :data => { :confirm => 'Are you sure?' }
+

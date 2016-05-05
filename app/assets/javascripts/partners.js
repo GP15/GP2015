@@ -50,7 +50,7 @@ $(document).ready(function() {
 
       if( all_loaded == false ){
         partner_load_count += 1
-        $('div#lastPostsLoader').html('Loading..');
+        $('div#lastPostsLoader').html('<img src="/assets/pageload.gif" />');
         $.get("/partners/loadmore?page="+ partner_load_count, function(data){
             if (data != "") {
               //console.log('add data..');

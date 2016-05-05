@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    new_fields = [:name, :email, :password, :password_confirmation, :location]
+    new_fields = [:name, :email, :password, :password_confirmation, :location, :phone_no]
     devise_parameter_sanitizer.for(:sign_up).concat new_fields
     devise_parameter_sanitizer.for(:account_update).concat new_fields
   end
@@ -55,6 +55,8 @@ class ApplicationController < ActionController::Base
     !(controller_name == ("users") || devise_controller?) &&
     (current_user.children.without_subscriptions.length != 0) &&
     not_controller_with_action('children', 'show') &&
+    not_controller_with_action('children', 'edit') &&
+    not_controller_with_action('children', 'update') &&
     not_controller_with_action('subscriptions', '')
   end
 

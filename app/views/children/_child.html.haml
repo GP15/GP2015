@@ -1,3 +1,6 @@
+.row
+  .pull-right
+    = link_to "Change Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button pull-right'
 - if child.subscription.present?
   .form-section
     %h3.form-section-subtitle
@@ -14,13 +17,13 @@
       %label.col-sm-4.control-label Membership Status
       .col-sm-8
         = text_field_tag  :membership_status,
-                            child.subscription.status,
+                            subscription_status_translate(child.subscription.status),
                             :readonly => true,
                             :disabled => true
     .form-group.field
       %label.col-sm-4.control-label Renewal Date
       .col-sm-8
         = text_field_tag  :renewal_date,
-                            child.subscription.renewal_date.to_date,
+                            child.subscription.renewal_date.strftime("%d %B, %Y"),
                             :readonly => true,
                             :disabled => true

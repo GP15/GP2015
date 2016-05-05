@@ -4,9 +4,7 @@
   = render partial: 'layouts/page_title', locals: { page_title: 'Add Child' }
   .container
     .row
-      .col-md-3
-        .content-sidebar
-      .col-md-9
+      .col-md-12
         .content-main
           %h3 Add Child
           = form_for [@user, @child], html: { class: "form-container form-horizontal" } do |f|

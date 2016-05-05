@@ -18,4 +18,5 @@
  *= require ion.rangeSlider
  *= require_tree .
  *= require_self
+ *= require bootsy
  */

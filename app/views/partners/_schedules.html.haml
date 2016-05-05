@@ -8,6 +8,7 @@
         %th Time
         %th Age
         %th Difficulty
+        %th Recurrance
         %th.text-center Availability
     %tbody
       - @schedules.each do |schedule|
@@ -22,6 +23,7 @@
             = "#{schedule.klass.age_start} - #{schedule.klass.age_end}"
           %td.difficulty-col{"data-title" => "Difficulty"}
             = schedule.klass.level if schedule.klass
+          %td= schedule.recurrence
           %td.availability-col{"data-title" => "Availability"}= reserve_button(schedule)
 - else
   %p.text-center.margin-five-top No upcoming activities in the meantime.
