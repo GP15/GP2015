@@ -8,7 +8,11 @@
         .activity
           - partner.activities.uniq.each do |activity|
             %span= activity.name
-        %span.city= partner.city.name
+        - if partner.city.present?
+          %span.city= partner.city.name
+        - else
+          %span.city
+            No City
         - if partner.booking_limit.to_i > 0
           %span.limit
             Up to #{partner.booking_limit} visits per month

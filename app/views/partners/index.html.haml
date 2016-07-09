@@ -17,7 +17,8 @@
               - if partner.city.present?
                 %span.city= partner.city.name
               - else
-                %span.city "No City"
+                %span.city
+                  No City
               - if partner.booking_limit.to_i > 0
                 %span.limit
                   Up to #{partner.booking_limit} visits per month
