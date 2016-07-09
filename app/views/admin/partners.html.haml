@@ -20,7 +20,10 @@
                 - @partners.each do |partner|
                   %tr
                     %td= link_to partner.company, admin_partner_path(partner)
-                    %td= partner.city.name
+                    - if partner.city.present?
+                      %td= partner.city.name
+                    - else
+                      %td "No City"
                     %td= check_box_tag 'featured[]', partner.id, partner.featured
                     %td= link_to "link", partner_url(partner), target: "_blank", class: "pull-right"
             = submit_tag "Add to Featured", class: "pull-right green-text"
