@@ -5,6 +5,10 @@ class SubscriptionType < ActiveRecord::Base
   scope :paid, -> { where.not(:name => 'Free') }
 
 
+  def free?
+    price.to_i == 0
+  end
+
 
   def pro?
     self == SubscriptionType.pro

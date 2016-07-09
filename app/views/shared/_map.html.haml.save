@@ -27,11 +27,15 @@
 
     if ( #{markers.length} == 1)
     {
+      // Set zoom level of map for home page
+      handler.getMap().setZoom(4);
+=======
       handler.getMap().setZoom(14);
     }
     else
     {
-      handler.getMap().setZoom(12);
+      handler.getMap().setZoom(8);
+>>>>>>> 5acc1c1e392cef9d8b9bfe89d4e979f4dc36446b
     }
     //handler.fitMapToBounds();
   });

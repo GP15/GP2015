@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   def should_upgrade?(child_id)
     subs = subscriptions.where( :child_id => child_id).try(:first)
     if subs
-      subs.subscription_type.free && Chlid.find_by_id( child_id).try( :reservations).try(:count).to_i >= 2
+      subs.subscription_type.free? && Child.all.find_by_id( child_id).try( :reservations).try(:count).to_i >= 2
     else
       return false
     end

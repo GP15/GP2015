@@ -100,7 +100,8 @@
                     :subscription => { :subscription_type_id => plan.id }),
                   :method => :post,
                   :class => "gp-link"
-        %span (1 Activity Per Month)
+        %span
+          = "(#{plan.activities_allowed} Activity Per Month)"
 
 
 #package-subscription.modal.fade{:role => "dialog", :tabindex => "-1"}
