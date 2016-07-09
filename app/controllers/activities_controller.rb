@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_activity, only: [:edit, :update, :destroy]
 
-  # GET /activities/new
+  # GET /activities/new/test
   def new
     @activity = Activity.new
   end
