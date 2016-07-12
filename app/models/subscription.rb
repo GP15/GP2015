@@ -66,7 +66,7 @@ class Subscription < ActiveRecord::Base
   end
 
   def renewal_date
-    created_at + 30.days
+    created_at + 30.days if created_at
   end
 
   def print_status
@@ -85,7 +85,7 @@ class Subscription < ActiveRecord::Base
   end
 
   def send_subscription_notification
-    SubscriptionMailer.invite(self.user).deliver_now    
+    SubscriptionMailer.invite(self.user).deliver_now
   end
 
   private

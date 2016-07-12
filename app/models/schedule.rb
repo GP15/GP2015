@@ -31,31 +31,31 @@ class Schedule < ActiveRecord::Base
     where("recurrence = ? and archived = ?", "Yearly", false ).select{|schedule|
       schedule.starts_at.month == Time.now.month &&
       schedule.starts_at.day == Time.now.day &&
-      time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) && 
-      time_in_minutes(schedule.starts_at) < ( time_in_minutes(1.hour.from_now) + 5 ) 
+      time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) &&
+      time_in_minutes(schedule.starts_at) < ( time_in_minutes(1.hour.from_now) + 5 )
     }
   end
 
   def self.monthly_in_one_hour
     where("recurrence = ? and archived = ?", "Monthly", false ).select{|schedule|
       schedule.starts_at.day == Time.now.day &&
-      time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) && 
-      time_in_minutes(schedule.starts_at) < ( time_in_minutes(1.hour.from_now) + 5 ) 
+      time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) &&
+      time_in_minutes(schedule.starts_at) < ( time_in_minutes(1.hour.from_now) + 5 )
     }
   end
 
   def self.weekly_in_one_hour
-    where("recurrence = ? and archived = ?", "Weekly", false ).select{|schedule| 
+    where("recurrence = ? and archived = ?", "Weekly", false ).select{|schedule|
       schedule.starts_at.wday == Time.now.wday &&
-      time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) && 
-      time_in_minutes(schedule.starts_at) < ( time_in_minutes(1.hour.from_now) + 5 ) 
+      time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) &&
+      time_in_minutes(schedule.starts_at) < ( time_in_minutes(1.hour.from_now) + 5 )
     }
   end
 
   def self.daily_in_one_hour
-    where("recurrence = ? and archived = ?", "Daily", false ).select{|schedule| 
-      time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) && 
-      time_in_minutes(schedule.starts_at) < ( time_in_minutes(1.hour.from_now) + 5 ) 
+    where("recurrence = ? and archived = ?", "Daily", false ).select{|schedule|
+      time_in_minutes(schedule.starts_at) > time_in_minutes(1.hour.from_now) &&
+      time_in_minutes(schedule.starts_at) < ( time_in_minutes(1.hour.from_now) + 5 )
     }
   end
 

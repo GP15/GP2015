@@ -78,6 +78,7 @@ class User < ActiveRecord::Base
   def available_referals
     referals.where( :rewards_used => false)
   end
+
   def customer
     Braintree::Customer.find(customer_id)
   end

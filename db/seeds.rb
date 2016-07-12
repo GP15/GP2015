@@ -49,7 +49,8 @@ partner_images = (1..5).map { |n| "#{s3_test_url}partner#{n}.jpg" }
     address: address,
     state:   states.sample,
     img_url: partner_images.sample,
-    city_id: rand(1..6)
+    city_id: rand(1..6),
+    user_allowed: 1
   )
 end
 
@@ -145,3 +146,4 @@ users.each do |user|
     create_children(user, first_name, last_name, random_age)
   end
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

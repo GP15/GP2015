@@ -9,7 +9,6 @@ class SubscriptionType < ActiveRecord::Base
     price.to_i == 0
   end
 
-
   def pro?
     self == SubscriptionType.pro
   end

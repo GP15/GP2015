@@ -435,7 +435,7 @@ header nav #top-nav hr {
 /* ---------->>> CONTENT <<<----------*/
 /* -----------------------------------*/
 
-/* Section */
+//* Section */
 .section-row {
 	background-color: #fff;
 	background-position: center;
@@ -446,6 +446,48 @@ header nav #top-nav hr {
 	position: relative;
 	overflow: hidden;
 }
+
+.section-row.cta-container {
+	padding: 25px;
+}
+.section-row.cta-container .lead-text h2{
+	line-height: 48px;
+	text-align: left;
+}
+.section-row.cta-container .lead-btn a {
+	padding: 10px;
+	text-align: center;
+}
+
+.section-row.mid h2 {
+	text-align: center;
+	margin-bottom: 60px;
+}
+.section-row.why-geniuspass-container,
+.section-row.steps-container,
+.section-row.last-cta-container {
+	background: #F8F8F9;
+}
+
+.section-row.gray-bg .description {
+	text-align: center;
+}
+
+.section-row.gray-bg .brief-title-div {
+	text-align: center;
+}
+.section-row.gray-bg .brief-title-div .fa {
+	font-size: 90px;
+	margin-bottom: 30px;
+}
+.section-row.gray-bg .brief-title-div h3 {
+	font-size: 28px;
+}
+
+.last-cta-container .form-inline{
+	text-align: center;
+}
+
 
 /* Section Heading */
 .section-heading {
@@ -484,11 +526,68 @@ header nav #top-nav hr {
 /* ------->>> SECTION - MAIN <<<------*/
 /* -----------------------------------*/
 #section-main {
-	background-image: image-url('row-bg-main.jpg');
+	background-image: image-url('row-bg-main.jpg') no-repeat bottom center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 	width: 100%;
 	height: auto;
-	min-height: 400px;
+	min-height: 500px;
 	padding: 30px 0;
+}
+
+#section-main h1 {
+	text-transform: initial;
+	color: white;
+}
+
+.section-left-main-container {
+	margin-top: 11%;
+}
+.section-right-main-container {
+	margin-top: 6%;
+}
+
+.section-left-main-container .activities-links {
+	padding: 25px 0;
+	text-align: center;
+}
+.section-left-main-container .activities-links .image-circle-container {
+	width: 65px;
+	height: 65px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 15px;
+	border-radius: 50%;
+	opacity: 0.5;
+	background: white;
+}
+.section-left-main-container .activities-links .image-circle-container:hover {
+	background: #3eb4e2;
+}
+.section-left-main-container .activities-links .fa {
+	color: black;
+}
+.section-left-main-container .activities-links .title {
+	color: white;
+	font-size: 16px;
+	font-weight: 700;
+	margin-top: 10px;
+}
+.section-left-main-container .activities-links .title:hover{
+	color: #3eb4e2;
+}
+
+#send-request-zipcode-form {
+	padding: 35px;
+	background: rgba(62,180,226, 0.3);
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+#send-request-zipcode-form input{
+	margin-bottom: 0;
 }
 
 /* Section Headline */
@@ -580,7 +679,7 @@ header nav #top-nav hr {
 	text-align: center;
 	margin: 15px auto 0;
 	position: relative;
-      
+
 }
 .subscription-form-container .form-label {
 	font-weight: 'Roboto', sans-serif;

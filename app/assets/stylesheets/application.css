@@ -16,7 +16,15 @@
  *= require slick
  *= require chosen.min
  *= require ion.rangeSlider
- *= require_tree .
+ *= require frontpage
+ *= require custom2
+ *= require custom
+ *= require style
+ *= require style-ie
+ *= require reservation
+ *= require map
+ *= require proile
+ *= require responsive
  *= require_self
  *= require bootsy
  */

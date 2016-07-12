@@ -53,7 +53,7 @@ module ApplicationHelper
     if user_signed_in?
       current_user
     elsif admin_signed_in?
-      current_admin
+      current_admin_user
     else
       root_url
     end

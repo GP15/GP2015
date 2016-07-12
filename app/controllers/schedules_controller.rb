@@ -18,7 +18,7 @@ class SchedulesController < ApplicationController
     params[:q] = {} unless params[:q]
 
     # Copies the date params from date select to replace the date params from the time select menu.
-   
+
     date = Date.tomorrow
     date = Date.parse(params[:start_date])                     if params[:start_date].present?
     start_time = date.beginning_of_day
@@ -41,10 +41,10 @@ class SchedulesController < ApplicationController
                            .includes(:klass, :partner, :city)
                            .sort_by_datetime_asc
 
-    @schedules =  @schedules.select{|schedule| 
-      time_in_minutes(start_time) <= time_in_minutes(schedule.starts_at) && 
+    @schedules =  @schedules.select{|schedule|
+      time_in_minutes(start_time) <= time_in_minutes(schedule.starts_at) &&
       time_in_minutes(end_time) >= time_in_minutes(schedule.starts_at)
-    }     
+    }
 
     @schedules =  @schedules.select{|schedule| schedule.klass.age_start <= params[:age].to_i && schedule.klass.age_end >= params[:age].to_i } unless params[:age].to_i == 0
     @schedules =  @schedules.select{|schedule| schedule.scheduled_dates.include?(date)}
@@ -52,7 +52,7 @@ class SchedulesController < ApplicationController
   end
 
   def time_in_minutes(full_time)
-    full_time.hour * 60 + full_time.min 
+    full_time.hour * 60 + full_time.min
   end
 
   # GET /schedules/:id

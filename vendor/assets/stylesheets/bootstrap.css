@@ -1708,7 +1708,6 @@ legend {
 label {
     display: inline-block;
     max-width: 100%;
-    margin-bottom: 10px;
 }
 input[type="search"] {
     -webkit-box-sizing: border-box;
@@ -2111,7 +2110,8 @@ select[multiple].input-lg {
     }
 }
 .btn {
-    letter-spacing: 3px; font-weight: 600; margin: 30px 0; text-transform: uppercase; text-decoration: none;
+    letter-spacing: 3px; font-weight: 600;  text-transform: uppercase; text-decoration: none;
+    /*margin: 30px 0;*/
 }
 
 .btn:hover,
@@ -2941,7 +2941,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li > a {
     line-height: 1.42857143;
     border-radius:0;
-    float:left;   
+    float:left;
     text-transform:uppercase;
     margin:15px 32px;
     outline:none;
