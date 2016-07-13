@@ -1,5 +1,7 @@
 ActiveAdmin.register Subscription do
 
+  menu :parent => "Subscription Related"
+
   permit_params :plan_id, :user_id, :renewal_date, :status, :quantity, :child_id,
                 :cancelled_on, :subscription_id, :start_date, :subscription_type_id, :promo_code
 

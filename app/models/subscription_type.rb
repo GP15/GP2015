@@ -2,8 +2,10 @@ class SubscriptionType < ActiveRecord::Base
 
   has_many :subscriptions
 
-  scope :paid, -> { where.not(:name => 'Free') }
-
+  scope :paid, -> { where.not(name: 'Free') }
+  scope :asc, -> { order('price asc') }
+  scope :first_child_paid_packages, -> { where.not(name: 'Free') }
+  scope :onward_child_paid_packages, -> { where.not(name: 'Free').where(two_child_onward_package: true) }
 
   def free?
     price.to_i == 0

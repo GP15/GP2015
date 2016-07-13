@@ -10,6 +10,8 @@ class Subscription < ActiveRecord::Base
 
   after_create :send_subscription_notification
 
+  scope :active, -> { where(status: true) }
+
   ## Instance Methods ##
   def sync_subscription(nounce)
     result = Braintree::PaymentMethod.create(

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709154600) do
+ActiveRecord::Schema.define(version: 20160713020853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -224,10 +224,14 @@ ActiveRecord::Schema.define(version: 20160709154600) do
 
   create_table "subscription_types", force: :cascade do |t|
     t.string   "name"
-    t.string   "price"
+    t.integer  "price"
     t.string   "activities_allowed"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "featured",                 default: false
+    t.integer  "discount_price"
+    t.boolean  "on_discount"
+    t.boolean  "two_child_onward_package"
   end
 
   create_table "subscriptions", force: :cascade do |t|
