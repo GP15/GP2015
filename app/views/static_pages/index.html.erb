@@ -1,0 +1,228 @@
+<% provide(:title, "Unlimited Classes For Your Children") %>
+
+<% content_for :bottom_js do %>
+  <%= javascript_include_tag 'slick.min' %>
+  <%= javascript_include_tag 'chosen.min' %>
+  <%= javascript_include_tag 'ion.rangeSlider.min' %>
+  <%= javascript_include_tag 'moment.min' %>
+  <%= javascript_include_tag 'frontpage' %>
+<% end %>
+
+<div class="content home-page white-bg no-padding">
+  <!-- / Section - Main -->
+  <div class="section-row" id="section-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 section-left-main-container">
+          <h1>Best Curated Activities <br>
+            for Your Children
+          </h1>
+
+          <div class="activities-links">
+            <div class="col-md-2 col-xs-6">
+              <%= link_to '' do %>
+                <div class="image-circle-container">
+                  <i class="fa fa-child fa-3x"></i>
+                </div>
+                <div class="title">
+                  ARTS
+                </div>
+              <% end %>
+            </div>
+            <div class="col-md-2 col-xs-6">
+              <%= link_to '' do %>
+                <div class="image-circle-container">
+                  <i class="fa fa-child fa-3x"></i>
+                </div>
+                <div class="title">
+                  MUSIC
+                </div>
+              <% end %>
+            </div>
+            <div class="col-md-2 col-xs-6">
+              <%= link_to '' do %>
+                <div class="image-circle-container">
+                  <i class="fa fa-child fa-3x"></i>
+                </div>
+                <div class="title">
+                  DANCE
+                </div>
+              <% end %>
+            </div>
+            <div class="col-md-2 col-xs-6">
+              <%= link_to '' do %>
+                <div class="image-circle-container">
+                  <i class="fa fa-child fa-3x"></i>
+                </div>
+                <div class="title">
+                  FITNESS
+                </div>
+              <% end %>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+        <div class="col-md-6 section-right-main-container">
+          <%= form_tag contact_request_zipcodes_path, id: 'send-request-zipcode-form' do %>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email</label>
+              <%= email_field_tag :email, nil,  placeholder: "Email", class: 'contact-request-text' %>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Postcode</label>
+              <%= text_field_tag :zipcode, nil, placeholder: 'Postcode', class: 'contact-request-text' %>
+            </div>
+
+            <%= submit_tag "Get Started", class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-row cta-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 lead-text">
+          <h2>Sign Up Today & Reward Your Child 2 Free Activities</h2>
+        </div>
+        <div class="col-md-3 lead-btn">
+          <%= link_to 'Get Started', '#', class: 'btn btn-primary btn-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- / Section - Features -->
+  <div class="section-row why-geniuspass-container gray-bg mid">
+    <div class="container">
+      <div class="row">
+        <h2>Why GeniusPass?</h2>
+        <div class="col-md-4">
+          <div class="brief-title-div">
+            <i class='fa fa-child'></i>
+            <h3>Curated Activities</h3>
+          </div>
+          <div class="description">
+            <p>Activities curated by the best child developments experts</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="brief-title-div">
+            <i class='fa fa-child'></i>
+            <h3>Unlimited Flexibility</h3>
+          </div>
+
+          <div class="description">
+            <p>Book activities at your time and location convenience</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="brief-title-div">
+            <i class='fa fa-child'></i>
+            <h3>Easy & Fun</h3>
+          </div>
+
+          <div class="description">
+            <p>Enjoy our user-friendly website "mobile-app soon"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-row">
+    <div class="col-md-2">Physical</div>
+    <div class="col-md-2">Logical</div>
+    <div class="col-md-2">Logical</div>
+    <div class="col-md-2">Logical</div>
+    <div class="col-md-2">Logical</div>
+    <div class="col-md-2">Logical</div>
+  </div>
+
+  <div class="section-row steps-container gray-bg mid">
+    <div class="container">
+      <div class="row">
+        <h2>Transform Your Children with 3 Simple Steps</h2>
+        <div class="col-md-4">
+          <div class="brief-title-div">
+            <i class='fa fa-child'></i>
+            <h3>Get Started</h3>
+          </div>
+          <div class="description">
+            <p>Discover whether your child is left or right-brain oriented.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="brief-title-div">
+            <i class='fa fa-child'></i>
+            <h3>Enjoy Activities</h3>
+          </div>
+
+          <div class="description">
+            <p>Send your child to our best curated activities in top studios</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="brief-title-div">
+            <i class='fa fa-child'></i>
+            <h3>Track Progress</h3>
+          </div>
+
+          <div class="description">
+            <p>Have fun increasing your child's level via our fun gamification</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- / Section - Partners -->
+  <div class="section-row mid">
+    <div class="container">
+      <div class="row">
+        <h2>Featured Partners</h2>
+        <% if @featured_partners.present? %>
+
+          <% @featured_partners.each do |partner| %>
+            <div class="col-md-3">
+              <%= image_tag partner.img_url, :class => "partner-bg" %>
+              <% if partner.logo.present? %>
+                <%= image_tag partner.logo.thumb.url, :class => "partner-logo" %>
+              <% else %>
+                <%= image_tag "logo.png", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-logo default-partner-logo" %>
+              <% end %>
+              <%= partner.company %>
+            </div>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section-row last-cta-container cta-container gray-bg">
+    <div class="container">
+      <div class="row">
+
+        <%= form_tag contact_request_zipcodes_path, class: 'form-inline' do %>
+          <div class="form-group">
+            <label for="email">Your Email Address</label>
+            <%= text_field_tag :email, nil, placeholder: 'Email' %>
+          </div>
+          <div class="form-group">
+            <label for="zipcode">Zipcode</label>
+            <%= text_field_tag :zipcode, nil, placeholder: 'Postcode Eg: 46100' %>
+          </div>
+
+          <%= submit_tag "Get Started", class: 'btn btn-primary' %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+</div>
