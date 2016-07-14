@@ -54,16 +54,6 @@ Rails.application.routes.draw do
     resources :klasses, :schedules, except: [:index, :show]
   end
 
-  # get  'admin',                             to: 'admin#index'
-  # get  'admin/partners',                    to: 'admin#partners',         as: 'admin_partners'
-  # post 'admin/featured',                    to: 'admin#featured',         as: 'admin_featured'
-  # get  'admin/partners/:id',                to: 'admin#partner',          as: 'admin_partner'
-  # get  'admin/partners/:id/past_schedules', to: 'admin#past_schedules',   as: 'admin_partner_past_schedules'
-  # get  'admin/partners/:id/klasses',        to: 'admin#klasses',          as: 'admin_partner_klasses'
-  # get  'admin/schedules/:id',               to: 'admin#schedule',         as: 'admin_schedule'
-  # get  'admin/users',                       to: 'admin#users'
-  # get  'admin/settings',                    to: 'admin#settings'
-
   # match 'users/:id' => 'users#destroy', via: :delete, as: 'admin_destroy_user'
 
   resources :cities, path: 'city', except: [:index, :show]
@@ -71,11 +61,6 @@ Rails.application.routes.draw do
 
   # Admin's Devise settings
   # devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout' }
-
-  # as :admin do
-  #   get   'admin/profile', to: 'devise/registrations#edit',   as: :admin_root
-  #   patch 'admin/:id',     to: 'devise/registrations#update', as: 'admin_registration'
-  # end
 
   ## cards ##
   resources :cards
