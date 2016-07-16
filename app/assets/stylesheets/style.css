@@ -179,6 +179,9 @@ h1.page-title { margin:95px auto 0; width: 100%; }
 .word-wrap { word-wrap: break-word}
 .text-transform-none {text-transform:none !important}
 
+
+.nopadding { padding: 0 !important; }
+.pd5 { padding: 5px !important; }
 /* ===================================
     Icon
 ====================================== */

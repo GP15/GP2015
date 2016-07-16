@@ -22,37 +22,40 @@
             <div class="col-md-2 col-xs-6">
               <%= link_to '' do %>
                 <div class="image-circle-container">
-                  <i class="fa fa-child fa-3x"></i>
+                  <%= image_tag 'edu.png' %>
                 </div>
                 <div class="title">
                   ARTS
                 </div>
               <% end %>
             </div>
+
             <div class="col-md-2 col-xs-6">
               <%= link_to '' do %>
                 <div class="image-circle-container">
-                  <i class="fa fa-child fa-3x"></i>
-                </div>
-                <div class="title">
-                  MUSIC
-                </div>
-              <% end %>
-            </div>
-            <div class="col-md-2 col-xs-6">
-              <%= link_to '' do %>
-                <div class="image-circle-container">
-                  <i class="fa fa-child fa-3x"></i>
+                  <%= image_tag 'dance.png' %>
                 </div>
                 <div class="title">
                   DANCE
                 </div>
               <% end %>
             </div>
+
             <div class="col-md-2 col-xs-6">
               <%= link_to '' do %>
                 <div class="image-circle-container">
-                  <i class="fa fa-child fa-3x"></i>
+                  <%= image_tag 'music.png' %>
+                </div>
+                <div class="title">
+                  MUSIC
+                </div>
+              <% end %>
+            </div>
+
+            <div class="col-md-2 col-xs-6">
+              <%= link_to '' do %>
+                <div class="image-circle-container">
+                  <%= image_tag 'fit.png' %>
                 </div>
                 <div class="title">
                   FITNESS
@@ -134,13 +137,48 @@
     </div>
   </div>
 
-  <div class="section-row">
-    <div class="col-md-2">Physical</div>
-    <div class="col-md-2">Logical</div>
-    <div class="col-md-2">Logical</div>
-    <div class="col-md-2">Logical</div>
-    <div class="col-md-2">Logical</div>
-    <div class="col-md-2">Logical</div>
+  <div class="section-row mid elements-container">
+    <div class="container">
+      <div class="row">
+        <h2>Develop Your Children with 7 Elements</h2>
+
+        <div class="col-md-4 pd5">
+          <div class="element">
+            Physical
+          </div>
+        </div>
+        <div class="col-md-5 pd5">
+          <div class="element">
+            Logical
+          </div>
+        </div>
+        <div class="col-md-3 pd5">
+          <div class="element">
+            Logical
+          </div>
+        </div>
+        <div class="col-md-4 pd5">
+          <div class="element">
+            Logical
+          </div>
+        </div>
+        <div class="col-md-2 pd5">
+          <div class="element">
+            Logical
+          </div>
+        </div>
+        <div class="col-md-4 pd5">
+          <div class="element">
+            Logical
+          </div>
+        </div>
+        <div class="col-md-2 pd5">
+          <div class="element">
+            Logical
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="section-row steps-container gray-bg mid">
@@ -149,7 +187,7 @@
         <h2>Transform Your Children with 3 Simple Steps</h2>
         <div class="col-md-4">
           <div class="brief-title-div">
-            <i class='fa fa-child'></i>
+            <%= image_tag 'start.png' %>
             <h3>Get Started</h3>
           </div>
           <div class="description">
@@ -158,7 +196,7 @@
         </div>
         <div class="col-md-4">
           <div class="brief-title-div">
-            <i class='fa fa-child'></i>
+            <%= image_tag 'enjoy.png' %>
             <h3>Enjoy Activities</h3>
           </div>
 
@@ -168,7 +206,7 @@
         </div>
         <div class="col-md-4">
           <div class="brief-title-div">
-            <i class='fa fa-child'></i>
+            <%= image_tag 'track.png' %>
             <h3>Track Progress</h3>
           </div>
 
@@ -187,18 +225,36 @@
         <h2>Featured Partners</h2>
         <% if @featured_partners.present? %>
 
-          <% @featured_partners.each do |partner| %>
-            <div class="col-md-3">
-              <%= image_tag partner.img_url, :class => "partner-bg" %>
-              <% if partner.logo.present? %>
-                <%= image_tag partner.logo.thumb.url, :class => "partner-logo" %>
-              <% else %>
-                <%= image_tag "logo.png", alt: "Company Name - 1", title: "Company Name - 1", class: "partner-logo default-partner-logo" %>
-              <% end %>
-              <%= partner.company %>
+          <% @featured_partners.each_with_index do |partner, index| %>
+            <% if index == 0 %>
+              <div class="col-md-3">
+            <% elsif index == 1 %>
+              <div class="col-md-5">
+            <% elsif index == 2 %>
+              <div class="col-md-4">
+            <% elsif index == 3 %>
+              <div class="col-md-5">
+            <% elsif index == 4 %>
+              <div class="col-md-4">
+            <% elsif index == 5 %>
+              <div class="col-md-3">
+            <% end %>
+              <div class="partner-feature-img">
+                <%= image_tag partner.img_url, class: "partner-bg" %>
+                <div class="bg-overlay"></div>
+                <div class="company">
+                  <%= partner.company %>
+                </div>
+              </div>
             </div>
           <% end %>
         <% end %>
+        <div class="col-md-3">
+          <div class="cta-partner">
+            <div class="title">Get Started</div>
+            <div class="description">To View More Partners</div>
+          </div>
+        </div>
 
       </div>
     </div>
