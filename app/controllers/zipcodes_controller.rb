@@ -1,6 +1,7 @@
 class ZipcodesController < ApplicationController
   before_action :set_zipcode, only: [:show, :edit, :update, :destroy]
   layout 'admin'
+
   def contact_request
     zip_code = params[:zipcode]
     zipcode = Zipcode.find_by_pincode zip_code
@@ -10,7 +11,7 @@ class ZipcodesController < ApplicationController
       session[:zipcode] = params[:zipcode]
       redirect_to new_user_registration_path
     else
-      redirect_to comming_soon_path
+      redirect_to root_path(soon: true)
     end
   end
 

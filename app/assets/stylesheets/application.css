@@ -29,3 +29,8 @@
  *= require_self
  *= require bootsy
  */
+
+
+.main-header {
+  background: white;
+}

@@ -448,25 +448,57 @@ header nav #top-nav hr {
 }
 
 .section-row.cta-container {
+	background-color: #3eb4e2;
 	padding: 25px;
 }
 .section-row.cta-container .lead-text h2{
 	line-height: 48px;
 	text-align: left;
+	color: white;
+	font-size: 22px;
 }
 .section-row.cta-container .lead-btn a {
 	padding: 10px;
 	text-align: center;
+	color: white;
+	font-size: 18px;
+	font-weight: 700;
+	background: #e74c3c;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .section-row.mid h2 {
 	text-align: center;
-	margin-bottom: 60px;
+	font-weight: 600;
+	margin-bottom: 5px;
 }
-.section-row.why-geniuspass-container,
-.section-row.steps-container,
-.section-row.last-cta-container {
+
+.section-row p.headline-description {
+  font-size: 18px;
+  text-align: center;
+  color: #787878;
+	margin-bottom: 45px;
+}
+
+.section-row.elements-container
+{
 	background: #F8F8F9;
+}
+
+.section-row.last-cta-container {
+  background-image: image-url('background-footer.jpg');
+  object-fit: cover;
+  object-position: top;
+	width: 100%;
+	height: auto;
+	min-height: 500px;
+	padding: 30px 0;
+}
+
+.section-row.mobile-app-container {
+	background: #3eb4e2;
 }
 
 .section-row.gray-bg .description {
@@ -475,18 +507,23 @@ header nav #top-nav hr {
 
 .section-row.gray-bg .brief-title-div {
 	text-align: center;
+	position: relative;
 }
 .section-row.gray-bg .brief-title-div img {
-	width: 150px;
-	height: 150px;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
-.section-row.gray-bg .brief-title-div .fa {
-	font-size: 90px;
-	margin-bottom: 30px;
+
+.section-row.gray-bg .brief-title-div .description {
+	width: 100%;
+	text-align: center;
+	padding-left: 150px;
+	font-size: 18px;
 }
-.section-row.gray-bg .brief-title-div h3 {
-	font-size: 28px;
-}
+
 
 .last-cta-container .form-inline{
 	text-align: center;
@@ -497,6 +534,14 @@ header nav #top-nav hr {
 	height: 125px;
 	background: gray;
 	margin-bottom: 15px;
+}
+
+.footer-cta-container {
+	margin-top: 15%;
+}
+
+.footer-cta-container p {
+	font-size: 18px;
 }
 
 /* Section Heading */
@@ -552,53 +597,153 @@ header nav #top-nav hr {
 	color: white;
 }
 
-.section-left-main-container {
-	margin-top: 11%;
+#section-main .header-text-container {
+	margin-top: 15%;
 }
-.section-right-main-container {
-	margin-top: 6%;
+#section-main .header-text-container h1{
+	color: white;
+	font-size: 24px;
+	text-align: center;
+	font-weight: 600;
 }
 
-.section-left-main-container .activities-links {
-	padding: 25px 0;
-	text-align: center;
-}
-.section-left-main-container .activities-links .image-circle-container {
-	width: 65px;
-	height: 65px;
-	margin: 0 auto;
-	text-align: center;
-	// padding: 15px;
-	border-radius: 50%;
-	// opacity: 0.5;
-	// background: white;
-}
-.section-left-main-container .activities-links .image-circle-container:hover {
-	background: #3eb4e2;
-}
-.section-left-main-container .activities-links .fa {
-	color: black;
-}
-.section-left-main-container .activities-links .title {
-	color: white;
-	font-size: 16px;
+#section-main .header-text-container .lead {
+	font-size: 28px;
 	font-weight: 700;
-	margin-top: 10px;
-}
-.section-left-main-container .activities-links .title:hover{
-	color: #3eb4e2;
+	color: white;
+	text-align: center;
 }
 
 #send-request-zipcode-form {
-	padding: 35px;
-	background: rgba(62,180,226, 0.3);
+	padding: 15px;
+	background: rgba(192,192,192, 0.6);
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
+	margin-bottom: 15px;
 }
-#send-request-zipcode-form input{
+
+#send-request-zipcode-form .contact-request-text{
 	margin-bottom: 0;
+	margin-left: 10px;
+	padding-left: 45px;
+	margin: 0 auto;
 }
+
+#send-request-zipcode-form input[type="submit"] {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-left: 20px;
+}
+
+#send-request-zipcode-form .form-group {
+	position: relative;
+}
+
+.user-email:before {
+	content: '';
+	background: #fff image-url('form-field-icon-sprite.png');
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  background-position: -25px 0;
+}
+
+.user-postcode:before {
+	content: '';
+	background: #fff image-url('form-field-icon-sprite.png');
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  background-position: -100px 0;
+}
+
+.header-activities {
+	display: inline-block;
+	width: 75px;
+	text-align: center;
+}
+
+.header-activities img {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+}
+.header-activities .title {
+	text-align: center;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.benefits-container {
+	margin-bottom: 15px;
+	text-align: center;
+}
+.benefits-container img {
+	margin: 0 auto;
+}
+
+.benefits-container .title {
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;
+}
+
+
+.components-div {
+	text-align: center;
+}
+
+.components-div .component {
+	display: inline-block;
+	padding: 20px;
+}
+
+.components-div .component img {
+	width: 100px;
+	height: 100px;
+}
+
+.components-div .component .title {
+	font-weight: 600;
+	font-size: 18px;
+	text-align: center;
+}
+
+.mobile-app-container .left-container {
+	text-align: center;
+}
+.mobile-app-container .left-container img{
+	height: 300px;
+	margin-bottom: 30px;
+}
+
+.mobile-app-container .right-container h2{
+	font-size: 30px;
+	margin-bottom: 45px;
+}
+
+.mobile-app-container .right-container p {
+	font-size: 18px;
+	text-align: center;
+}
+
+.appstore-dl-container {
+	text-align: center;
+	padding: 30px 0;
+}
+.appstore-img-dl {
+	width: 200px;
+	height: 80px;
+	margin: 15px;
+}
+
 
 /* Section Headline */
 .section-headline {
@@ -653,7 +798,7 @@ header nav #top-nav hr {
 	font-weight: 500;
 	height: 100px;
   bottom: 0;
-  padding: 20px;
+  padding: 20px 10px;
   color: white;
   padding-top: 35px;
 }
@@ -689,7 +834,7 @@ header nav #top-nav hr {
   color: rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 55px;
-  left: 30px;
+  left: 25%;
 }
 .cta-partner .title {
 	font-size: 40px;
@@ -943,6 +1088,7 @@ header nav #top-nav hr {
 	height: auto;
 	min-height: 600px;
 }
+
 #section-features .section-heading:before {
 	border-color: #fff;
 }

@@ -1,13 +1,14 @@
 %body
   %header
-    %nav.navbar.navbar-default.nav-transparent.overlay-nav.non-sticky-nav
+    %nav.navbar.navbar-default.nav-transparent.overlay-nav.non-sticky-nav.main-header
       .container
         .navbar-header
           / Mobile Navigation Panel Button
           %a.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#top-nav", "data-toggle" => "collapse"}
             %i.fa.fa-bars
           / Logo
-          = link_to image_tag("logo.png", title: "Genius Pass", alt: "Genius Pass"), root_url, class: "brand-logo navbar-brand"
+          = link_to image_tag("Logo2.png", title: "Genius Pass", alt: "Genius Pass"), root_url, class: "brand-logo navbar-brand"
+          = link_to image_tag("Logo3.png", title: "Genius Pass", alt: "Genius Pass"), root_url, class: "brand-logo navbar-brand"
         / Top Navigation
         #top-nav.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
@@ -36,7 +37,7 @@
               %hr/
               / Login & Sign Up Button
               .button-menu
+                = link_to new_user_registration_path, id: "signup", class: "btn-menu" do
+                  %span{"data-title" => "Get Started"} Get Started
                 = link_to new_user_session_path, id: "login", class: "btn-menu secondary" do
                   %span{"data-title" => "Login"} Login
-                = link_to new_user_registration_path, id: "signup", class: "btn-menu" do
-                  %span{"data-title" => "Sign Up"} Sign Up
