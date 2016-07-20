@@ -488,7 +488,7 @@ header nav #top-nav hr {
 }
 
 .section-row.last-cta-container {
-  background-image: image-url('background-footer.jpg');
+  background-image: image-url('footerbg.png');
   object-fit: cover;
   object-position: top;
 	width: 100%;
@@ -687,6 +687,8 @@ header nav #top-nav hr {
 }
 .benefits-container img {
 	margin: 0 auto;
+	width: 178px;
+	height: 179px;
 }
 
 .benefits-container .title {
@@ -720,7 +722,7 @@ header nav #top-nav hr {
 	text-align: center;
 }
 .mobile-app-container .left-container img{
-	height: 300px;
+	height: 365px;
 	margin-bottom: 30px;
 }
 
