@@ -25,6 +25,7 @@
 
       <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {  :class => "signup-form form-container form-horizontal form-group-icon #{"hide" if (resource.errors.blank? && params[:step].blank?) }" }, :defaults => { label: false  }) do |f| %>
 
+        <%= f.input :name, :placeholder => "Name", input_html: {  } %>
 
         <%= f.input :email, :placeholder => "Email", input_html: {  } %>
 

@@ -46,9 +46,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
+  def after_sign_up_path_for(resource)
+    onboard_path
+  end
+
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u|
-      u.permit(:email, :password, :location)
+      u.permit(:name, :email, :password, :password_confirmation, :location)
     }
   end
 
