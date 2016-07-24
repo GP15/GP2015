@@ -11,6 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     else
       session[:omniauth] = nil
+      build_resource(sign_up_params)
       super
     end
   end
@@ -38,6 +39,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.token = auth['credentials']['token']
       resource.uid = auth['uid']
       resource.valid?
+    elsif session[:email].present? || session[:location].present?
+      resource.email = session[:email] if session[:email].present?
+      resource.location = session[:location] if session[:location].present?
     end
   end
 

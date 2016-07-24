@@ -17,13 +17,13 @@
         </span>
       </div>
 
-      <% if resource.errors.blank? && params[:step].blank? %>
+      <% if resource.errors.blank? && resource.email.blank? %>
         <%= link_to '', class: 'btn btn-block email-sign-up-btn' do %>
           <i class="fa fa-envelope-o" aria-hidden="true"></i> SIGN UP WITH EMAIL
         <% end %>
       <% end %>
 
-      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {  :class => "signup-form form-container form-horizontal form-group-icon #{"hide" if (resource.errors.blank? && params[:step].blank?) }" }, :defaults => { label: false  }) do |f| %>
+      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {  :class => "signup-form form-container form-horizontal form-group-icon #{"hide" if (resource.errors.blank? && resource.email.blank?) }" }, :defaults => { label: false  }) do |f| %>
 
         <%= f.input :name, :placeholder => "Name", input_html: {  } %>
 
