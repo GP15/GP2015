@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
 
-  before_action :authenticate_user!, only: [:show, :new_referal_code, :check_referal_code]
+  before_action :authenticate_user!, only: [:show, :new_referal_code, :check_referal_code, :onboard, :add_child]
+  before_action :set_user, only: [:onboard, :add_child]
   before_action :authenticate_admin!, only: [:destroy]
 
   layout false,  :only => [:new_referal_code, :check_referal_code]
@@ -45,13 +46,33 @@ class UsersController < ApplicationController
     end
   end
 
+  def add_child
+    @user.attributes = add_child_params
+    if @user.save
+      puts @user.errors.inspect
+      render json: { success: true }
+    else
+      puts @user.errors.inspect
+      render json: { error: true, message: "Please complete all the details." }
+    end
+  end
+
+  def onboard
+    @user.children.build
+    @questions = (Question.left_brain.sample(5) + Question.right_brain.sample(5)).sample(10)
+  end
+
   private
 
-    def promo_code_params
-      params.require( :user).permit( :referal_code).merge( :being_referred => true)
-    end
+  def promo_code_params
+    params.require( :user).permit( :referal_code).merge( :being_referred => true)
+  end
 
-    def set_user
-      @user = current_user
-    end
+  def set_user
+    @user = current_user
+  end
+
+  def add_child_params
+    params.require(:user).permit(children_attributes: [:id, :first_name, :last_name, :birth_year, :user_id, :gender, :_destroy])
+  end
 end

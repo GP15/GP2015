@@ -1,0 +1,17 @@
+<% provide(:title, "Dashboard") %>
+<% provide(:page_title_bg, asset_path('page-bg-dashboard.jpg')) %>
+<div class="content dashboard-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Dashboard' } %>
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'sidebar' %>
+      </div>
+      <div class="col-md-9" id="main">
+        <%= render 'main' %>
+      </div>
+    </div>
+  </div>
+</div>

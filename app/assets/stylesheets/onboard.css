@@ -1,0 +1,60 @@
+#onboard-container .tab-content {
+  margin-top: 40px;
+}
+
+#child_info_div {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#child_info_div .info {
+  text-align: center;
+  font-size: 28px;
+  line-height: 30px;
+  margin-top: 45px;
+}
+
+#complete-redirect .info {
+  text-align: center;
+  margin-top: 45px;
+}
+##complete-redirect .info h1 {
+  margin-bottom: 30px;
+}
+#complete-redirect .info p{
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 16px;
+}
+
+.brain-result,
+#left-brain-percent,
+#right-brain-percent {
+  text-align: center;
+  font-size: 30px;
+  padding: 30px;
+}
+
+#child_info_div .brain-img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+#complete-redirect .redirect-btn,
+#child_info_div .redirect-btn {
+  padding: 18px;
+  background: #3eb4e2;
+  color: white;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 500px) {
+  .brain-result,
+  #left-brain-percent,
+  #right-brain-percent {
+    font-size: 24px;
+    padding: 5px;
+  }
+}

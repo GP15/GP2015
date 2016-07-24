@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720025214) do
+ActiveRecord::Schema.define(version: 20160724032147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160720025214) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "gender"
   end
 
   add_index "children", ["birth_year"], name: "index_children_on_birth_year", using: :btree
@@ -122,6 +123,15 @@ ActiveRecord::Schema.define(version: 20160720025214) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "klass_elements", force: :cascade do |t|
+    t.integer  "development_element_id"
+    t.integer  "klass_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "klass_elements", ["development_element_id", "klass_id"], name: "index_klass_elements_on_development_element_id_and_klass_id", using: :btree
 
   create_table "klasses", force: :cascade do |t|
     t.string   "name"
@@ -284,6 +294,9 @@ ActiveRecord::Schema.define(version: 20160720025214) do
     t.string   "promo_code",             limit: 10
     t.integer  "referred",                          default: 0
     t.string   "phone_no"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

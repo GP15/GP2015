@@ -1,0 +1,117 @@
+<% provide(:title, "Welcome Onboard") %>
+<% provide(:page_title_bg, asset_path('page-bg-dashboard.jpg')) %>
+
+<div class="content dashboard-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Welcome GeniusPass' } %>
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" id="main">
+        <div class='content-main'>
+
+          <div id="onboard-container">
+            <h3>Curation Informations</h3>
+            <section class="container curation-div">
+              <p>Bla Bla Bla </p>
+            </section>
+
+            <h3>Add Child</h3>
+            <section class="container addchild-div">
+              <%= nested_form_for current_user, url: add_child_user_url(current_user), html: { id: 'add-child-form' } do |f| %>
+
+                <%= f.fields_for :children do |ip| %>
+                  <div class="form-group col-sm-6">
+                    <%= ip.label 'First Name', class: "control-label" %>
+                    <%= ip.text_field :first_name, class: 'form-control', required: true %>
+                  </div>
+                  <div class="form-group col-sm-6">
+                    <%= ip.label 'Last Name', class: "control-label" %>
+                    <%= ip.text_field :last_name, class: 'form-control', required: true %>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-sm-12">
+                      <div class="form-group col-sm-6">
+                        <%= ip.label 'Gender', class: "control-label" %>
+                        <%= ip.select :gender, ['male', 'female'], { include_blank: true, required: true }, class: 'form-control' %>
+                      </div>
+
+                      <div class="form-group col-sm-6">
+                        <%= ip.label 'Birth Year', class: "control-label" %>
+                        <%= ip.select :birth_year, (Date.current.year - 17)..(Date.current.year - 4), {}, {class: "form-control required"} %>
+                        <%= ip.hidden_field :id %>
+                      </div>
+                      <div class="form-group col-sm-12">
+                        <%= ip.link_to_remove "Remove this child" %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <div id='add-child-status'></div>
+
+                <%= f.link_to_add "Add Child", :children, class: 'btn gp-button pull-right' %>
+              <% end %>
+              <div class="clearfix"></div>
+            </section>
+
+            <h3>Child Assessment</h3>
+            <section class="container assessement-div">
+              <% if @questions.present? %>
+                <% @questions.each do |question| %>
+                  <div class=''>
+                    <%= question.title %>
+                    <div>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary answer-btn gp-button" data-brain="<%= yes_btn_data(question) %>">
+                          <input type="radio" name="options[]" autocomplete="off" value="<%= yes_btn_data(question) %>"> Yes
+                        </label>
+                        <label class="btn btn-primary answer-btn gp-button" data-brain="<%= no_btn_data(question) %>">
+                          <input type="radio" name="options[]" autocomplete="off" value="<%= no_btn_data(question) %>"> No
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </section>
+
+            <h3>Complete</h3>
+            <section class="container assessement-div">
+              <div id="complete-redirect" class="hide">
+                <div class="info">
+                  <h2>
+                    Welcome To GeniusPass
+                  </h2>
+                  <p>
+                    GeniusPass is the first membership created exclusively for children to provide them unlimited access to variety of top studios and facilities. One single pass that is going to transform the lifestyle of children to a brighter future generation.
+                  </p>
+
+                  <%= link_to 'View Latest Activities Schedules', schedules_path, class: 'btn redirect-btn' %>
+                </div>
+              </div>
+
+              <div id="child_info_div" class="hide">
+                <div class='brain-img'>
+                  <%= image_tag 'brain_image.png' %>
+                </div>
+
+                <div class="brain-result">
+                  <span id='left-brain-percent'></span>
+                  <span id='right-brain-percent'></span>
+                </div>
+
+                <div class="info">
+                  <p>Your son / daughter is <span class='brain-result-text'>60% left</span> brained. We have curated the best activities for HIM!</p>
+                  <%= link_to 'View Personalize Activities Now', '#', class: 'btn redirect-btn' %>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

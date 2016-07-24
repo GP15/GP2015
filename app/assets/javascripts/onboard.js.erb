@@ -1,0 +1,109 @@
+$(document).ready(function()
+{
+  var answers = [];
+  var left_brains = [];
+  var right_brains = [];
+
+  if($('#onboard-container').length >0){
+
+    $("#onboard-container").steps({
+      headerTag: "h3",
+      bodyTag: "section",
+      transitionEffect: "slideLeft",
+      autoFocus: true,
+      saveState: true,
+      enableFinishButton: false,
+      onStepChanged: function (event, currentIndex, priorIndex) {
+      },
+      onStepChanging: function (event, currentIndex, newIndex) {
+        var valid = false;
+        if(currentIndex > newIndex)
+        {
+          return true;
+        }else if(currentIndex == 1){
+          if($('#add-child-status').attr('data-status') == 'done'){
+            valid = true;
+          }else{
+            var form = $('#add-child-form');
+            var url = form.attr('action');
+            valid = false;
+            $.ajax({
+              url: url,
+              data: form.serialize(),
+              dataType: "json",
+              type: 'POST',
+              async: false,
+              cache: false,
+              success: function(data){
+                console.log(data);
+                console.log(data.success)
+                if(data.success){
+                  valid = true;
+                  $("#add-child-form :input").attr("disabled", true);
+                  $('.remove_nested_fields, .add_nested_fields').remove();
+                  $('#add-child-status').attr('data-status', 'done');
+                }else{
+                  alert(data.message);
+                }
+              }
+            });
+          }
+          return valid;
+        }else if(currentIndex == 2){
+          var inputs = $('.btn-group .btn.btn-primary.answer-btn.gp-button.active input[name="options[]"]');
+          if(inputs.length > 0 && inputs.length < 10){
+            alert("Please continue your assessment since you are already started :)");
+            return false;
+          }else{
+            inputs.each(function() {
+              if($(this).val() == 'right'){
+                right_brains.push($(this).val());
+              }else{
+                left_brains.push($(this).val());
+              }
+              answers.push($(this).val());
+           });
+            console.log(answers);
+            if(answers.length == 0){
+              $('#complete-redirect').removeClass('hide');
+            }else{
+              $('#left-brain-percent').html("Left " + (left_brains.length * 10) + "%");
+              $('#right-brain-percent').html((right_brains.length * 10) + "% " + "Right");
+
+              if(right_brains > left_brains){
+                $('.brain-result-text').html(right_brains.length * 10 + "% right");
+              }else if(right_brains < left_brains){
+                $('.brain-result-text').html(left_brains.length * 10 + "% left");
+              }else{
+                $('.brain-result-text').html("50% left and 50% right");
+              }
+
+              $('#child_info_div').removeClass('hide');
+            }
+            return true;
+          }
+        }else{
+          return true;
+        }
+      },
+      labels: {
+        cancel: "Cancel",
+        current: "",
+        pagination: "Pagination",
+        finish: "Finish",
+        next: "Next",
+        previous: "Previous",
+        loading: "Loading ..."
+      }
+
+    });
+
+
+    $('.answer-btn').on('click', function(e){
+      e.preventDefault();
+
+    });
+  }
+
+
+});

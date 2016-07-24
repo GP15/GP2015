@@ -24,19 +24,26 @@ Rails.application.routes.draw do
 
   post 'charged_successfully', to: 'subscriptions#charged_successfully'
 
+  get 'onboard', to: 'users#onboard', as: 'onboard'
+
   resources :schedules, only: [:index, :show] do
     patch 'archive',   on: :member
     patch 'unarchive', on: :member
     resources :reservations, only: [:new, :create, :destroy]
   end
 
-  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }, controllers: { omniauth_callbacks: "users/omniauth_callbacks",
+                                                                                          registrations: 'users/registrations' }
 
   resources :users, only: [:show] do
     collection do
       get :select_plan
       get :new_referal_code
       post :check_referal_code
+    end
+
+    member do
+      patch 'add_child'
     end
     post :promo_code
     resources :children, except: [:index, :show]

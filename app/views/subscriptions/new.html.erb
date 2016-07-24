@@ -4,7 +4,7 @@
 
 <div class='content subscribe-page'>
   <%= render partial: 'layouts/page_title', locals: { page_title: 'Payment' } %>
-  <%= render 'shared/notice' if flash.present? %>
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
 
 
 

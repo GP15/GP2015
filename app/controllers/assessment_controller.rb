@@ -1,4 +1,0 @@
-class AssessmentController < ApplicationController
-
-
-end

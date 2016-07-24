@@ -1,0 +1,49 @@
+<% provide(:title, "Login") %>
+<div class="content login-page">
+
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
+
+
+  <div class="container">
+    <div class="login-container">
+      <h1>LOGIN</h1>
+
+      <%= link_to user_omniauth_authorize_path('facebook'), class: 'btn btn-block fb-sign-up-btn' do %>
+        <i class="fa fa-facebook-official" aria-hidden="true"></i> LOGIN WITH FACEBOOK
+      <% end %>
+
+      <div class='horizontal-line'>
+        <span class='text'>
+          Or <!--Padding is optional-->
+        </span>
+      </div>
+
+      <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-container form-horizontal form-group-icon' }, :defaults => { label: false  }) do |f| %>
+
+        <%= devise_error_messages! %>
+
+        <%= f.input :email, placeholder: "Email", autofocus: true %>
+        <%= f.input :password, placeholder: "Password", autocomplete: "off" %>
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group field">
+            <div class="checkbox">
+              <label>
+                <%= f.check_box :remember_me %>
+                Remember Me
+              </label>
+            </div>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.submit "Login", class: "btn form-submit-btn gp-button" %>
+        </div>
+
+        <div class="form-meta">
+          <%= link_to "Forgot your password?", new_user_password_path %>
+          <br>
+          Don't have a login? <%= link_to "Sign up", new_user_registration_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

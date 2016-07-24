@@ -3,7 +3,7 @@
 - provide(:page_title_bg, asset_path('page-bg-child.jpg'))
 .content.subscribe-page
   = render partial: 'layouts/page_title', locals: { page_title: 'Subscribe' }
-  = render 'shared/notice' if flash.present?
+  = render 'shared/notice', locals: { flash: flash } if flash.present?
   .container
     .row
       /.col-md-3.hide-for-small

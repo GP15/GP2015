@@ -21,16 +21,16 @@
         </div>
 
         <div class="col-md-6">
-          <%= form_tag contact_request_zipcodes_path, class: 'form-inline', id: 'send-request-zipcode-form' do %>
+          <%= form_tag contact_request_zipcodes_path, class: 'form-inline send-request-zipcode-form', id: 'top-request-zipcode-form' do %>
             <div class="form-group">
               <div class="user-email">
-                <%= email_field_tag :email, nil,  placeholder: "Email", class: 'contact-request-text' %>
+                <%= email_field_tag :email, nil,  placeholder: "Email", class: 'contact-request-text', required: true %>
               </div>
             </div>
 
             <div class="form-group">
               <div class="user-postcode">
-                <%= text_field_tag :zipcode, nil, placeholder: 'Postcode', class: 'contact-request-text' %>
+                <%= text_field_tag :zipcode, nil, placeholder: 'Postcode', class: 'contact-request-text', required: true %>
               </div>
             </div>
 
@@ -82,7 +82,7 @@
           <h2>Sign Up For Free & Get 2 FREE Activities Worth RM50 For Your Child</h2>
         </div>
         <div class="col-md-3 lead-btn">
-          <%= link_to 'Get Started', '#', class: 'btn btn-primary btn-block' %>
+          <%= link_to 'Get Started', '#', class: 'btn btn-primary btn-block', id: 'top-get-started-btn' %>
         </div>
       </div>
     </div>
@@ -297,20 +297,20 @@
         <div class="col-md-6"></div>
         <div class="col-md-6 col-xs-12 footer-cta-container">
 
-          <%= form_tag contact_request_zipcodes_path, class: 'form-inline', id: 'send-request-zipcode-form' do %>
+          <%= form_tag contact_request_zipcodes_path, class: 'form-inline send-request-zipcode-form', id: 'bottom-request-zipcode-form' do %>
             <p class="footer-description">
               Sign up is Free & get 2 Free classes worth RM50 from multiple choices. For limited time only. Don’t miss out!
             </p>
 
             <div class="form-group">
               <div class="user-email">
-                <%= email_field_tag :email, nil,  placeholder: "Email", class: 'contact-request-text' %>
+                <%= email_field_tag :email, nil,  placeholder: "Email", class: 'contact-request-text', required: true %>
               </div>
             </div>
 
             <div class="form-group">
               <div class="user-postcode">
-                <%= text_field_tag :zipcode, nil, placeholder: 'Postcode', class: 'contact-request-text' %>
+                <%= text_field_tag :zipcode, nil, placeholder: 'Postcode', class: 'contact-request-text', required: true %>
               </div>
             </div>
 

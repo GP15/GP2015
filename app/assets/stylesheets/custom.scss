@@ -137,17 +137,18 @@ select {
 /* ===================================
     Alerts
 ====================================== */
-.alert-style7 {
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-align: center;
-  margin-bottom: 30px;
-  span { display: block; }
-}
-.alert-success { color: #000000; background-color: #00FFB2; }
-.alert-danger  { color: #E51313; background-color: #FFF; }
-.alert-success, .alert-danger { border-color: rgba(0,0,0,0); }
+// .alert-style7 {
+//   font-size: 13px;
+//   letter-spacing: 1px;
+//   text-align: center;
+//   margin-bottom: 30px;
+//   span { display: block; }
+// }
+// .alert-success { color: #000000; background-color: #00FFB2; }
+// .alert-danger  { color: #E51313; background-color: #FFF; }
+// .alert-success, .alert-danger { border-color: rgba(0,0,0,0); }
 
+.alert { border-radius: 0; text-align: center; }
 /* ===================================
     Tabs
 ====================================== */

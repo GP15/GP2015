@@ -2,7 +2,7 @@
 - provide(:page_title_bg, asset_path('page-bg-schedules.jpg'))
 .content.schedules-page
   = render partial: 'layouts/page_title', locals: { page_title: 'Schedules' }
-  = render 'shared/notice' if flash.present?
+  = render 'shared/notice', locals: { flash: flash } if flash.present?
   .container
     #activity-schedule.content-main
       = render 'filters'

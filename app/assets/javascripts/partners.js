@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  if($('.partner-grid').length > 0){
+
     var special = jQuery.event.special,
         uid1 = 'D' + (+new Date()),
         uid2 = 'D' + (+new Date() + 1);
@@ -43,53 +45,55 @@ $(document).ready(function() {
     };
 
 
-  partner_load_count = 0
-  all_loaded = false
-  function lastAddedLiveFunc()
-  {
+    partner_load_count = 0
+    all_loaded = false
+    function lastAddedLiveFunc()
+    {
 
-      if( all_loaded == false ){
-        partner_load_count += 1
-        $('div#lastPostsLoader').html('<img src="/assets/pageload.gif" />');
-        $.get("/partners/loadmore?page="+ partner_load_count, function(data){
-            if (data != "") {
-              //console.log('add data..');
-              $(".partner-grid").append(data);
-              var iso = new Isotope('.partner-grid', {
-                masonry: {
-                  columnWidth: 300,
-                  isFitWidth: true,
-                  "gutter": 50
-                }
-              });
-              iso.appended( data );
-              iso.layout();
-            }else{
-              all_loaded = true
-              $('div#lastPostsLoader').html("No more results");
-            }
-        });
+        if( all_loaded == false ){
+          partner_load_count += 1
+          $('div#lastPostsLoader').html('<img src="/assets/pageload.gif" />');
+          $.get("/partners/loadmore?page="+ partner_load_count, function(data){
+              if (data != "") {
+                //console.log('add data..');
+                $(".partner-grid").append(data);
+                var iso = new Isotope('.partner-grid', {
+                  masonry: {
+                    columnWidth: 300,
+                    isFitWidth: true,
+                    "gutter": 50
+                  }
+                });
+                iso.appended( data );
+                iso.layout();
+              }else{
+                all_loaded = true
+                $('div#lastPostsLoader').html("No more results");
+              }
+          });
+        }
+    };
+
+    $(window).on('scrollstop', function(){});
+
+    // Transform list of partners in partners#index into masonry layout.
+
+    var $grid = $('.partner-grid').isotope({
+      // options
+      itemSelector: '.partner-grid-item',
+      masonry: {
+        columnWidth: 300,
+        isFitWidth: true,
+        "gutter": 50
       }
-  };
+    });
 
-  $(window).on('scrollstop', function(){});
-
-  // Transform list of partners in partners#index into masonry layout.
-  var $grid = $('.partner-grid').isotope({
-    // options
-    itemSelector: '.partner-grid-item',
-    masonry: {
-      columnWidth: 300,
-      isFitWidth: true,
-      "gutter": 50
-    }
-  });
-
-  // Unloaded images can throw off masonry layout and cause item elements to overlap.
-  // imagesLoaded.js resolves this issue.
-  // Initialize Isotope, then trigger layout after each image loads:
-  $grid.imagesLoaded().progress(function() {
-    $grid.isotope('layout');
-  });
+    // Unloaded images can throw off masonry layout and cause item elements to overlap.
+    // imagesLoaded.js resolves this issue.
+    // Initialize Isotope, then trigger layout after each image loads:
+    $grid.imagesLoaded().progress(function() {
+      $grid.isotope('layout');
+    });
+  }
 
 });

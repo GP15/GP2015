@@ -2,7 +2,7 @@
 - provide(:page_title_bg, asset_path('page-bg-reservation.jpg'))
 .content.reservation-page
   = render partial: 'layouts/page_title', locals: { page_title: 'Reservation' }
-  = render 'shared/notice' if flash[:notice].present?
+  = render 'shared/notice', locals: { flash: flash } if flash[:notice].present?
   .container
     .row
       .col-md-7

@@ -2,7 +2,8 @@ ActiveAdmin.register Klass do
 
   menu :parent => "Activity Related"
 
-  permit_params :name, :level, :age_start, :age_end, :description, :activity_id, :partner_id, :reservation_limit
+  permit_params :name, :level, :age_start, :age_end, :description, :activity_id, :partner_id, :reservation_limit,
+                klass_elements_attributes: [:id, :development_element_id, :_destroy]
 
   index do
     selectable_column
@@ -26,7 +27,6 @@ ActiveAdmin.register Klass do
   filter :activity_id
   filter :reservation_limit
 
-
   form do |f|
     f.inputs "Klass Details" do
       f.input :partner_id,      as: :select, collection: Partner.all.map { |p| [p.company, p.id] }
@@ -37,6 +37,16 @@ ActiveAdmin.register Klass do
       f.input :age_end
       f.input :description
       f.input :reservation_limit
+
+      f.inputs 'Development Elements' do
+        f.has_many :klass_elements do |pf|
+          if !pf.object.nil?
+            pf.input :_destroy, :as => :boolean, :label => "Destroy?"
+          end
+          pf.input :development_element_id, as: :select, collection: DevelopmentElement.all.map{|c| ["#{c.title}", c.id]}
+        end
+      end
+
     end
     f.actions
   end

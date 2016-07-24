@@ -6,6 +6,8 @@ class Child < ActiveRecord::Base
   has_many   :schedules, through: :reservations
   has_one    :subscription, dependent: :destroy
 
+  enum gender: [:male, :female]
+
   ## Validations ##
   validates_presence_of :first_name, :last_name, :birth_year
 
@@ -18,6 +20,9 @@ class Child < ActiveRecord::Base
   scope :valid_children_wrt_subscriptions, -> (user){ where.not(id: user.reservations.eager_load(child: :subscription).where(subscriptions: {plan_id: ['RM49', 'RM39']}).where("DATE(subscriptions.start_date) <= ? AND DATE(subscriptions.renewal_date) >= ?", Date.today, Date.today).group('reservations.child_id').count.collect{|k,v| k if v >= 4 }) }
   ## Class Methods ##
   # A scope that checks for a class's age requirement.
+
+  validates :first_name, :last_name, :birth_year, :user, :gender, presence: true
+
   def self.age_between(klass)
     where(birth_year: (Date.current.year - klass.age_end)..(Date.current.year - klass.age_start))
   end

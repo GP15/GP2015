@@ -26,11 +26,58 @@
  *= require map
  *= require proile
  *= require responsive
+ *= require onboard
+ *= require wizard
  *= require_self
  *= require bootsy
  */
 
+hr {
+  margin: 2em 0;
+}
+
+.horizontal-line {
+  width:100%;
+  text-align:center;
+  border-bottom: 1px solid #e1e1e1;
+  line-height:0.1em;
+  margin:30px 0 30px;
+}
+
+.horizontal-line span {
+  background:#fff;
+  color: #787878;
+  padding:0 10px;
+}
 
 .main-header {
   background: white;
 }
+
+.fb-sign-up-btn {
+  color: white;
+  text-align: center;
+  background: #3b5998;
+  padding: 10px 5px;
+}
+
+.fb-sign-up-btn .fa {
+  color: white;
+}
+
+.email-sign-up-btn {
+  border: 1px solid #e1e1e1;
+  text-align: center;
+  padding: 10px 5px;
+}
+
+.login-lead-div {
+  padding: 15px 5px;
+  text-align: center;
+}
+.login-lead-div a{
+  color: #3eb4e2;
+}
+
+
+

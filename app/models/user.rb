@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   ## Devise ##
-  devise :database_authenticatable, :registerable, :rememberable, :trackable, :recoverable
+  devise :database_authenticatable, :registerable, :rememberable, :trackable, :recoverable, :omniauthable, omniauth_providers: [:facebook]
 
   include Payment
 
@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :promo_code
   validates_confirmation_of :password
 
+
+  accepts_nested_attributes_for :children, allow_destroy: true, reject_if: :all_blank
 
   ## Callbacks ##
   after_create :create_customer, :send_welcome_mail
@@ -89,6 +91,19 @@ class User < ActiveRecord::Base
       code = SecureRandom.urlsafe_base64(7)
     end while User.with_code(code).nil?
     code
+  end
+
+    # Override devise module
+  def self.send_reset_password_instructions(attributes={})
+    recoverable = find_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
+    if recoverable.persisted?
+      if recoverable.encrypted_password.blank?
+        recoverable.errors.add(:email, "cannot be reset. Are you connected your social media account?")
+      else
+        recoverable.send_reset_password_instructions
+      end
+    end
+    recoverable
   end
 
   private
