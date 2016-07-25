@@ -8,6 +8,8 @@ class Schedule < ActiveRecord::Base
   has_many   :reservations, dependent: :destroy
   has_many   :children, through: :reservations
 
+  enum gender: [:male, :female, :unisex]
+
   validates_presence_of :klass_id, :starts_at, :ends_at, :quantity
   validates_numericality_of :quantity, only_integer: true, greater_than: 0
 
@@ -98,7 +100,7 @@ class Schedule < ActiveRecord::Base
     end
   end
 
-  def self.time_in_minutes full_time
+  def self.time_in_minutes(full_time)
     full_time.hour * 60 + full_time.min
   end
 end

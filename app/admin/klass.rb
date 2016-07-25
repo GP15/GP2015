@@ -3,7 +3,7 @@ ActiveAdmin.register Klass do
   menu :parent => "Activity Related"
 
   permit_params :name, :level, :age_start, :age_end, :description, :activity_id, :partner_id, :reservation_limit,
-                klass_elements_attributes: [:id, :development_element_id, :_destroy]
+                klass_elements_attributes: [:id, :development_element_id, :points, :_destroy]
 
   index do
     selectable_column
@@ -44,6 +44,7 @@ ActiveAdmin.register Klass do
             pf.input :_destroy, :as => :boolean, :label => "Destroy?"
           end
           pf.input :development_element_id, as: :select, collection: DevelopmentElement.all.map{|c| ["#{c.title}", c.id]}
+          pf.input :points
         end
       end
 

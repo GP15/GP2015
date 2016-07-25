@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   resources :schedules, only: [:index, :show] do
     patch 'archive',   on: :member
     patch 'unarchive', on: :member
+
+    collection do
+      get  'curated'
+    end
     resources :reservations, only: [:new, :create, :destroy]
   end
 

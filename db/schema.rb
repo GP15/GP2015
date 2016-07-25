@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724032147) do
+ActiveRecord::Schema.define(version: 20160724162003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,7 +119,6 @@ ActiveRecord::Schema.define(version: 20160724032147) do
 
   create_table "development_elements", force: :cascade do |t|
     t.string   "title"
-    t.integer  "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -129,6 +128,7 @@ ActiveRecord::Schema.define(version: 20160724032147) do
     t.integer  "klass_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "points"
   end
 
   add_index "klass_elements", ["development_element_id", "klass_id"], name: "index_klass_elements_on_development_element_id_and_klass_id", using: :btree
@@ -231,6 +231,7 @@ ActiveRecord::Schema.define(version: 20160724032147) do
     t.integer  "reservations_count", default: 0,     null: false
     t.boolean  "archived",           default: false, null: false
     t.string   "recurrence"
+    t.integer  "gender"
   end
 
   add_index "schedules", ["activity_id"], name: "index_schedules_on_activity_id", using: :btree

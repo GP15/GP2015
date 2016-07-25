@@ -1,0 +1,13 @@
+<% provide(:title, "Curated Activities") %>
+<% provide(:page_title_bg, asset_path('page-bg-schedules.jpg')) %>
+
+<div class="content schedules-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Curated Activities' } %>
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
+
+  <div class="container">
+    <div class="content-main">
+
+    </div>
+  </div>
+</div>

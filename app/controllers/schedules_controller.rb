@@ -1,9 +1,8 @@
 class SchedulesController < ApplicationController
 
-  layout 'admin', except: [:index, :show]
+  layout 'admin', except: [:index, :show, :curated]
 
-  before_action :authenticate_admin!, except: [:index, :show]
-  before_action :set_partner,         except: [:index, :show, :archive, :unarchive]
+  before_action :set_partner,         except: [:index, :show, :archive, :unarchive, :curated]
   before_action :set_schedule,        only:   [:edit, :update, :destroy]
   before_action :set_klass,           only:   [:create, :update]
 
@@ -49,6 +48,32 @@ class SchedulesController < ApplicationController
     @schedules =  @schedules.select{|schedule| schedule.klass.age_start <= params[:age].to_i && schedule.klass.age_end >= params[:age].to_i } unless params[:age].to_i == 0
     @schedules =  @schedules.select{|schedule| schedule.scheduled_dates.include?(date)}
     #@date = Date.parse(@date).strftime("%A, %d %B %Y")
+  end
+
+  # filters
+  # - which partner
+  # - which activity
+  # - age, gender, zipcode
+  # - curation schedules have equally points
+  # - each element  (7) will have different points
+  # - each element maximum 3 activity
+
+  # Klass A - [A, B, C]
+  # Klass B - [A, D, E]
+  def curated
+    @children = current_user.children
+
+    # Sort the ages of children
+    ages = @children.pluck(:birth_year).map { |y| Time.now.year - y }.sort
+    genders = @children.pluck(:gender).uniq
+
+    # Filter ages based on class
+    Klass.where("age_start >= ? and age_end <= ?", '')
+
+    # Get same amount of points based on all different 7 elements
+
+    # Filter schedules based on genders
+
   end
 
   def time_in_minutes(full_time)

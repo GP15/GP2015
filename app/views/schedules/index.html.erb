@@ -1,0 +1,34 @@
+<% provide(:title, "Schedules") %>
+<% provide(:page_title_bg, asset_path('page-bg-schedules.jpg')) %>
+<div class="content schedules-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Schedules' } %>
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
+  <div class="container">
+    <div class="content-main" id="activity-schedule">
+      <%= render 'filters' %>
+      <h3 class="page-heading schedule-date">
+        <%= date_header %>
+      </h3>
+      <% if @schedules.present? %>
+        <table class="table table-responsive-block schedule-table">
+          <thead>
+            <tr>
+              <th>Activities</th>
+              <th>Studio</th>
+              <th>Location</th>
+              <th>Time</th>
+              <th>Age</th>
+              <th>Difficulty</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render :partial => 'schedule', :collection => @schedules %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="text-center">No activity found.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
