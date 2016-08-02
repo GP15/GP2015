@@ -79,6 +79,19 @@ class SchedulesController < ApplicationController
 
       # Get same amount of points based on all different 7 elements
       # Curated 15 Klass based on different development elements
+      if @klasses.present?
+        @klasses.each do |klass|
+          klass.klass_elements.each do |element|
+            if instance_variable_get("@#{element.development_element.title.downcase}_count").present?
+              element_count = instance_variable_get("@#{element.development_element.title.downcase}_count")
+              count = element_count + 1
+              instance_variable_set("@#{element.development_element.title.downcase}_count",  count)
+            else
+              instance_variable_set("@#{element.development_element.title.downcase}_count", 1)
+            end
+          end
+        end
+      end
     else
       redirect_to schedules_path, notice: 'Browse through our latest schedules now!'
     end
