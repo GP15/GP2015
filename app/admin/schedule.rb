@@ -2,7 +2,7 @@ ActiveAdmin.register Schedule do
 
   menu :parent => "Activity Related"
 
-  permit_params :quantity, :klass_id, :partner_id, :city_id, :activity_id, :starts_at, :ends_at, :archived, :recurrence
+  permit_params :quantity, :klass_id, :partner_id, :city_id, :activity_id, :starts_at, :ends_at, :archived, :recurrence, :gender
 
   index do
     selectable_column
@@ -40,6 +40,7 @@ ActiveAdmin.register Schedule do
       f.input :archived
       f.input :recurrence
       f.input :quantity
+      f.input :gender
     end
     f.actions
   end

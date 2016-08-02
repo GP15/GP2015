@@ -56,24 +56,32 @@ class SchedulesController < ApplicationController
   # - age, gender, zipcode
   # - curation schedules have equally points
   # - each element  (7) will have different points
-  # - each element maximum 3 activity
+  # - each element maximum 3 klass
 
   # Klass A - [A, B, C]
   # Klass B - [A, D, E]
   def curated
     @children = current_user.children
 
-    # Sort the ages of children
-    ages = @children.pluck(:birth_year).map { |y| Time.now.year - y }.sort
-    genders = @children.pluck(:gender).uniq
+    zipcode = Zipcode.find_by_pincode(current_user.location)
 
-    # Filter ages based on class
-    Klass.where("age_start >= ? and age_end <= ?", '')
+    if zipcode.present?
+      city = zipcode.city
 
-    # Get same amount of points based on all different 7 elements
+      # Sort the ages of children
+      ages = @children.pluck(:birth_year).map { |y| Time.now.year - y }.sort
+      genders = @children.pluck(:gender).uniq
+      genders.push(2) if genders.size == 2  # If there are 2, then inlcude unisex as well
 
-    # Filter schedules based on genders
+      @klasses = Klass.non_archived_schedules
+                      .includes(:activity, :schedules, :partner, :development_elements, klass_elements: [:development_element])
+                      .where("klasses.age_start >= ? and klasses.age_end <= ? and klasses.city_id = ? and klasses.gender in (?)", ages.first, ages.last, city.id, genders)
 
+      # Get same amount of points based on all different 7 elements
+      # Curated 15 Klass based on different development elements
+    else
+      redirect_to schedules_path, notice: 'Browse through our latest schedules now!'
+    end
   end
 
   def time_in_minutes(full_time)

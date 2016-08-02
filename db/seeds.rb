@@ -147,3 +147,13 @@ users.each do |user|
   end
 end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+# Klass.all.each do |x|
+#   development_ids = DevelopmentElement.pluck(:id)
+
+#   (1..3).each do |time|
+#     sample = development_ids.sample
+#     x.klass_elements << KlassElement.create(development_element_id: sample, klass_id: x.id, points: rand(10))
+#     development_ids.delete(sample)
+#   end
+# end

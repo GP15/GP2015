@@ -1,0 +1,54 @@
+<% if @schedules.present? %>
+  <table class="table table-responsive-block schedule-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Activity</th>
+        <th>Outlet</th>
+        <th>Time</th>
+        <th>Age</th>
+        <th>Difficulty</th>
+        <th>Recurrance </th>
+        <th class="text-center">Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @schedules.each do |schedule| %>
+        <% if params[:klass].present? && schedule.klass.id == params[:klass].to_i %>
+          <tr class="bold">
+        <% else %>
+          <tr>
+        <% end %>
+          <td class="date-col" data-title="Date">
+            <%= schedule.starts_at.strftime("%d %b %Y") %>
+          </td>
+          <td class="activity-col" data-title="Activity">
+            <%= schedule.klass.name %>
+          </td>
+          <td class="outlet-col" data-title="Outlet">
+            <%= schedule.city.name %>
+          </td>
+          <td class="time-col" data-title="Time">
+            <%= format_time(schedule.starts_at) %>
+            to <%= format_time(schedule.ends_at) %>
+          </td>
+          <td class="age-col" data-title="Age">
+            <%= "#{schedule.klass.age_start} - #{schedule.klass.age_end}" %>
+          </td>
+          <td class="difficulty-col" data-title="Difficulty">
+            <%= schedule.klass.level if schedule.klass %>
+          </td>
+          <td>
+            <%= schedule.recurrence %>
+          </td>
+          <td class="availability-col" data-title="Availability">
+            <%= reserve_button(schedule) %>
+          </td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="text-center margin-five-top">No upcoming activities in the meantime.</p>
+<% end %>

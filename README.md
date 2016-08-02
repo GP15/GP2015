@@ -35,7 +35,7 @@ To run this on your local machine, make sure you have the above installed. Then 
 
 ### Production
 
-Hosting: 
+Hosting:
 
     Server: Heroku (Hobby dyno)
     Database: Heroku Postgres (Hobby)
@@ -69,7 +69,7 @@ To create another admin, just run rails console:
 
     rails console
     Admin.create!(email: "youremail@yourdomain.com", password: "yourpassword")
-    
+
 On Heroku server , you can create an admin by running Heroku's rails console:
 
     heroku run rails console
@@ -84,9 +84,16 @@ Run `rails console` and type:
 Note the id of the admin. If the id of admin that contains your email is 1, run:
 
     Admin.find(1).update!(password: "yournewpassword")
-    
+
 For Heroku server, run Heroku's rails console and repeat the above commands:
 
     heroku run rails console
     Admin.all
     Admin.find(1).update!(password: "yournewpassword")
+
+
+
+- Add city, gender to klass
+- Add city, gender to schedule
+- Add zipcode to city
+- Zipcode can be activate

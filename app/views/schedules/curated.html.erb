@@ -7,6 +7,107 @@
 
   <div class="container">
     <div class="content-main">
+      <div class="curated-components-div">
+        <div class="component">
+          <%= image_tag 'analytical.png' %>
+          <div class='title'>ANALYTICAL</div>
+          <!-- <div class='activities-count'>10 Classes</div> -->
+        </div>
+
+        <div class="component">
+          <%= image_tag 'intellectual.png' %>
+          <div class='title'>INTELLECTUAL</div>
+          <!-- <div class='activities-count'>10 Classes</div> -->
+        </div>
+
+        <div class="component">
+          <%= image_tag 'logical.png' %>
+          <div class='title'>LOGICAL</div>
+          <!-- <div class='activities-count'>10 Classes</div> -->
+        </div>
+
+        <div class="component">
+          <%= image_tag 'physical.png' %>
+          <div class='title'>PHYSICAL</div>
+          <!-- <div class='activities-count'>10 Classes</div> -->
+        </div>
+
+        <div class="component">
+          <%= image_tag 'creativity.png' %>
+          <div class='title'>CREATIVITY</div>
+          <!-- <div class='activities-count'>10 Classes</div> -->
+        </div>
+
+        <div class="component">
+          <%= image_tag 'artistic.png' %>
+          <div class='title'>ARTISTIC</div>
+          <!-- <div class='activities-count'>10 Classes</div> -->
+        </div>
+
+        <div class="component">
+          <%= image_tag 'memory.png' %>
+          <div class='title'>MEMORY</div>
+          <!-- <div class='activities-count'>10 Classes</div> -->
+        </div>
+      </div>
+
+      <% if @klasses.present? %>
+        <table class="table table-responsive-block curated-schedule-table">
+          <thead>
+            <tr>
+              <th>Activities</th>
+              <th>Development Points</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @klasses.each do |klass| %>
+              <tr>
+                <td class='activity'>
+                  <div class='klass-name'>
+                    <%= klass.name %>
+                  </div>
+                  <div class='klass-activity-name'>
+                    <span class='label'><%= klass.activity.name %></span>
+                    <span class='label'><%= klass.level %></span>
+                    <span class='label'><%= klass.gender.titleize %></span>
+                  </div>
+                  <div class='partner-name'>
+                    <%= klass.partner.company %>
+                  </div>
+
+                  <div class='timestamp'>
+                    <%= klass.schedules.specific_activity(klass.activity.id).sort_by_datetime_asc.not_archived.first.starts_at.strftime('%b %e, %l:%M %p') %>
+                    -
+                    <%= klass.schedules.specific_activity(klass.activity.id).sort_by_datetime_asc.not_archived.first.ends_at.strftime('%l:%M %p') %>
+                  </div>
+                </td>
+                <td class='txt-align-center'>
+                  <% if klass.development_elements.present? %>
+                    <% klass.klass_elements.each do |klass_element| %>
+                      <div class='development-elements'>
+                        <div class='element-img'>
+
+                          <%= image_tag "#{klass_element.development_element.title.downcase}.png" %>
+                          <span class='element-point'><%= klass_element.points %></span>
+                        </div>
+                        <div class='element-title'>
+                          <%= klass_element.development_element.title %>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to 'Reserve Now', partner_path(klass.partner, klass: klass.id), class: 'gp-button btn', target: '_blank' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="text-center">No activity found.</p>
+      <% end %>
 
     </div>
   </div>

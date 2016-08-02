@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     collection do
       get  'curated'
     end
+
     resources :reservations, only: [:new, :create, :destroy]
   end
 

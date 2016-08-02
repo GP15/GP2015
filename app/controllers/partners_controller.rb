@@ -11,7 +11,7 @@ class PartnersController < ApplicationController
                        .group(:id)
                        .order(:company).limit(6)
   end
-  def loadmore 
+  def loadmore
     @partners = Partner.joins("left join klasses on klasses.partner_id = partners.id")
                        .select("partners.*, max(klasses.reservation_limit) as booking_limit")
                        .includes(:city, :activities)

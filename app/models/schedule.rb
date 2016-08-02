@@ -20,6 +20,7 @@ class Schedule < ActiveRecord::Base
   scope :six_hours_from_now, -> { where('starts_at >= ?', Time.zone.now + 6.hours) }
 
   scope :not_archived, -> { where.not('archived') }
+  scope :specific_activity, -> (activity_id) { where(activity_id: activity_id) }
 
   def self.recent
     where("recurrence in (?) or (ends_at > ?)", ['Daily', 'Monthly', 'Weekly', 'Yearly'], Time.zone.now )
@@ -103,4 +104,5 @@ class Schedule < ActiveRecord::Base
   def self.time_in_minutes(full_time)
     full_time.hour * 60 + full_time.min
   end
+
 end

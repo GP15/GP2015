@@ -4,7 +4,7 @@ class ZipcodesController < ApplicationController
 
   def contact_request
     zip_code = params[:zipcode]
-    zipcode = Zipcode.find_by_pincode zip_code
+    zipcode = Zipcode.active.find_by_pincode zip_code
     ContactRequest.create(email: params[:email], zipcode: params[:zipcode])
     if zipcode
       session[:email]   = params[:email]

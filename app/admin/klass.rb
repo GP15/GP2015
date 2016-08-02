@@ -2,7 +2,7 @@ ActiveAdmin.register Klass do
 
   menu :parent => "Activity Related"
 
-  permit_params :name, :level, :age_start, :age_end, :description, :activity_id, :partner_id, :reservation_limit,
+  permit_params :name, :level, :age_start, :age_end, :description, :activity_id, :partner_id, :city_id, :reservation_limit, :gender,
                 klass_elements_attributes: [:id, :development_element_id, :points, :_destroy]
 
   index do
@@ -31,12 +31,14 @@ ActiveAdmin.register Klass do
     f.inputs "Klass Details" do
       f.input :partner_id,      as: :select, collection: Partner.all.map { |p| [p.company, p.id] }
       f.input :activity_id,     as: :select, collection: Activity.all
+      f.input :city_id,         as: :select, collection: City.all.map { |c| [c.name, c.id] }
       f.input :name
       f.input :level,           as: :select, collection: Klass::LEVEL
       f.input :age_start
       f.input :age_end
       f.input :description
       f.input :reservation_limit
+      f.input :gender
 
       f.inputs 'Development Elements' do
         f.has_many :klass_elements do |pf|

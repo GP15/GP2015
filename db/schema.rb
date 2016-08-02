@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724162003) do
+ActiveRecord::Schema.define(version: 20160802131131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,8 @@ ActiveRecord::Schema.define(version: 20160724162003) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "reservation_limit", default: 0, null: false
+    t.integer  "gender"
+    t.integer  "city_id"
   end
 
   add_index "klasses", ["activity_id"], name: "index_klasses_on_activity_id", using: :btree
@@ -305,8 +307,10 @@ ActiveRecord::Schema.define(version: 20160724162003) do
 
   create_table "zipcodes", force: :cascade do |t|
     t.string   "pincode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "active",     default: false
+    t.integer  "city_id"
   end
 
 end

@@ -91,7 +91,7 @@ ul, ol, dl {list-style-position: outside;}
 ::-webkit-scrollbar-thumb:window-inactive { background:rgba(210,210,210,.4) }
 */
 .animated { -moz-transition-duration: 0s !important;  }
-
+.txt-align-center {text-align: center; }
 /* only ie7, ie9, ie10, ie11 */
 @media screen\0 { input { /* ie7, ie9, ie10, ie11+ only */ padding-bottom: 19px; } }
 /* Remove inner shadow from inputs on mobile iOS */

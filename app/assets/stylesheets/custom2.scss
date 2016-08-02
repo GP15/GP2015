@@ -1701,6 +1701,10 @@ select.form-control {
 	color: #acacac;
 	text-transform: uppercase;
 }
+
+.schedule-table tr.bold td {
+	font-weight: 500;
+}
 .schedule-table td {
 	font-size: 14px;
 	font-weight: 300;

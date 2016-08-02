@@ -701,6 +701,29 @@ header nav #top-nav hr {
 	text-align: center;
 }
 
+.curated-components-div {
+	text-align: center;
+}
+
+.curated-components-div .component {
+	display: inline-block;
+	padding: 20px;
+}
+
+.curated-components-div .component img {
+	width: 50px;
+	height: 50px;
+}
+
+.curated-components-div .component .title {
+	font-weight: 600;
+	font-size: 16px;
+	text-align: center;
+}
+.curated-components-div .component .activities-count {
+	font-size: 12px;
+}
+
 .mobile-app-container .left-container {
 	text-align: center;
 }
