@@ -45,14 +45,14 @@ $(document).ready(function() {
     };
 
 
-    partner_load_count = 0
+    partner_load_count = 1;
     all_loaded = false
     function lastAddedLiveFunc()
     {
 
         if( all_loaded == false ){
           partner_load_count += 1
-          $('div#lastPostsLoader').html('<img src="/assets/pageload.gif" />');
+          $('div#lastPostsLoader').html('<i class="fa fa-spinner fa-pulse fa-5x fa-fw skyblue"></i>');
           $.get("/partners/loadmore?page="+ partner_load_count, function(data){
               if (data != "") {
                 //console.log('add data..');

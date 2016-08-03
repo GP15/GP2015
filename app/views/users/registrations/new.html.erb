@@ -33,10 +33,10 @@
           <%= f.input :password, autocomplete: "off", :placeholder => "Password" %>
           <%= f.input :password_confirmation, autocomplete: "off", :placeholder => "Password Confirmation" %>
         <% end %>
-        <%= f.input :location, input_html: {value: session[:zipcode]} %>
+        <%= f.input :location, input_html: {value: session[:zipcode]}, placeholder: 'Zipcode' %>
         <div class="form-group">
           <%= f.submit "Sign up", class: "btn form-submit-btn gp-button" %>
-          <small>By clicking "Sign Up" you agree to our <%= link_to 'Terms of Use', '#' %> and <%= link_to 'Privacy Policy', '#' %></small>
+          <small>By clicking "Sign Up" you agree to our <%= link_to 'Terms of Use', terms_path, class: 'fw600' %> and <%= link_to 'Privacy Policy', privacy_path, class: 'fw600' %></small>
         </div>
       <% end %>
 

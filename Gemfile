@@ -38,7 +38,8 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'byebug'                    # access debugger console by calling it in code
+  gem 'byebug'
+  gem 'letter_opener'                # access debugger console by calling it in code
   gem 'web-console', '~> 2.0'     # access IRB console on exception pages
   gem 'spring'                    # speeds development by running app in background
   gem 'hirb'                      # Pretty rails console output. Enable in console using "Hirb.enable".

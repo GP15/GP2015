@@ -103,6 +103,9 @@ ul, ol, dl {list-style-position: outside;}
 /* font family */
 .alt-font {font-family: "Oswald",sans-serif !important;}
 .main-font {font-family: 'Open Sans', sans-serif !important;}
+.fw600 { font-weight: 600; }
+
+.skyblue { color: #3eb4e2; }
 
 /* heading */
 h1, h2, h3, h4, h5 { text-transform: uppercase; margin:0; padding:0; color: #000; }

@@ -23,6 +23,8 @@
             %li= link_to "Schedules", schedules_path
             %li= link_to "Partners",  partners_path, :"data-no-turbolink" => true
             %li= link_to "FAQ",       faq_path
+            %li= link_to "Privacy Policy", privacy_path
+            %li= link_to "Terms & Conditions", terms_path
       .col-md-3
         #contact.footer-widget
           %h3.page-heading.footer-title Contact Us
@@ -44,5 +46,4 @@
         %p.copyright-text © Copyright #{Time.now.year} - Genius Pass - All Rights Reserved
       .col-md-6
         %ul.bottom-nav
-          %li= link_to "Privacy Policy", privacy_path
-          %li= link_to "Terms & Conditions", terms_path
+
