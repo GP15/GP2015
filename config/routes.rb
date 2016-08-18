@@ -38,7 +38,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }, controllers: { omniauth_callbacks: "users/omniauth_callbacks",
-                                                                                          registrations: 'users/registrations' }
+                                                                                          registrations: 'users/registrations',
+                                                                                          passwords: 'users/passwords' }
 
   resources :users, only: [:show] do
     collection do

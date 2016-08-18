@@ -9,6 +9,8 @@
 <% end %>
 
 <div class="content home-page white-bg no-padding">
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
+
   <!-- / Section - Main -->
   <div class="section-row" id="section-main">
     <div class="container">

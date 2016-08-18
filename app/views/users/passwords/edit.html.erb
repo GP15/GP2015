@@ -1,0 +1,26 @@
+<% provide(:title, "Password Reset") %>
+<div class="content forgot-password-page">
+
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
+
+  <div class="container">
+    <div class="login-container">
+      <h2>Change Your Password</h2>
+      <br/>
+      <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {  :method => :put, :class  => 'form-container form-horizontal form-group-icon' }, :defaults => { label: false  }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <%= f.hidden_field :reset_password_token %>
+        <%= f.input :password, autofocus: true, autocomplete: "off", :placeholder => "New Password" %>
+        <%= f.input :password_confirmation, autocomplete: "off",     :placeholder => "Confirm New Password" %>
+
+        <div class="form-group">
+          <%= f.submit "Change my password", class: "btn form-submit-btn gp-button" %>
+        </div>
+        <div class="form-meta">
+          Don't have a login? <%= link_to "Sign up", new_user_registration_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

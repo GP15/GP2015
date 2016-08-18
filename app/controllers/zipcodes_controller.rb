@@ -8,7 +8,7 @@ class ZipcodesController < ApplicationController
     ContactRequest.create(email: params[:email], zipcode: params[:zipcode])
     if zipcode
       session[:email]   = params[:email]
-      session[:zipcode] = params[:zipcode]
+      session[:location] = params[:location]
       redirect_to new_user_registration_path
     else
       redirect_to root_path(soon: true)
