@@ -33,7 +33,7 @@ gem 'awesome_print'
 gem 'better_errors', '1.1.0'
 gem 'binding_of_caller', '0.7.2'
 
-gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'            # bundle exec rake doc:rails generates the API under doc/api.
