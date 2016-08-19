@@ -4,5 +4,15 @@ ActiveAdmin.register Zipcode do
 
   permit_params :pincode, :city_id, :active
 
+  index do
+    selectable_column
+    column :pincode
+    column :city_id do |zipcode|
+      link_to zipcode.city.name, admin_city_path(zipcode.city)
+    end
+    column :active
+    actions
+  end
+
 
 end
