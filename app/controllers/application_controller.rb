@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   # before_filter :set_time_zone
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :get_site_info
   # before_action :check_credit_card_added
 
   protected
@@ -58,6 +59,17 @@ class ApplicationController < ActionController::Base
 
   def not_controller_with_action(controller, action)
     !(params[:controller].eql?(controller) && (action.present? ? params[:action].eql?(action) : true))
+  end
+
+  def get_site_info
+    info = SiteInfo.first
+    if info.present?
+      @support_email = info.support_email
+      @partner_email = info.partner_email
+      @facebook_link = info.facebook
+      @twitter_link = info.twitter
+      @instagram_link = info.instagram
+    end
   end
 
 end

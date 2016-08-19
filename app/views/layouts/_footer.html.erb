@@ -1,0 +1,78 @@
+<div class="footer-widget-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="footer-widget" id="about">
+          <h3 class="page-heading footer-title primary">
+            Genius
+            <strong>Pass</strong>
+          </h3>
+          <p class="footer-content">GeniusPass is the first membership created exclusively for children to provide them unlimited access to variety of top studios and facilities. One single pass that is going to transform the lifestyle of children to a brighter future generation.</p>
+        </div>
+        <div class="footer-widget" id="social-media">
+          <div class="social-media-icon-list">
+            <a class="social-media-icon facebook" href="<%= @facebook_link || 'https://www.facebook.com/GeniusPass-Malaysia-417492548424501' %>" target="_blank" title="Like Us On Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+            <a class="social-media-icon twitter" href="<%= @twitter_link || 'https://twitter.com/GeniusPass' %>" target="_blank" title="Follow Us On Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a class="social-media-icon instagram" href="<%= @instagram_link || 'https://www.instagram.com/geniuspass_malaysia' %>" target="_blank" title="Follow Us On Instagram">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-widget" id="quick-link">
+          <h3 class="page-heading footer-title">Learn More</h3>
+          <ul class="footer-nav">
+            <li>
+              <%= link_to "FAQ",       faq_path %>
+            </li>
+            <li>
+              <%= link_to "Privacy Policy", privacy_path %>
+            </li>
+            <li>
+              <%= link_to "Terms & Conditions", terms_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="footer-widget" id="contact">
+          <h3 class="page-heading footer-title">Contact Us</h3>
+          <div class="contact-info">
+            <div class="contact-details contact-email">
+              <i class="fa fa-envelope-o"></i>
+              <a class="contact-text" href="mailto:<%= @support_email || 'support@geniuspass.com' %>" title="Contact via email"><%= @support_email || 'support@geniuspass.com' %></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-widget" id="contact-partner">
+          <h3 class="page-heading footer-title">Interested to Partner?</h3>
+          <div class="contact-info">
+            <div class="contact-details contact-email-partner">
+              <i class="fa fa-envelope-o"></i>
+              <a class="contact-text" href="mailto:<%= @partner_email || 'partners@geniuspass.com' %>" title="Contact via email"><%= @partner_email || 'partners@geniuspass.com' %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-left-not-xs text-left-not-sm text-center-xs text-center-sm">
+        <p class="copyright-text"> © Copyright #{Time.now.year} - Genius Pass - All Rights Reserved</p>
+      </div>
+      <div class="col-md-6">
+        <ul class="bottom-nav"></ul>
+      </div>
+    </div>
+  </div>
+</footer>
+

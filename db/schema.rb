@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818043819) do
+ActiveRecord::Schema.define(version: 20160819055542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -257,6 +257,16 @@ ActiveRecord::Schema.define(version: 20160818043819) do
   add_index "schedules", ["klass_id"], name: "index_schedules_on_klass_id", using: :btree
   add_index "schedules", ["partner_id"], name: "index_schedules_on_partner_id", using: :btree
   add_index "schedules", ["starts_at", "ends_at"], name: "index_schedules_on_starts_at_and_ends_at", using: :btree
+
+  create_table "site_infos", force: :cascade do |t|
+    t.string   "support_email"
+    t.string   "partner_email"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "instagram"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "static_page_contents", force: :cascade do |t|
     t.string   "key"

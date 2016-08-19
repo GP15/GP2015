@@ -28,16 +28,16 @@
             - else
               / Main Navigation
               %ul.main-nav
-                %li{:class => current_path(root_path)}
-                  = link_to "Home", root_path
-                %li{:class => current_path(partners_path)}
-                  = link_to "Partners",  partners_path, :"data-no-turbolink" => true
-                %li{:class => current_path(schedules_path)}
-                  = link_to "Schedules", schedules_path
+                / %li{:class => current_path(root_path)}
+                /   = link_to "Home", root_path
+                / %li{:class => current_path(partners_path)}
+                /   = link_to "Partners",  partners_path, :"data-no-turbolink" => true
+                / %li{:class => current_path(schedules_path)}
+                /   = link_to "Schedules", schedules_path
               %hr/
               / Login & Sign Up Button
               .button-menu
-                = link_to new_user_registration_path, id: "signup", class: "btn-menu" do
-                  %span{"data-title" => "Get Started"} Get Started
+                / = link_to new_user_registration_path, id: "signup", class: "btn-menu" do
+                /   %span{"data-title" => "Get Started"} Get Started
                 = link_to new_user_session_path, id: "login", class: "btn-menu secondary" do
                   %span{"data-title" => "Login"} Login
