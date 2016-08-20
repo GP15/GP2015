@@ -27,6 +27,7 @@
 //= require jquery.steps.min
 //= require jquery_nested_form
 //= require onboard
+//= require add_child
 //= require gmaps/google
 
 

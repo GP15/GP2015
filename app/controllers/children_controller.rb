@@ -6,6 +6,7 @@ class ChildrenController < ApplicationController
   # GET /users/:user_id/children/new
   def new
     @child = @user.children.build
+    @questions = (Question.left_brain.sample(5) + Question.right_brain.sample(5)).sample(10)
   end
 
   # POST /users/:user_id/children
@@ -13,9 +14,9 @@ class ChildrenController < ApplicationController
     @child = @user.children.build(child_params)
 
     if @child.save
-      redirect_to @child, notice: "#{@child.first_name} added to children list."
+      render json: { success: true, child_id: @child.id }
     else
-      render :new
+      render json: { error: true, message: "Please complete all the details." }
     end
   end
 
@@ -102,6 +103,6 @@ class ChildrenController < ApplicationController
   end
 
   def child_params
-    params.require(:child).permit(:first_name, :last_name, :birth_year)
+    params.require(:child).permit(:first_name, :last_name, :birth_year, :gender)
   end
 end

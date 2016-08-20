@@ -16,7 +16,7 @@
               View <%= child.full_name %>
             <% end %>
           <% end %>
-          <%= link_to 'Add Child', '#', class: 'gp-button btn' %>
+          <%= link_to 'Add Child', new_user_child_path(current_user), class: 'gp-button btn' %>
         <% end %>
         </p>
       </div>

@@ -1,0 +1,92 @@
+<% provide(:title, "Add Child") %>
+<% provide(:page_title_bg, asset_path('page-bg-dashboard.jpg')) %>
+
+<div class="content dashboard-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Add A Child' } %>
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" id="main">
+        <div class='content-main'>
+
+          <div id="add-child-container">
+            <h3>Add Child</h3>
+            <section class="container addchild-div">
+              <%= form_for @child, url: user_children_url(current_user), html: { id: 'add-child-form' } do |f| %>
+
+                <div class="form-group col-sm-6">
+                  <%= f.label 'First Name', class: "control-label" %>
+                  <%= f.text_field :first_name, class: 'form-control', required: true %>
+                </div>
+                <div class="form-group col-sm-6">
+                  <%= f.label 'Last Name', class: "control-label" %>
+                  <%= f.text_field :last_name, class: 'form-control', required: true %>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-sm-12">
+                    <div class="form-group col-sm-6">
+                      <%= f.label 'Gender', class: "control-label" %>
+                      <%= f.select :gender, ['male', 'female'], { include_blank: true, required: true }, class: 'form-control' %>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                      <%= f.label 'Birth Year', class: "control-label" %>
+                      <%= f.select :birth_year, (Date.current.year - 17)..(Date.current.year - 4), {}, {class: "form-control required"} %>
+                    </div>
+                  </div>
+                </div>
+                <div id='add-child-status'></div>
+              <% end %>
+              <div class="clearfix"></div>
+            </section>
+
+            <h3>Child Assessment</h3>
+            <section class="container assessement-div">
+              <% if @questions.present? %>
+                <% @questions.each do |question| %>
+                  <div class=''>
+                    <%= question.title %>
+                    <div>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary answer-btn gp-button" data-brain="<%= yes_btn_data(question) %>">
+                          <input type="radio" name="options[]" autocomplete="off" value="<%= yes_btn_data(question) %>"> Yes
+                        </label>
+                        <label class="btn btn-primary answer-btn gp-button" data-brain="<%= no_btn_data(question) %>">
+                          <input type="radio" name="options[]" autocomplete="off" value="<%= no_btn_data(question) %>"> No
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </section>
+
+            <h3>Complete</h3>
+            <section class="container assessement-div">
+
+              <div id="child_info_div">
+                <div class='brain-img'>
+                  <%= image_tag 'brain_image.png' %>
+                </div>
+
+                <div class="brain-result">
+                  <span id='left-brain-percent'></span>
+                  <span id='right-brain-percent'></span>
+                </div>
+
+                <div class="info">
+                  <p>Your son / daughter is <span class='brain-result-text'>60% left</span> brained. We have curated the best activities for HIM!</p>
+                  <%= link_to 'View Personalize Activities Now', curated_schedules_path, class: 'btn redirect-btn', id: 'curated-child-btn' %>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
