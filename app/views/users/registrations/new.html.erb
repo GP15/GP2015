@@ -7,8 +7,10 @@
     <div class="signup-container">
       <h1>LET'S GET STARTED</h1>
 
-      <%= link_to user_omniauth_authorize_path('facebook'), class: 'btn btn-block fb-sign-up-btn' do %>
-        <i class="fa fa-facebook-official" aria-hidden="true"></i> LOGIN WITH FACEBOOK
+      <% unless params[:step] == 'complete' %>
+        <%= link_to user_omniauth_authorize_path('facebook'), class: 'btn btn-block fb-sign-up-btn' do %>
+          <i class="fa fa-facebook-official" aria-hidden="true"></i> LOGIN WITH FACEBOOK
+        <% end %>
       <% end %>
 
       <div class='horizontal-line'>

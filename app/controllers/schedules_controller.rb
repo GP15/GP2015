@@ -51,53 +51,6 @@ class SchedulesController < ApplicationController
     #@date = Date.parse(@date).strftime("%A, %d %B %Y")
   end
 
-  # filters
-  # - which partner
-  # - which activity
-  # - age, gender, zipcode
-  # - curation schedules have equally points
-  # - each element  (7) will have different points
-  # - each element maximum 3 klass
-
-  # Klass A - [A, B, C]
-  # Klass B - [A, D, E]
-  def curated
-    @children = current_user.children
-
-    zipcode = Zipcode.find_by_pincode(current_user.location)
-
-    if zipcode.present?
-      city = zipcode.city
-
-      # Sort the ages of children
-      ages = @children.pluck(:birth_year).map { |y| Time.now.year - y }.sort
-      genders = @children.pluck(:gender).uniq
-      genders.push(2) if genders.size == 2  # If there are 2, then inlcude unisex as well
-
-      @klasses = Klass.non_archived_schedules
-                      .includes(:activity, :schedules, :partner, :development_elements, klass_elements: [:development_element])
-                      .where("klasses.age_start >= ? and klasses.age_end <= ? and klasses.city_id = ? and klasses.gender in (?)", ages.first, ages.last, city.id, genders)
-
-      # Get same amount of points based on all different 7 elements
-      # Curated 15 Klass based on different development elements
-      if @klasses.present?
-        @klasses.each do |klass|
-          klass.klass_elements.each do |element|
-            if instance_variable_get("@#{element.development_element.title.downcase}_count").present?
-              element_count = instance_variable_get("@#{element.development_element.title.downcase}_count")
-              count = element_count + 1
-              instance_variable_set("@#{element.development_element.title.downcase}_count",  count)
-            else
-              instance_variable_set("@#{element.development_element.title.downcase}_count", 1)
-            end
-          end
-        end
-      end
-    else
-      redirect_to schedules_path, notice: 'Browse through our latest schedules now!'
-    end
-  end
-
   def time_in_minutes(full_time)
     full_time.hour * 60 + full_time.min
   end

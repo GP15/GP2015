@@ -1,8 +1,7 @@
 $(document).ready(function()
 {
   var answers = [];
-  var left_brains = [];
-  var right_brains = [];
+
 
   if($('#onboard-container').length >0){
 
@@ -42,6 +41,8 @@ $(document).ready(function()
                   $("#add-child-form :input").attr("disabled", true);
                   $('.remove_nested_fields, .add_nested_fields').remove();
                   $('#add-child-status').attr('data-status', 'done');
+
+                  $('#curated-child-btn').attr('href', '/children/' + data.child_id + '/curated');
                 }else{
                   alert(data.message);
                 }
@@ -51,6 +52,9 @@ $(document).ready(function()
           return valid;
         }else if(currentIndex == 2){
           var inputs = $('.btn-group .btn.btn-primary.answer-btn.gp-button.active input[name="options[]"]');
+          right_brains = [];
+          left_brains = [];
+
           if(inputs.length > 0 && inputs.length < 10){
             alert("Please continue your assessment since you are already started :)");
             return false;
@@ -70,9 +74,9 @@ $(document).ready(function()
               $('#left-brain-percent').html("Left " + (left_brains.length * 10) + "%");
               $('#right-brain-percent').html((right_brains.length * 10) + "% " + "Right");
 
-              if(right_brains > left_brains){
+              if(right_brains.length > left_brains.length){
                 $('.brain-result-text').html(right_brains.length * 10 + "% right");
-              }else if(right_brains < left_brains){
+              }else if(right_brains.length < left_brains.length){
                 $('.brain-result-text').html(left_brains.length * 10 + "% left");
               }else{
                 $('.brain-result-text').html("50% left and 50% right");

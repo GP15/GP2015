@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @user.attributes = add_child_params
     if @user.save
       puts @user.errors.inspect
-      render json: { success: true }
+      render json: { success: true, child_id: @user.children.last.id }
     else
       puts @user.errors.inspect
       render json: { error: true, message: "Please complete all the details." }

@@ -58,6 +58,10 @@ Rails.application.routes.draw do
   resources :children, only: [:show] do
     ## subscriptions ##
     resources :subscriptions, only: [:new, :create, :show, :destroy]
+
+    member do
+      get  'curated'
+    end
   end
 
   resources :partners do

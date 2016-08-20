@@ -14,6 +14,8 @@
             <h3>Curation Informations</h3>
             <section class="container curation-div">
               <p>Bla Bla Bla </p>
+              <%= controller.action_name %>
+              <%= controller.controller_name %>
             </section>
 
             <h3>Add Child</h3>
@@ -49,8 +51,9 @@
                   </div>
                 <% end %>
                 <div id='add-child-status'></div>
-
-                <%= f.link_to_add "Add Child", :children, class: 'btn gp-button pull-right' %>
+                <!--
+                  <%= f.link_to_add "Add Child", :children, class: 'btn gp-button pull-right' %>
+                -->
               <% end %>
               <div class="clearfix"></div>
             </section>
@@ -103,7 +106,7 @@
 
                 <div class="info">
                   <p>Your son / daughter is <span class='brain-result-text'>60% left</span> brained. We have curated the best activities for HIM!</p>
-                  <%= link_to 'View Personalize Activities Now', curated_schedules_path, class: 'btn redirect-btn' %>
+                  <%= link_to 'View Personalize Activities Now', curated_schedules_path, class: 'btn redirect-btn', id: 'curated-child-btn' %>
                 </div>
               </div>
             </section>
