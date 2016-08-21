@@ -3,4 +3,5 @@
 .content.policy-page.white-bg
   = render partial: 'layouts/page_title', locals: { page_title: 'Privacy Policy' }
   .container
-    = StaticPageContent.find_by_key("PrivacyPolicy").value.html_safe
+    - if StaticPageContent.find_by_key("PrivacyPolicy").present?
+      = StaticPageContent.find_by_key("PrivacyPolicy").value.html_safe

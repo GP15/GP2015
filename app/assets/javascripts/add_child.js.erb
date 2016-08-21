@@ -42,7 +42,9 @@ $(document).ready(function()
                   $('.remove_nested_fields, .add_nested_fields').remove();
                   $('#add-child-status').attr('data-status', 'done');
 
-                  $('#curated-child-btn').attr('href', '/children/' + data.child_id + '/curated');
+                  $('.redirect-btn').each(function(){
+                    $(this).attr('href', '/children/' + data.child_id + '/curated');
+                  });
                 }else{
                   alert(data.message);
                 }

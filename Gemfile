@@ -28,10 +28,12 @@ gem "nested_form"
 gem 'omniauth-facebook', '3.0.0'
 
 gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'
 gem 'kaminari', '0.17.0'
 gem 'awesome_print'
 gem 'better_errors', '1.1.0'
 gem 'binding_of_caller', '0.7.2'
+
 
 gem 'delayed_job_active_record'
 

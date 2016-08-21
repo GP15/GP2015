@@ -81,4 +81,39 @@ hr {
 }
 
 
+/* user#show */
+.sidebar-children {
+  background: white;
+    -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
 
+.children-list ul.nav > li {
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  margin: 0;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.children-list ul.nav > li.active,
+.children-list ul.nav > li:hover {
+  background: #3eb4e2;
+  color: white;
+}
+.children-list ul.nav > li .fa {
+  position: absolute;
+  top: 40%;
+  right: 0px;
+}
+
+.children-list ul.nav > li a {
+  font-weight: 500;
+}

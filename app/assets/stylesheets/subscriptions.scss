@@ -154,7 +154,10 @@
 .package-promo-code .form-container .form-group .form-submit-btn:hover, .package-promo-code .form-container .form-group .form-submit-btn:active { background-color: #3eb4e2; }
 
 /* Package Subscription */
-#package-subscription #dropin { margin-top: 50px; }
+#package-subscription #dropin {
+	border: 20px solid #e1e1e1;
+	border-radius: 5px;
+}
 
 /* Basic Package Link */
 .basic-package-link {
@@ -169,6 +172,9 @@
 	display: block;
 }
 
+#package-subscription .modal-footer #suscribe_btn {
+	border-radius: 5px;
+}
 
 /* Custom fixes */
 .collapse.in

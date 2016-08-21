@@ -65,8 +65,15 @@
 
             <h3>Complete</h3>
             <section class="container assessement-div">
+              <div id="complete-redirect" class="hide">
+                <div class="info">
+                  <p>You created a new child successfully. Check out our personalize activities now.</p>
 
-              <div id="child_info_div">
+                  <%= link_to 'View Personalize Activities Now', schedules_path, class: 'btn redirect-btn' %>
+                </div>
+              </div>
+
+              <div id="child_info_div" class='hide'>
                 <div class='brain-img'>
                   <%= image_tag 'brain_image.png' %>
                 </div>

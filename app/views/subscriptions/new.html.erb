@@ -111,20 +111,19 @@
           </button>
           <h4 class="modal-title">Subscribe Your Plan</h4>
         </div>
-        <div class="modal-body">
-          <%= form_for @subscription, url: child_subscriptions_path(@child) do |f| %>
+        <%= form_for @subscription, url: child_subscriptions_path(@child) do |f| %>
+          <div class="modal-body">
             <div class="field">
               <%= f.hidden_field :plan_id %>
               <%= f.hidden_field :promo_code %>
               <%= f.hidden_field :subscription_type_id %>
               <div id="dropin"></div>
             </div>
-            <%= f.submit "Subscribe", class: "btn btn-success", :id => "suscribe_btn" %>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button class="gp-button default" data-dismiss="modal" type="button">Cancel</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit "Confirm Payment", class: "btn btn-danger", :id => "suscribe_btn" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

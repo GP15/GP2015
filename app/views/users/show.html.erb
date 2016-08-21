@@ -7,7 +7,31 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <%= render 'sidebar' %>
+        <div class='sidebar-children'>
+          <div class='children-list'>
+            <h3>Children</h3>
+            <ul class="nav">
+
+              <% @children = current_user.children %>
+              <% if @children.present? %>
+                <% @children.each_with_index do |child, index| %>
+                  <% if index.zero? && params[:child_id].blank? %>
+                    <li class='active'>
+                  <% elsif child.id == params[:child_id].to_i %>
+                    <li class='active'>
+                  <% else %>
+                    <li>
+                  <% end %>
+                    <%= link_to user_path(child_id: child.id), class: 'btn' do %>
+                      <%= child.full_name %>
+                    <% end %>
+                    <i class='fa fa-lg fa-angle-double-right'></i>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="col-md-9" id="main">
         <%= render 'main' %>

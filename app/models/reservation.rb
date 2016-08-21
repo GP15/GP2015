@@ -8,6 +8,7 @@ class Reservation < ActiveRecord::Base
 
   validates_presence_of :child_id
 
+  scope :child, ->(child_id) { where(child_id: child_id) }
   scope :upcoming,    -> { where('schedules.ends_at >= ?', Time.zone.now) }
   scope :in_the_past, -> { where('schedules.ends_at < ?',  Time.zone.now) }
   scope :this_month,  -> { where("created_at > ? AND created_at < ?",
