@@ -1,0 +1,25 @@
+<% if schedule.klass.present? %>
+<tr>
+  <td class="activity-col" data-title="Activities">
+    <%= schedule.klass.name %>
+  </td>
+  <td class="studio-col" data-title="Studio">
+    <%= link_to schedule.partner.company, partner_path(schedule.partner) if schedule.partner %>
+  </td>
+  <td class="location" data-title="Location">
+    <%= schedule.city.name if schedule.city %>
+  </td>
+  <td class="time-col" data-title="Time">
+    <%= "#{format_time(schedule.starts_at)} - #{format_time(schedule.ends_at)}" %>
+  </td>
+  <td class="age-col" data-title="Age">
+    <%= "#{schedule.klass.age_start} - #{schedule.klass.age_end}" %>
+  </td>
+  <td class="difficulty-col" data-title="Difficulty">
+    <%= "#{schedule.klass.level if schedule.klass}" %>
+  </td>
+  <td class="availability-col">
+    <%= reserve_button(schedule) %>
+  </td>
+</tr>
+<% end %>
