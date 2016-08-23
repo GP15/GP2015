@@ -31,7 +31,6 @@
 //= require gmaps/google
 
 
-
 $(document).ready(function()
 {
   var params = getSearchParameters();
