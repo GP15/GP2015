@@ -28,7 +28,7 @@ gem "nested_form"
 gem 'omniauth-facebook', '3.0.0'
 
 gem 'activeadmin', '~> 1.0.0.pre4'
-gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'
+gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'
 gem 'kaminari', '0.17.0'
 gem 'awesome_print'
 gem 'better_errors', '1.1.0'
