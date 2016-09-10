@@ -18,9 +18,11 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   get 'comming_soon', to: 'static_pages#comming_soon', as: 'comming_soon'
-  get 'faq',     to: 'static_pages#faq'
-  get 'terms',   to: 'static_pages#terms'
-  get 'privacy', to: 'static_pages#privacy'
+  get 'faq',      to: 'static_pages#faq'
+  get 'terms',    to: 'static_pages#terms'
+  get 'privacy',  to: 'static_pages#privacy'
+  get 'become-partner', to: 'static_pages#partners', as: 'partner_signup'
+  post 'become-partner', to: 'static_pages#partners'
 
   post 'charged_successfully', to: 'subscriptions#charged_successfully'
 
@@ -75,6 +77,12 @@ Rails.application.routes.draw do
 
   resources :cities, path: 'city', except: [:index, :show]
   resources :activities, except: [:index, :show]
+
+  resources :rewards, only: [:index] do
+    member do
+      get   'claim'
+    end
+  end
 
   # Admin's Devise settings
   # devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout' }

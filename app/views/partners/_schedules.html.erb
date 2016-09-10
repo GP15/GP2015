@@ -36,7 +36,11 @@
             <%= "#{schedule.klass.age_start} - #{schedule.klass.age_end}" %>
           </td>
           <td class="difficulty-col" data-title="Difficulty">
-            <%= schedule.klass.level if schedule.klass %>
+            <% if schedule.klass.present? && schedule.klass.level.present? %>
+              <%= schedule.klass.level %>
+            <% else %>
+              N / A
+            <% end %>
           </td>
           <td>
             <%= schedule.recurrence %>

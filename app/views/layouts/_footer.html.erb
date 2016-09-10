@@ -36,6 +36,9 @@
             <li>
               <%= link_to "Terms & Conditions", terms_path %>
             </li>
+            <li>
+              <%= link_to "Sign Up as Partner", partner_signup_path %>
+            </li>
           </ul>
         </div>
       </div>
@@ -67,7 +70,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 text-left-not-xs text-left-not-sm text-center-xs text-center-sm">
-        <p class="copyright-text"> © Copyright #{Time.now.year} - Genius Pass - All Rights Reserved</p>
+        <p class="copyright-text"> © Copyright <%= Time.now.year %> - Genius Pass - All Rights Reserved</p>
       </div>
       <div class="col-md-6">
         <ul class="bottom-nav"></ul>

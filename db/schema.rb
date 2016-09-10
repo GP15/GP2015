@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819055542) do
+ActiveRecord::Schema.define(version: 20160910054421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -188,6 +188,19 @@ ActiveRecord::Schema.define(version: 20160819055542) do
 
   add_index "partners", ["city_id"], name: "index_partners_on_city_id", using: :btree
 
+  create_table "partnership_sign_ups", force: :cascade do |t|
+    t.string   "city"
+    t.string   "company_name"
+    t.string   "website"
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address"
+    t.text     "comments"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "promo_codes", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
@@ -226,15 +239,33 @@ ActiveRecord::Schema.define(version: 20160819055542) do
     t.integer  "child_id"
     t.integer  "schedule_id"
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "deleted",     default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "deleted",       default: false
     t.datetime "deleted_at"
+    t.boolean  "points_earned", default: false
   end
 
   add_index "reservations", ["child_id", "schedule_id"], name: "index_reservations_on_child_id_and_schedule_id", using: :btree
   add_index "reservations", ["schedule_id"], name: "index_reservations_on_schedule_id", using: :btree
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
+
+  create_table "reward_points", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "point"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "reservation_id"
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "point",       default: 0
+    t.string   "image"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "schedules", force: :cascade do |t|
     t.integer  "quantity"
@@ -326,6 +357,8 @@ ActiveRecord::Schema.define(version: 20160819055542) do
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
+    t.integer  "reward_points",                     default: 0
+    t.integer  "claimed_points",                    default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

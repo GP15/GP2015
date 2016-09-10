@@ -17,7 +17,17 @@ module SchedulesHelper
     h = Hash.new
     #h["Today"] = Time.zone.today.strftime("%d-%m-%Y")
     h["Tomorrow"] = Time.zone.tomorrow.strftime("%d-%m-%Y")
-    (2...7).map{ |i| h[i.days.from_now.strftime("%d %b")] = i.days.from_now.strftime("%d-%m-%Y")}
+    if Time.now.end_of_week.month != Time.now.month
+      # remaining days + next month days
+      remaining_days = (Time.now.end_of_month.to_date - Time.now.to_date).to_i
+      next_month_days = (Time.now.next_month.end_of_month.to_date - Time.now.next_month.beginning_of_month.to_date).to_i + 1
+      total_days = remaining_days + next_month_days
+
+      (2...total_days).map{ |i| h[i.days.from_now.strftime("%d %b")] = i.days.from_now.strftime("%d-%m-%Y")}
+    else
+      left_days = (Time.now.end_of_month.to_date - Time.now.to_date).to_i + 1
+      (2...left_days).map{ |i| h[i.days.from_now.strftime("%d %b")] = i.days.from_now.strftime("%d-%m-%Y")}
+    end
     h
   end
 

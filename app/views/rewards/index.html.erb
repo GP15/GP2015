@@ -1,0 +1,61 @@
+<% provide(:title, "Rewards") %>
+<% provide(:page_title_bg, asset_path('bg6.jpg')) %>
+
+
+<div class="content profile-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Rewards' } %>
+  <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
+  <div class="container">
+    <div class="row">
+      <% if user_signed_in? %>
+        <div class="alert alert-info alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Hi <%= current_user.name %> ! Your current reward points now : <strong><%= current_user.reward_points %></strong>
+        </div>
+      <% end %>
+
+      <% if @rewards.present? %>
+        <% @rewards.each do |reward| %>
+
+          <div class='col-md-6'>
+            <div class='reward-div'>
+              <div class='col-md-6 cover-pic'>
+                <%= image_tag reward.image.url %>
+              </div>
+
+              <div class='col-md-6 details'>
+                <div class='title'><%= reward.title %></div>
+                <div class='description'><%= truncate(reward.description, length: 100) { link_to "Read More", "#", class: 'gp-link reward-readmore', data: { description: reward.description, title: reward.title, point: reward.point }  } %></div>
+                <div class='point-label'>Redemption Points: <%= reward.point %></div>
+                <div class='redeem-btn-div'>
+                  <% if user_signed_in? %>
+                    <%= link_to 'Redeem This Reward', claim_reward_path(reward), class: 'btn gp-button', data: { confirm: 'Are you sure you want to redeem this reward? We will notify you for your redemption.' } %>
+                  <% else %>
+                    <%= link_to 'Redeem This Reward', new_user_session_path, class: 'btn gp-button' %>
+                  <% end %>
+                </div>
+              </div>
+              <div class='clearfix'></div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="reward-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="reward-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p id='reward-description'>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,18 +5,51 @@ class PartnersController < ApplicationController
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
 
   def index
-    @partners = Partner.joins("left join klasses on klasses.partner_id = partners.id")
-                       .select("partners.*, max(klasses.reservation_limit) as booking_limit")
-                       .includes(:city, :activities)
-                       .group(:id)
-                       .order(:company).limit(6)
+    respond_to do |format|
+      format.html do
+        if params[:lat].present? && params[:lng].present?
+          distance = 20
+          center_point = [params[:lat], params[:lng]]
+          box = Geocoder::Calculations.bounding_box(center_point, distance)
+          @partners = Partner.within_bounding_box(box)
+                             .joins("left join klasses on klasses.partner_id = partners.id")
+                             .select("partners.*, max(klasses.reservation_limit) as booking_limit")
+                             .includes(:city, :activities)
+                             .group(:id)
+                             .order(:company).limit(6)
+        else
+          @partners = Partner.joins("left join klasses on klasses.partner_id = partners.id")
+                             .select("partners.*, max(klasses.reservation_limit) as booking_limit")
+                             .includes(:city, :activities)
+                             .group(:id)
+                             .order(:company).limit(6)
+        end
+      end
+
+      format.json do
+        @partners = Partner.where.not(latitude: nil, longitude: nil).select(:latitude, :longitude)
+      end
+    end
   end
+
   def loadmore
-    @partners = Partner.joins("left join klasses on klasses.partner_id = partners.id")
-                       .select("partners.*, max(klasses.reservation_limit) as booking_limit")
-                       .includes(:city, :activities)
-                       .group("partners.id")
-                       .order(:company).paginate(page: params[:page], per_page: 6)
+    if params[:lat].present? && params[:lng].present?
+      distance = 20
+      center_point = [params[:lat], params[:lng]]
+      box = Geocoder::Calculations.bounding_box(center_point, distance)
+      @partners = Partner.within_bounding_box(box)
+                         .joins("left join klasses on klasses.partner_id = partners.id")
+                         .select("partners.*, max(klasses.reservation_limit) as booking_limit")
+                         .includes(:city, :activities)
+                         .group("partners.id")
+                         .order(:company).paginate(page: params[:page], per_page: 6)
+    else
+      @partners = Partner.joins("left join klasses on klasses.partner_id = partners.id")
+                         .select("partners.*, max(klasses.reservation_limit) as booking_limit")
+                         .includes(:city, :activities)
+                         .group("partners.id")
+                         .order(:company).paginate(page: params[:page], per_page: 6)
+    end
     render layout: false
   end
 

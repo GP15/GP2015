@@ -23,3 +23,35 @@
   font-size: 15px;
   font-family: 'Roboto', sans-serif;
 }
+
+#partner-marker-map {
+  height: 350px;
+  border: 1px solid rgba(95, 95, 95, 0.15);
+  padding: 0px 0px 5px 0px;
+  margin-top: 20px;
+  background-color: #FFF;
+  box-shadow: 0px 2px 3px 0px rgba(222, 222, 222, 0.3);
+}
+
+#partner-map {
+  padding: 0 !important;
+  background-color: rgba(240, 240, 240, 0.6);
+}
+
+#partner-map-container {
+  position: relative;
+}
+#search-form-div {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+}
+
+#search-form-div .input-group {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#search-form-div .input-group .input-group-btn {
+  font-size: initial;
+}

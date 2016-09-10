@@ -1,0 +1,110 @@
+<% provide(:title, "Reserve a class for #{@schedule.klass.name}") %>
+<% provide(:page_title_bg, asset_path('page-bg-reservation.jpg')) %>
+<div class="content reservation-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Reservation' } %>
+  <%= render 'shared/notice', locals: { flash: flash } if flash[:notice].present? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <!--%p.text-center
+        -->
+        <!--  = attendees(@schedule.reservations.count, @schedule.quantity)
+        -->
+        <div class="content-main">
+          <%= render 'shared/schedule' %>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <!--- if @schedule.klass.reservation_limit > 0
+        -->
+        <!--  = render 'limit_notice'
+        -->
+        <div class="reservation-list content-main">
+          <% if @reservations.present? %>
+            <h3>Reservations</h3>
+            <table class="table reservation-list-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="date">Created on</th>
+                  <% if Time.zone.now <= @schedule.starts_at %>
+                    <th></th>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody>
+                <%= render :partial => 'reservation', :collection => @reservations %>
+              </tbody>
+            </table>
+            <% if Time.zone.now < @schedule.ends_at %>
+              <div class="schedule-notes margin-two-six">
+                <span>Note:</span>
+                <p>A reservation can't be canceled once it's passed 11:59pm before the schedule starts next day. Non-attendance for a confirmed reservation will be charged RM20.</p>
+              </div>
+            <% end %>
+          <% end %>
+          <%= render 'shared/inline_error' if flash[:error].present? %>
+          <% if @children.present? && (Time.zone.now <= @schedule.starts_at - 6.hours) && (@schedule.reservations.count < @schedule.quantity) %>
+            <%= render 'form' %>
+          <% elsif Time.zone.now.between?(@schedule.starts_at - 6.hours, @schedule.starts_at) %>
+            <div class="schedule-notes">
+              <p>A class starting less than 6 hours from now can't be reserved for additional children.</p>
+            </div>
+          <% elsif Time.zone.now >= @schedule.starts_at - 6.hours %>
+            <div class="schedule-notes">
+              <span>Note:</span>
+              <p>This class is past the scheduled time and can't be reserved anymore.</p>
+            </div>
+          <% end %>
+          <% if @reservations.empty? && @children.empty? %>
+            <%= render 'eligibility_notice' %>
+          <% end %>
+          <p class="notice">
+            <%= "You have #{current_user.reservation_allowed_for_partner(@schedule.partner)} out of #{@schedule.partner.user_allowed} sessions left for this month #{@schedule.partner.company}." %>
+          </p>
+          <% if current_user.children.present? && current_user.should_upgrade?(current_user.children.first.id) %>
+            <%= link_to "Upgrade Now", new_child_subscription_path(current_user.children.first.id), :class => "btn btn-danger col-md-12", :id => "upgrade" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% if params[:convert].present? %>
+  <div class="modal fade" id="reward-popout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <br>
+        <div class="modal-body">
+          <h2 class='txt-align-center'>Congratulation!</h2>
+          <br>
+          <% @schedule.klass.klass_elements.each do |element| %>
+            <div class="col-md-4 reward-popout-div">
+              <div class='development-elements'>
+                <div class='element-img'>
+                  <%= image_tag "#{element.development_element.title.downcase}.png" %>
+                </div>
+                <div class='element-title'>
+                  <strong><%= element.development_element.title %></strong>
+                  <br>(<%= element.points %> Points)
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <div class='clearfix'></div>
+          <br>
+          <p>
+            Your total reward points (<%= @schedule.klass.klass_elements.map(&:points).inject(:+) %>) will be deliver after you attended the class. Keep it up!
+          </p>
+
+        </div>
+        <div class="modal-footer">
+          <%= link_to 'Ok, I got it!!!', '#', class: 'btn btn-primary gp-button', data: { dismiss: 'modal' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

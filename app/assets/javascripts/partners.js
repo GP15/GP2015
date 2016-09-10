@@ -53,7 +53,7 @@ $(document).ready(function() {
         if( all_loaded == false ){
           partner_load_count += 1
           $('div#lastPostsLoader').html('<i class="fa fa-spinner fa-pulse fa-5x fa-fw skyblue"></i>');
-          $.get("/partners/loadmore?page="+ partner_load_count, function(data){
+          $.get("/partners/loadmore?page="+ partner_load_count + '&lat=' + $('#lat').val() + '&lng=' + $('#lng').val(), function(data){
               if (data != "") {
                 //console.log('add data..');
                 $(".partner-grid").append(data);

@@ -1,0 +1,15 @@
+<div class='content-sidebar'>
+
+  <div class="sidebar-widget">
+    <h3>Points Achievement</h3>
+
+    <div class='reward-points-div'>
+      <div class='point-amount'><%= current_user.reward_points %></div>
+      <div class='point-label'>Points</div>
+      <%= link_to "View All Rewards", rewards_path, class: "gp-button" %>
+    </div>
+
+  </div>
+
+  <%= render 'shared/children_list' %>
+</div>

@@ -3,9 +3,6 @@ class KlassesController < ApplicationController
 
   before_action :authenticate_admin!
 
-  def curated
-  end
-
   def new
     @partner = Partner.find(params[:partner_id])
     @klass = @partner.klasses.build

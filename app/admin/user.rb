@@ -13,6 +13,9 @@ ActiveAdmin.register User do
     column :promo_code
     column :referred
     column :phone_no
+    column :reward_points
+    column :claimed_points
+    column :phone_no
     actions
   end
 

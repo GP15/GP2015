@@ -28,6 +28,7 @@
 //= require jquery_nested_form
 //= require onboard
 //= require add_child
+//= require map
 //= require gmaps/google
 
 
@@ -37,6 +38,10 @@ $(document).ready(function()
 
   if(params.soon){
     $('#comingsoon').modal('show');
+  }
+
+  if(params.convert){
+    $('#reward-popout').modal('show');
   }
 
   $('#top-get-started-btn').on('click', function(e){
@@ -50,6 +55,24 @@ $(document).ready(function()
     e.preventDefault();
     $(this).hide();
     $('.signup-form').removeClass('hide');
+  });
+
+
+  if($('.reward-readmore').length > 0){
+    $('.reward-readmore').on('click', function(e){
+      e.preventDefault();
+      var text = $(this).attr('data-description');
+      var title = $(this).attr('data-title');
+      var point = $(this).attr('data-point');
+
+      $('#reward-description').html(text);
+      $('#reward-title').html("Redeem " + title + " with " + point + " points.")
+      $('#reward-modal').modal('show');
+    });
+  }
+
+  $(".alert").fadeTo(3000, 1500).slideUp(1500, function(){
+    $(".alert").slideUp(1500);
   });
 
 });

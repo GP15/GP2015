@@ -17,6 +17,9 @@ class Reservation < ActiveRecord::Base
   scope :sort_by_datetime_asc,  -> { order('schedules.starts_at ASC,  schedules.ends_at ASC') }
   scope :sort_by_datetime_desc, -> { order('schedules.starts_at DESC, schedules.ends_at DESC') }
 
+  scope :expired_hours, ->(hours) { joins(:schedule).where('schedules.ends_at < ?', Time.zone.now + hours.to_i.send(:hours)) }
+  scope :check_point_earned, -> { where(points_earned: false) }
+
   before_create :check_authorization_for_reservation
   after_create :send_reservation_notification
 
@@ -67,6 +70,17 @@ class Reservation < ActiveRecord::Base
     end
     self.update_attributes(deleted: true, deleted_at: DateTime.now)
     ReservationMailer.cancelation(self).deliver_now
+  end
+
+  def earned_points
+    # keep track why user earn this points
+    total_point_earned = self.schedule.klass.klass_elements.map(&:points).inject(:+)
+    user.points.create(reservation: self, point: total_point_earned)
+    # increase user reward points
+    user.increase_reward_points(total_point_earned)
+    # Check the record as points earned reservation
+    self.points_earned = true
+    save!
   end
 
   private

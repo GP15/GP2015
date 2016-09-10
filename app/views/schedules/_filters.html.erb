@@ -1,0 +1,44 @@
+
+<div class='schedule-filter'>
+<%= search_form_for @q do |f| %>
+  <div class="various-filter">
+    <div class="row">
+      <div class="col-md-3 filter-box">
+        <%= f.label :activity_id_eq, "Activity", class: "display-block" %>
+        <%= f.collection_select :activity_id_eq, @activities, :id, :name, { include_blank: 'All', :selected => params[:q][:activity_id_eq]  }, { :class => "form-control" } %>
+      </div>
+      <div class="col-md-3 filter-box">
+        <%= f.label :city_id_eq, "City", class: "display-block" %>
+        <%= f.collection_select :city_id_eq, @cities, :id, :name, { include_blank: 'All', :selected => params[:q][:city_id_eq] },{ class: "form-control" } %>
+      </div>
+      <div class="col-md-3 filter-box">
+        <label class="display-block">Start Time</label>
+        <div class="schedule-time-slider"></div>
+        <%= hidden_field_tag :start_time, params[:start_time] %>
+        <%= hidden_field_tag :end_time, params[:end_time] %>
+      </div>
+      <div class="col-md-3 filter-box">
+        <%= f.label :age, "Age", class: "display-block" %>
+        <%= select_tag :age, options_for_select([""] + (1..18).to_a, params[:age]), class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="date-filter">
+    <div class="date-filter-inner">
+      <div id="date-filter-choose">
+        <% date_hash.each_with_index do |(key, value), index| %>
+          <% if params[:start_date].present? %>
+            <%= radio_button_tag :start_date, value, (value.to_s == params[:start_date]) %>
+          <% else %>
+            <%= radio_button_tag :start_date, value, index.zero? %>
+          <% end %>
+          <%= label_tag "start_date_#{value}", key %>
+        <% end %>
+      </div>
+    </div>
+    <div class="filter-submit">
+      <%= f.submit "Filter", :class => "gp-button btn-block filter-submit-btn" %>
+    </div>
+  </div>
+<% end %>
+</div>

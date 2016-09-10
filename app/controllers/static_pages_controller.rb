@@ -16,9 +16,28 @@ class StaticPagesController < ApplicationController
   def privacy
   end
 
+  def partners
+    @partnership = PartnershipSignUp.new
+
+    if request.post?
+      @partnership = PartnershipSignUp.new(partner_params)
+
+      if @partnership.save
+        NotificationMailer.notify(@partnership).deliver_now
+        redirect_to partner_signup_path, notice: 'Thank you, we will contact you soon!'
+      else
+        redirect_to partner_signup_path, notice: 'Something went wrong'
+      end
+    end
+  end
+
   # def invite
   # end
 
   # def pricing
   # end
+
+  def partner_params
+    params.require(:partnership_sign_up).permit(:city, :company_name, :website, :name, :email, :phone, :address, :comments)
+  end
 end

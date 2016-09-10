@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :referals
   has_many :referred_tos,     :through => :referals, :source => :user
   has_many :referred_froms,   :through => :referals, :source => :referred_to
+  has_many :points, class_name: "RewardPoint"
 
   ## Validations ##
   validates_presence_of :email, :name, :location
@@ -30,6 +31,43 @@ class User < ActiveRecord::Base
   ## Scopes ##
   scope :with_code, ->(code){ find_by(promo_code: code) }
 
+
+  def able_claim_reward?(amount)
+    success = false
+    if self.reward_points <= 0
+      success = false
+    elsif self.reward_points < amount
+      success = false
+    else
+      success = true
+    end
+    success
+  end
+
+  def deduct_reward_points(amount)
+    self.claimed_points += amount
+    self.save!
+  end
+
+  def increase_reward_points(amount)
+    increased_amount = actual_reward_points + amount
+    write_attribute(:reward_points, increased_amount)
+    save!
+  end
+
+  def actual_reward_points
+    read_attribute(:reward_points)
+  end
+
+  def reward_points
+    if read_attribute(:reward_points)
+      read_attribute(:reward_points) - self.claimed_points
+    else
+      0
+    end
+  end
+
+  #--------- Rewards methods
 
   def should_upgrade?(child_id)
     subs = subscriptions.where( :child_id => child_id).try(:first)

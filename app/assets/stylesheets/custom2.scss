@@ -1422,72 +1422,7 @@ select.form-control {
 /* ------->>> SCHEDULE PAGE <<<-------*/
 /* -----------------------------------*/
 /* Filter Form */
-#activity-schedule { padding: 30px; }
-#activity-schedule .schedule-filter {
-	background: #3eb4e2 image-url('schedule-filter-bg.png') repeat-x;
-	font-weight: 300;
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-top-right-radius: 5px;
-	   -moz-border-radius-topleft: 5px;
-	   -moz-border-radius-topright: 5px;
-			border-top-left-radius: 5px;
-			border-top-right-radius: 5px;
-	padding: 0 15px;
-	margin: -30px -30px 30px;
-	position: relative;
-}
 
-/* Various Filter Box */
-#activity-schedule .schedule-filter .various-filter {
-	border-bottom: 1px solid #1f9dce;
-}
-#activity-schedule .schedule-filter .various-filter .filter-box {
-	border-right: 1px solid #1f9dce;
-	border-left: 1px solid #6ac5e9;
-	padding: 15px;
-}
-#activity-schedule .schedule-filter .various-filter .filter-box:first-child {
-	border-left: 0 !important;
-}
-#activity-schedule .schedule-filter .various-filter .filter-box:last-child {
-	border-right: 0 !important;
-}
-#activity-schedule .schedule-filter .various-filter .filter-box label {
-	font-family: 'Roboto', sans-serif;
-	font-size: 14px;
-	font-weight: 300;
-	color: #fff;
-	text-align: center;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	padding-bottom: 25px;
-	margin: 0;
-	display: block;
-}
-#activity-schedule .schedule-filter .chosen-container a {
-	height: 35px;
-	line-height: 34px;
-	padding: 0 15px;
-}
-#activity-schedule .schedule-filter .chosen-container a div b {
-	position: relative;
-	top: 5px;
-}
-#activity-schedule .schedule-filter .chosen-container .chosen-results li {
-	padding: 8px 11px;
-}
-@media screen and (max-width: 767px) {
-	#activity-schedule .schedule-filter .various-filter .filter-box label { padding-bottom: 5px !important; }
-}
-@media screen and (max-width: 991px) {
-	#activity-schedule .schedule-filter .various-filter { border-bottom: 0 !important; }
-	#activity-schedule .schedule-filter .various-filter .filter-box {
-		border-width: 1px 0 1px;
-		border-style: solid;
-		border-color: #6ac5e9 transparent #1f9dce;
-	}
-	#activity-schedule .schedule-filter .various-filter .filter-box:first-child { border-top: 0 !important; }
-}
 
 /* Time Slider */
 .irs {
@@ -1589,59 +1524,10 @@ select.form-control {
 	text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* Date Filter */
-#activity-schedule .schedule-filter .date-filter {
-	border-top: 1px solid #6ac5e9;
-	margin: 0 -15px;
-}
-#activity-schedule .schedule-filter .date-filter .date-filter-inner {
-	padding: 15px;
-}
-#activity-schedule .schedule-filter .date-filter #date-filter-choose {
-	display: block;
-}
-#activity-schedule .schedule-filter .date-filter #date-filter-choose,
-#activity-schedule .schedule-filter .date-filter #date-filter-choose li {
-	text-align: center;
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-}
-#activity-schedule .schedule-filter .date-filter #date-filter-choose li {
-	display: inline-block;
-}
-#activity-schedule .schedule-filter .date-filter #date-filter-choose li a {
-	background-color: transparent;
-	color: #b4e2f4;
-	-webkit-transition: background-color 300ms ease, color 300ms ease;
-	   -moz-transition: background-color 300ms ease, color 300ms ease;
-		 -o-transition: background-color 300ms ease, color 300ms ease;
-			transition: background-color 300ms ease, color 300ms ease;
-	padding: 5px 15px;
-	display: block;
-}
-#activity-schedule .schedule-filter .date-filter #date-filter-choose li:hover a {
-	background-color: #1f9dce;
-}
-#activity-schedule .schedule-filter .date-filter #date-filter-choose li.selected a {
-	background-color: #fff;
-	color: #146584;
-}
-#activity-schedule .schedule-filter .date-filter #date_filter_dropdown_chosen {
-	display: none;
-}
-@media screen and (max-width: 767px) {
-	#activity-schedule .schedule-filter .date-filter #date-filter-choose { display: none; }
-	#activity-schedule .schedule-filter .date-filter #date_filter_dropdown_chosen { display: block; }
-}
-@media (min-width: 1200px) {
-	#activity-schedule .schedule-filter .date-filter { padding-bottom: 0 !important; }
-}
-
 /* Filter Button */
 #activity-schedule .schedule-filter .filter-submit {
 	text-align: center;
-	padding: 0 0 15px;
+	padding: 0 10px 15px;
 	position: relative;
 	right: 0;
 	bottom: 0;
@@ -1672,7 +1558,7 @@ select.form-control {
 		padding: 0;
 		position: absolute;
 		right: 15px;
-		bottom: 9px;
+		bottom: 20px;
 	}
 }
 

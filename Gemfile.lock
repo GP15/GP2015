@@ -154,6 +154,9 @@ GEM
       has_scope (~> 0.6.0.rc)
       railties (>= 3.2, < 5)
       responders
+    jbuilder (2.5.0)
+      activesupport (>= 3.0.0, < 5.1)
+      multi_json (~> 1.2)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -343,6 +346,7 @@ DEPENDENCIES
   haml-rails
   has_secure_token
   hirb
+  jbuilder
   jquery-rails
   kaminari (= 0.17.0)
   letter_opener

@@ -1,0 +1,69 @@
+<% provide(:title, "Partners") %>
+<% provide(:nav_color, "link-white") %>
+<%= render 'page_title' %>
+
+<section id="partner-map">
+  <div class="container" id='partner-map-container'>
+    <div class="row">
+
+      <div id='partner-marker-map' data-remote="<%= partners_url(lat: params[:lat], lng: params[:lng]) %>"></div>
+
+      <%= form_tag '', method: 'get', id: 'search-form-div' do %>
+        <div class="input-group">
+          <%= text_field_tag :search_tag, params[:search_tag], class: 'form-control input-lg', placeholder: 'Search for...' %>
+          <span class="input-group-btn">
+            <%= submit_tag 'Search', class: 'btn btn-primary', id: 'search-partner-btn' %>
+          </span>
+        </div>
+        <%= hidden_field_tag :lat, params[:lat] %>
+        <%= hidden_field_tag :lng, params[:lng] %>
+      <% end %>
+
+    </div>
+  </div>
+</section>
+
+<section id="partner-list">
+  <div class="container">
+    <div class="row">
+      <div class="partner-grid">
+        <% @partners.each do |partner| %>
+          <div class="partner-grid-item">
+            <div class="image">
+              <%= link_to image_tag(partner.img_url, alt: "photo of #{partner.company}"), partner %>
+            </div>
+            <div class="partner-grid-details">
+              <%= link_to partner.company, partner, class: "title" %>
+              <div class="activity">
+                <% partner.activities.uniq.each do |activity| %>
+                  <span>
+                    <%= activity.name %>
+                  </span>
+                <% end %>
+              </div>
+              <% if partner.city.present? %>
+                <span class="city">
+                  <%= partner.city.name %>
+                </span>
+              <% else %>
+                <span class="city">
+                  No City
+                </span>
+              <% end %>
+              <% if partner.booking_limit.to_i > 0 %>
+                <span class="limit">
+                  Up to <%= partner.booking_limit %> visits per month
+                </span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="text-center">
+        <div id="lastPostsLoader">Load more</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtQZPEck0ngl3-i3mBKA81znMeIpc-HZA&libraries=places"></script>

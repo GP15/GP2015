@@ -1971,6 +1971,19 @@ header nav #top-nav hr {
 	margin: 0;
 }
 
+
+#date-filter-choose {
+	height: 40px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	width: 90%;
+}
+
+
+
+
+
 #activity-schedule .schedule-filter .date-filter #date-filter-choose label
 {
 	background-color: transparent;
@@ -2018,9 +2031,13 @@ header nav #top-nav hr {
 #activity-schedule .schedule-filter .date-filter #date_filter_dropdown_chosen {
 	display: none;
 }
+
 @media screen and (max-width: 767px) {
 	#activity-schedule .schedule-filter .date-filter #date-filter-choose { display: block; }
 	#activity-schedule .schedule-filter .date-filter #date_filter_dropdown_chosen { display: block; }
+	#date-filter-choose {
+		width: 100%;
+	}
 }
 @media (min-width: 1200px) {
 	#activity-schedule .schedule-filter .date-filter { padding-bottom: 0 !important; }

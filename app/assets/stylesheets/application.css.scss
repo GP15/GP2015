@@ -29,6 +29,7 @@
  *= require onboard
  *= require wizard
  *= require curated
+ *= require rewards
  *= require_self
  *= require bootsy
  */
@@ -105,7 +106,7 @@ hr {
 
 .children-list ul.nav > li.active,
 .children-list ul.nav > li:hover {
-  background: #3eb4e2;
+  border: 1px solid #3eb4e2;
   color: white;
 }
 .children-list ul.nav > li .fa {
@@ -116,4 +117,113 @@ hr {
 
 .children-list ul.nav > li a {
   font-weight: 500;
+}
+
+/* Reward sidebar*/
+.reward-points-div {
+  text-align: center;
+}
+
+.reward-points-div .point-amount {
+  font-size: 26px;
+}
+
+.reward-points-div .point-label {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.age-col {
+  min-width: 65px;
+}
+
+/* Partner Page */
+#partner-header-div {
+  background-image: image-url('partner-header-bg.jpeg');
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+  padding: 30px 0;
+  position: relative;
+}
+#partner-overlay {
+  width: 100%;
+  background: black;
+  opacity: 0.3;
+  position: absolute;
+}
+.partner-header-inner-div {
+  text-align: center;
+}
+#partner-header-div h1 {
+  margin-top: 8%;
+  color: white;
+  font-size: 45px;
+  font-weight: 600;
+  line-height: 60px;
+}
+
+.partner-header-inner-div a{
+  margin-top: 45px;
+  padding: 15px !important;
+  font-size: 20px;
+  z-index: 999;
+}
+
+#partnership-sign-up-form {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  padding: 15px;
+  border: 1px solid #3eb4e2;
+}
+
+#partnership-signup-div {
+  background: image-url('weather.png') repeat;
+}
+
+#partnership-signup-div h2 {
+  text-align: center;
+  color: #3eb4e2;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+#partnership-signup-div p {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #3eb4e2;
+  font-style: italic;
+}
+#partner-lead-div h2,
+#partner-whyus-div h2{
+  text-align: center;
+  color: #3eb4e2;
+  margin-bottom: 75px;
+  font-weight: 600;
+}
+
+#partner-lead-div .lead-div{
+  text-align: center;
+}
+#partner-whyus-div .lead-div {
+  text-align: center;
+  margin-bottom: 30px;
+  height: 250px;
+}
+#partner-lead-div .lead-div img {
+  width: 100px;
+  height: 100px;
+}
+#partner-whyus-div .lead-div img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 15px;
+}
+#partner-whyus-div  p {
+  font-size: 18px;
+}
+#partner-lead-div .lead-div h3 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 25px;
 }

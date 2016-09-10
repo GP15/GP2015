@@ -1,0 +1,67 @@
+.reward-div {
+  background-color: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  margin-bottom: 15px;
+  height: 250px;
+}
+
+.reward-div .cover-pic img {
+  width: 100%;
+}
+
+.reward-div .details .title {
+  font-size: 22px;
+}
+
+.reward-div .details .description {
+  font-size: 14px;
+  margin: 10px 0;
+}
+.reward-div .details .point-label {
+  font-size: 14px;
+  color: grey;
+}
+
+
+//  Popout for reward in reservation page
+
+
+.reward-popout-div .development-elements {
+  display: inline-block;
+  padding: 10px;
+  width: 110px;
+}
+.reward-popout-div .development-elements .element-img img {
+  width: 60px;
+  height: 60px;
+}
+
+.reward-popout-div .development-elements .element-img {
+  position: relative;
+  text-align: center;
+  /*width: 60px;*/
+}
+
+.reward-popout-div .development-elements .element-point {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  border-radius: 50%;
+  padding: 5px;
+  background: #3eb4e2;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.reward-popout-div .development-elements .element-title {
+  text-align: center;
+}
+
