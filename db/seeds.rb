@@ -2,7 +2,8 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 # Admins
-AdminUser.create!(email: "admin@example.com", password: "123456")
+AdminUser.create!(email: "admin@example.com", password: "12345678")
+AdminUser.create!(email: "admin@geniuspass.com", password: "12345678")
 
 # Time Zone
 Time.zone = "Kuala Lumpur"
