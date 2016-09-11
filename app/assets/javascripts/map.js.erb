@@ -1,8 +1,9 @@
 $(document).ready(function()
 {
   if($('#partner-marker-map').length > 0){
-    if($('#lat').length > 0 && $('#lng').length > 0){
+    if($('#lat').val() != "" && $('#lng').val() != "" ){
       var center = new google.maps.LatLng(parseFloat($('#lat').val()), parseFloat($('#lng').val()));
+      console.log(center);
     }else{
       var center = new google.maps.LatLng(3.1379811, 101.538138)
     }

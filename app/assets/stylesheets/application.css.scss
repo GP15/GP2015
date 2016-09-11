@@ -108,6 +108,14 @@ hr {
 .children-list ul.nav > li:hover {
   border: 1px solid #3eb4e2;
   color: white;
+  background: #3eb4e2;
+}
+
+.children-list ul.nav > li.active a,
+.children-list ul.nav > li:hover a,
+.children-list ul.nav > li.active .fa,
+.children-list ul.nav > li:hover .fa {
+  color: white;
 }
 .children-list ul.nav > li .fa {
   position: absolute;
@@ -139,7 +147,7 @@ hr {
 
 /* Partner Page */
 #partner-header-div {
-  background-image: image-url('partner-header-bg.jpeg');
+  background-image: image-url('partner-bg.jpg');
   width: 100%;
   height: auto;
   min-height: 500px;
@@ -157,7 +165,7 @@ hr {
 }
 #partner-header-div h1 {
   margin-top: 8%;
-  color: white;
+  color: #3eb4e2;
   font-size: 45px;
   font-weight: 600;
   line-height: 60px;

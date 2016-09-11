@@ -11,13 +11,14 @@
         <%= link_to user_omniauth_authorize_path('facebook'), class: 'btn btn-block fb-sign-up-btn' do %>
           <i class="fa fa-facebook-official" aria-hidden="true"></i> LOGIN WITH FACEBOOK
         <% end %>
-      <% end %>
 
       <div class='horizontal-line'>
         <span class='text'>
           Or <!--Padding is optional-->
         </span>
       </div>
+      <% end %>
+
 
       <% if resource.errors.blank? && resource.email.blank? %>
         <%= link_to '', class: 'btn btn-block email-sign-up-btn' do %>

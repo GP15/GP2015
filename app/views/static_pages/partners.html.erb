@@ -21,26 +21,33 @@
     <div class="container">
       <h2>Expand Your Business By Partnering With GeniusPass</h2>
 
-      <div class="col-md-4 lead-div">
+      <div class="col-md-3 lead-div">
+        <%= image_tag 'girl.png' %>
+
+        <h3>User Growth</h3>
+        <p>Get discovered and showcase your classes to thousand of users</p>
+      </div>
+
+      <div class="col-md-3 lead-div">
         <%= image_tag 'telemarketer.png' %>
 
-        <h3>Get In Touch</h3>
-        <p>Best Customer Service</p>
+        <h3>Partner's Support</h3>
+        <p>Best support guaranteed 24 hours a day and 7 days a week</p>
       </div>
-      <div class="col-md-4 lead-div">
+      <div class="col-md-3 lead-div">
         <%= image_tag 'megaphone.png' %>
 
-        <h3>Partner With Us</h3>
-        <p>Attrative Benefits</p>
+        <h3>Brand Presence</h3>
+        <p>Build strong branding and valuable exposure for your centre</p>
       </div>
-      <div class="col-md-4 lead-div">
+      <div class="col-md-3 lead-div">
         <%= image_tag 'line-chart.png' %>
         <h3>Increase Revenue</h3>
-        <p>Branding & Exposure</p>
+        <p>Track your revenue, measure performance and improvise</p>
       </div>
     </div>
   </div>
-
+<!--
   <div class="section-row" id='partner-whyus-div'>
     <div class="container">
       <h2>Why Partner With Us?</h2>
@@ -62,71 +69,71 @@
         <p>Track your revenue, measure performance and improvise</p>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="section-row" id='partnership-signup-div'>
     <div class="container">
       <h2>Our Team Will Get Connected With You As Soon As Possible</h2>
-      <p>Kindly Fill Up the Form Below</p>
+      <p>Kindly fill up the form below</p>
       <%= form_for @partnership, url: partner_signup_path, html: { class: 'form-horizontal', id: 'partnership-sign-up-form' } do |f| %>
         <div class="form-group">
-          <%= f.label 'City', class: "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.text_field :city, class: 'form-control' %>
+          <%= f.label 'City', class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <%= f.text_field :city, class: 'form-control', required: true %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label 'Company Name', class: "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.text_field :company_name, class: 'form-control' %>
+        <label class="col-sm-3 control-label" for="partnership_sign_up_Company Name">Company Name</label>
+          <div class="col-sm-9">
+            <%= f.text_field :company_name, class: 'form-control', required: true %>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label 'Website / Facebook', class: "col-sm-2 control-label" %>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label" for="partnership_sign_up_Website / Facebook">Website / Facebook</label>
+          <div class="col-sm-9">
             <%= f.text_field :website, class: 'form-control' %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label 'Name', class: "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.text_field :name, class: 'form-control' %>
+          <%= f.label 'Name', class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <%= f.text_field :name, class: 'form-control', required: true %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label 'Email', class: "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.email_field :email, class: 'form-control' %>
+          <%= f.label 'Email', class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
+            <%= f.email_field :email, class: 'form-control', required: true %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label 'Phone No.', class: "col-sm-2 control-label" %>
-          <div class="col-sm-10">
-            <%= f.text_field :phone, class: 'form-control' %>
+          <label class="col-sm-3 control-label" for="partnership_sign_up_Phone No.">Phone No.</label>
+          <div class="col-sm-9">
+            <%= f.text_field :phone, class: 'form-control', required: true %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label 'Address', class: "col-sm-2 control-label" %>
-          <div class="col-sm-10">
+          <%= f.label 'Address', class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
             <%= f.text_area :address, class: 'form-control' %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label 'Comments', class: "col-sm-2 control-label" %>
-          <div class="col-sm-10">
+          <%= f.label 'Comments', class: "col-sm-3 control-label" %>
+          <div class="col-sm-9">
             <%= f.text_area :comments, class: 'form-control' %>
           </div>
         </div>
 
         <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <%= f.submit 'Register As Partner', class: 'btn btn-lg gp-button' %>
+          <div class="col-sm-offset-3 col-sm-10">
+            <%= f.submit 'Get in Touch', class: 'btn btn-lg gp-button' %>
           </div>
         </div>
       <% end %>

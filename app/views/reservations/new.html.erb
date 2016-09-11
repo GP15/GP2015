@@ -56,6 +56,7 @@
               <p>This class is past the scheduled time and can't be reserved anymore.</p>
             </div>
           <% end %>
+
           <% if @reservations.empty? && @children.empty? %>
             <%= render 'eligibility_notice' %>
           <% end %>

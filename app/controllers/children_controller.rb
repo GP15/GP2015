@@ -72,10 +72,10 @@ class ChildrenController < ApplicationController
       # Sort the ages of children
       age = Time.now.year - @child.birth_year
       gender = @child.gender
-
       @klasses = Klass.non_archived_schedules
                       .includes(:activity, :schedules, :partner, :development_elements, klass_elements: [:development_element])
-                      .where("klasses.age_end <= ? and klasses.city_id = ? and klasses.gender = ?", age, city.id, Child.genders[gender])
+                      .where("klasses.age_end >= 1 and klasses.age_end <= ? and klasses.city_id = ? and klasses.gender = ?", age, city.id, Child.genders[gender])
+                      # logic filter
 
       # Get same amount of points based on all different 7 elements
       # Curated 15 Klass based on different development elements

@@ -2,14 +2,14 @@
   .schedule-image
     = image_tag @schedule.partner.img_url, alt: "photo of #{@schedule.partner.company}"
   .schedule-details
-    .level 
+    .level
       = @schedule.klass.level
-    %h3.activity 
+    %h3.activity
       = @schedule.klass.name
     .partner
       by #{link_to @schedule.partner.company, partner_path(@schedule.partner)}
 
-    .description 
+    .description
       = @schedule.klass.description
     %dl.dl-horizontal
       %hr/
@@ -21,18 +21,10 @@
         = @schedule.starts_at.strftime("%l:%M%P")
         \- #{@schedule.ends_at.strftime("%l:%M%P")}
       %hr/
-      %dt Recurrence:
-      %dd
-        = @schedule.recurrence
-      %hr/
       %dt Age:
       %dd
         = @schedule.klass.age_start
         \- #{@schedule.klass.age_end}
-      %hr/
-      %dt Max:
-      %dd
-        = pluralize(@schedule.quantity, "participant")
       %hr/
     .address
       %h3 Address
