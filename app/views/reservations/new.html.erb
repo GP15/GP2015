@@ -63,9 +63,11 @@
           <p class="notice">
             <%= "You have #{current_user.reservation_allowed_for_partner(@schedule.partner)} out of #{@schedule.partner.user_allowed} sessions left for this month #{@schedule.partner.company}." %>
           </p>
+          <!--
           <% if current_user.children.present? && current_user.should_upgrade?(current_user.children.first.id) %>
             <%= link_to "Upgrade Now", new_child_subscription_path(current_user.children.first.id), :class => "btn btn-danger col-md-12", :id => "upgrade" %>
           <% end %>
+          -->
         </div>
       </div>
     </div>

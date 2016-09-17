@@ -8,16 +8,18 @@
 
       <div id='partner-marker-map' data-remote="<%= partners_url(lat: params[:lat], lng: params[:lng]) %>"></div>
 
-      <%= form_tag '', method: 'get', id: 'search-form-div' do %>
-        <div class="input-group">
-          <%= text_field_tag :search_tag, params[:search_tag], class: 'form-control input-lg', placeholder: 'Search for...' %>
-          <span class="input-group-btn">
-            <%= submit_tag 'Search', class: 'btn btn-primary', id: 'search-partner-btn' %>
-          </span>
-        </div>
-        <%= hidden_field_tag :lat, params[:lat] %>
-        <%= hidden_field_tag :lng, params[:lng] %>
-      <% end %>
+      <div class='search-div'>
+        <%= form_tag '', method: 'get', id: 'search-form-div' do %>
+          <div class="input-group">
+            <%= text_field_tag :search_tag, params[:search_tag], class: 'form-control input-lg', placeholder: 'Search for...' %>
+            <span class="input-group-btn">
+              <%= submit_tag 'Search', class: 'btn btn-primary', id: 'search-partner-btn' %>
+            </span>
+          </div>
+          <%= hidden_field_tag :lat, params[:lat] %>
+          <%= hidden_field_tag :lng, params[:lng] %>
+        <% end %>
+      </div>
 
     </div>
   </div>

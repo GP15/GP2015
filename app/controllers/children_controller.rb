@@ -74,8 +74,7 @@ class ChildrenController < ApplicationController
       gender = @child.gender
       @klasses = Klass.non_archived_schedules
                       .includes(:activity, :schedules, :partner, :development_elements, klass_elements: [:development_element])
-                      .where("klasses.age_end >= 1 and klasses.age_end <= ? and klasses.city_id = ? and klasses.gender = ?", age, city.id, Child.genders[gender])
-                      # logic filter
+                      .where("(? between klasses.age_start and klasses.age_end) and klasses.city_id = ? and (klasses.gender = ? or klasses.gender = 2) and level = 'Multilevel' ", age, city.id, Child.genders[gender])
 
       # Get same amount of points based on all different 7 elements
       # Curated 15 Klass based on different development elements

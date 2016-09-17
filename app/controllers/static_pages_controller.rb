@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
   end
 
   def faq
+    @faqs = FaqGroup.all
   end
 
   def terms

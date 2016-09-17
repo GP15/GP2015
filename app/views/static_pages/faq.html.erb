@@ -1,0 +1,39 @@
+<% provide(:title, "Frequently Asked Questions") %>
+<% provide(:page_title_bg, asset_path('page-bg.jpg')) %>
+<div class="content faq-page white-bg">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'FAQ' } %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <% if @faqs.present? %>
+          <h1>Faqs</h1>
+          <hr>
+          <ul id='faq-sidebar'>
+            <% @faqs.each do |faq| %>
+              <%= link_to "##{faq.name.parameterize}" do %>
+                <li>
+                  <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                    <%= faq.name %>
+                  <i class='fa fa-chevron-right pull-right'></i>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
+      <div class="col-md-9">
+        <% if @faqs.present? %>
+          <% @faqs.each do |faq| %>
+            <div id="<%= faq.name.parameterize %>">
+              <h1><%= faq.name %></h1>
+              <hr>
+              <%= faq.content.html_safe %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

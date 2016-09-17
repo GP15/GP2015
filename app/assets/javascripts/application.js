@@ -75,6 +75,16 @@ $(document).ready(function()
     $(".alert").slideUp(1500);
   });
 
+  var scrolled = 0;
+  $('#right-scroll-btn').on('click', function(e){
+    e.preventDefault();
+    scrolled = scrolled + 55;
+    $('#date-filter-choose').stop().animate({
+        scrollLeft: scrolled
+    });
+    return false;
+  });
+
 });
 
 

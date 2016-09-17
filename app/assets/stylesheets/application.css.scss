@@ -81,6 +81,22 @@ hr {
   color: #3eb4e2;
 }
 
+.child-form-section {
+  border: 1px solid #e1e1e1;
+}
+
+#faq-sidebar li {
+  font-size: 20px;
+  padding: 5px;
+  border-bottom: 2px solid #e1e1e1;
+  margin-bottom: 10px;
+}
+
+#faq-sidebar li i.fa.fa-dot-circle-o {
+  color: #3eb4e2;
+}
+
+
 
 /* user#show */
 .sidebar-children {
@@ -124,7 +140,7 @@ hr {
 }
 
 .children-list ul.nav > li a {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Reward sidebar*/

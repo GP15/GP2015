@@ -121,7 +121,8 @@ def create_children(user, first_name, last_name, age)
   user.children.create!(
     first_name: first_name,
     last_name:  last_name,
-    birth_year: age
+    birth_year: age,
+    gender: rand(2)
   )
 end
 
@@ -147,7 +148,6 @@ users.each do |user|
     create_children(user, first_name, last_name, random_age)
   end
 end
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
 # Klass.all.each do |x|
 #   development_ids = DevelopmentElement.pluck(:id)

@@ -1,3 +1,8 @@
+.klass-image img{
+  height: 135px;
+  width: 250px;
+  padding: 5px;
+}
 .curated-schedule-table .activity .klass-name{
   font-size: 16px;
   font-weight: 500;

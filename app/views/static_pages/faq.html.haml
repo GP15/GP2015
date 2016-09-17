@@ -1,7 +1,0 @@
-- provide(:title, "Frequently Asked Questions")
-- provide(:page_title_bg, asset_path('page-bg.jpg'))
-.content.faq-page.white-bg
-  = render partial: 'layouts/page_title', locals: { page_title: 'FAQ' }
-  .container
-    - if StaticPageContent.find_by_key('faq')
-      = StaticPageContent.find_by_key('faq').value.html_safe

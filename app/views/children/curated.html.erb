@@ -69,6 +69,7 @@
         <table class="table table-responsive-block curated-schedule-table">
           <thead>
             <tr>
+              <th>Partner</th>
               <th>Activities</th>
               <th>Development Points</th>
               <th></th>
@@ -77,6 +78,11 @@
           <tbody>
             <% @klasses.each do |klass| %>
               <tr>
+                <td>
+                  <div class='klass-image'>
+                    <%= image_tag klass.partner.logo.url %>
+                  </div>
+                </td>
                 <td class='activity'>
                   <div class='klass-name'>
                     <%= klass.name %>
@@ -91,9 +97,12 @@
                   </div>
 
                   <div class='timestamp'>
+                    <!--
                     <%= klass.schedules.specific_activity(klass.activity.id).sort_by_datetime_asc.not_archived.first.starts_at.strftime('%b %e, %l:%M %p') %>
                     -
                     <%= klass.schedules.specific_activity(klass.activity.id).sort_by_datetime_asc.not_archived.first.ends_at.strftime('%l:%M %p') %>
+                     -->
+                     Suitable Age: <%= klass.age_start %> - <%= klass.age_end %>
                   </div>
                 </td>
                 <td class='txt-align-center'>

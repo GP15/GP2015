@@ -45,6 +45,10 @@ class Subscription < ActiveRecord::Base
     end
   end
 
+  def expired?
+    Time.now > renewal_date
+  end
+
   def discounts_quantity
     quantity = 0
     quantity = quantity + 1 if promo_code.present?

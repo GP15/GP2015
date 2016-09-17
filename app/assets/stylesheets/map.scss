@@ -41,10 +41,18 @@
 #partner-map-container {
   position: relative;
 }
-#search-form-div {
+
+.search-div {
+  width: 100%;
   position: absolute;
   bottom: 5%;
-  width: 100%;
+  pointer-events: none;
+}
+
+#search-form-div {
+  max-width: 450px;
+  margin: 0 auto;
+  pointer-events: auto;
 }
 
 #search-form-div .input-group {

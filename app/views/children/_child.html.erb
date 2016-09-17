@@ -1,6 +1,6 @@
 <div class='col-md-4'>
 <% if child.subscription.present? %>
-  <div class="form-section">
+  <div class="form-section child-form-section">
     <h3 class="form-section-subtitle">
       <%= child.first_name %>
       <%= child.last_name %>
@@ -25,21 +25,40 @@
         <%= text_field_tag  :renewal_date, child.subscription.renewal_date.strftime("%d %B, %Y"), :readonly => true, :disabled => true %>
       </div>
     </div>
+
+    <% if child.subscription.expired? %>
+      <%= link_to "Renew Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button btn-block' %>
+    <% end %>
   </div>
 <% else %>
-  <div class="form-section">
-    <h3 class="form-section">
+  <div class="form-section child-form-section">
+    <h3 class="form-section-subtitle">
       <%= child.first_name %>
       <%= child.last_name %>
-      <br>
-      BirthYear:
-      <%= child.birth_year %>
-      <br>
-      Gender:
-      <%= child.gender %>
     </h3>
-    <%= link_to "Change Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button btn-block' %>
+    <div class="form-group field">
+      <label class="col-sm-4 control-label">Package Type</label>
+      <div class="col-sm-8">
+        <%= text_field_tag  :package_type, 'N/A', :readonly => true, :disabled => true %>
+      </div>
+    </div>
+
+    <div class="form-group field">
+      <label class="col-sm-4 control-label">Membership Status</label>
+      <div class="col-sm-8">
+        <%= text_field_tag  :membership_status, 'N/A', :readonly => true, :disabled => true %>
+      </div>
+    </div>
+
+    <div class="form-group field">
+      <label class="col-sm-4 control-label">Renewal Date</label>
+      <div class="col-sm-8">
+        <%= text_field_tag  :renewal_date, 'N/A', :readonly => true, :disabled => true %>
+      </div>
+    </div>
   </div>
+
+  <%= link_to "Change Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button btn-block' %>
 <% end %>
 <br>
 </div>
