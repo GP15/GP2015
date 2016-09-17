@@ -46,14 +46,19 @@ class Reservation < ActiveRecord::Base
     if !can_be_cancelled?
       return false
     else
-      if user.customer.payment_methods.first
-        token = user.customer.payment_methods.first.token
-        result = Braintree::Transaction.sale(:amount => cancellation_charge.to_s, :payment_method_token => token, customer_id: user.customer_id)
-        if result.success?
-          mark_cancelled(result)
-          true
+      if Time.now >= schedule.starts_at.beginning_of_day
+        if user.customer.payment_methods.first
+          token = user.customer.payment_methods.first.token
+          result = Braintree::Transaction.sale(:amount => cancellation_charge.to_s, :payment_method_token => token, customer_id: user.customer_id)
+          if result.success?
+            mark_cancelled(result)
+            true
+          else
+            false
+          end
         else
-          false
+          mark_cancelled(nil)
+          true
         end
       else
         mark_cancelled(nil)
