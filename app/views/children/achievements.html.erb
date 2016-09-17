@@ -1,0 +1,55 @@
+<% provide(:title, "Profile") %>
+<% provide(:page_title_bg, asset_path('page-bg-profile.jpg')) %>
+<div class="content profile-page">
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Profile' } %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <% @children = current_user.children.sort_by_age_name %>
+        <%= render :partial => 'users/sidebar' %>
+      </div>
+      <div class="col-md-9">
+        <div class="content-main">
+          <h3>Children Achievement</h3>
+          <% @children.each do |child| %>
+            <h2><%= child.full_name %></h2>
+            <table class="table table-responsive-block achievement-table">
+              <thead>
+                <tr>
+                  <th>Successful Booking</th>
+                  <th>Development Points</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if child.reward_points.present? %>
+                  <% child.reward_points.each do |point| %>
+                    <tr>
+                      <td>Reservation ID:#<%= point.reservation_id %></td>
+                      <td class='achievement-development-points-div'>
+                        <% point.reservation.schedule.klass.klass_elements.each do |element| %>
+                          <div class="col-md-4 reward-popout-div">
+                            <div class='development-elements'>
+                              <div class='element-img'>
+                                <%= image_tag "#{element.development_element.title.downcase}.png" %>
+                              </div>
+                              <div class='element-title'>
+                                <strong><%= element.development_element.title %></strong>
+                                <br>(<%= element.points %> Points)
+                              </div>
+                            </div>
+                          </div>
+                        <% end %>
+                      </td>
+                      <td><%= point.point %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

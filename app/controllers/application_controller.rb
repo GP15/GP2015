@@ -62,13 +62,13 @@ class ApplicationController < ActionController::Base
   end
 
   def get_site_info
-    info = SiteInfo.first
-    if info.present?
-      @support_email = info.support_email
-      @partner_email = info.partner_email
-      @facebook_link = info.facebook
-      @twitter_link = info.twitter
-      @instagram_link = info.instagram
+    @info = SiteInfo.first
+    if @info.present?
+      @support_email = @info.support_email
+      @partner_email = @info.partner_email
+      @facebook_link = @info.facebook
+      @twitter_link = @info.twitter
+      @instagram_link = @info.instagram
     end
   end
 

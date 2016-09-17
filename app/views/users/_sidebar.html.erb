@@ -6,7 +6,11 @@
     <div class='reward-points-div'>
       <div class='point-amount'><%= current_user.reward_points %></div>
       <div class='point-label'>Points</div>
-      <%= link_to "View All Rewards", rewards_path, class: "gp-button" %>
+
+      <%= link_to "Children Achievements", achievements_children_path, class: "gp-button" %>
+      <%= link_to "View All Rewards", rewards_path, class: "" %>
+      <% if @info.reward_section? %>
+      <% end %>
     </div>
 
   </div>

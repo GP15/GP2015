@@ -1,7 +1,7 @@
 class ChildrenController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_user, except: [:show, :curated]
+  before_action :set_user, except: [:show, :curated, :achievements]
 
   # GET /users/:user_id/children/new
   def new
@@ -48,6 +48,9 @@ class ChildrenController < ApplicationController
     @child.destroy
 
     redirect_to current_user, notice: "#{@child.first_name} deleted."
+  end
+
+  def achievements
   end
 
   # filters

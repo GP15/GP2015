@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917052313) do
+ActiveRecord::Schema.define(version: 20160917072016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -263,6 +263,7 @@ ActiveRecord::Schema.define(version: 20160917052313) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "reservation_id"
+    t.integer  "child_id"
   end
 
   create_table "rewards", force: :cascade do |t|
@@ -302,8 +303,9 @@ ActiveRecord::Schema.define(version: 20160917052313) do
     t.string   "facebook"
     t.string   "twitter"
     t.string   "instagram"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.boolean  "reward_section"
   end
 
   create_table "static_page_contents", force: :cascade do |t|

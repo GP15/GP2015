@@ -6,6 +6,8 @@ class Child < ActiveRecord::Base
   has_many   :schedules, through: :reservations
   has_one    :subscription, dependent: :destroy
 
+  has_many :reward_points
+
   enum gender: [:male, :female]
 
   ## Validations ##

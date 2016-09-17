@@ -80,7 +80,7 @@ class Reservation < ActiveRecord::Base
   def earned_points
     # keep track why user earn this points
     total_point_earned = self.schedule.klass.klass_elements.map(&:points).inject(:+)
-    user.points.create(reservation: self, point: total_point_earned)
+    user.points.create(reservation: self, point: total_point_earned, child: self.child)
     # increase user reward points
     user.increase_reward_points(total_point_earned)
     # Check the record as points earned reservation
