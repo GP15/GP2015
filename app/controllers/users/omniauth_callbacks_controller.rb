@@ -6,8 +6,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     params = request.env["omniauth.params"] || {}
     exist_user = User.find_by_provider_and_uid(auth.provider, auth.uid)
 
-    puts auth.inspect
-    puts params.inspect
     # Check whether any user is logged in
 
     respond_to do |format|
@@ -28,7 +26,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
       end
     end
-
   end
 
   def failure

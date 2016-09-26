@@ -29,4 +29,24 @@ class Klass < ActiveRecord::Base
     schedules.not_archived.order('ends_at DESC').pluck(:ends_at).first
   end
 
+
+  # def self.filter_curation(klasses, remain_klasses, count)
+  #   filter_klasses = klasses
+
+  #   klasses.each do |klass|
+
+  #     if #hehe
+  #       filter_klasses.push(klass)
+  #     else
+  #       remain_klasses.push(klass)
+  #     end
+  #   end
+
+  #   if filter_klasses <= count && remain_klasses > 0
+  #     return Klass.filter(result_klasses, remain_klasses, count)
+  #   else
+  #     return filter_klasses
+  #   end
+  # end
+
 end
