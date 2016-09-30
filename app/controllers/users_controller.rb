@@ -10,14 +10,14 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    child_id = params[:child_id]
-    if child_id.blank?
-      child_id = current_user.children.first.id if current_user.children.present?
+    @child_id = params[:child_id]
+    if @child_id.blank?
+      @child_id = current_user.children.first.id if current_user.children.present?
     end
 
-    @reservations = current_user.reservations.child(child_id).includes(:child, schedule: [:partner, :klass, :city])
-    @current_reservations = @reservations.child(child_id).upcoming.sort_by_datetime_asc
-    @past_reservations = @reservations.child(child_id).in_the_past.sort_by_datetime_desc
+    @reservations = current_user.reservations.child(@child_id).includes(:child, schedule: [:partner, :klass, :city])
+    @current_reservations = @reservations.child(@child_id).upcoming.sort_by_datetime_asc
+    @past_reservations = @reservations.child(@child_id).in_the_past.sort_by_datetime_desc
     #@subscriptions = current_user.subscriptions
   end
 
