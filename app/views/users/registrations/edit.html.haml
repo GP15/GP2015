@@ -17,8 +17,8 @@
                             :html => {  :method => :put,
                                         :class => "edit-profile-form form-container form-horizontal" },
                             :defaults => {  :wrapper_html => { :class => 'field' },
-                                            :input_html =>   { :class => 'col-sm-8' },
-                                            :label_html =>   { :class => 'col-sm-4'}}) do |f|
+                                            :input_html =>   { :class => 'col-sm-10' },
+                                            :label_html =>   { :class => 'col-sm-2 control-label'}}) do |f|
 
             = devise_error_messages!
 
@@ -36,6 +36,7 @@
               %h3.form-section-title
                 Membership details
             = render :partial => 'children/child', :collection => resource.children
+            = render :partial => 'children/child', :collection => resource.children
             .clearfix
 
             .form-separator
@@ -43,6 +44,6 @@
               %h3.form-section-title
                 Change Password
             = f.input :current_password, :hint => "(input your current password to confirm your changes)"
-            = f.input :password, :hint => "(leave blank if you don't want to change it)"
+            = f.input :password, label: 'New Password', :hint => "(leave blank if you don't want to change it)"
             = f.input :password_confirmation
             = f.submit "Update", :class => "form-submit-btn gp-button pull-right"

@@ -46,6 +46,7 @@ $(document).ready(function()
 
   $('#top-get-started-btn').on('click', function(e){
     $.scrollTo("#top-request-zipcode-form");
+    $('#top-request-zipcode-form').find('.btn').click();
   });
   $('.cta-partner').on('click', function(e){
     $.scrollTo("#bottom-request-zipcode-form");

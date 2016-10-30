@@ -79,6 +79,7 @@ class ChildrenController < ApplicationController
                       .includes(:activity, :schedules, :partner, :development_elements, klass_elements: [:development_element])
                       .where("(? between klasses.age_start and klasses.age_end) and klasses.city_id = ? and (klasses.gender = ? or klasses.gender = 2) and level = 'Multilevel' ", age, city.id, Child.genders[gender])
 
+      @klasses = Klass.non_archived_schedules.first(15)
 
       # Filter by Klass
       # Get all the klass - and what's their development points
@@ -87,7 +88,7 @@ class ChildrenController < ApplicationController
       # Get same amount of points based on all different 7 elements
       # Curated 15 Klass based on different development elements
       if @klasses.present?
-        @klasses.order("RANDOM()").first(15)
+        # @klasses.order("RANDOM()").first(15)
 
         @klasses.each do |klass|
           klass.klass_elements.each do |element|

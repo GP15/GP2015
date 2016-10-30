@@ -9,7 +9,7 @@
       <div class="col-md-3">
         <div class='sidebar-children'>
           <div class='children-list'>
-            <h3>Children</h3>
+            <h3>Child's Name</h3>
             <ul class="nav">
 
               <% @children = current_user.children %>
@@ -25,7 +25,7 @@
                     <%= link_to user_path(child_id: child.id), class: 'btn' do %>
                       <%= child.full_name %>
                     <% end %>
-                    <i class='fa fa-lg fa-angle-double-right'></i>
+                    <i class='fa fa-lg fa-chevron-right'></i>
                   </li>
                 <% end %>
               <% end %>

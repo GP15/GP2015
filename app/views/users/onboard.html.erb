@@ -2,7 +2,7 @@
 <% provide(:page_title_bg, asset_path('page-bg-dashboard.jpg')) %>
 
 <div class="content dashboard-page">
-  <%= render partial: 'layouts/page_title', locals: { page_title: 'Welcome GeniusPass' } %>
+  <%= render partial: 'layouts/page_title', locals: { page_title: 'Welcome To GeniusPass' } %>
   <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
 
   <div class="container">
@@ -11,11 +11,12 @@
         <div class='content-main'>
 
           <div id="onboard-container">
-            <h3>Curation Informations</h3>
-            <section class="container curation-div">
-              <p>Bla Bla Bla </p>
-              <%= controller.action_name %>
-              <%= controller.controller_name %>
+            <h3>Brain Assessment Test</h3>
+            <section class="container curation-div txt-align-center">
+              <%= image_tag 'brain-assessment-test.png', width: '400', height: '150' %>
+              <p class='text-extra-large'>
+                Is your kid a left or right brain person? GeniusPass Intelligence System would like to find out by presenting few questions. Then, our team will curate the best activities and classes for your kid in your neighbourhood!
+              </p>
             </section>
 
             <h3>Add Child</h3>
@@ -36,12 +37,12 @@
                     <div class="form-group col-sm-12">
                       <div class="form-group col-sm-6">
                         <%= ip.label 'Gender', class: "control-label" %>
-                        <%= ip.select :gender, ['male', 'female'], { include_blank: true, required: true }, class: 'form-control' %>
+                        <%= ip.select :gender, [['Male', 'male'], ['Female', 'female']], { include_blank: true, required: true }, class: 'form-control' %>
                       </div>
 
                       <div class="form-group col-sm-6">
                         <%= ip.label 'Birth Year', class: "control-label" %>
-                        <%= ip.select :birth_year, (Date.current.year - 17)..(Date.current.year - 4), {}, {class: "form-control required"} %>
+                        <%= ip.select :birth_year, (Date.current.year - 17)..(Date.current.year - 3), {}, {class: "form-control required"} %>
                         <%= ip.hidden_field :id %>
                       </div>
                       <div class="form-group col-sm-12">
@@ -62,16 +63,25 @@
             <section class="container assessement-div">
               <% if @questions.present? %>
                 <% @questions.each do |question| %>
-                  <div class=''>
-                    <%= question.title %>
-                    <div>
-                      <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-primary answer-btn gp-button" data-brain="<%= yes_btn_data(question) %>">
-                          <input type="radio" name="options[]" autocomplete="off" value="<%= yes_btn_data(question) %>"> Yes
-                        </label>
-                        <label class="btn btn-primary answer-btn gp-button" data-brain="<%= no_btn_data(question) %>">
-                          <input type="radio" name="options[]" autocomplete="off" value="<%= no_btn_data(question) %>"> No
-                        </label>
+                  <div class='questions-div'>
+                    <div class='individual'>
+                      <p class='text-extra-large txt-align-center'>
+                        <%= question.title %> My child is easily distracted when doing something that he or she isn't interested in
+                      </p>
+                      <div class='txt-align-center'>
+
+                        <div class="btn-group" data-toggle="buttons">
+                          <label class="btn btn-primary answer-btn gp-button" data-brain="<%= yes_btn_data(question) %>">
+                            <%= image_tag 'yes.png', width: '85' do %>
+                            <% end %>
+                            <input type="radio" name="options[]" autocomplete="off" value="<%= yes_btn_data(question) %>">
+                          </label>
+                          <label class="btn btn-primary answer-btn gp-button" data-brain="<%= no_btn_data(question) %>">
+                            <%= image_tag 'no.png', width: '85' do %>
+                            <% end %>
+                            <input type="radio" name="options[]" autocomplete="off" value="<%= no_btn_data(question) %>">
+                          </label>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -96,7 +106,7 @@
 
               <div id="child_info_div" class="hide">
                 <div class='brain-img'>
-                  <%= image_tag 'brain_image.png' %>
+                  <%= image_tag 'brain-assessment-test.png', width: '400', height: '150' %>
                 </div>
 
                 <div class="brain-result">
@@ -105,8 +115,15 @@
                 </div>
 
                 <div class="info">
-                  <p>Your son / daughter is <span class='brain-result-text'>60% left</span> brained. We have curated the best activities for HIM!</p>
-                  <%= link_to 'View Personalize Activities Now', curated_schedules_path, class: 'btn redirect-btn', id: 'curated-child-btn' %>
+                  <p>
+                    Your child is a <strong class='brain-result-text'>60% left</strong><strong> Brain Person </strong>.
+                  </p>
+                  <p class='text-extra-large'>
+                    GeniusPass empowers equal development for both sides of brain. Hence, our team have curate the best activities for your kid!
+                  </p>
+                  <p>
+                    <%= link_to 'PERSONALISED ACTIVITIES', curated_schedules_path, class: 'btn redirect-btn', id: 'curated-child-btn' %>
+                  </p>
                 </div>
               </div>
             </section>

@@ -1043,9 +1043,9 @@ header nav #top-nav hr {
 
 /* Form */
 .form-container .form-group { position: relative; }
-.form-container .form-group .control-label {
-	padding: 8px 8px 0 0;
-}
+// .form-container .form-group .control-label {
+// 	padding: 8px 8px 0 0;
+// }
 .form-control {
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
@@ -1592,6 +1592,7 @@ select.form-control {
 .schedule-table td {
 	font-size: 14px;
 	font-weight: 300;
+	text-align: left;
 }
 .schedule-table td.activity-col a,
 .schedule-table td.studio-col a {

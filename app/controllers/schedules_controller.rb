@@ -48,6 +48,8 @@ class SchedulesController < ApplicationController
     @schedules =  @schedules.select{|schedule| schedule.klass.age_start <= params[:age].to_i && schedule.klass.age_end >= params[:age].to_i } unless params[:age].to_i == 0
     @schedules =  @schedules.select{|schedule| schedule.scheduled_dates.include?(date)}
 
+    @schedules = Schedule.all
+
     #@date = Date.parse(@date).strftime("%A, %d %B %Y")
   end
 

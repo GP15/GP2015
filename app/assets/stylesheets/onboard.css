@@ -33,7 +33,7 @@
 #right-brain-percent {
   text-align: center;
   font-size: 30px;
-  padding: 30px;
+  padding: 20px;
 }
 
 #child_info_div .brain-img {
@@ -45,7 +45,7 @@
 #complete-redirect .redirect-btn,
 #child_info_div .redirect-btn {
   padding: 18px;
-  background: #3eb4e2;
+  background: #FF0072;
   color: white;
   border-radius: 10px;
   font-size: 18px;
@@ -58,4 +58,30 @@
     font-size: 24px;
     padding: 5px;
   }
+}
+
+.questions-div .individual {
+  margin-bottom: 30px;
+}
+.questions-div p {
+  border-radius: 10px;
+  color: white;
+  background: #177A9D;
+  padding: 10px;
+}
+
+.answer-btn.gp-button {
+  background: none;
+  border: none;
+}
+.answer-btn.gp-button img {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.answer-btn.gp-button.active img {
+  border-radius: 50%;
+  -webkit-box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
 }

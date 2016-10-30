@@ -95,7 +95,7 @@ class Reservation < ActiveRecord::Base
 
   def check_authorization_for_reservation
     if child.subscription.blank?
-      errors.add(:base, "Please help your child to subscribe a plan")
+      errors.add(:base, "Register Your Child With GeniusPass Membership")
       return false
     else
       if !child.subscription.subscription_type.pro?

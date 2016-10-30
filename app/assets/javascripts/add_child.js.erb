@@ -5,6 +5,14 @@ $(document).ready(function()
 
   if($('#add-child-container').length >0){
 
+    $('body').on('click', '.answer-btn', function(e){
+      $(this).parent().parent().parent().fadeOut('15', function(){
+        if($('.questions-div .individual[style*="display: none"]').length == 10){
+          $("#onboard-container").steps("next");
+        }
+      });
+    });
+
     $("#add-child-container").steps({
       headerTag: "h3",
       bodyTag: "section",
@@ -73,15 +81,15 @@ $(document).ready(function()
             if(answers.length == 0){
               $('#complete-redirect').removeClass('hide');
             }else{
-              $('#left-brain-percent').html("Left " + (left_brains.length * 10) + "%");
-              $('#right-brain-percent').html((right_brains.length * 10) + "% " + "Right");
+              $('#left-brain-percent').html((left_brains.length * 10) + "%");
+              $('#right-brain-percent').html((right_brains.length * 10) + "% ");
 
               if(right_brains.length > left_brains.length){
-                $('.brain-result-text').html(right_brains.length * 10 + "% right");
+                $('.brain-result-text').html("Right");
               }else if(right_brains.length < left_brains.length){
-                $('.brain-result-text').html(left_brains.length * 10 + "% left");
+                $('.brain-result-text').html("Left");
               }else{
-                $('.brain-result-text').html("50% left and 50% right");
+                $('.brain-result-text').html("50% Left and 50% Right");
               }
 
               $('#child_info_div').removeClass('hide');

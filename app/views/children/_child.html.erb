@@ -27,7 +27,9 @@
     </div>
 
     <% if child.subscription.expired? %>
-      <%= link_to "Renew Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button btn-block' %>
+      <div class='txt-align-center'>
+        <%= link_to "Renew Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button package-btn' %>
+      </div>
     <% end %>
   </div>
 <% else %>
@@ -56,9 +58,12 @@
         <%= text_field_tag  :renewal_date, 'N/A', :readonly => true, :disabled => true %>
       </div>
     </div>
+
+    <div class='txt-align-center'>
+      <%= link_to "Change Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button package-btn' %>
+    </div>
   </div>
 
-  <%= link_to "Change Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button btn-block' %>
 <% end %>
 <br>
 </div>

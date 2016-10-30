@@ -1,6 +1,6 @@
 .klass-image img{
-  height: 135px;
-  width: 250px;
+  height: 80px;
+  width: 110px;
   padding: 5px;
 }
 .curated-schedule-table .activity .klass-name{
@@ -29,7 +29,7 @@
 .curated-schedule-table .development-elements {
   display: inline-block;
   padding: 10px;
-  width: 110px;
+  width: 85px;
 }
 .curated-schedule-table .development-elements .element-img img {
   width: 60px;
@@ -43,16 +43,16 @@
 }
 
 .curated-schedule-table .development-elements .element-point {
-  position: absolute;
+  /*position: absolute;
   top: 0;
   right: 5px;
   border-radius: 50%;
-  padding: 5px;
-  background: #3eb4e2;
-  color: white;
+  padding: 5px;*/
+  /*background: #3eb4e2;*/
+  color: #3eb4e2;
   font-size: 14px;
   text-align: center;
-  font-weight: 800;
+  /*font-weight: 800;*/
 }
 
 .curated-schedule-table .development-elements .element-title {
