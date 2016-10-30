@@ -1,48 +1,51 @@
 <div class='content-sidebar'>
 
   <div class="sidebar-widget">
-    <h3>Points Achievement</h3>
-
     <div class='reward-points-div'>
-      <div class='point-amount'><%= current_user.reward_points %></div>
+      <h3>
+        <%= image_tag 'geniustrack.png', width: '100' %>
+        <br>
+        Genius Points
+      </h3>
+<!--       <div class='point-amount'><%= current_user.reward_points %></div>
       <div class='point-label'>Points</div>
-
-      <%= link_to "Children Achievements", achievements_children_path, class: "gp-button" %>
+ -->
+      <%= link_to "Track Points", achievements_children_path, class: "gp-button" %>
       <% if @info.reward_section? %>
         <%= link_to "View All Rewards", rewards_path, class: "" %>
       <% end %>
     </div>
-
   </div>
 
-  <div class='sidebar-children'>
-    <div class='children-list'>
-      <h3>Child's Name</h3>
-      <ul class="nav">
+  <% unless action_name == 'achievements' %>
+    <div class='sidebar-children'>
+      <div class='children-list'>
+        <h3>Child's Name</h3>
+        <ul class="nav">
 
-        <% @children = current_user.children %>
-        <% if @children.present? %>
-          <% @children.each_with_index do |child, index| %>
-            <% if index.zero? && params[:child_id].blank? %>
-              <li class='active'>
-            <% elsif child.id == params[:child_id].to_i %>
-              <li class='active'>
-            <% else %>
-              <li>
-            <% end %>
-              <%= link_to curated_child_path(child), class: 'btn' do %>
-                <%= child.full_name %>
+          <% @children = current_user.children %>
+          <% if @children.present? %>
+            <% @children.each_with_index do |child, index| %>
+              <% if index.zero? && params[:child_id].blank? %>
+                <li class='active'>
+              <% elsif child.id == params[:child_id].to_i %>
+                <li class='active'>
+              <% else %>
+                <li>
               <% end %>
-              <i class='fa fa-lg fa-chevron-right'></i>
-            </li>
+                <%= link_to curated_child_path(child), class: 'btn' do %>
+                  <%= child.full_name %>
+                <% end %>
+                <i class='fa fa-lg fa-chevron-right'></i>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-        <li>
-          <%= link_to 'Add Child', new_user_child_path(current_user), class: 'btn' %>
-          <i class='fa fa-lg fa-plus'></i>
-        </li>
-      </ul>
+          <li>
+            <%= link_to 'Add Child', new_user_child_path(current_user), class: 'btn' %>
+            <i class='fa fa-lg fa-plus'></i>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-
+  <% end %>
 </div>

@@ -103,6 +103,9 @@ hr {
 .achievement-development-points-div {
   max-width: 165px;
 }
+td.achievement-development-points-div {
+  border-bottom: 0 !important;
+}
 
 
 
@@ -266,4 +269,35 @@ hr {
   color: white;
   margin: 0 !important;
   margin-bottom: 30px !important;
+}
+
+// Achievement
+.klass-element-div .klass-img{
+  display: inline-block;
+}
+
+.klass-element-div .klass-img img {
+  width: 60px;
+  height: 60px;
+}
+.klass-element-div .points{
+  display: inline-block;
+}
+
+.klass-element-div .points .title {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+}
+.klass-element-div .points .point {
+  color: red;
+}
+
+.klass-element-div .points .progress {
+  height: 14px;
+  margin-top: 10px;
+}
+
+.klass-element-div .points .progress .progress-bar {
+  background-color: #3eb4e2;
 }

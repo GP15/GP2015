@@ -10,40 +10,219 @@
       </div>
       <div class="col-md-9">
         <div class="content-main">
-          <h3>Children Achievement</h3>
+          <h3>Genius Track</h3>
           <% @children.each do |child| %>
-            <h2><%= child.full_name %></h2>
+            <h3><%= child.full_name %>'s Genius Points</h3>
+            <hr>
             <table class="table table-responsive-block achievement-table">
               <thead>
                 <tr>
-                  <th>Successful Booking</th>
+                  <!-- <th>Successful Booking</th>
                   <th>Development Points</th>
-                  <th>Total</th>
+                  <th>Total</th> -->
                 </tr>
               </thead>
               <tbody>
                 <% if child.reward_points.present? %>
                   <% child.reward_points.each do |point| %>
+                    <!-- This is quick hack, due to lack of client budget! -->
+                    <% @analytical_count, @logical_count, @intellectual_count, @physical_count, @creativity_count, @artistic_count, @memory_count = 0, 0, 0, 0, 0, 0, 0 %>
+                    <% point.reservation.schedule.klass.klass_elements.each do |element| %>
+                      <% element_count = instance_variable_get("@#{element.development_element.title.downcase}_count") %>
+                      <% count = element_count + element.points %>
+                      <% instance_variable_set("@#{element.development_element.title.downcase}_count", count) %>
+                     <% end %>
+                  <% end %>
+                  <% @total_count =  @analytical_count + @logical_count + @intellectual_count + @physical_count + @creativity_count + @artistic_count + @memory_count %>
                     <tr>
-                      <td>Reservation ID:#<%= point.reservation_id %></td>
                       <td class='achievement-development-points-div'>
-                        <% point.reservation.schedule.klass.klass_elements.each do |element| %>
-                          <div class="col-md-4 reward-popout-div">
-                            <div class='development-elements'>
-                              <div class='element-img'>
-                                <%= image_tag "#{element.development_element.title.downcase}.png" %>
-                              </div>
-                              <div class='element-title'>
-                                <strong><%= element.development_element.title %></strong>
-                                <br>(<%= element.points %> Points)
+                        <div class='klass-element-div'>
+                          <div class="col-md-2">
+                            <div class='klass-img'>
+                              <%= image_tag 'analytical.png' %>
+                            </div>
+                          </div>
+
+                          <div class='col-md-10 points'>
+                            <div class='title'>
+                              Analytical
+                              <span class='point pull-right'>
+                                <%= @analytical_count %> Points
+                              </span>
+                            </div>
+
+                            <div class="progress">
+                              <% analytical_percent = (@analytical_count.to_f / @total_count.to_f) * 100 %>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="<%= analytical_percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= analytical_percent %>%;">
+                                <span class="sr-only"><%= analytical_percent %>% Complete</span>
                               </div>
                             </div>
                           </div>
-                        <% end %>
+                        </div>
                       </td>
-                      <td><%= point.point %></td>
                     </tr>
-                  <% end %>
+                    <tr>
+                      <td class='achievement-development-points-div'>
+                        <div class='klass-element-div'>
+                          <div class="col-md-2">
+                            <div class='klass-img'>
+                              <%= image_tag 'logical.png' %>
+                            </div>
+                          </div>
+
+                          <div class='col-md-10 points'>
+                            <div class='title'>
+                              Logical
+                              <span class='point pull-right'>
+                                <%= @logical_count %> Points
+                              </span>
+                            </div>
+
+                            <div class="progress">
+                              <% logical_percent = (@logical_count.to_f / @total_count.to_f) * 100 %>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="<%= logical_percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= logical_percent %>%;">
+                                <span class="sr-only"><%= logical_percent %>% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='achievement-development-points-div'>
+                        <div class='klass-element-div'>
+                          <div class="col-md-2">
+                            <div class='klass-img'>
+                              <%= image_tag 'intellectual.png' %>
+                            </div>
+                          </div>
+
+                          <div class='col-md-10 points'>
+                            <div class='title'>
+                              Intellectual
+                              <span class='point pull-right'>
+                                <%= @intellectual_count %> Points
+                              </span>
+                            </div>
+
+                            <div class="progress">
+                              <% intellectual_percent = (@intellectual_count.to_f / @total_count.to_f) * 100 %>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="<%= intellectual_percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= intellectual_percent %>%;">
+                                <span class="sr-only"><%= intellectual_percent %>% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='achievement-development-points-div'>
+                        <div class='klass-element-div'>
+                          <div class="col-md-2">
+                            <div class='klass-img'>
+                              <%= image_tag 'physical.png' %>
+                            </div>
+                          </div>
+
+                          <div class='col-md-10 points'>
+                            <div class='title'>
+                              Physical
+                              <span class='point pull-right'>
+                                <%= @physical_count %> Points
+                              </span>
+                            </div>
+
+                            <div class="progress">
+                              <% physical_percent = (@physical_count.to_f / @total_count.to_f) * 100 %>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="<%= physical_percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= physical_percent %>%;">
+                                <span class="sr-only"><%= physical_percent %>% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='achievement-development-points-div'>
+                        <div class='klass-element-div'>
+                          <div class="col-md-2">
+                            <div class='klass-img'>
+                              <%= image_tag 'creativity.png' %>
+                            </div>
+                          </div>
+
+                          <div class='col-md-10 points'>
+                            <div class='title'>
+                              Creativity
+                              <span class='point pull-right'>
+                                <%= @creativity_count %> Points
+                              </span>
+                            </div>
+
+                            <div class="progress">
+                              <% creativity_percent = (@creativity_count.to_f / @total_count.to_f) * 100 %>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="<%= creativity_percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= creativity_percent %>%;">
+                                <span class="sr-only"><%= creativity_percent %>% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='achievement-development-points-div'>
+                        <div class='klass-element-div'>
+                          <div class="col-md-2">
+                            <div class='klass-img'>
+                              <%= image_tag 'artistic.png' %>
+                            </div>
+                          </div>
+
+                          <div class='col-md-10 points'>
+                            <div class='title'>
+                              Artistic
+                              <span class='point pull-right'>
+                                <%= @artistic_count %> Points
+                              </span>
+                            </div>
+
+                            <div class="progress">
+                              <% artistic_percent = (@artistic_count.to_f / @total_count.to_f) * 100 %>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="<%= artistic_percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= artistic_percent %>%;">
+                                <span class="sr-only"><%= artistic_percent %>% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='achievement-development-points-div'>
+                        <div class='klass-element-div'>
+                          <div class="col-md-2">
+                            <div class='klass-img'>
+                              <%= image_tag 'memory.png' %>
+                            </div>
+                          </div>
+
+                          <div class='col-md-10 points'>
+                            <div class='title'>
+                              Memory
+                              <span class='point pull-right'>
+                                <%= @memory_count %> Points
+                              </span>
+                            </div>
+
+                            <div class="progress">
+                              <% memory_percent = (@memory_count.to_f / @total_count.to_f) * 100 %>
+                              <div class="progress-bar" role="progressbar" aria-valuenow="<%= memory_percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= memory_percent %>%;">
+                                <span class="sr-only"><%= memory_percent %>% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
                 <% end %>
               </tbody>
             </table>
