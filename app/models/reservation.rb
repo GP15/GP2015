@@ -95,7 +95,7 @@ class Reservation < ActiveRecord::Base
 
   def check_authorization_for_reservation
     if child.subscription.blank?
-      errors.add(:base, "Register Your Child With GeniusPass Membership")
+      errors.add(:base, "<a href='#{Rails.application.routes.url_helpers.new_child_subscription_path(child)}'>Register Your Child With GeniusPass Membership</a>")
       return false
     else
       if !child.subscription.subscription_type.pro?

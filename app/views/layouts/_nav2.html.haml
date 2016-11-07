@@ -43,5 +43,6 @@
               .button-menu
                 / = link_to new_user_registration_path, id: "signup", class: "btn-menu" do
                 /   %span{"data-title" => "Get Started"} Get Started
-                = link_to new_user_session_path, id: "login", class: "btn-menu secondary" do
-                  %span{"data-title" => "Login"} Login
+                - unless controller.action_name == 'new' && controller.controller_name == 'sessions'
+                  = link_to new_user_session_path, id: "login", class: "btn-menu secondary" do
+                    %span{"data-title" => "Login"} Login

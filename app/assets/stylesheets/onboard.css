@@ -63,11 +63,14 @@
 .questions-div .individual {
   margin-bottom: 30px;
 }
+.questions-div {
+  display: none;
+}
 .questions-div p {
   border-radius: 10px;
   color: white;
   background: #177A9D;
-  padding: 10px;
+  padding: 20px 10px;
 }
 
 .answer-btn.gp-button {
@@ -84,4 +87,36 @@
   -webkit-box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
   box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+}
+
+
+.questions.progress {
+  height: 30px;
+  margin: 4% 10% 7%;
+  border: 10px solid #00C098;
+  background-color: white;
+  overflow: initial;
+}
+
+@media screen and (max-width: 500px) {
+  .questions.progress {
+    margin: 30px 0 60px 40px;
+  }
+}
+.questions.progress .percentage {
+  position: absolute;
+  left: -50px;
+  top: -26px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #00A885;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 20px;
+}
+.questions.progress .progress-bar {
+  background-color: #00A885;
+  position: relative;
 }

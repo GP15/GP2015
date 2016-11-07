@@ -1,17 +1,26 @@
 $(document).ready(function()
 {
   var answers = [];
-
+  var answered = 1;
 
   if($('#onboard-container').length >0){
 
     $('body').on('click', '.answer-btn', function(e){
       $(this).parent().parent().parent().fadeOut('15', function(){
+        $('.questions.progress .progress-bar').css('width', (answered * 10)+'%').attr('aria-valuenow', (answered * 10));
+        $('.questions.progress .percentage').text((answered * 10) + '%');
+
+        answered += 1;
+
+        $("#question-" + answered - 1).hide();
+        $("#question-" + answered).show();
         if($('.questions-div .individual[style*="display: none"]').length == 10){
           $("#onboard-container").steps("next");
         }
       });
     });
+
+    $('#question-1').show();
 
     $("#onboard-container").steps({
       headerTag: "h3",

@@ -34,7 +34,7 @@
             .form-separator
             .form-section
               %h3.form-section-title
-                Membership details
+                Membership Details
             = render :partial => 'children/child', :collection => resource.children
             = render :partial => 'children/child', :collection => resource.children
             .clearfix
@@ -43,7 +43,7 @@
             .form-section
               %h3.form-section-title
                 Change Password
-            = f.input :current_password, :hint => "(input your current password to confirm your changes)"
+            = f.input :current_password, label: 'Current Password', :hint => "(input your current password to confirm your changes)"
             = f.input :password, label: 'New Password', :hint => "(leave blank if you don't want to change it)"
-            = f.input :password_confirmation
+            = f.input :password_confirmation, label: 'Password Confirmation'
             = f.submit "Update", :class => "form-submit-btn gp-button pull-right"
