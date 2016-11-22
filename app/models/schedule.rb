@@ -73,7 +73,7 @@ class Schedule < ActiveRecord::Base
   end
 
   def scheduled_dates
-    if self.recurrence.nil? || self.recurrence == "None"
+    if self.recurrence.nil? || self.recurrence.blank? || self.recurrence == "None"
       [ self.starts_at.to_date ]
     else
       scheduled_dates_array = Array.new
