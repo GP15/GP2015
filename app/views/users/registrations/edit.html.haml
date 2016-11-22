@@ -1,5 +1,5 @@
 - provide(:title, "Profile")
-- provide(:page_title_bg, asset_path('page-bg-profile.jpg'))
+- provide(:page_title_bg, asset_path('background-footer.jpg'))
 .content.profile-page
   = render partial: 'layouts/page_title', locals: { page_title: 'Profile' }
   .container
@@ -30,12 +30,10 @@
             = f.input :phone_no
             = f.input :location, collection: City.pluck( :name )
 
-
             .form-separator
             .form-section
               %h3.form-section-title
                 Membership Details
-            = render :partial => 'children/child', :collection => resource.children
             = render :partial => 'children/child', :collection => resource.children
             .clearfix
 

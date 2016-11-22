@@ -71,6 +71,7 @@ class ChildrenController < ApplicationController
 
     if zipcode.present?
       city = zipcode.city
+      city = City.first if city.blank?
 
       # Sort the ages of children
       age = Time.now.year - @child.birth_year

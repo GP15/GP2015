@@ -1,5 +1,5 @@
 <% provide(:title, "Reserve a class for #{@schedule.klass.name}") %>
-<% provide(:page_title_bg, asset_path('page-bg-reservation.jpg')) %>
+<% provide(:page_title_bg, asset_path('background-footer.jpg')) %>
 <div class="content reservation-page">
   <%= render partial: 'layouts/page_title', locals: { page_title: 'Reservation' } %>
   <%= render 'shared/notice', locals: { flash: flash } if flash[:notice].present? %>
@@ -39,7 +39,9 @@
             <% if Time.zone.now < @schedule.ends_at %>
               <div class="schedule-notes margin-two-six">
                 <span>Note:</span>
-                <p>A reservation can't be canceled once it's passed 11:59pm before the schedule starts next day. Non-attendance for a confirmed reservation will be charged RM20.</p>
+                <p>
+                  Cancel before 12am. Late cancellation and non-attendance for a confirmed reservation will be charged RM10.
+                </p>
               </div>
             <% end %>
           <% end %>
@@ -61,7 +63,7 @@
             <%= render 'eligibility_notice' %>
           <% end %>
           <p class="notice">
-            <%= "You have #{current_user.reservation_allowed_for_partner(@schedule.partner)} out of #{@schedule.partner.user_allowed} sessions left for this month #{@schedule.partner.company}." %>
+            <%= "You have #{current_user.reservation_allowed_for_partner(@schedule.partner)} out of #{@schedule.partner.user_allowed} sessions left for this month in #{@schedule.partner.company}." %>
           </p>
           <!--
           <% if current_user.children.present? && current_user.should_upgrade?(current_user.children.first.id) %>

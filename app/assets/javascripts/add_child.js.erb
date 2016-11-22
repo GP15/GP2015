@@ -1,17 +1,26 @@
 $(document).ready(function()
 {
   var answers = [];
-
+  var answered = 1;
 
   if($('#add-child-container').length >0){
 
     $('body').on('click', '.answer-btn', function(e){
       $(this).parent().parent().parent().fadeOut('15', function(){
+        $('.questions.progress .progress-bar').css('width', (answered * 10)+'%').attr('aria-valuenow', (answered * 10));
+        $('.questions.progress .percentage').text((answered * 10) + '%');
+
+        answered += 1;
+
+        $("#question-" + answered - 1).hide();
+        $("#question-" + answered).show();
         if($('.questions-div .individual[style*="display: none"]').length == 10){
-          $("#onboard-container").steps("next");
+          $("#add-child-container").steps("next");
         }
       });
     });
+
+    $('#question-1').show();
 
     $("#add-child-container").steps({
       headerTag: "h3",
@@ -27,7 +36,7 @@ $(document).ready(function()
         if(currentIndex > newIndex)
         {
           return true;
-        }else if(currentIndex == 0){
+        }else if(currentIndex == 1){
           if($('#add-child-status').attr('data-status') == 'done'){
             valid = true;
           }else{
@@ -60,7 +69,7 @@ $(document).ready(function()
             });
           }
           return valid;
-        }else if(currentIndex == 1){
+        }else if(currentIndex == 2){
           var inputs = $('.btn-group .btn.btn-primary.answer-btn.gp-button.active input[name="options[]"]');
           right_brains = [];
           left_brains = [];

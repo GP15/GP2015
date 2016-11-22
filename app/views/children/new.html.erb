@@ -1,5 +1,5 @@
 <% provide(:title, "Add Child") %>
-<% provide(:page_title_bg, asset_path('page-bg-dashboard.jpg')) %>
+<% provide(:page_title_bg, asset_path('background-footer.jpg')) %>
 
 <div class="content dashboard-page">
   <%= render partial: 'layouts/page_title', locals: { page_title: 'Add A Child' } %>
@@ -11,6 +11,14 @@
         <div class='content-main'>
 
           <div id="add-child-container">
+            <h3>Brain Assessment Test</h3>
+            <section class="container curation-div txt-align-center">
+              <%= image_tag 'brain-assessment-test.png', width: '400', height: '150' %>
+              <p class='text-extra-large'>
+                Is your kid a left or right brain person? GeniusPass Intelligence System would like to find out by presenting few questions. Then, our team will curate the best activities and classes for your kid in your neighbourhood!
+              </p>
+            </section>
+
             <h3>Add Child</h3>
 
 
@@ -47,11 +55,17 @@
             <h3>Child Assessment</h3>
             <section class="container assessement-div">
               <% if @questions.present? %>
-                <% @questions.each do |question| %>
-                  <div class='questions-div'>
+                <div class="questions progress">
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                    <span class='percentage'>0%</span>
+                    <!-- <span class="sr-only">40% Complete (success)</span> -->
+                  </div>
+                </div>
+                <% @questions.each_with_index do |question, index| %>
+                  <div class='questions-div' id="question-<%= index + 1 %>">
                     <div class='individual'>
                       <p class='text-extra-large txt-align-center'>
-                        <%= question.title %> My child is easily distracted when doing something that he or she isn't interested in
+                        <%= question.title %>
                       </p>
                       <div class='txt-align-center'>
 

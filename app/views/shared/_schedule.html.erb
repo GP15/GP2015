@@ -10,7 +10,7 @@
       <%= @schedule.klass.name %>
     </h3>
     <div class="partner">
-      by #{link_to @schedule.partner.company, partner_path(@schedule.partner)}
+      by <%= link_to @schedule.partner.company, partner_path(@schedule.partner) %>
     </div>
     <div class="description">
       <%= @schedule.klass.description %>

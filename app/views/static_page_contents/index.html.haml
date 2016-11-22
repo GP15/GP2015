@@ -1,5 +1,5 @@
 - provide(:title, "Staic page management")
-- provide(:page_title_bg, asset_path('page-bg.jpg'))
+- provide(:page_title_bg, asset_path('background-footer.jpg'))
 .container.content.faq-page.white-bg
   = render partial: 'layouts/page_title', locals: { page_title: 'Static Page Management' }
   %h1 Admin Static Pages
@@ -11,7 +11,7 @@
         %th
         %th
         %th
-    
+
     %tbody
       - @static_page_contents.each do |static_page_content|
         %tr

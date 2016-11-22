@@ -10,7 +10,9 @@
 <!--       <div class='point-amount'><%= current_user.reward_points %></div>
       <div class='point-label'>Points</div>
  -->
-      <%= link_to "Track Points", achievements_children_path, class: "gp-button" %>
+ <!--
+      <%= link_to "Track Points", achievements_children_path, class: "gp-button" %> -->
+      <strong>Total: <%= current_user.reward_points %> Points</strong>
       <% if @info.reward_section? %>
         <%= link_to "View All Rewards", rewards_path, class: "" %>
       <% end %>

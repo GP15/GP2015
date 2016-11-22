@@ -60,11 +60,11 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label, class: 'col-sm-3 control-label'
 
-    b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
-      ba.use :input, class: 'form-control'
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-    end
+    # b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
+    #   ba.use :input, class: 'form-control'
+    #   # ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+    #   ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+    # end
   end
 
   config.wrappers :horizontal_file_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|

@@ -22,6 +22,8 @@ class Schedule < ActiveRecord::Base
   scope :not_archived, -> { where.not('archived') }
   scope :specific_activity, -> (activity_id) { where(activity_id: activity_id) }
 
+
+
   def self.recent
     where("recurrence in (?) or (ends_at > ?)", ['Daily', 'Monthly', 'Weekly', 'Yearly'], Time.zone.now )
   end

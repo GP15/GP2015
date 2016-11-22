@@ -13,7 +13,7 @@ class Klass < ActiveRecord::Base
 
   enum gender: [:male, :female, :unisex]
 
-  validates_presence_of :name, :activity_id, :age_start, :age_end, :reservation_limit
+  validates_presence_of :name, :activity_id, :age_start, :age_end, :reservation_limit, :level
   validates_numericality_of :reservation_limit, only_integer: true, greater_than_or_equal_to: 0
 
   scope :non_archived_schedules, -> { includes(:schedules).where(schedules: { archived: false }) }

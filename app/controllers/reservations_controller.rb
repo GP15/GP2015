@@ -31,7 +31,7 @@ class ReservationsController < ApplicationController
         render :new
       end
     else
-      flash[:error] = "You quota limit for #{@schedule.partner.company} has been reached."
+      flash[:error] = "#{@reservation.child.first_name} quota limit for #{@schedule.partner.company} has been reached."
       redirect_to new_schedule_reservation_path(@schedule)
     end
   end

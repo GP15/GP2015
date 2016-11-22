@@ -26,11 +26,16 @@
       </div>
     </div>
 
-    <% if child.subscription.expired? %>
+    <% if child.subscription.subscription_type.free? %>
+      <div class='txt-align-center'>
+        <%= link_to "Change Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button package-btn' %>
+      </div>
+    <% elsif child.subscription.expired? %>
       <div class='txt-align-center'>
         <%= link_to "Renew Package", new_child_subscription_path(child), class: 'form-submit-btn gp-button package-btn' %>
       </div>
     <% end %>
+
   </div>
 <% else %>
   <div class="form-section child-form-section">
