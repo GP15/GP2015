@@ -111,11 +111,6 @@
                       <div class='klass-name'>
                         <b><%= klass.name %></b>
                       </div>
-                      <!-- <div class='klass-activity-name'>
-                        <span class='label'><%= klass.activity.name %></span>
-                        <span class='label'><%= klass.level %></span>
-                        <span class='label'><%= klass.gender.titleize %></span>
-                      </div> -->
                       <div class='partner-name'>
                         <%= klass.partner.company %>
                       </div>
@@ -127,8 +122,6 @@
                         <%= klass.schedules.specific_activity(klass.activity.id).sort_by_datetime_asc.not_archived.first.starts_at.strftime('%l:%M %p') %>
                         -
                         <%= klass.schedules.specific_activity(klass.activity.id).sort_by_datetime_asc.not_archived.first.ends_at.strftime('%l:%M %p') %>
-
-                         <!-- Suitable Age: <%= klass.age_start %> - <%= klass.age_end %> -->
                       </div>
                     </td>
                     <td class='txt-align-center'>
