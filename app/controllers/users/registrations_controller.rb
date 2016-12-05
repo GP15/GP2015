@@ -54,6 +54,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     onboard_path
   end
 
+  def after_update_path_for(resource)
+    edit_user_registration_path
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u|

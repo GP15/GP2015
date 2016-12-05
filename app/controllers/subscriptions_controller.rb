@@ -2,13 +2,19 @@ class SubscriptionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:charged_successfully]
   before_action :set_child, except: [:charged_successfully]
   def new
-    if current_user.subscriptions.active.size > 1
+    paid_subscription_ids = SubscriptionType.paid.pluck(:id)
+
+    if current_user.subscriptions.where(subscription_type_id: paid_subscription_ids).active.size >= 1
       @packages = SubscriptionType.onward_child_paid_packages.asc
     else
       @packages = SubscriptionType.paid.asc
     end
     @client_token = Braintree::ClientToken.generate(customer_id: current_user.customer_id)
-    @subscription = @child.build_subscription
+    if @child.subscription.present?
+      @subscription = @child.subscription
+    else
+      @subscription = @child.build_subscription
+    end
     @user = current_user
   end
 

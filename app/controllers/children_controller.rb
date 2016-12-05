@@ -80,7 +80,7 @@ class ChildrenController < ApplicationController
                       .includes(:activity, :schedules, :partner, :development_elements, klass_elements: [:development_element])
                       .where("(? between klasses.age_start and klasses.age_end) and klasses.city_id = ? and (klasses.gender = ? or klasses.gender = 2) and level = 'Multilevel' ", age, city.id, Child.genders[gender])
 
-      @klasses = Klass.non_archived_schedules.first(15)
+      @klasses = Klass.non_archived_schedules.first(10)
 
       # Filter by Klass
       # Get all the klass - and what's their development points

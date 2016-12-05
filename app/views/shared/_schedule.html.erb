@@ -37,7 +37,19 @@
       <dt>Elements:</dt>
       <dd>
         <% if @schedule.klass.development_elements.present? %>
-          <%= @schedule.klass.development_elements.pluck(:title).join(", ") %>
+          <% @schedule.klass.klass_elements.each do |element| %>
+            <div class="col-md-4 col-xs-4 reward-popout-div">
+              <div class='development-elements'>
+                <div class='element-img'>
+                  <%= image_tag "#{element.development_element.title.downcase}.png" %>
+                </div>
+                <div class='element-title'>
+                  <strong><%= element.development_element.title %></strong>
+                  <br>(<%= element.points %> Points)
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </dd>
       <hr/>

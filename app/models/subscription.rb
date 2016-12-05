@@ -49,6 +49,10 @@ class Subscription < ActiveRecord::Base
     Time.now > renewal_date
   end
 
+  def free_package?
+    subscription_type == SubscriptionType.free
+  end
+
   def discounts_quantity
     quantity = 0
     quantity = quantity + 1 if promo_code.present?

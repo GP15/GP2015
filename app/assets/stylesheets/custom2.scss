@@ -349,45 +349,6 @@ header nav #top-nav hr {
 }
 
 /* -----------------------------------*/
-/* -------->>> PAGE DETAILS <<<-------*/
-/* -----------------------------------*/
-.page-details {
-	background: #fff center/cover no-repeat;
-	width: 100%;
-	height: auto;
-	min-height: 130px;
-	text-align: center;
-	position: relative;
-	top: -30px;
-	position: relative;
-	z-index: 1;
-}
-.page-details:before {
-	content: '';
-	background-color: rgba(0, 0, 0, 0.15);
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 2;
-}
-.page-details.default { background: #3eb4e2 image-url('page-details-bg.png') repeat-x !important; }
-.page-details h1 {
-	font-family: 'Roboto', sans-serif;
-	font-size: 30px;
-	font-weight: 500;
-	color: #fff;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	line-height: 130px;
-	padding: 0;
-	margin: 0;
-	position: relative;
-	z-index: 3;
-}
-
-/* -----------------------------------*/
 /* ----------->>> LAYOUT <<<----------*/
 /* -----------------------------------*/
 .content {

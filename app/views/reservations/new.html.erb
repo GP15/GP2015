@@ -26,7 +26,7 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th class="date">Created on</th>
+                  <th class="date">Reserved on</th>
                   <% if Time.zone.now <= @schedule.starts_at %>
                     <th></th>
                   <% end %>
@@ -40,7 +40,7 @@
               <div class="schedule-notes margin-two-six">
                 <span>Note:</span>
                 <p>
-                  Cancel before 12am. Late cancellation and non-attendance for a confirmed reservation will be charged RM10.
+                  Cancel before 11.59pm, <%= (@schedule.starts_at - 1.day).strftime("%-d %b %Y") %>. Late cancellation and non-attendance for a confirmed reservation will be charged RM10.
                 </p>
               </div>
             <% end %>
@@ -86,19 +86,19 @@
         <div class="modal-body">
           <h2 class='txt-align-center'>Congratulation!</h2>
           <br>
-          <% @schedule.klass.klass_elements.each do |element| %>
-            <div class="col-md-4 reward-popout-div">
-              <div class='development-elements'>
-                <div class='element-img'>
-                  <%= image_tag "#{element.development_element.title.downcase}.png" %>
-                </div>
-                <div class='element-title'>
-                  <strong><%= element.development_element.title %></strong>
-                  <br>(<%= element.points %> Points)
+            <% @schedule.klass.klass_elements.each do |element| %>
+              <div class="col-md-4 reward-popout-div">
+                <div class='development-elements'>
+                  <div class='element-img'>
+                    <%= image_tag "#{element.development_element.title.downcase}.png" %>
+                  </div>
+                  <div class='element-title'>
+                    <strong><%= element.development_element.title %></strong>
+                    <br>(<%= element.points %> Points)
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
           <div class='clearfix'></div>
           <br>
           <p>
