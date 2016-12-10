@@ -18,7 +18,8 @@
     = render 'layouts/shim'
   %body.text-med.black-text
     = render 'layouts/nav2'
-    = yield
+    .animsition
+      = yield
     = render 'layouts/footer'
     = yield :bottom_js
     = yield :javascript if params[:controller].eql?('cards') || params[:controller].eql?('subscriptions')
