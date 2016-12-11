@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
 
   def index
+    if params[:mobileview].present?
+      cookies[:mobile] = true
+    end
     @featured_partners = Partner.all.featured_partners
     if user_signed_in?
       redirect_to current_user
