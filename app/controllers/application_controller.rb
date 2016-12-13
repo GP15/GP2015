@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # before_filter :set_time_zone
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :get_site_info
+  before_action :get_site_info, :get_first_child
   # before_action :check_credit_card_added
 
   protected
@@ -69,6 +69,15 @@ class ApplicationController < ActionController::Base
       @facebook_link = @info.facebook
       @twitter_link = @info.twitter
       @instagram_link = @info.instagram
+    end
+  end
+
+  def get_first_child
+    if user_signed_in?
+      zipcode = Zipcode.find_by_pincode(current_user.location)
+      if zipcode.present?
+        @child_id = current_user.children.first.id if current_user.children.present?
+      end
     end
   end
 

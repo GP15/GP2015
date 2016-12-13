@@ -20,6 +20,9 @@
                 %ul.main-nav
                   %li{:class => current_path(current_user)}
                     = link_to "Dashboard", current_user
+                  - if @child_id.present?
+                    %li{:class => current_path(curated_child_path(@child_id))}
+                      = link_to "Personalize Activities", curated_child_path(@child_id)
                   %li{ :class => current_path(schedules_path)}
                     = link_to "Schedules", schedules_path
                   / Disable turbolink for partners#index link so isotope.js can work properly
