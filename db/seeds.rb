@@ -121,6 +121,7 @@ def create_children(user, first_name, last_name, age)
   user.children.create!(
     first_name: first_name,
     last_name:  last_name,
+    fullname: "#{first_name} #{last_name}",
     birth_year: age,
     gender: rand(2)
   )
@@ -142,7 +143,7 @@ users.each do |user|
   last_name = Faker::Name.last_name
 
   rand(0..4).times do
-    first_name = Faker::Name.first_name
+    first_name = Faker::Name.fullname
     random_age = rand((Date.current.year - 17)..(Date.current.year - 4))
 
     create_children(user, first_name, last_name, random_age)

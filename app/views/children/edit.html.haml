@@ -16,6 +16,6 @@
             = render 'form', f: f
             .margin-five.clearfix
               = link_to 'Delete', [@user, @child], method: :delete, |
-                data: { confirm: "Remove #{@child.first_name}?" },  |
+                data: { confirm: "Remove #{@child.fullname}?" },  |
                 class: "pull-left underline padding-two"            |
               = f.submit "Update", class: "form-submit-btn gp-button pull-right"

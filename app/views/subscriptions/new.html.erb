@@ -81,7 +81,11 @@
               </div>
 
               <button class="gp-button open-modal" data-id="RM79" data-promocode="" data-subscription-type-id="3" data-target="#package-subscription" data-toggle="modal" href="#" title="Select Plan">
-                Select Plan
+                <% if @child.subscription.present? and !@child.subscription.new_record? %>
+                  Upgrade Plan
+                <% else %>
+                  Select Plan
+                <% end %>
               </button>
             </div>
           </div>
@@ -89,22 +93,32 @@
 
       </div>
 
-      <% if @child.subscription.present? %>
+      <% if @child.subscription.present? and !@child.subscription.new_record? %>
         <% if @child.subscription.free_package? %>
           <!-- Cannot downgrade -->
         <% else %>
-          <p class="basic-package-link">
-            <%= link_to 'Unsubscribe Package', child_subscription_path(@child, @child.subscription), method: :delete, data: { confirm: 'Are you sure you want to unsubscribe this package?' }, class: "gp-link" %>
-          </p>
+          <% if !@child.subscription.new_record? %>
+            <p class="basic-package-link">
+              <%= link_to 'Unsubscribe Package', child_subscription_path(@child, @child.subscription), method: :delete, data: { confirm: 'Are you sure you want to unsubscribe this package?' }, class: "gp-link" %>
+            </p>
+          <% end %>
         <% end %>
       <% else %>
-        <p class="basic-package-link">
+        <div class="basic-package-link">
           <% plan = SubscriptionType.free %>
-          <%= link_to "Try our Basic Package for FREE", child_subscriptions_path(@child, subscription: { :subscription_type_id => plan.id }), method: :post, class: "gp-link" %>
-          <span>
-            <%= "(#{plan.activities_allowed} Activity Per Month)" %>
-          </span>
-        </p>
+          <div class='col-md-7'>
+            <span class='free-activities-months'>
+              Get Started With <%= plan.activities_allowed %> Free <%= pluralize(plan.activities_allowed, 'Activity') %>
+            </span>
+          </div>
+
+          <div class='col-md-5'>
+            <%= link_to "Select Plan", child_subscriptions_path(@child, subscription: { :subscription_type_id => plan.id }), method: :post, class: "free-package-btn" %>
+            <div class='free-valid'>*valid for 30 days</div>
+          </div>
+          <div class='clearfix'></div>
+        </div>
+        <div class='clearfix'></div>
       <% end %>
 
     </div>

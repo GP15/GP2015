@@ -36,7 +36,7 @@ class ChildrenController < ApplicationController
     @child = @user.children.find(params[:id])
 
     if @child.update(child_params)
-      redirect_to current_user, notice: "#{@child.first_name} details updated."
+      redirect_to current_user, notice: "#{@child.fullname} details updated."
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class ChildrenController < ApplicationController
     @child = @user.children.find(params[:id])
     @child.destroy
 
-    redirect_to current_user, notice: "#{@child.first_name} deleted."
+    redirect_to current_user, notice: "#{@child.fullname} deleted."
   end
 
   def achievements
@@ -115,6 +115,6 @@ class ChildrenController < ApplicationController
   end
 
   def child_params
-    params.require(:child).permit(:first_name, :last_name, :birth_year, :gender)
+    params.require(:child).permit(:fullname, :first_name, :last_name, :birth_year, :gender)
   end
 end

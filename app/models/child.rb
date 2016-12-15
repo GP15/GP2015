@@ -11,10 +11,10 @@ class Child < ActiveRecord::Base
   enum gender: [:male, :female]
 
   ## Validations ##
-  validates_presence_of :first_name, :last_name, :birth_year
+  validates :fullname, :birth_year, :user, :gender, presence: true
 
   ## Scopes ##
-  scope :sort_by_age_name, -> { order('birth_year DESC', 'first_name ASC') }
+  scope :sort_by_age_name, -> { order('birth_year DESC', 'fullname ASC') }
   #scope :valid_children_wrt_subscriptions, -> { eager_load(:subscription, :reservations).where("DATE(subscriptions.start_date) <= ? AND DATE(subscriptions.renewal_date) >= ?", Date.today, Date.today).group("subscriptions.plan_id, children.id, subscriptions.id, reservations.id").having("(subscriptions.plan_id IN (?) AND COUNT(reservations.child_id) < 4) OR (subscriptions.plan_id IN (?))", ['RM49', 'RM39'], ['RM99', 'RM79']) }
 
   #scope :valid_children_wrt_subscriptions, -> (user){ where.not(id: user.children.joins(:subscription, :reservations).select("COUNT(reservations.child_id) as counts, subscriptions.plan_id, children.id").group("subscriptions.plan_id, children.id, reservations.child_id").having("reservations.child_id > 4 AND subscriptions.plan_id IN (?)", ['RM49','RM39']).ids) }
@@ -23,7 +23,6 @@ class Child < ActiveRecord::Base
   ## Class Methods ##
   # A scope that checks for a class's age requirement.
 
-  validates :first_name, :last_name, :birth_year, :user, :gender, presence: true
 
   def self.age_between(klass)
     where(birth_year: (Date.current.year - klass.age_end)..(Date.current.year - klass.age_start))

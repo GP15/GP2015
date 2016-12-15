@@ -6,8 +6,7 @@
       - @children.each do |child|
         %tr
           %td.children-name
-            = child.first_name
-            = child.last_name
+            = child.fullname
           %td.children-number= age(child)
           /%td.children-edit
           /  = link_to " ", edit_user_child_path(current_user, child), :class => "fa fa-pencil"

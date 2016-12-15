@@ -21,30 +21,32 @@
 
             <h3>Add Child</h3>
             <section class="container addchild-div">
+              <div class="col-sm-12">
+                <p>
+                <b>* Please ensure you insert your child's details correctly.</b>
+                </p>
+              </div>
               <%= nested_form_for current_user, url: add_child_user_url(current_user), html: { id: 'add-child-form' } do |f| %>
 
                 <%= f.fields_for :children do |ip| %>
                   <div class="form-group col-sm-6">
-                    <%= ip.label 'First Name', class: "control-label" %>
-                    <%= ip.text_field :first_name, class: 'form-control', required: true %>
+                    <%= ip.label 'Name', class: "control-label" %>
+                    <%= ip.text_field :fullname, class: 'form-control', required: true %>
                   </div>
-                  <div class="form-group col-sm-6">
-                    <%= ip.label 'Last Name', class: "control-label" %>
-                    <%= ip.text_field :last_name, class: 'form-control', required: true %>
+
+                  <div class="form-group col-sm-4">
+                    <%= ip.label 'Gender', class: "control-label" %>
+                    <%= ip.select :gender, [['Male', 'male'], ['Female', 'female']], { include_blank: true, required: true }, class: 'form-control' %>
+                  </div>
+
+                  <div class="form-group col-sm-4">
+                    <%= ip.label 'Birth Year', class: "control-label" %>
+                    <%= ip.select :birth_year, (Date.current.year - 17)..(Date.current.year - 3), {}, {class: "form-control required"} %>
+                    <%= ip.hidden_field :id %>
                   </div>
 
                   <div class="row">
                     <div class="form-group col-sm-12">
-                      <div class="form-group col-sm-6">
-                        <%= ip.label 'Gender', class: "control-label" %>
-                        <%= ip.select :gender, [['Male', 'male'], ['Female', 'female']], { include_blank: true, required: true }, class: 'form-control' %>
-                      </div>
-
-                      <div class="form-group col-sm-6">
-                        <%= ip.label 'Birth Year', class: "control-label" %>
-                        <%= ip.select :birth_year, (Date.current.year - 17)..(Date.current.year - 3), {}, {class: "form-control required"} %>
-                        <%= ip.hidden_field :id %>
-                      </div>
                       <!-- <div class="form-group col-sm-12">
                         <%= ip.link_to_remove "Remove this child" %>
                       </div> -->

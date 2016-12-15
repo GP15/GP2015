@@ -164,12 +164,38 @@
 	font-family: 'Roboto', sans-serif;
 	text-align: center;
 	margin: 15px 0 0;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #d5d5d5;
+  -webkit-box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.15);
 }
+.free-package-btn:active {
+	background-color: #3eb4e2;
+  color: #fff;
+  border-color: #3eb4e2;
+}
+.free-package-btn {
+	background-color: transparent;
+  color: #3eb4e2;
+  border: 2px solid #3eb4e2 !important;
+  -webkit-border-radius: 50px !important;
+  -moz-border-radius: 50px !important;
+  border-radius: 50px !important;
+  padding: 7px 25px !important;
+}
+.free-valid {
+	font-size: 12px;
+}
+
 .basic-package-link span {
-	font-size: 13px;
+	font-size: 24px;
 	font-weight: 400;
 	color: #444;
 	display: block;
+	padding: 5px;
 }
 
 #package-subscription .modal-footer #suscribe_btn {

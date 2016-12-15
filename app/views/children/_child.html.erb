@@ -2,8 +2,7 @@
 <% if child.subscription.present? %>
   <div class="form-section child-form-section">
     <h3 class="form-section-subtitle">
-      <%= child.first_name %>
-      <%= child.last_name %>
+      <%= child.fullname %>
     </h3>
     <div class="form-group field">
       <label class="col-sm-4 control-label">Package Type</label>
@@ -40,8 +39,7 @@
 <% else %>
   <div class="form-section child-form-section">
     <h3 class="form-section-subtitle">
-      <%= child.first_name %>
-      <%= child.last_name %>
+      <%= child.fullname %>
     </h3>
     <div class="form-group field">
       <label class="col-sm-4 control-label">Package Type</label>

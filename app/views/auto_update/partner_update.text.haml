@@ -1,4 +1,4 @@
-Hi 
+Hi
 
 = @schedule.klass.partner.company
 = @schedule.activity.name
@@ -12,5 +12,5 @@ No of participants #{@schedule.children.count}
 
 %h3 Childrens
 - @schedule.children.each do |child|
-  = #{child.first_name} #{child.last_name} (#{Time.now.year - child.birth_year.to_i})
+  = #{child.fullname} (#{Time.now.year - child.birth_year.to_i})
 

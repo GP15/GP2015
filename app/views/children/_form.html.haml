@@ -1,13 +1,9 @@
 = render 'shared/error_messages', object: f.object
 
 .form-group.string.field
-  = f.label :first_name, class: "col-sm-3 control-label control-label"
+  = f.label :fullname, class: "col-sm-3 control-label control-label"
   .col-sm-9
-    = f.text_field :first_name, class: "form-control", placeholder: 'Same as identity card'
-.form-group.string.field
-  = f.label :last_name, class: "col-sm-3 control-label control-label", placeholder: "Same as identity card"
-  .col-sm-9
-    = f.text_field :last_name, class: "form-control"
+    = f.text_field :fullname, class: "form-control", placeholder: 'Same as identity card'
 .form-group.string.field
   = f.label :gender, class: "col-sm-3 control-label control-label"
   .col-sm-9

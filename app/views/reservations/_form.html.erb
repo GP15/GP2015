@@ -1,0 +1,51 @@
+<div class="reservation-form">
+  <h4>Reserve this class for...</h4>
+  <%= form_for [@schedule, @reservation] do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.collection_select :child_id, @children, :id, :fullname, {}, { class: "width-100 form-control" } %>
+    </div>
+    <div class="pull-right">
+      <%= f.submit "Reserve", class: "gp-button" %>
+    </div>
+
+    <% if f.object.errors[:base].present? and f.object.errors[:base].first.include?("Register Your Child With GeniusPass Membership") %>
+      <div class="modal fade" id="register-package-popout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <br>
+            <div class="modal-body">
+              <h2 class='txt-align-center'>Register<br>GeniusPass Membership</h2>
+              <br>
+              <div class='col-md-6 feature-box'>
+                <i class='fa fa-star-o'></i>
+                <div class='title'>Amazing activities for your child</div>
+              </div>
+              <div class='col-md-6 feature-box'>
+              <i class='fa fa-smile-o'></i>
+                <div class='title'>Friendly customer service</div>
+              </div>
+              <div class='col-md-6 feature-box'>
+                <i class='fa fa-mortar-board'></i>
+                <div class='title'>Personalised activities</div>
+              </div>
+              <div class='col-md-6 feature-box'>
+                <i class='fa fa-calendar-times-o'></i>
+                <div class='title'>Cancel anytime</div>
+              </div>
+
+              <div class='clearfix'></div>
+              <div class='col-md-12 bottom-box txt-align-center'>
+                <%= link_to 'Proceed', new_child_subscription_path(@reservation.child), id: 'proceed-btn', target: '_blank' %>
+              </div>
+              <div class='clearfix'></div>
+
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

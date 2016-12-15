@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <%= reservation.child.first_name if reservation.child %>
+    <%= reservation.child.fullname if reservation.child %>
   </td>
   <td class="date">
     <%= reservation.created_at.strftime("%-d %b %Y") %>
@@ -8,7 +8,7 @@
   <% if Time.zone.now <= @schedule.starts_at %>
     <td class="action">
       <% if Time.zone.now >= @schedule.starts_at.beginning_of_day %>
-        <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation), method: :delete, data: { confirm: "Cancel reservation for #{reservation.child.first_name}? Cancellation charge will be : RM#{reservation.cancellation_charge}".html_safe } %>
+        <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation), method: :delete, data: { confirm: "Cancel reservation for #{reservation.child.fullname}? Cancellation charge will be : RM#{reservation.cancellation_charge}".html_safe } %>
       <% else %>
         <%= link_to 'cancel', schedule_reservation_path(@schedule, reservation), method: :delete %>
       <% end %>

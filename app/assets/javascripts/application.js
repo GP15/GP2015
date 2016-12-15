@@ -96,6 +96,10 @@ $(document).ready(function()
     });
   }
 
+  if($('#register-package-popout').length > 0){
+    $('#register-package-popout').modal('show');
+  }
+
   $(".alert").fadeTo(3000, 1500).slideUp(1500, function(){
     $(".alert").slideUp(1500);
   });

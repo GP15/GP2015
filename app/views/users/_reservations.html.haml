@@ -11,7 +11,7 @@
   %tbody
     - reservations.each do |reservation|
       %tr
-        %td.name-col{"data-title" => "Name"}= reservation.child.first_name
+        %td.name-col{"data-title" => "Name"}= reservation.child.fullname
         %td.date-col{"data-title" => "Date"}= reservation.schedule.starts_at.strftime("%-d %b %Y")
         %td.time-col{"data-title" => "Time"}
           = reservation.schedule.starts_at.strftime("%l:%M%P")

@@ -7,3 +7,37 @@ p.notice
 {
   padding: 15px;
 }
+
+
+#register-package-popout h2 {
+  margin-bottom: 5px;
+}
+#register-package-popout .modal-content{
+  border: 2px solid #3eb4e2;
+}
+#register-package-popout .modal-body {
+  padding: 0;
+}
+#register-package-popout .feature-box{
+  padding: 0;
+  text-align: center;
+  padding: 15px;
+}
+#register-package-popout .feature-box .title {
+  font-size: 16px;
+}
+#register-package-popout .bottom-box  {
+  padding: 40px 15px 15px;
+}
+#register-package-popout #proceed-btn {
+  margin: 15px;
+  text-align: center;
+  color: white;
+  background: #3eb4e2;
+  padding: 15px 25px;
+}
+
+#register-package-popout .fa {
+  font-size: 65px;
+  padding: 15px;
+}

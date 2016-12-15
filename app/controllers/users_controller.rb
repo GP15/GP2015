@@ -79,6 +79,6 @@ class UsersController < ApplicationController
   end
 
   def add_child_params
-    params.require(:user).permit(children_attributes: [:id, :first_name, :last_name, :birth_year, :user_id, :gender, :_destroy])
+    params.require(:user).permit(children_attributes: [:id, :fullname, :first_name, :last_name, :birth_year, :user_id, :gender, :_destroy])
   end
 end
