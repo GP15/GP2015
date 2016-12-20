@@ -7,8 +7,8 @@
           %a.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#top-nav", "data-toggle" => "collapse"}
             %i.fa.fa-bars
           / Logo
-          = link_to image_tag("Logo2.png", title: "Genius Pass", alt: "Genius Pass"), root_url, class: "brand-logo navbar-brand"
-          = link_to image_tag("Logo3.png", title: "Genius Pass", alt: "Genius Pass"), root_url, class: "brand-logo navbar-brand"
+          = link_to image_tag("Logo2.png", title: "Genius Pass", alt: "Genius Pass"), root_url, class: "brand-logo navbar-brand "
+          = link_to image_tag("Logo3.png", title: "Genius Pass", alt: "Genius Pass"), root_url, class: "brand-logo #{'mobile' if cookies[:mobile].present?} navbar-brand"
         / Top Navigation
         #top-nav.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
