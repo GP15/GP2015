@@ -8,7 +8,9 @@ ActiveAdmin.register Zipcode do
     selectable_column
     column :pincode
     column :city_id do |zipcode|
-      link_to zipcode.city.name, admin_city_path(zipcode.city)
+      if zipcode.city.present?
+        link_to zipcode.city.name, admin_city_path(zipcode.city)
+      end
     end
     column :active
     actions
