@@ -29,12 +29,15 @@
 //= require onboard
 //= require add_child
 //= require map
+//= require responsive-tab
 //= require gmaps/google
 //= require animsition.min
 
 
 $(document).ready(function()
 {
+  fakewaffle.responsiveTabs(['xs']);
+
   $(".animsition").animsition({
     inClass: 'fade-in',
     outClass: 'fade-out',
