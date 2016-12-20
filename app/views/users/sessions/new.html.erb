@@ -1,6 +1,6 @@
 <% provide(:title, "Login") %>
-<div class="content login-page">
 
+<div class="<%= 'mobile' if cookies[:mobile].present? %> content login-page">
   <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
 
 
@@ -47,3 +47,4 @@
     </div>
   </div>
 </div>
+

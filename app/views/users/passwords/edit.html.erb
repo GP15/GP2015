@@ -1,5 +1,5 @@
 <% provide(:title, "Password Reset") %>
-<div class="content forgot-password-page">
+<div class="<%= 'mobile' if cookies[:mobile].present? %> content forgot-password-page">
 
   <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
 

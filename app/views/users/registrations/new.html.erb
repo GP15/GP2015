@@ -1,5 +1,5 @@
 <% provide(:title, "Sign up") %>
-<div class="content sign-up-page">
+<div class="<%= 'mobile' if cookies[:mobile].present? %> content sign-up-page">
   <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
 
 

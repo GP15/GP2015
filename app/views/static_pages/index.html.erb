@@ -12,12 +12,12 @@
   <%= render 'shared/notice', locals: { flash: flash } if flash.present? %>
 
   <!-- / Section - Main -->
-  <div class="section-row" id="section-main">
+  <div class="section-row <%= 'mobile-main' if cookies[:mobile].present? %>" id="section-main">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
         </div>
-        <div class="col-md-6 header-text-container">
+        <div class="col-md-6 <%= 'mobile' if cookies[:mobile].present? %> header-text-container">
           <h1>Discover The Best Activities Combination For Your Children</h1>
           <p class="lead">WE CURATE, YOU DECIDE!</p>
         </div>
@@ -36,10 +36,11 @@
               </div>
             </div>
 
-            <%= submit_tag "Get Started", class: 'btn btn-primary' %>
+            <%= submit_tag "Get Started", class: 'get-started-btn btn btn-primary' %>
           <% end %>
         </div>
 
+        <% if cookies[:mobile].blank? %>
         <div class="col-md-6 right-header-activities">
           <div class="header-activities">
             <%= image_tag 'dance.png' %>
@@ -70,6 +71,7 @@
             <div class="title">MUSIC</div>
           </div>
         </div>
+        <% end %>
 
 
       </div>
@@ -77,6 +79,7 @@
     </div>
   </div>
 
+  <% if cookies[:mobile].blank? %>
   <div class="section-row cta-container">
     <div class="container">
       <div class="row">
@@ -226,7 +229,7 @@
     </div>
   </div>
 
-  <% if cookies[:mobile].blank? %>
+
   <div class="section-row mobile-app-container mid">
     <div class="container">
       <div class="row">
@@ -249,7 +252,6 @@
       </div>
     </div>
   </div>
-  <% end %>
 
   <!-- / Section - Partners -->
   <div class="section-row mid">
@@ -327,6 +329,7 @@
       </div>
     </div>
   </div>
+  <% end %>
 
 </div>
 
