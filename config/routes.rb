@@ -1,5 +1,31 @@
 Rails.application.routes.draw do
 
+  apipie
+  namespace :api, defaults: { format: 'json' } do
+    resources :children, only: [:create, :index] do
+      resources :reservations
+
+      member do
+        get     'curated'
+        get     'development_elements'
+        get     'save_availability'
+        patch   'update_availability'
+      end
+
+      resources :availability, only: [:create, :update]
+    end
+    resources :subscriptions, only: [:index]
+    resources :schedules, only: [:index, :update]
+    resources :users, only: [:update]
+
+    post    'register',           to: 'registrations#create'
+    post    'facebook_callback',  to: 'registrations#facebook'
+    post    'login',              to: 'sessions#create'
+    post    'facebook_callback',  to: 'sessions#facebook'
+    post    'forgot_password',    to: 'sessions#forgot'
+    delete  'logout',             to: 'sessions#destroy'
+  end
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

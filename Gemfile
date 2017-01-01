@@ -27,6 +27,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem "nested_form"
 gem 'omniauth-facebook', '3.0.0'
 gem 'jbuilder'
+gem 'apipie-rails'
 
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'active_admin_editor', github: 'boontdustie/active_admin_editor'
